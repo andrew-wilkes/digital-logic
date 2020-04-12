@@ -19,4 +19,4 @@ texture = ExtResource( 1 )
 
 [node name="Numbers" parent="." instance=ExtResource( 2 )]
 margin_top = 51.0
-margin_bottom = 194.0
+margin_bottom = 215.0

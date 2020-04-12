@@ -91,22 +91,20 @@ func change_number():
 	if warning:
 		return
 	if delta == 1:
+		alert.modulate = Color.red
 		if number == 127:
 			alert.text = "Signed overflow"
-			alert.modulate = Color.yellow
 			warning = true
 		if number == 255:
 			alert.text = "Unsigned overflow"
-			alert.modulate = Color.red
 			warning = true
 	else:
+		alert.modulate = Color.yellow
 		if number == 128:
 			alert.text = "Signed underflow"
-			alert.modulate = Color.yellow
 			warning = true
 		if number == 0:
 			alert.text = "Unsigned underflow"
-			alert.modulate = Color.red
 			warning = true
 	if warning:
 		$AlertTimer.start()
