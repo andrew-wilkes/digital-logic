@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://parts/XNOR.tscn" type="PackedScene" id=1]
+[ext_resource path="res://parts/AND.tscn" type="PackedScene" id=2]
+
+[node name="Main" type="Node2D"]
+
+[node name="AND" parent="." instance=ExtResource( 2 )]
+position = Vector2( 158, 127 )
+
+[node name="XNOR" parent="." instance=ExtResource( 1 )]
+position = Vector2( 307, 128 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 478.271, 289.566 )
+current = true
