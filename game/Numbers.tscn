@@ -1,17 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Numbers.gd" type="Script" id=1]
+[ext_resource path="res://assets/m_font_regular.tres" type="DynamicFont" id=2]
 
 [node name="Numbers" type="CenterContainer"]
 margin_right = 1024.0
 margin_bottom = 600.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="PanelContainer" parent="."]
-margin_left = 313.0
-margin_top = 228.0
-margin_right = 711.0
-margin_bottom = 371.0
+margin_left = 288.0
+margin_top = 218.0
+margin_right = 736.0
+margin_bottom = 382.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 __meta__ = {
@@ -21,8 +25,8 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 391.0
-margin_bottom = 136.0
+margin_right = 441.0
+margin_bottom = 157.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -34,16 +38,16 @@ __meta__ = {
 [node name="VBox" type="VBoxContainer" parent="Panel/MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 364.0
-margin_bottom = 109.0
+margin_right = 414.0
+margin_bottom = 130.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Counter" type="HBoxContainer" parent="Panel/MarginContainer/VBox"]
-margin_right = 344.0
-margin_bottom = 55.0
+margin_right = 394.0
+margin_bottom = 69.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -51,104 +55,111 @@ __meta__ = {
 
 [node name="Col1" type="VBoxContainer" parent="Panel/MarginContainer/VBox/Counter"]
 margin_right = 64.0
-margin_bottom = 55.0
+margin_bottom = 69.0
 custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col1"]
 margin_right = 64.0
-margin_bottom = 31.0
+margin_bottom = 45.0
 size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
 text = "Binary
 "
 
 [node name="Label2" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col1"]
-margin_top = 41.0
+margin_top = 55.0
 margin_right = 64.0
-margin_bottom = 55.0
+margin_bottom = 69.0
 size_flags_vertical = 0
 text = "00000000"
 
 [node name="Col2" type="VBoxContainer" parent="Panel/MarginContainer/VBox/Counter"]
 margin_left = 84.0
-margin_right = 109.0
-margin_bottom = 55.0
+margin_right = 115.0
+margin_bottom = 69.0
 custom_constants/separation = 10
 
 [node name="Label2" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col2"]
-margin_right = 25.0
-margin_bottom = 31.0
+margin_right = 31.0
+margin_bottom = 45.0
 size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
 text = "Hex
 "
 
 [node name="Label3" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col2"]
-margin_top = 41.0
-margin_right = 25.0
-margin_bottom = 55.0
+margin_top = 55.0
+margin_right = 31.0
+margin_bottom = 69.0
 size_flags_vertical = 0
 text = "00"
 
 [node name="Col3" type="VBoxContainer" parent="Panel/MarginContainer/VBox/Counter"]
-margin_left = 129.0
-margin_right = 195.0
-margin_bottom = 55.0
+margin_left = 135.0
+margin_right = 221.0
+margin_bottom = 69.0
 custom_constants/separation = 10
 
 [node name="Label3" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col3"]
-margin_right = 66.0
-margin_bottom = 31.0
+margin_right = 86.0
+margin_bottom = 45.0
 size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
 text = "Decimal
 (unsigned)"
 
 [node name="Label4" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col3"]
-margin_top = 41.0
-margin_right = 66.0
-margin_bottom = 55.0
+margin_top = 55.0
+margin_right = 86.0
+margin_bottom = 69.0
 size_flags_vertical = 0
 text = "0"
 
 [node name="Col4" type="VBoxContainer" parent="Panel/MarginContainer/VBox/Counter"]
-margin_left = 215.0
-margin_right = 268.0
-margin_bottom = 55.0
+margin_left = 241.0
+margin_right = 307.0
+margin_bottom = 69.0
 custom_constants/separation = 10
 
 [node name="Label4" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col4"]
-margin_right = 53.0
-margin_bottom = 31.0
+margin_right = 66.0
+margin_bottom = 45.0
 size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
 text = "Decimal
 (signed)"
 
 [node name="Label5" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col4"]
-margin_top = 41.0
-margin_right = 53.0
-margin_bottom = 55.0
+margin_top = 55.0
+margin_right = 66.0
+margin_bottom = 69.0
 size_flags_vertical = 0
 text = "0"
 
 [node name="Col5" type="VBoxContainer" parent="Panel/MarginContainer/VBox/Counter"]
-margin_left = 288.0
-margin_right = 344.0
-margin_bottom = 55.0
+margin_left = 327.0
+margin_right = 394.0
+margin_bottom = 69.0
 custom_constants/separation = 10
 
 [node name="Up" type="Button" parent="Panel/MarginContainer/VBox/Counter/Col5"]
-margin_right = 56.0
-margin_bottom = 20.0
+margin_right = 67.0
+margin_bottom = 27.0
+custom_fonts/font = ExtResource( 2 )
 text = "UP"
 
 [node name="Down" type="Button" parent="Panel/MarginContainer/VBox/Counter/Col5"]
-margin_top = 30.0
-margin_right = 56.0
-margin_bottom = 50.0
+margin_top = 37.0
+margin_right = 67.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 2 )
 text = "DOWN"
 
 [node name="Alert" type="Label" parent="Panel/MarginContainer/VBox"]
-margin_top = 75.0
-margin_right = 344.0
-margin_bottom = 89.0
+margin_top = 89.0
+margin_right = 394.0
+margin_bottom = 110.0
+custom_fonts/font = ExtResource( 2 )
 text = "Alert"
 align = 1
 
