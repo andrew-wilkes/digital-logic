@@ -135,8 +135,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="4"
-     inkscape:cx="-864.67355"
-     inkscape:cy="555.4561"
+     inkscape:cx="-856.79855"
+     inkscape:cy="373.9561"
      inkscape:document-units="px"
      inkscape:current-layer="layer3"
      showgrid="true"
@@ -162,7 +162,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -194,7 +194,7 @@
        rx="8.6210508"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"
-       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/numbers.png" />
+       inkscape:export-filename="/home/andrew/Godot/github/andrew-wilkes/digital-logic/game/assets/numbers.png" />
     <rect
        style="fill:url(#linearGradient1549-8);fill-opacity:1;stroke:#32afef;stroke-width:2.33999991;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1541-8"
@@ -214,7 +214,7 @@
        x="-965"
        y="622.51965"
        rx="8.6210508"
-       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/circuits.png"
+       inkscape:export-filename="/home/andrew/Godot/github/andrew-wilkes/digital-logic/game/assets/circuits.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <rect
@@ -225,7 +225,7 @@
        x="-965"
        y="697.51965"
        rx="8.6210508"
-       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/projects.png"
+       inkscape:export-filename="/home/andrew/Godot/github/andrew-wilkes/digital-logic/game/assets/projects.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
   </g>
@@ -423,18 +423,18 @@
          y="397.51965">Digital Logic</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.42213821px;line-height:1.25;font-family:'Droid Sans Mono';-inkscape-font-specification:'Droid Sans Mono';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.06055343"
-       x="-957.92383"
-       y="517.74597"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:37.22581863px;line-height:1.25;font-family:'Droid Sans Mono';-inkscape-font-specification:'Droid Sans Mono';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.93064541"
+       x="-956.85297"
+       y="515.29669"
        id="text867"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/binary.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          id="tspan865"
-         x="-957.92383"
-         y="517.74597"
-         style="stroke-width:1.06055343">0011010</tspan></text>
+         x="-956.85297"
+         y="515.29669"
+         style="stroke-width:0.93064541">10011010</tspan></text>
     <path
        style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.34060287;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m -832.54719,557.67539 c 0,0 6.79246,12.87169 6.79246,19.84425 0,6.97256 -6.79246,19.84426 -6.79246,19.84426 l 20.54717,0.16537 c 20.20755,0.16264 27,-20.00963 27,-20.00963 0,0 -6.79245,-20.17226 -27,-20.00962 z"
@@ -567,21 +567,20 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <g
-       id="g1690"
-       transform="translate(5.0000029,35.000004)">
+       id="g4705">
       <path
          inkscape:export-ydpi="96"
          inkscape:export-xdpi="96"
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
          inkscape:connector-curvature="0"
          id="path1012"
-         d="m -925.00002,602.51964 h 65"
+         d="m -920.00002,637.51964 h 65"
          style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <g
          inkscape:export-ydpi="96"
          inkscape:export-xdpi="96"
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-         transform="matrix(0.337123,0,0,0.33333339,-666.87354,415.01306)"
+         transform="matrix(0.337123,0,0,0.33333339,-661.87354,450.01306)"
          id="g919-9">
         <path
            style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -608,13 +607,13 @@
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
          inkscape:connector-curvature="0"
          id="path993"
-         d="m -945.00002,607.51964 h -5 v 10 h 35 v 15 h -10"
+         d="m -940.00002,642.51964 h -5 v 10 h 35 v 15 h -10"
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <g
          inkscape:export-ydpi="96"
          inkscape:export-xdpi="96"
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-         transform="matrix(0.337123,0,0,0.33333339,-666.87354,445.01306)"
+         transform="matrix(0.337123,0,0,0.33333339,-661.87354,480.01306)"
          id="g919-9-6">
         <path
            style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -641,7 +640,7 @@
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
          inkscape:connector-curvature="0"
          id="path985"
-         d="m -945.00002,637.51964 h -15"
+         d="m -940.00002,672.51964 h -15"
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
          inkscape:export-ydpi="96"
@@ -649,7 +648,7 @@
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
          inkscape:connector-curvature="0"
          id="path989"
-         d="m -945.00002,597.51964 h -15"
+         d="m -940.00002,632.51964 h -15"
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
          inkscape:export-ydpi="96"
@@ -657,7 +656,7 @@
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
          inkscape:connector-curvature="0"
          id="path995"
-         d="m -945.00002,627.51964 h -15"
+         d="m -940.00002,662.51964 h -15"
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
          inkscape:export-ydpi="96"
@@ -665,7 +664,7 @@
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
          inkscape:connector-curvature="0"
          id="path1037"
-         d="m -885.00002,632.51964 h 10 v -20 h 15"
+         d="m -880.00002,667.51964 h 10 v -20 h 15"
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
          inkscape:export-ydpi="96"
@@ -673,8 +672,8 @@
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
          inkscape:connector-curvature="0"
          id="path1039"
-         d="m -840.00002,607.51964 h 15"
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+         d="m -835.00002,642.51964 h 20"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          inkscape:export-ydpi="96"
          inkscape:export-xdpi="96"
@@ -682,7 +681,7 @@
          sodipodi:nodetypes="cacscsc"
          inkscape:connector-curvature="0"
          id="path1479-3-6-0"
-         d="m -864.00003,597.08561 c 0,0 3.57143,6.76786 3.57143,10.43398 0,3.66613 -3.57143,10.43399 -3.57143,10.43399 l 10.80358,0.087 c 10.625,0.0855 14.19643,-10.52094 14.19643,-10.52094 0,0 -3.57143,-10.60644 -14.19643,-10.52093 z"
+         d="m -859.00003,632.08561 c 0,0 3.57143,6.76786 3.57143,10.43398 0,3.66613 -3.57143,10.43399 -3.57143,10.43399 l 10.80358,0.087 c 10.625,0.0855 14.19643,-10.52094 14.19643,-10.52094 0,0 -3.57143,-10.60644 -14.19643,-10.52093 z"
          style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.7048806;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          inkscape:export-ydpi="96"
@@ -690,13 +689,13 @@
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
          inkscape:connector-curvature="0"
          id="path1035"
-         d="m -915.00002,632.51964 h 10"
+         d="m -910.00002,667.51964 h 10"
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <g
          inkscape:export-ydpi="96"
          inkscape:export-xdpi="96"
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-         transform="matrix(0.34286843,0,0,0.33333335,-655.27817,448.34642)"
+         transform="matrix(0.34286843,0,0,0.33333335,-650.27817,483.34642)"
          id="g941-2">
         <path
            style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -723,13 +722,13 @@
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
          inkscape:connector-curvature="0"
          id="path985-4-6"
-         d="m -785.00002,612.51964 h -15"
+         d="m -780.00002,647.51964 h -15"
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <g
          inkscape:export-ydpi="96"
          inkscape:export-xdpi="96"
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-         transform="matrix(0.337123,0,0,0.33333339,-541.87354,425.01306)"
+         transform="matrix(0.337123,0,0,0.33333339,-536.87354,460.01306)"
          id="g919-9-6-4">
         <path
            style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -756,82 +755,70 @@
          inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
          inkscape:connector-curvature="0"
          id="path985-4"
-         d="m -820.00002,617.51964 h -15"
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-      <path
-         inkscape:export-ydpi="96"
-         inkscape:export-xdpi="96"
-         inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-         inkscape:connector-curvature="0"
-         id="path995-6"
-         d="m -820.00002,607.51964 h -15"
+         d="m -815.00002,652.51964 h -15"
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
-    <g
-       id="g1664"
-       transform="translate(20.000003,50.000005)">
-      <path
-         inkscape:export-ydpi="96"
-         inkscape:export-xdpi="96"
-         inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-         inkscape:connector-curvature="0"
-         id="path1256"
-         d="m -840.00002,687.51964 c -5,0 -95,0 -95,0"
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
-      <rect
-         inkscape:export-ydpi="96"
-         inkscape:export-xdpi="96"
-         inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-         y="652.51965"
-         x="-960"
-         height="50"
-         width="24.999989"
-         id="rect1205"
-         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.29099393;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <rect
-         inkscape:export-ydpi="96"
-         inkscape:export-xdpi="96"
-         inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-         y="652.51965"
-         x="-900"
-         height="30.000002"
-         width="24.999989"
-         id="rect1205-4"
-         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.99999958;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <path
-         inkscape:export-ydpi="96"
-         inkscape:export-xdpi="96"
-         inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-         inkscape:connector-curvature="0"
-         id="path1258"
-         d="m -935.00002,697.51964 h 95"
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1538)" />
-      <rect
-         inkscape:export-ydpi="96"
-         inkscape:export-xdpi="96"
-         inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-         y="652.51965"
-         x="-840"
-         height="50"
-         width="24.999989"
-         id="rect1205-1"
-         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.29099393;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <path
-         inkscape:export-ydpi="96"
-         inkscape:export-xdpi="96"
-         inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-         inkscape:connector-curvature="0"
-         id="path1239"
-         d="m -935.00002,662.51964 h 30 v -5 l 5,5 v 10 l -5,5 v -5 h -30 z"
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-      <path
-         inkscape:export-ydpi="96"
-         inkscape:export-xdpi="96"
-         inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-         inkscape:connector-curvature="0"
-         id="path1239-2"
-         d="m -875.00002,662.51964 h 30 v -5 l 5,5 v 10 l -5,5 v -5 h -30 z"
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+       d="m -820.00002,737.51964 c -5,0 -95,0 -95,0"
+       id="path1256"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.29099393;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1205"
+       width="24.999989"
+       height="50"
+       x="-940"
+       y="702.51965"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.99999958;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1205-4"
+       width="24.999989"
+       height="30.000002"
+       x="-880"
+       y="702.51965"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1538)"
+       d="m -915.00002,747.51964 h 95"
+       id="path1258"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.29099393;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1205-1"
+       width="24.999989"
+       height="50"
+       x="-820"
+       y="702.51965"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:#7baaf5;fill-opacity:1;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -915.00002,712.51964 h 30 v -5 l 5,5 v 10 l -5,5 v -5 h -30 z"
+       id="path1239"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:#7baaf5;fill-opacity:1;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -855.00002,712.51964 h 30 v -5 l 5,5 v 10 l -5,5 v -5 h -30 z"
+       id="path1239-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </g>
 </svg>
