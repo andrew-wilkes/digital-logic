@@ -2,124 +2,153 @@
 
 [ext_resource path="res://Numbers.gd" type="Script" id=1]
 
-[node name="Numbers" type="Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Numbers" type="CenterContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
 script = ExtResource( 1 )
+
+[node name="Panel" type="PanelContainer" parent="."]
+margin_left = 313.0
+margin_top = 228.0
+margin_right = 711.0
+margin_bottom = 371.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBox" type="VBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 391.0
+margin_bottom = 136.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Counter" type="HBoxContainer" parent="VBox"]
-margin_right = 344.0
-margin_bottom = 49.0
+[node name="VBox" type="VBoxContainer" parent="Panel/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 364.0
+margin_bottom = 109.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Col1" type="VBoxContainer" parent="VBox/Counter"]
-margin_right = 64.0
-margin_bottom = 49.0
+[node name="Counter" type="HBoxContainer" parent="Panel/MarginContainer/VBox"]
+margin_right = 344.0
+margin_bottom = 55.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="VBox/Counter/Col1"]
+[node name="Col1" type="VBoxContainer" parent="Panel/MarginContainer/VBox/Counter"]
+margin_right = 64.0
+margin_bottom = 55.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col1"]
 margin_right = 64.0
 margin_bottom = 31.0
 size_flags_vertical = 0
 text = "Binary
 "
 
-[node name="Label2" type="Label" parent="VBox/Counter/Col1"]
-margin_top = 35.0
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col1"]
+margin_top = 41.0
 margin_right = 64.0
-margin_bottom = 49.0
+margin_bottom = 55.0
 size_flags_vertical = 0
 text = "00000000"
 
-[node name="Col2" type="VBoxContainer" parent="VBox/Counter"]
+[node name="Col2" type="VBoxContainer" parent="Panel/MarginContainer/VBox/Counter"]
 margin_left = 84.0
 margin_right = 109.0
-margin_bottom = 49.0
+margin_bottom = 55.0
+custom_constants/separation = 10
 
-[node name="Label2" type="Label" parent="VBox/Counter/Col2"]
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col2"]
 margin_right = 25.0
 margin_bottom = 31.0
 size_flags_vertical = 0
 text = "Hex
 "
 
-[node name="Label3" type="Label" parent="VBox/Counter/Col2"]
-margin_top = 35.0
+[node name="Label3" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col2"]
+margin_top = 41.0
 margin_right = 25.0
-margin_bottom = 49.0
+margin_bottom = 55.0
 size_flags_vertical = 0
 text = "00"
 
-[node name="Col3" type="VBoxContainer" parent="VBox/Counter"]
+[node name="Col3" type="VBoxContainer" parent="Panel/MarginContainer/VBox/Counter"]
 margin_left = 129.0
 margin_right = 195.0
-margin_bottom = 49.0
+margin_bottom = 55.0
+custom_constants/separation = 10
 
-[node name="Label3" type="Label" parent="VBox/Counter/Col3"]
+[node name="Label3" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col3"]
 margin_right = 66.0
 margin_bottom = 31.0
 size_flags_vertical = 0
 text = "Decimal
 (unsigned)"
 
-[node name="Label4" type="Label" parent="VBox/Counter/Col3"]
-margin_top = 35.0
+[node name="Label4" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col3"]
+margin_top = 41.0
 margin_right = 66.0
-margin_bottom = 49.0
+margin_bottom = 55.0
 size_flags_vertical = 0
 text = "0"
 
-[node name="Col4" type="VBoxContainer" parent="VBox/Counter"]
+[node name="Col4" type="VBoxContainer" parent="Panel/MarginContainer/VBox/Counter"]
 margin_left = 215.0
 margin_right = 268.0
-margin_bottom = 49.0
+margin_bottom = 55.0
+custom_constants/separation = 10
 
-[node name="Label4" type="Label" parent="VBox/Counter/Col4"]
+[node name="Label4" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col4"]
 margin_right = 53.0
 margin_bottom = 31.0
 size_flags_vertical = 0
 text = "Decimal
 (signed)"
 
-[node name="Label5" type="Label" parent="VBox/Counter/Col4"]
-margin_top = 35.0
+[node name="Label5" type="Label" parent="Panel/MarginContainer/VBox/Counter/Col4"]
+margin_top = 41.0
 margin_right = 53.0
-margin_bottom = 49.0
+margin_bottom = 55.0
 size_flags_vertical = 0
 text = "0"
 
-[node name="Col5" type="VBoxContainer" parent="VBox/Counter"]
+[node name="Col5" type="VBoxContainer" parent="Panel/MarginContainer/VBox/Counter"]
 margin_left = 288.0
 margin_right = 344.0
-margin_bottom = 49.0
+margin_bottom = 55.0
+custom_constants/separation = 10
 
-[node name="Up" type="Button" parent="VBox/Counter/Col5"]
+[node name="Up" type="Button" parent="Panel/MarginContainer/VBox/Counter/Col5"]
 margin_right = 56.0
 margin_bottom = 20.0
 text = "UP"
 
-[node name="Down" type="Button" parent="VBox/Counter/Col5"]
-margin_top = 24.0
+[node name="Down" type="Button" parent="Panel/MarginContainer/VBox/Counter/Col5"]
+margin_top = 30.0
 margin_right = 56.0
-margin_bottom = 44.0
+margin_bottom = 50.0
 text = "DOWN"
 
-[node name="Alert" type="Label" parent="VBox"]
-margin_top = 53.0
+[node name="Alert" type="Label" parent="Panel/MarginContainer/VBox"]
+margin_top = 75.0
 margin_right = 344.0
-margin_bottom = 67.0
+margin_bottom = 89.0
 text = "Alert"
 align = 1
 
@@ -129,9 +158,9 @@ one_shot = true
 
 [node name="AlertTimer" type="Timer" parent="."]
 one_shot = true
-[connection signal="button_down" from="VBox/Counter/Col5/Up" to="." method="_on_Up_button_down"]
-[connection signal="button_up" from="VBox/Counter/Col5/Up" to="." method="_on_Up_button_up"]
-[connection signal="button_down" from="VBox/Counter/Col5/Down" to="." method="_on_Down_button_down"]
-[connection signal="button_up" from="VBox/Counter/Col5/Down" to="." method="_on_Down_button_up"]
+[connection signal="button_down" from="Panel/MarginContainer/VBox/Counter/Col5/Up" to="." method="_on_Up_button_down"]
+[connection signal="button_up" from="Panel/MarginContainer/VBox/Counter/Col5/Up" to="." method="_on_Up_button_up"]
+[connection signal="button_down" from="Panel/MarginContainer/VBox/Counter/Col5/Down" to="." method="_on_Down_button_down"]
+[connection signal="button_up" from="Panel/MarginContainer/VBox/Counter/Col5/Down" to="." method="_on_Down_button_up"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="AlertTimer" to="." method="_on_AlertTimer_timeout"]

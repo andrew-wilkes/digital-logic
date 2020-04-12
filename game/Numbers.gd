@@ -1,4 +1,4 @@
-extends Panel
+extends Container
 
 var number = 0
 var delta = 0
