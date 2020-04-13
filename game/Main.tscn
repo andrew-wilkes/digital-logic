@@ -16,10 +16,10 @@ __meta__ = {
 }
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 274.0
-margin_top = 44.0
-margin_right = 750.0
-margin_bottom = 556.0
+margin_left = 712.0
+margin_top = 284.0
+margin_right = 1188.0
+margin_bottom = 796.0
 custom_constants/separation = 50
 
 [node name="Label" type="Label" parent="VBox"]
@@ -60,16 +60,16 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture_normal = ExtResource( 5 )
 
-[node name="Projects" type="TextureButton" parent="VBox"]
+[node name="Systems" type="TextureButton" parent="VBox"]
 margin_left = 139.0
 margin_top = 450.0
 margin_right = 336.0
 margin_bottom = 512.0
-hint_tooltip = "Projects"
+hint_tooltip = "Systems"
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture_normal = ExtResource( 4 )
 [connection signal="button_down" from="VBox/Numbers" to="." method="_on_Numbers_button_down"]
 [connection signal="button_down" from="VBox/Gates" to="." method="_on_Gates_button_down"]
 [connection signal="button_down" from="VBox/Circuits" to="." method="_on_Circuits_button_down"]
-[connection signal="button_down" from="VBox/Projects" to="." method="_on_Projects_button_down"]
+[connection signal="button_down" from="VBox/Systems" to="." method="_on_Projects_button_down"]

@@ -13,4 +13,4 @@ func _on_Circuits_button_down():
 
 
 func _on_Projects_button_down():
-	return get_tree().change_scene("res://Projects.tscn")
+	return get_tree().change_scene("res://Systems.tscn")

@@ -61,12 +61,12 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource( 3 )
 
-[node name="Projects" type="TextureButton" parent="."]
+[node name="Systems" type="TextureButton" parent="."]
 margin_left = 296.0
 margin_right = 360.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-hint_tooltip = "Projects"
+hint_tooltip = "Systems"
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource( 2 )
@@ -74,4 +74,4 @@ texture_normal = ExtResource( 2 )
 [connection signal="button_down" from="Numbers" to="." method="_on_Numbers_button_down"]
 [connection signal="button_down" from="Gates" to="." method="_on_Gates_button_down"]
 [connection signal="button_down" from="Circuits" to="." method="_on_Circuits_button_down"]
-[connection signal="button_down" from="Projects" to="." method="_on_Projects_button_down"]
+[connection signal="button_down" from="Systems" to="." method="_on_Projects_button_down"]
