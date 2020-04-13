@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Numbers.gd" type="Script" id=1]
 [ext_resource path="res://assets/m_font_regular.tres" type="DynamicFont" id=2]
@@ -6,10 +6,15 @@
 [ext_resource path="res://TextPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Buttons.tscn" type="PackedScene" id=5]
 [ext_resource path="res://center.gd" type="Script" id=6]
+[ext_resource path="res://assets/big_button_font.tres" type="DynamicFont" id=7]
 
 [node name="Numbers" type="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -2.0
+margin_right = -1.0
+margin_bottom = -2.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -34,17 +39,18 @@ text = "Numbers"
 align = 1
 
 [node name="TextPanel" parent="VBox" instance=ExtResource( 4 )]
-text = "Computers store numbers in binary which are numbers comprised of 1's and 0's. Here we have a 16 bit number and display the equivalent numbers in Hexadecimal, and Decimal.
+text = "Digital circuits have input and output states comprised of 1's and 0's making up bits of a binary number. Here we have a 16 bit binary number and display the equivalent numbers in Hexadecimal, and Decimal.
 
-Use this tool to increment and decrement the number to get familiar with binary. Also, note what happens when the 16 bit value exceeds it's maximum or minimum values.
+Use the tool below to increment and decrement the number to get familiar with binary. Also, note what happens when the 16 bit value exceeds it's maximum or minimum values for the bits available.
 
-Click or hold down the Up/Down buttons."
+Click or hold down the buttons to experiment."
 
 [node name="Panel" type="PanelContainer" parent="VBox"]
+margin_left = 43.0
 margin_top = 337.0
-margin_right = 448.0
-margin_bottom = 501.0
-size_flags_horizontal = 0
+margin_right = 404.0
+margin_bottom = 567.0
+size_flags_horizontal = 4
 size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -53,8 +59,8 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="VBox/Panel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 441.0
-margin_bottom = 157.0
+margin_right = 354.0
+margin_bottom = 223.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -66,15 +72,15 @@ __meta__ = {
 [node name="VBox" type="VBoxContainer" parent="VBox/Panel/MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 414.0
-margin_bottom = 130.0
+margin_right = 327.0
+margin_bottom = 196.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Counter" type="HBoxContainer" parent="VBox/Panel/MarginContainer/VBox"]
-margin_right = 394.0
+margin_right = 307.0
 margin_bottom = 69.0
 custom_constants/separation = 20
 __meta__ = {
@@ -164,32 +170,61 @@ margin_bottom = 69.0
 size_flags_vertical = 0
 text = "0"
 
-[node name="Col5" type="VBoxContainer" parent="VBox/Panel/MarginContainer/VBox/Counter"]
-margin_left = 327.0
-margin_right = 394.0
-margin_bottom = 69.0
-custom_constants/separation = 10
-
-[node name="Up" type="Button" parent="VBox/Panel/MarginContainer/VBox/Counter/Col5"]
-margin_right = 67.0
-margin_bottom = 27.0
-custom_fonts/font = ExtResource( 2 )
-text = "UP"
-
-[node name="Down" type="Button" parent="VBox/Panel/MarginContainer/VBox/Counter/Col5"]
-margin_top = 37.0
-margin_right = 67.0
-margin_bottom = 64.0
-custom_fonts/font = ExtResource( 2 )
-text = "DOWN"
-
 [node name="Alert" type="Label" parent="VBox/Panel/MarginContainer/VBox"]
 margin_top = 89.0
-margin_right = 394.0
+margin_right = 307.0
 margin_bottom = 110.0
 custom_fonts/font = ExtResource( 2 )
 text = "Alert"
 align = 1
+
+[node name="Buttons" type="HBoxContainer" parent="VBox/Panel/MarginContainer/VBox"]
+margin_left = 3.0
+margin_top = 130.0
+margin_right = 303.0
+margin_bottom = 176.0
+size_flags_horizontal = 4
+custom_constants/separation = 20
+
+[node name="Up" type="Button" parent="VBox/Panel/MarginContainer/VBox/Buttons"]
+margin_right = 44.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 44, 0 )
+custom_fonts/font = ExtResource( 7 )
+text = "+"
+
+[node name="Down" type="Button" parent="VBox/Panel/MarginContainer/VBox/Buttons"]
+margin_left = 64.0
+margin_right = 108.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 44, 0 )
+custom_fonts/font = ExtResource( 7 )
+text = "-"
+
+[node name="ShiftLeft" type="Button" parent="VBox/Panel/MarginContainer/VBox/Buttons"]
+margin_left = 128.0
+margin_right = 172.0
+margin_bottom = 46.0
+hint_tooltip = "Bit shift left"
+custom_fonts/font = ExtResource( 7 )
+text = "<<"
+
+[node name="ShiftRight" type="Button" parent="VBox/Panel/MarginContainer/VBox/Buttons"]
+margin_left = 192.0
+margin_right = 236.0
+margin_bottom = 46.0
+hint_tooltip = "Bit shift right"
+custom_fonts/font = ExtResource( 7 )
+text = ">>"
+
+[node name="Invert" type="Button" parent="VBox/Panel/MarginContainer/VBox/Buttons"]
+margin_left = 256.0
+margin_right = 300.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 44, 0 )
+hint_tooltip = "Invert"
+custom_fonts/font = ExtResource( 7 )
+text = "~"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
@@ -199,9 +234,12 @@ one_shot = true
 one_shot = true
 
 [node name="Buttons" parent="." instance=ExtResource( 5 )]
-[connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Counter/Col5/Up" to="." method="_on_Up_button_down"]
-[connection signal="button_up" from="VBox/Panel/MarginContainer/VBox/Counter/Col5/Up" to="." method="_on_Up_button_up"]
-[connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Counter/Col5/Down" to="." method="_on_Down_button_down"]
-[connection signal="button_up" from="VBox/Panel/MarginContainer/VBox/Counter/Col5/Down" to="." method="_on_Down_button_up"]
+[connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Buttons/Up" to="." method="_on_Up_button_down"]
+[connection signal="button_up" from="VBox/Panel/MarginContainer/VBox/Buttons/Up" to="." method="_on_Up_button_up"]
+[connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Buttons/Down" to="." method="_on_Down_button_down"]
+[connection signal="button_up" from="VBox/Panel/MarginContainer/VBox/Buttons/Down" to="." method="_on_Down_button_up"]
+[connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Buttons/ShiftLeft" to="." method="_on_ShiftLeft_button_down"]
+[connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Buttons/ShiftRight" to="." method="_on_ShiftRight_button_down"]
+[connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Buttons/Invert" to="." method="_on_Invert_button_down"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="AlertTimer" to="." method="_on_AlertTimer_timeout"]

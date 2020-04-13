@@ -115,3 +115,15 @@ func change_number():
 func _on_AlertTimer_timeout():
 	alert.text = ""
 	warning = false
+
+
+func _on_ShiftLeft_button_down():
+	set_number(number << 1)
+
+
+func _on_ShiftRight_button_down():
+	set_number(number >> 1)
+
+
+func _on_Invert_button_down():
+	set_number(~number)

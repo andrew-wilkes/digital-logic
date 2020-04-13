@@ -1,0 +1,8 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[ext_resource path="res://assets/Montserrat-Regular.ttf" type="DynamicFontData" id=1]
+
+[resource]
+size = 32
+outline_color = Color( 0.819608, 0.831373, 0.819608, 1 )
+font_data = ExtResource( 1 )

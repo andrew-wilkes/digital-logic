@@ -2,6 +2,7 @@ extends Container
 
 
 func _ready():
+	call_deferred("size_changed")
 	return get_tree().get_root().connect("size_changed", self, "size_changed")
 
 
