@@ -23,13 +23,14 @@ __meta__ = {
 }
 
 [node name="VBox" type="VBoxContainer" parent="."]
+margin_left = 274.0
 margin_top = 44.0
 margin_right = 750.0
 margin_bottom = 556.0
 custom_constants/separation = 50
 
 [node name="Label" type="Label" parent="VBox"]
-margin_right = 750.0
+margin_right = 476.0
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -37,9 +38,9 @@ text = "Learn Digital Logic"
 align = 1
 
 [node name="Numbers" type="TextureButton" parent="VBox"]
-margin_left = 276.0
+margin_left = 139.0
 margin_top = 114.0
-margin_right = 473.0
+margin_right = 336.0
 margin_bottom = 176.0
 hint_tooltip = "Numbers"
 size_flags_horizontal = 4
@@ -47,9 +48,9 @@ size_flags_vertical = 0
 texture_normal = ExtResource( 3 )
 
 [node name="Gates" type="TextureButton" parent="VBox"]
-margin_left = 276.0
+margin_left = 139.0
 margin_top = 226.0
-margin_right = 473.0
+margin_right = 336.0
 margin_bottom = 288.0
 hint_tooltip = "Gates"
 size_flags_horizontal = 4
@@ -57,9 +58,9 @@ size_flags_vertical = 0
 texture_normal = ExtResource( 6 )
 
 [node name="Circuits" type="TextureButton" parent="VBox"]
-margin_left = 276.0
+margin_left = 139.0
 margin_top = 338.0
-margin_right = 473.0
+margin_right = 336.0
 margin_bottom = 400.0
 hint_tooltip = "Circuits"
 size_flags_horizontal = 4
@@ -67,11 +68,15 @@ size_flags_vertical = 0
 texture_normal = ExtResource( 5 )
 
 [node name="Projects" type="TextureButton" parent="VBox"]
-margin_left = 276.0
+margin_left = 139.0
 margin_top = 450.0
-margin_right = 473.0
+margin_right = 336.0
 margin_bottom = 512.0
 hint_tooltip = "Projects"
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture_normal = ExtResource( 4 )
+[connection signal="button_down" from="VBox/Numbers" to="." method="_on_Numbers_button_down"]
+[connection signal="button_down" from="VBox/Gates" to="." method="_on_Gates_button_down"]
+[connection signal="button_down" from="VBox/Circuits" to="." method="_on_Circuits_button_down"]
+[connection signal="button_down" from="VBox/Projects" to="." method="_on_Projects_button_down"]
