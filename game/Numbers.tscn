@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/m_font_regular.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/title_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://TextPanel.tscn" type="PackedScene" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://Buttons.tscn" type="PackedScene" id=5]
 [ext_resource path="res://center.gd" type="Script" id=6]
 
 [node name="Numbers" type="Container"]
@@ -196,10 +196,7 @@ one_shot = true
 [node name="AlertTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="TextureButton" type="TextureButton" parent="."]
-margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 5 )
+[node name="Buttons" parent="." instance=ExtResource( 5 )]
 [connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Counter/Col5/Up" to="." method="_on_Up_button_down"]
 [connection signal="button_up" from="VBox/Panel/MarginContainer/VBox/Counter/Col5/Up" to="." method="_on_Up_button_up"]
 [connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Counter/Col5/Down" to="." method="_on_Down_button_down"]
