@@ -24,6 +24,12 @@ config/name="Digital Logic"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1900
+window/size/height=1080
+window/stretch/aspect="keep"
+
 [rendering]
 
 environment/default_clear_color=Color( 0.686275, 0.988235, 0.972549, 1 )
