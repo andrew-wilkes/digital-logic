@@ -190,6 +190,7 @@ custom_constants/separation = 20
 margin_right = 44.0
 margin_bottom = 46.0
 rect_min_size = Vector2( 44, 0 )
+hint_tooltip = "Increment"
 custom_fonts/font = ExtResource( 7 )
 text = "+"
 
@@ -198,6 +199,7 @@ margin_left = 64.0
 margin_right = 108.0
 margin_bottom = 46.0
 rect_min_size = Vector2( 44, 0 )
+hint_tooltip = "Decrement"
 custom_fonts/font = ExtResource( 7 )
 text = "-"
 
