@@ -11,10 +11,10 @@
 [node name="Numbers" type="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 54.5186
-margin_top = 27.2202
-margin_right = 54.5186
-margin_bottom = 27.2202
+margin_left = -1.0
+margin_top = -2.0
+margin_right = -1.0
+margin_bottom = -2.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
