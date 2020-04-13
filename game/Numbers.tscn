@@ -39,9 +39,11 @@ text = "Numbers"
 align = 1
 
 [node name="TextPanel" parent="VBox" instance=ExtResource( 4 )]
-text = "Digital circuits have input and output states comprised of 1's and 0's making up bits of a binary number. Here we have a 16 bit binary number and display the equivalent numbers in Hexadecimal, and Decimal.
+text = "Digital circuits have input and output states comprised of 1's and 0's making up bits of a binary number.
 
-Use the tool below to increment and decrement the number to get familiar with binary. Also, note what happens when the 16 bit value exceeds it's maximum or minimum values for the bits available.
+Use the tool below to increment, decrement, shift bits, and invert the 16-bit binary number.
+
+Note what happens when the decimal value crosses values around 0, 127, and 255.
 
 Click or hold down the buttons to experiment."
 
@@ -186,22 +188,22 @@ margin_bottom = 176.0
 size_flags_horizontal = 4
 custom_constants/separation = 20
 
-[node name="Up" type="Button" parent="VBox/Panel/MarginContainer/VBox/Buttons"]
-margin_right = 44.0
-margin_bottom = 46.0
-rect_min_size = Vector2( 44, 0 )
-hint_tooltip = "Increment"
-custom_fonts/font = ExtResource( 7 )
-text = "+"
-
 [node name="Down" type="Button" parent="VBox/Panel/MarginContainer/VBox/Buttons"]
-margin_left = 64.0
-margin_right = 108.0
+margin_right = 44.0
 margin_bottom = 46.0
 rect_min_size = Vector2( 44, 0 )
 hint_tooltip = "Decrement"
 custom_fonts/font = ExtResource( 7 )
 text = "-"
+
+[node name="Up" type="Button" parent="VBox/Panel/MarginContainer/VBox/Buttons"]
+margin_left = 64.0
+margin_right = 108.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 44, 0 )
+hint_tooltip = "Increment"
+custom_fonts/font = ExtResource( 7 )
+text = "+"
 
 [node name="ShiftLeft" type="Button" parent="VBox/Panel/MarginContainer/VBox/Buttons"]
 margin_left = 128.0
@@ -236,10 +238,10 @@ one_shot = true
 one_shot = true
 
 [node name="Buttons" parent="." instance=ExtResource( 5 )]
-[connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Buttons/Up" to="." method="_on_Up_button_down"]
-[connection signal="button_up" from="VBox/Panel/MarginContainer/VBox/Buttons/Up" to="." method="_on_Up_button_up"]
 [connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Buttons/Down" to="." method="_on_Down_button_down"]
 [connection signal="button_up" from="VBox/Panel/MarginContainer/VBox/Buttons/Down" to="." method="_on_Down_button_up"]
+[connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Buttons/Up" to="." method="_on_Up_button_down"]
+[connection signal="button_up" from="VBox/Panel/MarginContainer/VBox/Buttons/Up" to="." method="_on_Up_button_up"]
 [connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Buttons/ShiftLeft" to="." method="_on_ShiftLeft_button_down"]
 [connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Buttons/ShiftRight" to="." method="_on_ShiftRight_button_down"]
 [connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Buttons/Invert" to="." method="_on_Invert_button_down"]
