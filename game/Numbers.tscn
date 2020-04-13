@@ -36,7 +36,9 @@ align = 1
 [node name="TextPanel" parent="VBox" instance=ExtResource( 4 )]
 text = "Computers store numbers in binary which are numbers comprised of 1's and 0's. Here we have a 16 bit number and display the equivalent numbers in Hexadecimal, and Decimal.
 
-Use this tool to increment and decrement the number to get familiar with binary. Also, note what happens when the 16 bit value exceeds it's maximum or minimum values."
+Use this tool to increment and decrement the number to get familiar with binary. Also, note what happens when the 16 bit value exceeds it's maximum or minimum values.
+
+Click or hold down the Up/Down buttons."
 
 [node name="Panel" type="PanelContainer" parent="VBox"]
 margin_top = 337.0
