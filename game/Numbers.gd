@@ -10,7 +10,6 @@ func _ready():
 	alert = find_node("Alert")
 	alert.text = ""
 	counter = find_node("Counter")
-	$Buttons.disable_button(1)
 	set_number(0)
 
 

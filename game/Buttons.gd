@@ -1,5 +1,10 @@
 extends HBoxContainer
 
+export(int) var page_id
+
+func _ready():
+	disable_button(page_id)
+
 
 func disable_button(idx):
 	get_child(idx).visible = false

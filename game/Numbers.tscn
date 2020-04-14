@@ -238,6 +238,7 @@ one_shot = true
 one_shot = true
 
 [node name="Buttons" parent="." instance=ExtResource( 5 )]
+page_id = 1
 [connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Buttons/Down" to="." method="_on_Down_button_down"]
 [connection signal="button_up" from="VBox/Panel/MarginContainer/VBox/Buttons/Down" to="." method="_on_Down_button_up"]
 [connection signal="button_down" from="VBox/Panel/MarginContainer/VBox/Buttons/Up" to="." method="_on_Up_button_down"]
