@@ -5,6 +5,7 @@
 
 [node name="NAND" type="Node2D"]
 script = ExtResource( 2 )
+gate_type = "NAND"
 
 [node name="Symbol" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -23,10 +24,10 @@ __meta__ = {
 }
 
 [node name="A" type="Position2D" parent="."]
-position = Vector2( -36, -22 )
+position = Vector2( -36, -20 )
 
 [node name="B" type="Position2D" parent="."]
-position = Vector2( -36, 22 )
+position = Vector2( -36, 20 )
 
 [node name="Q" type="Position2D" parent="."]
 position = Vector2( 36, 0 )

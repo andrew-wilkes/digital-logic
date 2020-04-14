@@ -5,6 +5,7 @@
 
 [node name="OR" type="Node2D"]
 script = ExtResource( 2 )
+gate_type = "OR"
 
 [node name="Symbol" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -23,10 +24,10 @@ __meta__ = {
 }
 
 [node name="A" type="Position2D" parent="."]
-position = Vector2( -32, -22 )
+position = Vector2( -31, -20 )
 
 [node name="B" type="Position2D" parent="."]
-position = Vector2( -32, 22 )
+position = Vector2( -31, 20 )
 
 [node name="Q" type="Position2D" parent="."]
 position = Vector2( 37, 0 )

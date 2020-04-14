@@ -24,6 +24,10 @@ config/name="Digital Logic"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+g="*res://g.gd"
+
 [display]
 
 window/size/width=1900
