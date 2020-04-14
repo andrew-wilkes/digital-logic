@@ -1,4 +1,4 @@
-extends Container
+extends Control
 
 var number = 0
 var delta = 0
