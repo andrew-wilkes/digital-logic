@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Buttons.tscn" type="PackedScene" id=1]
 [ext_resource path="res://center.gd" type="Script" id=2]
 [ext_resource path="res://assets/title_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://TextPanel.tscn" type="PackedScene" id=4]
 
 [node name="Circuits" type="Control"]
 anchor_right = 1.0
@@ -32,3 +33,12 @@ margin_bottom = 64.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Combinational Logic Circuits"
+
+[node name="TextPanel" parent="VBox" instance=ExtResource( 4 )]
+margin_right = 743.0
+margin_bottom = 221.0
+text = "We may wire up logic gates to make circuits to perform various useful functions such as decoding, encoding, selecting, adding, counting, and memory.
+
+Connection rules are:
+All inputs must be fed from an external input or the output of another gate.
+Outputs must not be connected together."
