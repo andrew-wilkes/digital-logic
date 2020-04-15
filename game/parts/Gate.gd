@@ -2,33 +2,48 @@ extends Node2D
 
 class_name Gate
 
-var input_positions = []
-var output_position: Vector2
 var input_pin = preload("res://parts/Input.tscn")
 var output_pin = preload("res://parts/Output.tscn")
 var inputs = []
 var output
 
-export(bool) var add_pins
+export(int) var type
 export(String) var gate_type
 
 func _ready():
-	# get connection points
-	var n = get_child_count()
-	for i in range(1, n - 1):
-		var ip = get_child(i)
-		input_positions.append(ip.position)
+	var i = 0
+	for node in $Inputs.get_children():
+		show_pin(node, false)
 		inputs.append(false)
-		if add_pins:
+		if type == 0:
 			var pin = input_pin.instance()
-			pin.id = i - 1
+			pin.id = i
+			i += 1
 			pin.connect("state_changed", self, "update_output", [pin])
-			ip .add_child(pin)
-	var op = get_child(n - 1)
-	output_position = op.position
-	if add_pins:
+			node.add_child(pin)
+	if type == 0:
 		output = output_pin.instance()
-		op.add_child(output)
+		$Q.add_child(output)
+		show_pin($Q, false)
+	#$Area2D.connect("mouse_entered", self, "mouse_entered")
+
+
+func pin_enter(node):
+	node.get_node("Sprite").show()
+
+
+func pin_exit(node):
+	node.get_node("Sprite").hide()
+
+
+func mouse_entered():
+	pass
+
+
+func show_pin(node, show = true):
+	node.get_node("Sprite").visible = show
+	node.connect("mouse_entered", self, "pin_enter", [node])
+	node.connect("mouse_exited", self, "pin_exit", [node])
 
 
 func update_output(pin):

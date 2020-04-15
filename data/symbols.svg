@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="-488.94272"
-     inkscape:cy="628.20218"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="-529.82184"
+     inkscape:cy="518.56396"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -53,7 +53,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -61,7 +61,7 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="artwork"
-     style="display:inline;opacity:0.44200003"
+     style="display:none;opacity:0.44200003"
      sodipodi:insensitive="true">
     <rect
        style="opacity:1;fill:#3e15ff;fill-opacity:1;stroke:none;stroke-width:2.28265762;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -206,7 +206,7 @@
        id="path1688"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc"
-       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/arrow.png"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/symbols.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <rect
@@ -254,12 +254,18 @@
        d="m -435.00001,492.51964 h 10 c 0,0 5.28595,-10 10,-10 4.71405,0 10,10 10,10 h 10"
        id="path861"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cczcc" />
+       sodipodi:nodetypes="cczcc"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/symbols.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <circle
        style="fill:#f7fdff;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path863"
        cx="-380"
        cy="482.51965"
-       r="10" />
+       r="10"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/symbols.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </g>
 </svg>

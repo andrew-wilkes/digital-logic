@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/symbols.png" type="Texture" id=1]
 [ext_resource path="res://parts/Gate.gd" type="Script" id=2]
+[ext_resource path="res://parts/Pin.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 44, 31 )
 
 [node name="XNOR" type="Node2D"]
 script = ExtResource( 2 )
@@ -23,11 +27,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="A" type="Position2D" parent="."]
+[node name="Inputs" type="Node2D" parent="."]
+
+[node name="A" parent="Inputs" instance=ExtResource( 3 )]
 position = Vector2( -34, -20 )
 
-[node name="B" type="Position2D" parent="."]
+[node name="B" parent="Inputs" instance=ExtResource( 3 )]
 position = Vector2( -34, 20 )
 
-[node name="Q" type="Position2D" parent="."]
-position = Vector2( 43, 0 )
+[node name="Q" parent="." instance=ExtResource( 3 )]
+position = Vector2( 44, 0 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
