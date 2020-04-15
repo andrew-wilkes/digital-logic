@@ -25,7 +25,6 @@ func _ready():
 		output = output_pin.instance()
 		$Q.add_child(output)
 		show_pin($Q, false)
-	#$Area2D.connect("mouse_entered", self, "mouse_entered")
 
 
 func pin_enter(node):
@@ -69,3 +68,8 @@ func update_output(pin):
 		"NOR", "NAND", "XNOR":
 			result = !result
 	output.state = result
+
+
+func _on_Area2D_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+		pass
