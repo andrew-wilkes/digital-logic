@@ -10,7 +10,7 @@ func _ready():
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseMotion && picked:
-		part.position = event.position
+		part.position = (event.position / g.GRID_SIZE).round() * g.GRID_SIZE
 
 
 func part_picked(node):
