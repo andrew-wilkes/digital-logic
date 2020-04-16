@@ -3,6 +3,7 @@ extends Node2D
 class_name Gate
 
 signal picked(node)
+signal dropped
 
 var input_pin = preload("res://parts/Input.tscn")
 var output_pin = preload("res://parts/Output.tscn")
@@ -18,6 +19,8 @@ func _ready():
 	$Area2D.connect("mouse_entered", self, "mouse_entered")
 	# warning-ignore:return_value_discarded
 	$Area2D.connect("mouse_exited", self, "mouse_exited")
+	# warning-ignore:return_value_discarded
+	$Area2D.connect("input_event", self, "input_event")
 	var i = 0
 	for node in $Inputs.get_children():
 		pin_exit(node)
@@ -34,6 +37,8 @@ func _ready():
 	if type == 0:
 		output = output_pin.instance()
 		$Q.add_child(output)
+	else:
+		connect_pin($Q)
 
 
 func pin_enter(node):
@@ -83,6 +88,9 @@ func update_output(pin):
 	output.state = result
 
 
-func _on_Area2D_input_event(_viewport, event, _shape_idx):
+func input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
-		emit_signal("picked", self)
+		if event.pressed:
+			emit_signal("picked", self)
+		else:
+			emit_signal("dropped")

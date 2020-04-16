@@ -1,5 +1,7 @@
 extends Control
 
+signal picked(node)
+
 const YSTEP = 64 * 1.2
 
 func _ready():
@@ -15,4 +17,4 @@ func _ready():
 
 
 func picked(node):
-	print(node.name)
+	emit_signal("picked", node.duplicate())
