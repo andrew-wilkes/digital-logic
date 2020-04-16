@@ -2,18 +2,19 @@ extends Control
 
 signal picked(node)
 
-const YSTEP = 64 * 1.2
+const V_MARGIN = 28
 
 func _ready():
-	var pos = Vector2(64, 42)
+	var pos = Vector2(64, -V_MARGIN)
 	var files = g.get_files("parts", "tscn")
+	files.sort()
 	for file in files:
 		var node = load("res://parts/" + file).instance()
+		pos.y += node.v_spacing
 		node.position = pos
-		pos.y += YSTEP
 		$Panel.add_child(node)
 		node.connect("picked", self, "picked")
-	$Panel.rect_size = Vector2(120, pos.y)
+	$Panel.rect_size = Vector2(130, pos.y + V_MARGIN)
 
 
 func picked(node):

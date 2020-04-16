@@ -5,11 +5,12 @@ class_name Gate
 signal picked(node)
 signal dropped
 
-var input_pin = preload("res://parts/Input.tscn")
-var output_pin = preload("res://parts/Output.tscn")
+var input_pin = preload("res://parts/zInput.tscn")
+var output_pin = preload("res://parts/zOutput.tscn")
 var inputs = []
 var output
 var active = false
+var v_spacing = 72
 
 export(int) var type = 1
 export(String) var gate_type

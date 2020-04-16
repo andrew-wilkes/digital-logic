@@ -5,6 +5,7 @@ signal dropped
 
 var state = false setget set_state
 var active = false
+var v_spacing = 32
 
 func set_state(value):
 	state = value
