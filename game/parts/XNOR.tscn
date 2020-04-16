@@ -2,7 +2,8 @@
 
 [ext_resource path="res://assets/symbols.png" type="Texture" id=1]
 [ext_resource path="res://parts/Gate.gd" type="Script" id=2]
-[ext_resource path="res://parts/Pin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://parts/misc/Pin.tscn" type="PackedScene" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 44, 31 )

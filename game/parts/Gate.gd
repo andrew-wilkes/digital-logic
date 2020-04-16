@@ -2,18 +2,25 @@ extends Node2D
 
 class_name Gate
 
+signal picked(node)
+
 var input_pin = preload("res://parts/Input.tscn")
 var output_pin = preload("res://parts/Output.tscn")
 var inputs = []
 var output
+var active = false
 
-export(int) var type
+export(int) var type = 1
 export(String) var gate_type
 
 func _ready():
+	# warning-ignore:return_value_discarded
+	$Area2D.connect("mouse_entered", self, "mouse_entered")
+	# warning-ignore:return_value_discarded
+	$Area2D.connect("mouse_exited", self, "mouse_exited")
 	var i = 0
 	for node in $Inputs.get_children():
-		show_pin(node, false)
+		pin_exit(node)
 		inputs.append(false)
 		if type == 0:
 			var pin = input_pin.instance()
@@ -21,14 +28,17 @@ func _ready():
 			i += 1
 			pin.connect("state_changed", self, "update_output", [pin])
 			node.add_child(pin)
+		else:
+			connect_pin(node)
+	pin_exit($Q) # Hide
 	if type == 0:
 		output = output_pin.instance()
 		$Q.add_child(output)
-		show_pin($Q, false)
 
 
 func pin_enter(node):
-	node.get_node("Sprite").show()
+	if active:
+		node.get_node("Sprite").show()
 
 
 func pin_exit(node):
@@ -36,11 +46,14 @@ func pin_exit(node):
 
 
 func mouse_entered():
-	pass
+	$Symbol.modulate = Color.green
 
 
-func show_pin(node, show = true):
-	node.get_node("Sprite").visible = show
+func mouse_exited():
+	$Symbol.modulate = Color.white
+
+
+func connect_pin(node):
 	node.connect("mouse_entered", self, "pin_enter", [node])
 	node.connect("mouse_exited", self, "pin_exit", [node])
 
@@ -72,4 +85,4 @@ func update_output(pin):
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
-		pass
+		emit_signal("picked", self)

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/arrow.png" type="Texture" id=1]
 [ext_resource path="res://parts/Output.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 26, 10 )
 
 [node name="Output" type="Node2D"]
 script = ExtResource( 2 )
@@ -15,3 +18,12 @@ default_color = Color( 1, 1, 1, 1 )
 position = Vector2( 42, 0 )
 texture = ExtResource( 1 )
 region_rect = Rect2( 9, 78, 23, 24 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 26, 0 )
+shape = SubResource( 1 )
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
