@@ -3,6 +3,7 @@ extends Node2D
 signal state_changed()
 signal picked(node)
 signal dropped
+signal doubleclick
 
 var state = false setget set_state
 var active = false
@@ -31,7 +32,9 @@ func set_state(value):
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
-		if event.pressed:
+		if event.doubleclick:
+			emit_signal("doubleclick")
+		elif event.pressed:
 			if mode == 0:
 				self.state = !state
 			emit_signal("picked", self)
@@ -42,7 +45,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 
 func _on_Area2D_mouse_entered():
 	color = modulate
-	modulate = Color.green
+	modulate = g.COLOR_ACTIVE
 
 
 func _on_Area2D_mouse_exited():
