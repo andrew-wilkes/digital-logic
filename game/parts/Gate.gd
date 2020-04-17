@@ -52,11 +52,11 @@ func _ready():
 func pin_enter(node):
 	if active:
 		node.get_node("Sprite").show()
-		if g.wire:
+		# Try to attach end of wire to unconnected input pin
+		if g.wire && !node.is_output && node.wires.size() < 1:
 			node.wires.append(g.wire)
 			g.wire.end_pin = node
-			var pos = position + node.position
-			g.wire.points[-1] = pos
+			g.wire.points[-1] = position + node.position
 			g.wire = null
 
 
@@ -120,3 +120,11 @@ func input_event(_viewport, event, _shape_idx):
 			emit_signal("picked", self)
 		else:
 			emit_signal("dropped")
+
+
+func update_wire_positions():
+	for i in $Q.wires.size():
+		$Q.wires[i].points[0] = position + $Q.position
+	for pin in $Inputs.get_children():
+		if pin.wires.size() > 0:
+			pin.wires[0].points[-1] = position + pin.position

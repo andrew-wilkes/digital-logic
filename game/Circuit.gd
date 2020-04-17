@@ -13,6 +13,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseMotion:
 		if part_moving:
 			part.position = (event.position / g.GRID_SIZE).round() * g.GRID_SIZE
+			part.update_wire_positions()
 		elif g.wire:
 			g.wire.points[1] = event.position
 
@@ -51,4 +52,4 @@ func pinclick(gate, pin):
 		$Wires.add_child(wire)
 	else:
 		if pin.wires.size() > 0:
-			pin.wires[0].queue_free()
+			pin.wires[0].delete()
