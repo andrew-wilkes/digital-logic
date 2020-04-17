@@ -5,6 +5,7 @@ class_name Gate
 signal picked(node)
 signal dropped
 signal doubleclick
+signal pinclick(gate, pin)
 
 var input_pin = preload("res://parts/zInput.tscn")
 var output_pin = preload("res://parts/zOutput.tscn")
@@ -32,11 +33,12 @@ func _ready():
 			var pin = input_pin.instance()
 			pin.mode = mode
 			pin.id = i
-			i += 1
 			pin.connect("state_changed", self, "update_output", [pin])
 			node.add_child(pin)
 		else:
+			node.id = i
 			connect_pin(node)
+		i += 1
 	pin_exit($Q) # Hide
 	if mode == 0: # When used in diagram
 		output = output_pin.instance()
@@ -44,11 +46,18 @@ func _ready():
 		$Q.add_child(output)
 	else:
 		connect_pin($Q)
+		$Q.is_output = true
 
 
 func pin_enter(node):
 	if active:
 		node.get_node("Sprite").show()
+		if g.wire:
+			node.wires.append(g.wire)
+			g.wire.end_pin = node
+			var pos = position + node.position
+			g.wire.points[-1] = pos
+			g.wire = null
 
 
 func pin_exit(node):
@@ -68,6 +77,14 @@ func mouse_exited():
 func connect_pin(node):
 	node.connect("mouse_entered", self, "pin_enter", [node])
 	node.connect("mouse_exited", self, "pin_exit", [node])
+	node.connect("input_event", self, "pin_click", [node])
+
+
+func pin_click(_viewport, event, _shape_idx, node):
+	if event is InputEventMouseButton && event.pressed:
+		# Click on output pin to create a new wire
+		# Click on input pin to delete a wire
+		emit_signal("pinclick", self, node)
 
 
 func update_output(pin):

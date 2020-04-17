@@ -6,6 +6,8 @@ const COLOR_ACTIVE = Color.green
 const COLOR_UNDEFINED = Color.white
 const GRID_SIZE = 16
 
+var wire = null
+
 func get_files(path, ext):
 	var files = []
 	var dir = Directory.new()
