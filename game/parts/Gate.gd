@@ -4,6 +4,7 @@ class_name Gate
 
 signal picked(node)
 signal dropped
+signal doubleclick
 
 var input_pin = preload("res://parts/zInput.tscn")
 var output_pin = preload("res://parts/zOutput.tscn")
@@ -91,7 +92,9 @@ func update_output(pin):
 
 func input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
-		if event.pressed:
+		if event.doubleclick:
+			emit_signal("doubleclick")
+		elif event.pressed:
 			emit_signal("picked", self)
 		else:
 			emit_signal("dropped")

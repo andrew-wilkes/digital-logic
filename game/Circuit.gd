@@ -17,15 +17,19 @@ func part_picked(node):
 	set_part_moving(node)
 	part.active = true
 	part.connect("picked", self, "set_part_moving")
+	part.connect("dropped", self, "part_dropped")
+	part.connect("doubleclick", self, "part_delete")
 	add_child(part)	
 
 
 func part_dropped():
 	part_moving = false
-	part.disconnect("dropped", self, "part_dropped")
 
 
 func set_part_moving(node):
 	part = node
-	part.connect("dropped", self, "part_dropped")
 	part_moving = true
+
+
+func part_delete():
+	part.queue_free()
