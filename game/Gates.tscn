@@ -11,17 +11,6 @@
 [ext_resource path="res://parts/bNAND.tscn" type="PackedScene" id=9]
 [ext_resource path="res://TextPanel.tscn" type="PackedScene" id=10]
 
-
-
-
-
-
-
-
-
-
-
-
 [node name="Gates" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -62,29 +51,36 @@ align = 1
 margin_right = 460.0
 text = "The basic logic gates perform boolean operations on their inputs to produce an output. These operations are: AND, NAND, OR, NOR, XOR, and NOT.
 
-Click on the inputs to toggle the input values between 0 (blue) and 1 (green) to see the effect on the outputs."
+Click on the inputs to toggle the input values between 0 (blue) and 1 (red) to see the effect on the outputs."
 
 [node name="ColorRect" type="ColorRect" parent="VBox"]
 margin_top = 337.0
 margin_right = 460.0
 margin_bottom = 637.0
 rect_min_size = Vector2( 0, 300 )
+mouse_filter = 2
 color = Color( 0.105882, 0.698039, 0.698039, 1 )
 
 [node name="AND" parent="VBox/ColorRect" instance=ExtResource( 4 )]
 position = Vector2( 110, 55 )
+mode = 0
 
 [node name="NAND" parent="VBox/ColorRect" instance=ExtResource( 9 )]
 position = Vector2( 350, 55 )
+mode = 0
 
 [node name="OR" parent="VBox/ColorRect" instance=ExtResource( 8 )]
 position = Vector2( 110, 151 )
+mode = 0
 
 [node name="NOR" parent="VBox/ColorRect" instance=ExtResource( 6 )]
 position = Vector2( 350, 151 )
+mode = 0
 
 [node name="XOR" parent="VBox/ColorRect" instance=ExtResource( 5 )]
 position = Vector2( 110, 247 )
+mode = 0
 
 [node name="NOT" parent="VBox/ColorRect" instance=ExtResource( 7 )]
 position = Vector2( 350, 247 )
+mode = 0

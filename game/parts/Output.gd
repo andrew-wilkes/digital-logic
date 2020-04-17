@@ -6,6 +6,8 @@ signal dropped
 var state = false setget set_state
 var active = false
 var v_spacing = 32
+export(int) var mode = 1
+var color
 
 func set_state(value):
 	state = value
@@ -24,8 +26,10 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 
 
 func _on_Area2D_mouse_entered():
-	modulate = Color.green
+	if mode > 0:
+		modulate = Color.green
 
 
 func _on_Area2D_mouse_exited():
-	modulate = Color.white
+	if mode > 0:
+		modulate = Color.white

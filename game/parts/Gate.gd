@@ -13,10 +13,11 @@ var output
 var active = false
 var v_spacing = 72
 
-export(int) var type = 1
+export(int) var mode = 1
 export(String) var gate_type
 
 func _ready():
+	z_index = 1 # Display above wires
 	# warning-ignore:return_value_discarded
 	$Area2D.connect("mouse_entered", self, "mouse_entered")
 	# warning-ignore:return_value_discarded
@@ -27,8 +28,9 @@ func _ready():
 	for node in $Inputs.get_children():
 		pin_exit(node)
 		inputs.append(false)
-		if type == 0:
+		if mode == 0: # When used in diagram
 			var pin = input_pin.instance()
+			pin.mode = mode
 			pin.id = i
 			i += 1
 			pin.connect("state_changed", self, "update_output", [pin])
@@ -36,8 +38,9 @@ func _ready():
 		else:
 			connect_pin(node)
 	pin_exit($Q) # Hide
-	if type == 0:
+	if mode == 0: # When used in diagram
 		output = output_pin.instance()
+		output.mode = mode
 		$Q.add_child(output)
 	else:
 		connect_pin($Q)
@@ -53,11 +56,13 @@ func pin_exit(node):
 
 
 func mouse_entered():
-	$Symbol.modulate = Color.green
+	if mode > 0:
+		$Symbol.modulate = g.COLOR_ACTIVE
 
 
 func mouse_exited():
-	$Symbol.modulate = Color.white
+	if mode > 0:
+		$Symbol.modulate = g.COLOR_UNDEFINED
 
 
 func connect_pin(node):

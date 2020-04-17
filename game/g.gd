@@ -1,7 +1,9 @@
 extends Node
 
-const COLOR_HIGH = Color.green
+const COLOR_HIGH = Color.red
 const COLOR_LOW = Color.blue
+const COLOR_ACTIVE = Color.green
+const COLOR_UNDEFINED = Color.white
 const GRID_SIZE = 16
 
 func get_files(path, ext):
