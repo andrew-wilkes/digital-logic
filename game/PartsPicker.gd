@@ -10,9 +10,9 @@ func _ready():
 	files.sort()
 	for file in files:
 		var node = load("res://parts/" + file).instance()
+		$Panel.add_child(node)
 		pos.y += node.v_spacing
 		node.position = pos
-		$Panel.add_child(node)
 		node.connect("picked", self, "picked")
 	$Panel.rect_size = Vector2(130, pos.y + V_MARGIN)
 

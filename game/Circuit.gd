@@ -15,21 +15,27 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 			part.position = (event.position / g.GRID_SIZE).round() * g.GRID_SIZE
 			part.update_wire_positions()
 		elif g.wire:
+			# Move end of wire
 			g.wire.points[1] = event.position
+	# Delete wire on release of mouse button
+	if event is InputEventMouseButton && g.wire:
+		g.wire.delete()
+		g.wire = null
 
 
 func part_picked(node):
+	# Should receive a duplicate of the node that was clicked
 	set_part_moving(node)
-	part.active = true
+	add_child(part)
 	part.connect("picked", self, "set_part_moving")
 	part.connect("dropped", self, "part_dropped")
 	part.connect("doubleclick", self, "part_delete")
 	part.connect("pinclick", self, "pinclick")
-	add_child(part)
 
 
 func part_dropped():
 	part_moving = false
+	part.active = true
 
 
 func set_part_moving(node):
@@ -38,10 +44,15 @@ func set_part_moving(node):
 
 
 func part_delete():
+	part.delete_wires()
 	part.queue_free()
 
 
 func pinclick(gate, pin):
+	if g.wire:
+		# Delete uncompleted wire
+		g.wire.delete()
+		g.wire = null
 	if pin.is_output:
 		var wire = wire_scene.instance()
 		wire.start_pin = pin

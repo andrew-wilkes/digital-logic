@@ -9,13 +9,19 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
+"base": "Part",
 "class": "Gate",
 "language": "GDScript",
 "path": "res://parts/Gate.gd"
+}, {
+"base": "Node2D",
+"class": "Part",
+"language": "GDScript",
+"path": "res://parts/Part.gd"
 } ]
 _global_script_class_icons={
-"Gate": ""
+"Gate": "",
+"Part": ""
 }
 
 [application]
