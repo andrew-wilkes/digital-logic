@@ -26,7 +26,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 func part_picked(node):
 	# Should receive a duplicate of the node that was clicked
 	set_part_moving(node)
-	add_child(part)
+	$Parts.add_child(part)
 	part.connect("picked", self, "set_part_moving")
 	part.connect("dropped", self, "part_dropped")
 	part.connect("doubleclick", self, "part_delete")

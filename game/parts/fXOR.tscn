@@ -43,3 +43,13 @@ position = Vector2( 39, 0 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 5, 0 )
 shape = SubResource( 1 )
+
+[node name="Region" type="ReferenceRect" parent="."]
+margin_left = -50.0
+margin_top = -40.0
+margin_right = 50.0
+margin_bottom = 40.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

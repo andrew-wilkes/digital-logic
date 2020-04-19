@@ -18,6 +18,13 @@ var v_spacing
 var color
 var use_state = false
 
+func get_extents():
+	return {
+		"min": $Region.rect_position,
+		"max": $Region.rect_position + $Region.rect_size
+	}
+
+
 func connect_signals():
 	# warning-ignore:return_value_discarded
 	$Area2D.connect("mouse_entered", self, "mouse_entered")
