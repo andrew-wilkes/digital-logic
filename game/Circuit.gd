@@ -1,12 +1,80 @@
 extends Node2D
 
+const DEBUG = true
+const CELL_MARGIN = 4
+
 var part_moving = false
 var part
 var wire_scene = preload("res://parts/misc/Wire.tscn")
+var astar: AStar2D
+var region
+var ref
+var min_point = Vector2(-1, 0)
+var max_point: Vector2
+var region_size
 
 func _ready():
+	astar = AStar2D.new()
 	# warning-ignore:return_value_discarded
 	$PartsPicker.connect("picked", self, "part_picked")
+
+
+func route_wires():
+	get_extents()
+	region_size = max_point - min_point
+	if DEBUG:
+		show_region()
+	region_size = region_size / g.GRID_SIZE + Vector2(1, 1)
+	astar.clear()
+	var num_points = region_size.x * region_size.y
+	if astar.get_point_capacity() < num_points:
+		astar.reserve_space(num_points)
+	var i = 0
+	for x in region_size.x:
+		for y in region_size.y:
+			var pos = Vector2(x, y) * g.GRID_SIZE
+			astar.add_point(i, pos + min_point)
+			i += 1
+			if DEBUG:
+				show_point(pos)
+
+
+func show_region():
+	if region:
+		region.queue_free()
+		region = null
+	region = ReferenceRect.new()
+	add_child(region)
+	region.editor_only = false
+	region.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	region.rect_position = min_point
+	region.rect_size = region_size
+
+
+func show_point(pos):
+	var p = $Dot.duplicate()
+	p.show()
+	p.position = pos
+	region.add_child(p)
+
+
+func get_extents():
+	min_point.x = -1
+	for p in $Parts.get_children():
+		if min_point.x < 0:
+			min_point = p.position
+			max_point = min_point
+		var ext = p.get_extents()
+		min_point.x =  min(ext.a.x, min_point.x)
+		min_point.y =  min(ext.a.y, min_point.y)
+		max_point.x = max(ext.b.x, max_point.x)
+		max_point.y = max(ext.b.y, max_point.y)
+	# Add margins
+	var margin = g.GRID_SIZE * CELL_MARGIN
+	min_point.x -= margin
+	min_point.y -= margin
+	max_point.x += margin
+	max_point.y += margin
 
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
@@ -36,6 +104,7 @@ func part_picked(node):
 func part_dropped():
 	part_moving = false
 	part.active = true
+	route_wires()
 
 
 func set_part_moving(node):

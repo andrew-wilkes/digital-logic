@@ -20,8 +20,8 @@ var use_state = false
 
 func get_extents():
 	return {
-		"min": $Region.rect_position,
-		"max": $Region.rect_position + $Region.rect_size
+		"a": position + $Region.rect_position,
+		"b": position + $Region.rect_position + $Region.rect_size
 	}
 
 
