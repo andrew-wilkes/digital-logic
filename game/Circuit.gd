@@ -64,3 +64,15 @@ func pinclick(gate, pin):
 	else:
 		if pin.wires.size() > 0:
 			pin.wires[0].delete()
+
+func _draw():
+	var r = get_viewport_rect().size
+	var c: Color = ProjectSettings.get_setting("rendering/environment/default_clear_color").darkened(0.1)
+	var x = 0
+	for i in r.x / g.GRID_SIZE:
+		draw_line(Vector2(x, 0), Vector2(x, r.y), c, 1.0)
+		x += g.GRID_SIZE
+	var y = 0
+	for i in r.y / g.GRID_SIZE:
+		draw_line(Vector2(0, y), Vector2(r.x, y), c, 1.0)
+		y += g.GRID_SIZE
