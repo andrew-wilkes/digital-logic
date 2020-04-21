@@ -38,6 +38,38 @@ func route_wires():
 			if DEBUG:
 				show_point(pos)
 	add_islands()
+	connect_points()
+	for wire in part.get_wires():
+		var first_point = wire.points[0]
+		var last_point = wire.points[-1]
+		var p = get_cell_coor(first_point)
+		var p1 = get_grid_id(p.x + 3, p.y) # One cell to the right
+		p = get_cell_coor(last_point)
+		var p2 = get_grid_id(p.x - 3, p.y) # One cell to the left
+		var inter_points = astar.get_point_path(p1, p2)
+		wire.clear_points()
+		var points : PoolVector2Array = [first_point]
+		points.append_array(inter_points)
+		points.append(last_point)
+		wire.set_points(points)
+
+
+func connect_points():
+	for y in region_size.y - 1:
+		for x in region_size.x - 1:
+			var p1 = get_grid_id(x, y)
+			if !astar.is_point_disabled(p1):
+				try_connect(p1, p1 + 1)
+				try_connect(p1, p1 + region_size.x)
+
+
+func try_connect(p1, p2):
+	if !astar.is_point_disabled(p2):
+		astar.connect_points(p1, p2)
+
+
+func get_grid_id(x, y):
+	return int(x + region_size.x * y)
 
 
 func show_region():
@@ -66,7 +98,8 @@ func add_islands():
 		var p2 = get_cell_coor(ext.b)
 		for y in range(p1.y, p2.y + 1):
 			for x in range(p1.x, p2.x + 1):
-				astar.set_point_disabled(x, y * region_size.x)
+				var i = x + y * region_size.x
+				astar.set_point_disabled(i)
 				if DEBUG:
 					region.get_child(x + y * region_size.x).modulate = Color.bisque
 
@@ -102,7 +135,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 			part.update_wire_positions()
 		elif g.wire:
 			# Move end of wire
-			g.wire.points[1] = event.position
+			g.wire.points[-1] = event.position
 	# Delete wire on release of mouse button
 	if event is InputEventMouseButton && g.wire:
 		g.wire.delete()

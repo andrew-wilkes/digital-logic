@@ -106,6 +106,17 @@ func update_wire_positions():
 			pin.wires[0].points[-1] = position + pin.position
 
 
+func get_wires():
+	var wires = []
+	if has_node("Q"):
+		for i in $Q.wires.size():
+			wires.append($Q.wires[i])
+	for pin in $Inputs.get_children():
+		if pin.wires.size() > 0:
+			wires.append(pin.wires[0])
+	return wires
+
+
 func delete_wires():
 	if has_node("Q"):
 		for i in $Q.wires.size():
