@@ -19,7 +19,7 @@ func _ready():
 	$PartsPicker.connect("picked", self, "part_picked")
 
 
-func route_wires():
+func route_all_wires():
 	get_extents()
 	region_size = max_point - min_point
 	if DEBUG:
@@ -39,19 +39,45 @@ func route_wires():
 				show_point(pos)
 	add_islands()
 	connect_points()
+	for p in $Parts.get_children():
+		route_wires(p)
+
+
+func route_wires(p):
+	part = p
 	for wire in part.get_wires():
 		var first_point = wire.points[0]
 		var last_point = wire.points[-1]
-		var p = get_cell_coor(first_point)
-		var p1 = get_grid_id(p.x + 3, p.y) # One cell to the right
+		p = get_cell_coor(first_point)
+		var dx = 2
+		var p1 = get_active_grid_id(p, dx) # Cell to the right
+		while p1 < 0:
+			dx += 1
+			p1 = get_active_grid_id(p, dx)
 		p = get_cell_coor(last_point)
-		var p2 = get_grid_id(p.x - 3, p.y) # One cell to the left
+		dx = -2
+		var p2 = get_active_grid_id(p, dx) # Cell to the left
+		while p2 < 0:
+			dx -= 1
+			p2 = get_active_grid_id(p, dx)
 		var inter_points = astar.get_point_path(p1, p2)
+		# Increase the weights of wire points
+		var ids = astar.get_id_path(p1, p2)
+		for id in ids:
+			astar.set_point_weight_scale(id, 2)
 		wire.clear_points()
 		var points : PoolVector2Array = [first_point]
 		points.append_array(inter_points)
 		points.append(last_point)
 		wire.set_points(points)
+
+
+func get_active_grid_id(p, dx):
+	var id = get_grid_id(p.x + dx, p.y)
+	if astar.is_point_disabled(id):
+		return -1
+	else:
+		return id
 
 
 func connect_points():
@@ -150,12 +176,13 @@ func part_picked(node):
 	part.connect("dropped", self, "part_dropped")
 	part.connect("doubleclick", self, "part_delete")
 	part.connect("pinclick", self, "pinclick")
+	part.connect("wire_attached", self, "route_all_wires")
 
 
 func part_dropped():
 	part_moving = false
 	part.active = true
-	route_wires()
+	route_all_wires()
 
 
 func set_part_moving(node):

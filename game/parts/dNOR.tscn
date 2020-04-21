@@ -47,7 +47,7 @@ shape = SubResource( 1 )
 [node name="Region" type="ReferenceRect" parent="."]
 margin_left = -50.0
 margin_top = -40.0
-margin_right = 60.0
+margin_right = 50.0
 margin_bottom = 40.0
 mouse_filter = 2
 __meta__ = {

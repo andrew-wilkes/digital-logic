@@ -3,13 +3,13 @@ extends Node2D
 class_name Part
 
 signal pinclick(gate, pin)
-
-export(int) var mode = 1
-
+signal wire_attached
 signal state_changed()
 signal picked(node)
 signal dropped
 signal doubleclick
+
+export(int) var mode = 1
 
 var state = false setget set_state
 var active = false # Part responds to state change and wire attachments
@@ -43,6 +43,7 @@ func pin_enter(node):
 			g.wire.end_pin = node
 			g.wire.points[-1] = position + node.position
 			g.wire = null
+			emit_signal("wire_attached")
 
 
 func pin_exit(node):
