@@ -87,6 +87,8 @@ func connect_points():
 			if !astar.is_point_disabled(p1):
 				try_connect(p1, p1 + 1)
 				try_connect(p1, p1 + region_size.x)
+				try_connect(p1, p1 + region_size.x + 1)
+				try_connect(p1, p1 + region_size.x - 1)
 
 
 func try_connect(p1, p2):
