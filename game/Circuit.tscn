@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/symbols.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 972, 580 )
+extents = Vector2( 833, 444 )
 
 [node name="Circuit" type="Node2D"]
 script = ExtResource( 2 )
@@ -18,8 +18,8 @@ script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 966.519, 575.848 )
+[node name="Shape" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 956, 531 )
 shape = SubResource( 1 )
 
 [node name="Dot" type="Sprite" parent="."]

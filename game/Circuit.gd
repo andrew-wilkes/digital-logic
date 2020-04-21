@@ -30,13 +30,14 @@ func route_wires():
 	if astar.get_point_capacity() < num_points:
 		astar.reserve_space(num_points)
 	var i = 0
-	for x in region_size.x:
-		for y in region_size.y:
+	for y in region_size.y:
+		for x in region_size.x:
 			var pos = Vector2(x, y) * g.GRID_SIZE
 			astar.add_point(i, pos + min_point)
 			i += 1
 			if DEBUG:
 				show_point(pos)
+	add_islands()
 
 
 func show_region():
@@ -56,6 +57,22 @@ func show_point(pos):
 	p.show()
 	p.position = pos
 	region.add_child(p)
+
+
+func add_islands():
+	for p in $Parts.get_children():
+		var ext = p.get_extents()
+		var p1 = get_cell_coor(ext.a)
+		var p2 = get_cell_coor(ext.b)
+		for y in range(p1.y, p2.y + 1):
+			for x in range(p1.x, p2.x + 1):
+				astar.set_point_disabled(x, y * region_size.x)
+				if DEBUG:
+					region.get_child(x + y * region_size.x).modulate = Color.bisque
+
+
+func get_cell_coor(pos):
+	return (pos - min_point) / g.GRID_SIZE
 
 
 func get_extents():
@@ -78,6 +95,7 @@ func get_extents():
 
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
+	# Note that this area defines where the part may be dropped so may define a margin around the viewport edge
 	if event is InputEventMouseMotion:
 		if part_moving:
 			part.position = (event.position / g.GRID_SIZE).round() * g.GRID_SIZE
