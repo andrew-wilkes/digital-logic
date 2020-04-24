@@ -9,6 +9,7 @@ extents = Vector2( 20.6381, 10 )
 
 [node name="Output" type="Node2D"]
 script = ExtResource( 1 )
+show_state = true
 
 [node name="Symbol" type="Line2D" parent="."]
 position = Vector2( -20, 0 )

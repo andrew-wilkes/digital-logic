@@ -1,9 +1,8 @@
 extends Node2D
 
-const DEBUG = true
+const DEBUG = false
 const CELL_MARGIN = 4
 
-var part_moving = false
 var part
 var wire_scene = preload("res://parts/misc/Wire.tscn")
 var astar: AStar2D
@@ -12,11 +11,29 @@ var ref
 var min_point = Vector2(-1, 0)
 var max_point: Vector2
 var region_size
+var panel_corner
 
 func _ready():
 	astar = AStar2D.new()
 	# warning-ignore:return_value_discarded
 	$PartsPicker.connect("picked", self, "part_picked")
+	var p = $PartsPicker/Panel
+	panel_corner = p.rect_position + p.rect_size
+
+
+func is_over_panel(node: Part):
+	return node.position.x < panel_corner.x and node.position.y < panel_corner.y
+
+
+func state_changed(node: Part, state):
+	# The output state of a part has changed
+	for wire in node.get_output_wires([]):
+		if state:
+			wire.modulate = g.COLOR_HIGH
+		else:
+			wire.modulate = g.COLOR_LOW
+		node = wire.end_pin.parent_part
+		node.update_output(wire.end_pin, state)
 
 
 func route_all_wires():
@@ -43,12 +60,11 @@ func route_all_wires():
 		route_wires(p)
 
 
-func route_wires(p):
-	part = p
-	for wire in part.get_wires():
+func route_wires(_part):
+	for wire in _part.get_wires():
 		var first_point = wire.points[0]
 		var last_point = wire.points[-1]
-		p = get_cell_coor(first_point)
+		var p = get_cell_coor(first_point)
 		var dx = 2
 		var p1 = get_active_grid_id(p, dx) # Cell to the right
 		while p1 < 0:
@@ -158,7 +174,7 @@ func get_extents():
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	# Note that this area defines where the part may be dropped so may define a margin around the viewport edge
 	if event is InputEventMouseMotion:
-		if part_moving:
+		if part:
 			part.position = (event.position / g.GRID_SIZE).round() * g.GRID_SIZE
 			part.update_wire_positions()
 		elif g.wire:
@@ -172,29 +188,35 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 
 func part_picked(node):
 	# Should receive a duplicate of the node that was clicked
-	set_part_moving(node)
+	part = node
 	$Parts.add_child(part)
-	part.connect("picked", self, "set_part_moving")
+	part.connect("picked", self, "select_part")
 	part.connect("dropped", self, "part_dropped")
 	part.connect("doubleclick", self, "part_delete")
 	part.connect("pinclick", self, "pinclick")
 	part.connect("wire_attached", self, "route_all_wires")
+	part.connect("state_changed", self, "state_changed")
 
 
 func part_dropped():
-	part_moving = false
-	part.active = true
+	part.highlight_pin = true
+	part.highlight_part = true
+	if is_over_panel(part):
+		part_delete(part)
+	part = null
 	route_all_wires()
 
 
-func set_part_moving(node):
+func select_part(node):
 	part = node
-	part_moving = true
+	if part.is_ext_input:
+		part.state = !part.state
 
 
-func part_delete():
-	part.delete_wires()
-	part.queue_free()
+func part_delete(_part):
+	_part.delete_wires()
+	_part.queue_free()
+	part = null
 
 
 func pinclick(gate, pin):

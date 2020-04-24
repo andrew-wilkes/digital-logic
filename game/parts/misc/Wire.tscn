@@ -4,4 +4,5 @@
 
 [node name="Wire" type="Line2D"]
 width = 2.0
+default_color = Color( 1, 1, 1, 1 )
 script = ExtResource( 1 )

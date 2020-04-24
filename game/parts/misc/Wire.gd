@@ -1,5 +1,7 @@
 extends Line2D
 
+class_name Wire
+
 var start_pin
 var end_pin
 

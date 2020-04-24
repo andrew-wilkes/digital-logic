@@ -14,6 +14,7 @@ func _ready():
 		pos.y += node.v_spacing
 		node.position = pos
 		node.connect("picked", self, "picked")
+		node.highlight_pin = false
 	$Panel.rect_size = Vector2(130, pos.y + V_MARGIN)
 
 

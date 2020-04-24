@@ -9,6 +9,7 @@ extents = Vector2( 21, 31 )
 
 [node name="AND" type="Node2D"]
 script = ExtResource( 2 )
+show_state = true
 gate_type = "AND"
 
 [node name="Symbol" type="Sprite" parent="."]

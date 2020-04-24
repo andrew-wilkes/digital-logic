@@ -4,19 +4,29 @@ class_name Part
 
 signal pinclick(gate, pin)
 signal wire_attached
-signal state_changed()
+signal state_changed(node, state)
 signal picked(node)
 signal dropped
 signal doubleclick
 
-export(int) var mode = 1
+export(bool) var highlight_pin = true
+export(bool) var highlight_part = true
+export(bool) var moveable = true
+export(bool) var wireable = true
+export(bool) var show_state = false
+export(bool) var add_test_io = false
+export(bool) var is_ext_input = false
 
-var state = false setget set_state
-var active = false # Part responds to state change and wire attachments
+var state = false setget indicate_state
 var id = 0
 var v_spacing
-var color
-var use_state = false
+var color = g.COLOR_UNDEFINED
+
+func allow_testing():
+	if get_parent().name == "root":
+		# Testing scene in isolation
+		position = Vector2(100, 100) # Bring into view
+
 
 func get_extents():
 	return {
@@ -35,7 +45,7 @@ func connect_signals():
 
 
 func pin_enter(node):
-	if active:
+	if highlight_pin:
 		node.get_node("Sprite").show()
 		# Try to attach end of wire to unconnected input pin
 		if g.wire && !node.is_output && node.wires.size() < 1 && g.wire.start_pin.get_parent() != self:
@@ -51,14 +61,14 @@ func pin_exit(node):
 
 
 func mouse_entered():
-	if mode > 0:
+	if highlight_part:
 		$Symbol.modulate = g.COLOR_ACTIVE
 
 
 func mouse_exited():
-	if use_state:
+	if show_state:
 		$Symbol.modulate = color
-	elif mode > 0:
+	elif highlight_part:
 		$Symbol.modulate = g.COLOR_UNDEFINED
 
 
@@ -69,32 +79,29 @@ func connect_pin(node):
 
 
 func pin_click(_viewport, event, _shape_idx, node):
-	if event is InputEventMouseButton && event.pressed:
+	if event is InputEventMouseButton && event.pressed && wireable:
 		# Click on output pin to create a new wire
 		# Click on input pin to delete a wire
 		emit_signal("pinclick", self, node)
 
 
-func set_state(value):
+func indicate_state(value):
 	state = value
 	if state:
 		color = g.COLOR_HIGH
 	else:
 		color = g.COLOR_LOW
 	$Symbol.modulate = color
-	emit_signal("state_changed")
+	emit_signal("state_changed", self, state)
 
 
 func input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.doubleclick:
-			emit_signal("doubleclick")
+			emit_signal("doubleclick", self)
 		elif event.pressed:
-			if active && use_state:
-				self.state = !state
 			emit_signal("picked", self)
 		else:
-			active = true
 			emit_signal("dropped")
 
 
@@ -108,11 +115,19 @@ func update_wire_positions():
 
 
 func get_wires():
-	var wires = []
+	return get_input_wires(get_output_wires([]))
+
+
+func get_output_wires(wires):
 	if has_node("Q"):
 		for i in $Q.wires.size():
 			wires.append($Q.wires[i])
+	return wires
+
+
+func get_input_wires(wires):
 	for pin in $Inputs.get_children():
+		pin.parent_part = self
 		if pin.wires.size() > 0:
 			wires.append(pin.wires[0])
 	return wires

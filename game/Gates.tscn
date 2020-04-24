@@ -63,24 +63,49 @@ color = Color( 0.105882, 0.698039, 0.698039, 1 )
 
 [node name="AND" parent="VBox/ColorRect" instance=ExtResource( 4 )]
 position = Vector2( 110, 55 )
-mode = 0
+highlight_pin = false
+highlight_part = false
+moveable = false
+wireable = false
+show_state = false
+add_test_io = true
 
 [node name="NAND" parent="VBox/ColorRect" instance=ExtResource( 9 )]
 position = Vector2( 350, 55 )
-mode = 0
+highlight_pin = false
+highlight_part = false
+moveable = false
+wireable = false
+add_test_io = true
 
 [node name="OR" parent="VBox/ColorRect" instance=ExtResource( 8 )]
 position = Vector2( 110, 151 )
-mode = 0
+highlight_pin = false
+highlight_part = false
+moveable = false
+wireable = false
+add_test_io = true
 
 [node name="NOR" parent="VBox/ColorRect" instance=ExtResource( 6 )]
 position = Vector2( 350, 151 )
-mode = 0
+highlight_pin = false
+highlight_part = false
+moveable = false
+wireable = false
+add_test_io = true
 
 [node name="XOR" parent="VBox/ColorRect" instance=ExtResource( 5 )]
 position = Vector2( 110, 247 )
-mode = 0
+highlight_pin = false
+highlight_part = false
+moveable = false
+wireable = false
+add_test_io = true
 
 [node name="NOT" parent="VBox/ColorRect" instance=ExtResource( 7 )]
 position = Vector2( 350, 247 )
-mode = 0
+highlight_pin = false
+highlight_part = false
+moveable = false
+wireable = false
+add_test_io = true
