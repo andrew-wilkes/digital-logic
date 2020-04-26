@@ -194,17 +194,23 @@ func part_picked(node):
 	part.connect("dropped", self, "part_dropped")
 	part.connect("doubleclick", self, "part_delete")
 	part.connect("pinclick", self, "pinclick")
-	part.connect("wire_attached", self, "route_all_wires")
+	part.connect("wire_attached", self, "wire_attached")
 	part.connect("state_changed", self, "state_changed")
 
 
+func wire_attached(_part, _pin, _status):
+	_part.update_output(_pin, _status)
+	route_wires(_part)
+
+
 func part_dropped():
-	part.highlight_pin = true
-	part.highlight_part = true
-	if is_over_panel(part):
-		part_delete(part)
-	part = null
-	route_all_wires()
+	if part:
+		part.highlight_pin = true
+		part.highlight_part = true
+		if is_over_panel(part):
+			part_delete(part)
+		part = null
+		route_all_wires()
 
 
 func select_part(node):

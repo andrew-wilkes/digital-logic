@@ -3,7 +3,7 @@ extends Node2D
 class_name Part
 
 signal pinclick(gate, pin)
-signal wire_attached
+signal wire_attached(pin, state)
 signal state_changed(node, state)
 signal picked(node)
 signal dropped
@@ -17,6 +17,7 @@ export(bool) var show_state = false
 export(bool) var add_test_io = false
 export(bool) var is_ext_input = false
 
+var output = false
 var state = false setget indicate_state
 var id = 0
 var v_spacing
@@ -44,16 +45,18 @@ func connect_signals():
 	$Area2D.connect("input_event", self, "input_event")
 
 
-func pin_enter(node):
+func pin_enter(pin: Pin):
 	if highlight_pin:
-		node.get_node("Sprite").show()
+		pin.get_node("Sprite").show()
 		# Try to attach end of wire to unconnected input pin
-		if g.wire && !node.is_output && node.wires.size() < 1 && g.wire.start_pin.get_parent() != self:
-			node.wires.append(g.wire)
-			g.wire.end_pin = node
-			g.wire.points[-1] = position + node.position
-			g.wire = null
-			emit_signal("wire_attached")
+		if g.wire && !pin.is_output && pin.wires.size() < 1:
+			var source_part = g.wire.start_pin.get_parent()
+			if source_part != self:
+				pin.wires.append(g.wire)
+				g.wire.end_pin = pin
+				g.wire.points[-1] = position + pin.position
+				g.wire = null
+				emit_signal("wire_attached", self, pin, source_part.output)
 
 
 func pin_exit(node):
@@ -87,6 +90,7 @@ func pin_click(_viewport, event, _shape_idx, node):
 
 func indicate_state(value):
 	state = value
+	output = state
 	if state:
 		color = g.COLOR_HIGH
 	else:

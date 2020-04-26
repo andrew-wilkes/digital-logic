@@ -7,7 +7,6 @@ export(String) var gate_type
 var input_pin = preload("res://parts/zInput.tscn")
 var output_pin = preload("res://parts/zOutput.tscn")
 var inputs = []
-var output: bool
 
 func _ready():
 	allow_testing()
@@ -41,10 +40,19 @@ func _ready():
 	else:
 		connect_pin($Q)
 		$Q.is_output = true
+	set_output(true)
 
 
 func update_output(node, state):
+	# Only update on change of state
+	if inputs[node.id] == state:
+		return
 	inputs[node.id] = state
+	set_output(state)
+	emit_signal("state_changed", self, output)
+
+
+func set_output(state):
 	var result = false
 	match gate_type:
 		"NOT":
@@ -66,4 +74,3 @@ func update_output(node, state):
 		"NOR", "NAND", "XNOR":
 			result = !result
 	output = result
-	emit_signal("state_changed", self, output)
