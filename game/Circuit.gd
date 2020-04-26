@@ -28,10 +28,7 @@ func is_over_panel(node: Part):
 func state_changed(node: Part, state):
 	# The output state of a part has changed
 	for wire in node.get_output_wires([]):
-		if state:
-			wire.modulate = g.COLOR_HIGH
-		else:
-			wire.modulate = g.COLOR_LOW
+		wire.set_color(state)
 		node = wire.end_pin.parent_part
 		node.update_output(wire.end_pin, state)
 
@@ -207,6 +204,8 @@ func part_dropped():
 	if part:
 		part.highlight_pin = true
 		part.highlight_part = true
+		if part.is_ext_input:
+			part.change_input_state(part.state)
 		if is_over_panel(part):
 			part_delete(part)
 		part = null

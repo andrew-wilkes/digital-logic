@@ -10,3 +10,10 @@ func delete():
 	if end_pin:
 		end_pin.wires.erase(self)
 	queue_free()
+
+
+func set_color(state):
+		if state:
+			modulate = g.COLOR_HIGH
+		else:
+			modulate = g.COLOR_LOW

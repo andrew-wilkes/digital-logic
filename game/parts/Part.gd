@@ -18,7 +18,7 @@ export(bool) var add_test_io = false
 export(bool) var is_ext_input = false
 
 var output = false
-var state = false setget indicate_state
+var state = false setget change_input_state
 var id = 0
 var v_spacing
 var color = g.COLOR_UNDEFINED
@@ -55,6 +55,7 @@ func pin_enter(pin: Pin):
 				pin.wires.append(g.wire)
 				g.wire.end_pin = pin
 				g.wire.points[-1] = position + pin.position
+				g.wire.set_color(source_part.output)
 				g.wire = null
 				emit_signal("wire_attached", self, pin, source_part.output)
 
@@ -88,15 +89,19 @@ func pin_click(_viewport, event, _shape_idx, node):
 		emit_signal("pinclick", self, node)
 
 
-func indicate_state(value):
+func change_input_state(value):
 	state = value
 	output = state
+	indicate_state()
+	emit_signal("state_changed", self, state)
+
+
+func indicate_state():
 	if state:
 		color = g.COLOR_HIGH
 	else:
 		color = g.COLOR_LOW
 	$Symbol.modulate = color
-	emit_signal("state_changed", self, state)
 
 
 func input_event(_viewport, event, _shape_idx):

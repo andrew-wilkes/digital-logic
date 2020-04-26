@@ -11,4 +11,4 @@ func _ready():
 
 
 func update_output(_node, value):
-	indicate_state(value)
+	change_input_state(value)
