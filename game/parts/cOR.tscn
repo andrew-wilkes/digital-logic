@@ -37,7 +37,7 @@ position = Vector2( -31, -20 )
 position = Vector2( -31, 20 )
 
 [node name="Q" parent="." instance=ExtResource( 2 )]
-position = Vector2( 37, 0 )
+position = Vector2( 35, 0 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
