@@ -205,7 +205,7 @@ func part_dropped():
 		part.highlight_pin = true
 		part.highlight_part = true
 		if part.is_ext_input:
-			part.change_input_state(part.state)
+			part.change_input_state(true) # Set high level to trigger updates of states
 		if is_over_panel(part):
 			part_delete(part)
 		part = null
