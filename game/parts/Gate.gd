@@ -47,6 +47,8 @@ func update_output(pin: Pin, state):
 	# Only update on change of state
 	if inputs[pin.id] == state and pin.was_connected_to:
 		return
+	if pin.state_changed():
+		breakpoint
 	pin.was_connected_to = true
 	inputs[pin.id] = state
 	set_output(state)

@@ -6,9 +6,12 @@ func _ready():
 	color = g.COLOR_UNDEFINED
 	modulate = color
 	connect_signals()
-	connect_pin($Inputs/A)
-	pin_exit($Inputs/A) # Hide
+	var pin = $Inputs/A
+	connect_pin(pin)
+	pin_exit(pin) # Hide
 
 
-func update_output(_node, value):
+func update_output(pin, value):
+	if pin.state_changed():
+		breakpoint
 	change_input_state(value)

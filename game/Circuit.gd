@@ -25,14 +25,6 @@ func is_over_panel(node: Part):
 	return node.position.x < panel_corner.x and node.position.y < panel_corner.y
 
 
-func state_changed(node: Part, state):
-	# The output state of a part has changed
-	for wire in node.get_output_wires([]):
-		wire.set_color(state)
-		node = wire.end_pin.parent_part
-		node.update_output(wire.end_pin, state)
-
-
 func route_all_wires():
 	get_extents()
 	region_size = max_point - min_point
@@ -193,6 +185,21 @@ func part_picked(node):
 	part.connect("pinclick", self, "pinclick")
 	part.connect("wire_attached", self, "wire_attached")
 	part.connect("state_changed", self, "state_changed")
+	part.connect("new_event", self, "new_event")
+
+
+func new_event():
+	# Reset all part inputs state change monitoring
+	for p in $Parts.get_children():
+		p.new_event()
+
+
+func state_changed(node: Part, state):
+	# The output state of a part has changed
+	for wire in node.get_output_wires([]):
+		wire.set_color(state)
+		node = wire.end_pin.parent_part
+		node.update_output(wire.end_pin, state)
 
 
 func wire_attached(_part, _pin, _status):

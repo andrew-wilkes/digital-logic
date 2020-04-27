@@ -8,6 +8,7 @@ signal state_changed(node, state)
 signal picked(node)
 signal dropped
 signal doubleclick
+signal new_event
 
 export(bool) var highlight_pin = true
 export(bool) var highlight_part = true
@@ -58,7 +59,13 @@ func pin_enter(pin: Pin):
 				g.wire.points[-1] = position + pin.position
 				g.wire.set_color(source_part.output)
 				g.wire = null
+				emit_signal("new_event")
 				emit_signal("wire_attached", self, pin, source_part.output)
+
+
+func new_event():
+	for pin in $Inputs.get_children():
+		pin.reset_state_changed()
 
 
 func pin_exit(node):
@@ -94,6 +101,7 @@ func change_input_state(value):
 	state = value
 	output = state
 	indicate_state()
+	emit_signal("new_event")
 	emit_signal("state_changed", self, state)
 
 
