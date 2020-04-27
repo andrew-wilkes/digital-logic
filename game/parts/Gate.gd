@@ -43,11 +43,12 @@ func _ready():
 	set_output(true)
 
 
-func update_output(node, state):
+func update_output(pin: Pin, state):
 	# Only update on change of state
-	if inputs[node.id] == state:
+	if inputs[pin.id] == state and pin.was_connected_to:
 		return
-	inputs[node.id] = state
+	pin.was_connected_to = true
+	inputs[pin.id] = state
 	set_output(state)
 	emit_signal("state_changed", self, output)
 

@@ -6,3 +6,4 @@ var parent_part
 var is_output = false
 var wires = []
 var id = 0
+var was_connected_to = false
