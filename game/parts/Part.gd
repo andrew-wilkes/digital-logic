@@ -22,6 +22,7 @@ var output = false
 var state = false setget change_input_state
 var dropped = false
 var id = 0
+var parent
 var v_spacing
 var color = g.COLOR_UNDEFINED
 

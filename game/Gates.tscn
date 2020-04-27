@@ -55,7 +55,7 @@ text = "The basic logic gates perform boolean operations on their inputs to prod
 
 Click on the inputs to toggle the input values between 0 (blue) and 1 (red) to see the effect on the outputs."
 
-[node name="ColorRect" type="ColorRect" parent="VBox"]
+[node name="Parts" type="ColorRect" parent="VBox"]
 margin_top = 337.0
 margin_right = 460.0
 margin_bottom = 637.0
@@ -63,7 +63,7 @@ rect_min_size = Vector2( 0, 300 )
 mouse_filter = 2
 color = Color( 0.105882, 0.698039, 0.698039, 1 )
 
-[node name="AND" parent="VBox/ColorRect" instance=ExtResource( 4 )]
+[node name="AND" parent="VBox/Parts" instance=ExtResource( 4 )]
 position = Vector2( 110, 55 )
 highlight_pin = false
 highlight_part = false
@@ -71,35 +71,35 @@ moveable = false
 wireable = false
 show_state = false
 
-[node name="NAND" parent="VBox/ColorRect" instance=ExtResource( 9 )]
+[node name="NAND" parent="VBox/Parts" instance=ExtResource( 9 )]
 position = Vector2( 350, 55 )
 highlight_pin = false
 highlight_part = false
 moveable = false
 wireable = false
 
-[node name="OR" parent="VBox/ColorRect" instance=ExtResource( 8 )]
+[node name="OR" parent="VBox/Parts" instance=ExtResource( 8 )]
 position = Vector2( 110, 151 )
 highlight_pin = false
 highlight_part = false
 moveable = false
 wireable = false
 
-[node name="NOR" parent="VBox/ColorRect" instance=ExtResource( 6 )]
+[node name="NOR" parent="VBox/Parts" instance=ExtResource( 6 )]
 position = Vector2( 350, 151 )
 highlight_pin = false
 highlight_part = false
 moveable = false
 wireable = false
 
-[node name="XOR" parent="VBox/ColorRect" instance=ExtResource( 5 )]
+[node name="XOR" parent="VBox/Parts" instance=ExtResource( 5 )]
 position = Vector2( 110, 247 )
 highlight_pin = false
 highlight_part = false
 moveable = false
 wireable = false
 
-[node name="NOT" parent="VBox/ColorRect" instance=ExtResource( 7 )]
+[node name="NOT" parent="VBox/Parts" instance=ExtResource( 7 )]
 position = Vector2( 350, 247 )
 highlight_pin = false
 highlight_part = false
