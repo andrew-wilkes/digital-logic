@@ -16,7 +16,6 @@ export(bool) var highlight_part = true
 export(bool) var moveable = true
 export(bool) var wireable = true
 export(bool) var show_state = false
-export(bool) var add_test_io = false
 export(bool) var is_ext_input = false
 
 var output = false
@@ -99,6 +98,10 @@ func pin_click(_viewport, event, _shape_idx, node):
 	if event is InputEventMouseButton && event.pressed && wireable:
 		# Click on output pin to create a new wire
 		# Click on input pin to delete a wire
+		pinclick(node)
+
+
+func pinclick(node):
 		emit_signal("pinclick", self, node)
 
 

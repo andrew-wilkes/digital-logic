@@ -4,8 +4,6 @@ class_name Gate
 
 export(String) var gate_type
 
-var input_pin = preload("res://parts/zInput.tscn")
-var output_pin = preload("res://parts/zOutput.tscn")
 var inputs = []
 
 func _ready():
@@ -17,29 +15,12 @@ func _ready():
 	for node in $Inputs.get_children():
 		pin_exit(node) # Hide
 		inputs.append(false)
-		if add_test_io: # When used in diagram
-			var pin = input_pin.instance()
-			pin.id = i
-			pin.position = -pin.get_node("Q").position
-			pin.highlight_pin = false
-			pin.connect("state_changed", self, "update_output")
-			node.add_child(pin)
-		else:
-			node.id = i
-			connect_pin(node)
+		node.id = i
+		connect_pin(node)
 		i += 1
 	pin_exit($Q) # Hide
-	if add_test_io: # When used in diagram
-		var pin = output_pin.instance()
-		pin.position = -pin.get_node("Inputs/A").position
-		pin.highlight_pin = false
-		pin.highlight_part = false
-		# warning-ignore:return_value_discarded
-		connect("state_changed", pin, "update_output")
-		$Q.add_child(pin)
-	else:
-		connect_pin($Q)
-		$Q.is_output = true
+	connect_pin($Q)
+	$Q.is_output = true
 	set_output(true)
 
 
