@@ -14,4 +14,6 @@ func _ready():
 func update_output(pin, value):
 	if pin.state_changed():
 		breakpoint
-	change_input_state(value)
+	state = value
+	output = state
+	indicate_state()

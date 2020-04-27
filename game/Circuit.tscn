@@ -29,4 +29,13 @@ scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 125, 80, 20, 20 )
+
+[node name="Popup" type="AcceptDialog" parent="."]
+visible = true
+margin_right = 348.0
+margin_bottom = 58.0
+dialog_text = "Unstable circuit. Connection removed."
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

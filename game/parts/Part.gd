@@ -9,6 +9,7 @@ signal picked(node)
 signal dropped
 signal doubleclick
 signal new_event
+signal unstable
 
 export(bool) var highlight_pin = true
 export(bool) var highlight_part = true
@@ -29,6 +30,10 @@ func allow_testing():
 	if get_parent().name == "root":
 		# Testing scene in isolation
 		position = Vector2(100, 100) # Bring into view
+
+
+func unstable():
+	emit_signal("unstable")
 
 
 func get_extents():

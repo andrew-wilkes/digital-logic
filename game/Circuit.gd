@@ -186,8 +186,12 @@ func part_picked(node):
 	part.connect("wire_attached", self, "wire_attached")
 	part.connect("state_changed", self, "state_changed")
 	part.connect("new_event", self, "new_event")
+	part.connect("unstable", self, "unstable")
 
 
+func unstable():
+	$Popup.popup_centered()
+	
 func new_event():
 	# Reset all part inputs state change monitoring
 	for p in $Parts.get_children():
