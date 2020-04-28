@@ -6,7 +6,8 @@
 [ext_resource path="res://TextPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Buttons.tscn" type="PackedScene" id=5]
 [ext_resource path="res://center.gd" type="Script" id=6]
-[ext_resource path="res://assets/big_button_font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/subtitle_font.tres" type="DynamicFont" id=7]
+
 
 [node name="Numbers" type="Control"]
 anchor_right = 1.0

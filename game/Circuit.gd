@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 const DEBUG = false
 const CELL_MARGIN = 4

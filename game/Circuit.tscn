@@ -7,8 +7,11 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 833, 444 )
 
-[node name="Circuit" type="Node2D"]
+[node name="Circuit" type="Control"]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Wires" type="Node2D" parent="."]
 
@@ -31,7 +34,6 @@ region_enabled = true
 region_rect = Rect2( 125, 80, 20, 20 )
 
 [node name="Popup" type="AcceptDialog" parent="."]
-visible = true
 margin_right = 348.0
 margin_bottom = 58.0
 dialog_text = "Unstable circuit. Connection removed."

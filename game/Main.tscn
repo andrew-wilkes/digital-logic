@@ -20,10 +20,10 @@ __meta__ = {
 }
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 712.0
-margin_top = 284.0
-margin_right = 1188.0
-margin_bottom = 796.0
+margin_left = 402.0
+margin_top = 104.0
+margin_right = 878.0
+margin_bottom = 616.0
 custom_constants/separation = 50
 
 [node name="Label" type="Label" parent="VBox"]
