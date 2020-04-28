@@ -19,6 +19,7 @@ func _ready():
 	$PartsPicker.connect("picked", self, "part_picked")
 	var p = $PartsPicker/Panel
 	panel_corner = p.rect_position + p.rect_size
+	return get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
 
 func is_over_panel(node: Part):
@@ -255,13 +256,21 @@ func pinclick(gate, pin):
 
 func _draw():
 	rect_position = (rect_position / g.GRID_SIZE).floor() * g.GRID_SIZE
-	var r = get_viewport_rect().size
+	var r = (rect_size / g.GRID_SIZE - Vector2(1, 1)).ceil() * g.GRID_SIZE 
 	var c: Color = ProjectSettings.get_setting("rendering/environment/default_clear_color").darkened(0.1)
 	var x = 0
-	for i in r.x / g.GRID_SIZE:
+	for i in r.x / g.GRID_SIZE + 1:
 		draw_line(Vector2(x, 0), Vector2(x, r.y), c, 1.0)
 		x += g.GRID_SIZE
 	var y = 0
-	for i in r.y / g.GRID_SIZE:
+	for i in r.y / g.GRID_SIZE + 1:
 		draw_line(Vector2(0, y), Vector2(r.x, y), c, 1.0)
 		y += g.GRID_SIZE
+
+
+func set_shape_position():
+	var shape = $Area2D/Shape
+	var size = rect_size / 2
+	shape.position = size
+	shape.shape.extents = size
+	

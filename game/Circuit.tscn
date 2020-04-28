@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/symbols.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 833, 444 )
+extents = Vector2( 389.012, 291.426 )
 
 [node name="Circuit" type="Control"]
 anchor_right = 1.0
@@ -25,7 +25,7 @@ __meta__ = {
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="Shape" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 956, 531 )
+position = Vector2( 718.208, 377.305 )
 shape = SubResource( 1 )
 
 [node name="Dot" type="Sprite" parent="."]
