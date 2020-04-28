@@ -170,7 +170,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 			# Move end of wire
 			g.wire.points[-1] = event.position - $Wires.global_position
 	# Delete wire on release of mouse button
-	if event is InputEventMouseButton && g.wire:
+	if event is InputEventMouseButton && g.wire &&  !event.pressed:
 		g.wire.delete()
 		g.wire = null
 
@@ -254,6 +254,7 @@ func pinclick(gate, pin):
 			pin.wires[0].delete()
 
 func _draw():
+	rect_position = (rect_position / g.GRID_SIZE).floor() * g.GRID_SIZE
 	var r = get_viewport_rect().size
 	var c: Color = ProjectSettings.get_setting("rendering/environment/default_clear_color").darkened(0.1)
 	var x = 0
