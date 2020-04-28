@@ -164,11 +164,11 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	# Note that this area defines where the part may be dropped so may define a margin around the viewport edge
 	if event is InputEventMouseMotion:
 		if part:
-			part.position = (event.position / g.GRID_SIZE).round() * g.GRID_SIZE
+			part.global_position = (event.position / g.GRID_SIZE).round() * g.GRID_SIZE
 			part.update_wire_positions()
 		elif g.wire:
 			# Move end of wire
-			g.wire.points[-1] = event.position
+			g.wire.points[-1] = event.position - $Wires.global_position
 	# Delete wire on release of mouse button
 	if event is InputEventMouseButton && g.wire:
 		g.wire.delete()

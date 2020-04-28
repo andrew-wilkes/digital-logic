@@ -89,6 +89,8 @@ margin_bottom = 294.0
 text = "We may wire up logic gates to make circuits to perform various useful functions such as decoding, encoding, selecting, adding, counting, and memory."
 
 [node name="Circuit" parent="VBox2" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 298.0
 margin_right = 1260.0
 margin_bottom = 298.0
