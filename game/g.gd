@@ -6,6 +6,7 @@ const COLOR_ACTIVE = Color.green
 const COLOR_UNDEFINED = Color.white
 const GRID_SIZE = 10
 const PART_FILE_PATH = "res://parts/lib/"
+const UNSTABLE_THRESHOLD = 20
 
 var wire = null
 

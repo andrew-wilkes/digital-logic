@@ -13,7 +13,9 @@ func _ready():
 
 func update_output(pin, value):
 	if pin.state_changed():
-		breakpoint
+		pin.wires[0].delete()
+		unstable()
+		return
 	state = value
 	output = state
 	indicate_state()

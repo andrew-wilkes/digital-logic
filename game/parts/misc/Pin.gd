@@ -7,12 +7,12 @@ var is_output = false
 var wires = []
 var id = 0
 var was_connected_to = false
-var updated = false
+var updated = 0
 
 func state_changed():
-	updated = !updated
-	return !updated
+	updated += 1
+	return updated > g.UNSTABLE_THRESHOLD
 
 
 func reset_state_changed():
-	updated = false
+	updated = 0
