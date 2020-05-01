@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://parts/Gate.gd" type="Script" id=1]
+[ext_resource path="res://parts/dNOR.tscn" type="PackedScene" id=3]
+[ext_resource path="res://parts/eNOT.tscn" type="PackedScene" id=4]
+
+[node name="Parts" type="Node2D"]
+
+[node name="NOR1021" type="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 430, 180 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+gate_type = "NOR"
+
+[node name="NOT22" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 640, 190 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+gate_type = "NOT"
+
+[node name="NOT" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 250, 170 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+gate_type = "NOT"

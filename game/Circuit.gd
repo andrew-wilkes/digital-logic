@@ -176,18 +176,22 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 		g.wire = null
 
 
-func part_picked(node):
+func part_picked(_part):
 	# Should receive a duplicate of the node that was clicked
-	part = node
-	$Parts.add_child(part)
-	part.connect("picked", self, "select_part")
-	part.connect("dropped", self, "part_dropped")
-	part.connect("doubleclick", self, "part_delete")
-	part.connect("pinclick", self, "pinclick")
-	part.connect("wire_attached", self, "wire_attached")
-	part.connect("state_changed", self, "state_changed")
-	part.connect("new_event", self, "new_event")
-	part.connect("unstable", self, "unstable")
+	$Parts.add_child(_part)
+	part = _part
+	connect_part(_part)
+
+
+func connect_part(_part):
+	_part.connect("picked", self, "select_part")
+	_part.connect("dropped", self, "part_dropped")
+	_part.connect("doubleclick", self, "part_delete")
+	_part.connect("pinclick", self, "pinclick")
+	_part.connect("wire_attached", self, "wire_attached")
+	_part.connect("state_changed", self, "state_changed")
+	_part.connect("new_event", self, "new_event")
+	_part.connect("unstable", self, "unstable")
 
 
 func unstable():
@@ -273,4 +277,71 @@ func set_shape_position():
 	var size = rect_size / 2
 	shape.position = size
 	shape.shape.extents = size
-	
+
+
+func save_scene(title: String, fn: String):
+	var circuit = {
+		"title": title,
+		"file_name": fn,
+		"parts": []
+	}
+	var scene = PackedScene.new()
+	var node = $Parts.duplicate()
+	for ch in node.get_children():
+		print(ch)
+		ch.owner = node
+	var result = scene.pack(node)
+	if result == OK:
+		# warning-ignore:return_value_discarded
+		ResourceSaver.save(g.PART_FILE_PATH + fn + ".tscn", scene)
+	# Assign ids to parts
+	var id = 0
+	for p in $Parts.get_children():
+		p.id = id
+		id += 1
+	# Save part and wire data
+	id = 0
+	for p in node.get_children():
+		p.owner = node
+		var _part = { "id": id, "wires": [] }
+		for w in $Parts.get_child(id).get_output_wires([]):
+			_part.wires.append([w.end_pin.parent_part.id, w.end_pin.id])
+		circuit.parts.append(_part)
+		id += 1
+		g.save_file(g.PART_FILE_PATH + fn + ".json", circuit)
+
+
+func load_scene(fn: String):
+	delete_circuit()
+	var parts = []
+	var circuit = g.load_file(g.PART_FILE_PATH + fn + ".json")
+	var packed_scene = ResourceLoader.load(g.PART_FILE_PATH + fn + ".tscn", "", true)
+	if packed_scene:
+		var scene = packed_scene.instance()
+		for p in scene.get_children():
+			var np = p.duplicate()
+			parts.append(np)
+			$Parts.add_child(np)
+		scene.queue_free()
+		var id = 0
+		for p in parts:
+			for w in circuit.parts[id].wires:
+				var wire = wire_scene.instance()
+				wire.start_pin = p.get_node("Q")
+				wire.end_pin = parts[w[0]].get_node("Inputs").get_child(w[1])
+				wire.clear_points()
+				wire.add_point(wire.start_pin.global_position - $Parts.global_position)
+				wire.add_point(wire.end_pin.global_position - $Parts.global_position)
+				wire.start_pin.wires.append(wire)
+				wire.end_pin.wires.append(wire)
+				$Wires.add_child(wire)
+			connect_part(p)
+			id += 1
+	route_all_wires()
+
+
+func delete_circuit():
+	for w in $Wires.get_children():
+		w.queue_free()
+	for p in $Parts.get_children():
+		p.queue_free()
