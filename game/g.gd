@@ -10,6 +10,12 @@ const UNSTABLE_THRESHOLD = 20
 
 var wire = null
 
+func delete_file(path, fn):
+	var dir = Directory.new()
+	if dir.open(path) == OK:
+		dir.remove(fn)
+
+
 func get_files(path, ext):
 	var files = []
 	var dir = Directory.new()

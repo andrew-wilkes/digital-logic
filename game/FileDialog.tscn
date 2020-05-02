@@ -25,6 +25,15 @@ custom_constants/margin_bottom = 10
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 374.0
-margin_bottom = 416.0
+margin_bottom = 496.0
+allow_reselect = true
+allow_rmb_select = true
+
+[node name="Confirm" type="ConfirmationDialog" parent="."]
+margin_right = 200.0
+margin_bottom = 70.0
+dialog_text = "Delete this circuit?"
 [connection signal="about_to_show" from="." to="." method="_on_FileDialog_about_to_show"]
+[connection signal="item_rmb_selected" from="M/Items" to="." method="_on_Items_item_rmb_selected"]
 [connection signal="item_selected" from="M/Items" to="." method="_on_Items_item_selected"]
+[connection signal="confirmed" from="Confirm" to="." method="_on_Confirm_confirmed"]
