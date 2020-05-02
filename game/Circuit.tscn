@@ -39,7 +39,6 @@ region_rect = Rect2( 125, 80, 20, 20 )
 [node name="c" type="CanvasLayer" parent="."]
 
 [node name="Popup" type="AcceptDialog" parent="c"]
-visible = true
 self_modulate = Color( 1, 0, 0, 1 )
 margin_right = 348.0
 margin_bottom = 58.0
@@ -47,5 +46,11 @@ dialog_text = "Unstable circuit. Connection removed."
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Confirm" type="ConfirmationDialog" parent="c"]
+visible = true
+margin_right = 200.0
+margin_bottom = 70.0
+dialog_text = "Delete part"
 [connection signal="resized" from="." to="." method="set_shape_position"]
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

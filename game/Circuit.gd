@@ -4,6 +4,7 @@ const DEBUG = false
 const CELL_MARGIN = 4
 
 var part
+var part_to_delete
 var wire_scene = preload("res://parts/misc/Wire.tscn")
 var astar: AStar2D
 var region
@@ -21,7 +22,8 @@ func _ready():
 	$PartsPicker.connect("picked", self, "part_picked")
 	var p = $PartsPicker/Panel
 	panel_corner = p.rect_position + p.rect_size
-	$c/Popup.popup_centered()
+	# warning-ignore:return_value_discarded
+	$c/Confirm.connect("confirmed", self, "part_delete")
 	return get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
 
@@ -208,7 +210,7 @@ func part_picked(_part):
 func connect_part(_part):
 	_part.connect("picked", self, "select_part")
 	_part.connect("dropped", self, "part_dropped")
-	_part.connect("doubleclick", self, "part_delete")
+	_part.connect("doubleclick", self, "confirm_part_delete")
 	_part.connect("pinclick", self, "pinclick")
 	_part.connect("wire_attached", self, "wire_attached")
 	_part.connect("state_changed", self, "state_changed")
@@ -246,7 +248,7 @@ func part_dropped():
 			part.change_input_state(false) # Set level to trigger updates of states
 		part.dropped = true
 		if is_over_panel(part):
-			part_delete(part)
+			part_delete()
 		part = null
 		route_all_wires()
 
@@ -257,10 +259,16 @@ func select_part(node):
 		part.state = !part.state
 
 
-func part_delete(_part):
-	_part.delete_wires()
-	_part.queue_free()
-	part = null
+func confirm_part_delete(_part):
+	part_to_delete = _part
+	$c/Confirm.rect_position = _part.position
+	$c/Confirm.popup()
+
+
+func part_delete():
+	part_to_delete.delete_wires()
+	part_to_delete.queue_free()
+	part_to_delete = null
 
 
 func pinclick(gate, pin):
