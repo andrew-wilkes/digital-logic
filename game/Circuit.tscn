@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://PartsPicker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Circuit.gd" type="Script" id=2]
 [ext_resource path="res://assets/symbols.png" type="Texture" id=3]
+[ext_resource path="res://NameDialog.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 389.012, 291.426 )
@@ -52,5 +53,10 @@ visible = true
 margin_right = 200.0
 margin_bottom = 70.0
 dialog_text = "Delete part"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameDialog" parent="c" instance=ExtResource( 4 )]
 [connection signal="resized" from="." to="." method="set_shape_position"]
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

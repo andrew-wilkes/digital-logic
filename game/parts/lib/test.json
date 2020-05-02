@@ -1,1 +1,1 @@
-{"file_name":"test","offset":{"x":-220,"y":-120},"parts":[{"id":0,"wires":[[1,0]]},{"id":1,"wires":[]}],"title":"Test"}
+{"file_name":"test","offset":{"x":-220,"y":-120},"parts":[{"id":0,"wires":[]}],"title":"Test"}

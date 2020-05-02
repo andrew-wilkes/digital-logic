@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://NameDialog.gd" type="Script" id=1]
+
+[node name="NameDialog" type="WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -860.0
+margin_bottom = -597.0
+window_title = "Save Circuit"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="M" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="M"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 410.0
+margin_bottom = 113.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 10
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="M/Grid"]
+margin_right = 59.0
+margin_bottom = 31.0
+text = "Title
+"
+valign = 1
+
+[node name="Title" type="TextEdit" parent="M/Grid"]
+margin_left = 63.0
+margin_right = 400.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="M/Grid"]
+margin_top = 41.0
+margin_right = 59.0
+margin_bottom = 72.0
+text = "Filename
+"
+valign = 1
+
+[node name="Filename" type="TextEdit" parent="M/Grid"]
+margin_left = 63.0
+margin_top = 41.0
+margin_right = 400.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="M/Grid"]
+margin_top = 82.0
+margin_right = 59.0
+margin_bottom = 102.0
+
+[node name="OK" type="Button" parent="M/Grid"]
+margin_left = 63.0
+margin_top = 82.0
+margin_right = 94.0
+margin_bottom = 102.0
+size_flags_horizontal = 0
+text = "OK"

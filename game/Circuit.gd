@@ -15,6 +15,8 @@ var region_size
 var panel_corner
 var panning = false
 var pan_pos
+var fn = ""
+var title = ""
 
 func _ready():
 	astar = AStar2D.new()
@@ -24,6 +26,9 @@ func _ready():
 	panel_corner = p.rect_position + p.rect_size
 	# warning-ignore:return_value_discarded
 	$c/Confirm.connect("confirmed", self, "part_delete")
+	
+# warning-ignore:return_value_discarded
+	$c/NameDialog.connect("confirmed", self, "save_scene")
 	return get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
 
@@ -311,7 +316,24 @@ func set_shape_position():
 	shape.shape.extents = size
 
 
-func save_scene(title: String, fn: String):
+func request_to_save_scene():
+	if fn == "":
+		$c/NameDialog.popup_centered()
+	else:
+		save_scene()
+
+
+func request_to_load_scene():
+	if fn == "":
+		$c/NameDialog.popup_centered()
+	else:
+		load_scene()
+
+
+func save_scene(_title = "", _fn = ""):
+	if _fn != "":
+		fn = _fn
+		title = _title
 	var off = $Parts.position
 	var circuit = {
 		"title": title,
@@ -345,7 +367,7 @@ func save_scene(title: String, fn: String):
 		g.save_file(g.PART_FILE_PATH + fn + ".json", circuit)
 
 
-func load_scene(fn: String):
+func load_scene():
 	delete_circuit()
 	var parts = []
 	var circuit = g.load_file(g.PART_FILE_PATH + fn + ".json")
@@ -375,6 +397,8 @@ func load_scene(fn: String):
 	var pos = Vector2(circuit.offset.x, circuit.offset.y)
 	$Parts.position = pos
 	$Wires.position = pos
+	title = circuit.title
+	fn = circuit.file_name
 
 
 func delete_circuit():

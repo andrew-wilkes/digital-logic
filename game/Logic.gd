@@ -14,8 +14,8 @@ func process_buttons(action):
 
 
 func save_circuit():
-	$VBox/Circuit.save_scene("Test", "test")
+	$VBox/Circuit.request_to_save_scene()
 
 
 func load_circuit():
-	$VBox/Circuit.load_scene("test")
+	$VBox/Circuit.request_to_load_scene()
