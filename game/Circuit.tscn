@@ -36,7 +36,11 @@ texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 125, 80, 20, 20 )
 
-[node name="Popup" type="AcceptDialog" parent="."]
+[node name="c" type="CanvasLayer" parent="."]
+
+[node name="Popup" type="AcceptDialog" parent="c"]
+visible = true
+self_modulate = Color( 1, 0, 0, 1 )
 margin_right = 348.0
 margin_bottom = 58.0
 dialog_text = "Unstable circuit. Connection removed."

@@ -21,6 +21,7 @@ func _ready():
 	$PartsPicker.connect("picked", self, "part_picked")
 	var p = $PartsPicker/Panel
 	panel_corner = p.rect_position + p.rect_size
+	$c/Popup.popup_centered()
 	return get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
 
@@ -216,7 +217,7 @@ func connect_part(_part):
 
 
 func unstable():
-	$Popup.popup_centered()
+	$c/Popup.popup_centered()
 	
 func new_event():
 	# Reset all part inputs state change monitoring
