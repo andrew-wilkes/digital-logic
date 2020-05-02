@@ -25,7 +25,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 1270.0
-margin_bottom = 710.0
+margin_bottom = 790.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -95,6 +95,15 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 298.0
 margin_right = 1260.0
-margin_bottom = 700.0
+margin_bottom = 780.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="c" type="CanvasLayer" parent="."]
+
+[node name="Help" type="AcceptDialog" parent="c"]
+margin_right = 83.0
+margin_bottom = 58.0
+popup_exclusive = true
+window_title = "Help"
+dialog_text = "Some text!"

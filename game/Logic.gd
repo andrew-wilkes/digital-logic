@@ -13,6 +13,8 @@ func process_buttons(action):
 			save_circuit()
 		"library":
 			choose_circuit()
+		"help":
+			show_help()
 
 
 func save_circuit():
@@ -25,3 +27,8 @@ func load_circuit():
 
 func choose_circuit():
 	$VBox/Circuit.request_to_choose_circuit()
+
+
+func show_help():
+	$c/Help.popup_centered()
+

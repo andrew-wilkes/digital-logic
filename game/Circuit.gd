@@ -225,7 +225,7 @@ func connect_part(_part):
 
 
 func unstable():
-	$c/Popup.popup_centered()
+	$c/Warning.popup_centered()
 	
 func new_event():
 	# Reset all part inputs state change monitoring
