@@ -12,6 +12,8 @@ var min_point = Vector2(-1, 0)
 var max_point: Vector2
 var region_size
 var panel_corner
+var panning = false
+var pan_pos
 
 func _ready():
 	astar = AStar2D.new()
@@ -170,10 +172,29 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 		elif g.wire:
 			# Move end of wire
 			g.wire.points[-1] = event.position - $Wires.global_position
+		elif panning:
+			var pos = (event.position / g.GRID_SIZE).round() * g.GRID_SIZE
+			if !pan_pos:
+				pan_pos = pos
+			var delta = Vector2(0, 0)
+			if pan_pos.x != pos.x:
+				delta.x = pos.x - pan_pos.x
+			if pan_pos.y != pos.y:
+				delta.y = pos.y - pan_pos.y
+			if delta.length_squared() > 2:
+				pan_pos = pos
+				$Wires.position += delta
+				$Parts.position += delta
 	# Delete wire on release of mouse button
-	if event is InputEventMouseButton && g.wire &&  !event.pressed:
-		g.wire.delete()
-		g.wire = null
+	if event is InputEventMouseButton:
+		if g.wire &&  !event.pressed:
+			g.wire.delete()
+			g.wire = null
+		if event.pressed && event.button_index == 2:
+			panning = true
+		if !event.pressed && event.button_index == 2:
+			panning = false
+			pan_pos = null
 
 
 func part_picked(_part):
@@ -282,10 +303,12 @@ func set_shape_position():
 
 
 func save_scene(title: String, fn: String):
+	var off = $Parts.position
 	var circuit = {
 		"title": title,
 		"file_name": fn,
-		"parts": []
+		"parts": [],
+		"offset": { "x": off.x, "y": off.y }
 	}
 	var scene = PackedScene.new()
 	var node = $Parts.duplicate()
@@ -340,6 +363,9 @@ func load_scene(fn: String):
 			connect_part(p)
 			id += 1
 	route_all_wires()
+	var pos = Vector2(circuit.offset.x, circuit.offset.y)
+	$Parts.position = pos
+	$Wires.position = pos
 
 
 func delete_circuit():

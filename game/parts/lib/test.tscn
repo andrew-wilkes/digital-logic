@@ -1,17 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://parts/Gate.gd" type="Script" id=1]
-[ext_resource path="res://parts/Input.gd" type="Script" id=2]
-[ext_resource path="res://parts/dNOR.tscn" type="PackedScene" id=3]
-[ext_resource path="res://parts/eNOT.tscn" type="PackedScene" id=4]
-[ext_resource path="res://parts/Output.gd" type="Script" id=5]
-[ext_resource path="res://parts/zInput.tscn" type="PackedScene" id=6]
-[ext_resource path="res://parts/zOutput.tscn" type="PackedScene" id=7]
+[ext_resource path="res://parts/cOR.tscn" type="PackedScene" id=2]
+[ext_resource path="res://parts/eNOT.tscn" type="PackedScene" id=3]
 
 [node name="Parts" type="Node2D"]
+position = Vector2( -220, -120 )
 
-[node name="NOR1021252115" type="Node2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 730, 160 )
+[node name="OR" type="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 420, 180 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -20,10 +17,10 @@ moveable = true
 wireable = true
 show_state = false
 is_ext_input = false
-gate_type = "NOR"
+gate_type = "OR"
 
-[node name="NOT2316" type="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 570, 70 )
+[node name="NOT" type="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 600, 180 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -33,23 +30,3 @@ wireable = true
 show_state = false
 is_ext_input = false
 gate_type = "NOT"
-
-[node name="Input17" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 270, 140 )
-script = ExtResource( 2 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = true
-is_ext_input = true
-
-[node name="Output272418" type="Node2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 900, 160 )
-script = ExtResource( 5 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = true
-is_ext_input = false
