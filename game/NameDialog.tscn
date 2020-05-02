@@ -82,3 +82,4 @@ margin_right = 94.0
 margin_bottom = 102.0
 size_flags_horizontal = 0
 text = "OK"
+[connection signal="about_to_show" from="." to="." method="_on_NameDialog_about_to_show"]

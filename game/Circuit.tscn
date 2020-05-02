@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://PartsPicker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Circuit.gd" type="Script" id=2]
 [ext_resource path="res://assets/symbols.png" type="Texture" id=3]
 [ext_resource path="res://NameDialog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://FileDialog.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 389.012, 291.426 )
@@ -58,5 +59,8 @@ __meta__ = {
 }
 
 [node name="NameDialog" parent="c" instance=ExtResource( 4 )]
+
+[node name="FileDialog" parent="c" instance=ExtResource( 5 )]
+visible = true
 [connection signal="resized" from="." to="." method="set_shape_position"]
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

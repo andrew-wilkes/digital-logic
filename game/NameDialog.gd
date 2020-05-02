@@ -14,3 +14,8 @@ func confirm():
 	var fn = $M/Grid/Filename.text
 	emit_signal("confirmed", title, fn)
 	self.hide()
+
+
+func _on_NameDialog_about_to_show():
+	$M/Grid/Title.text = ""
+	$M/Grid/Filename.text = ""

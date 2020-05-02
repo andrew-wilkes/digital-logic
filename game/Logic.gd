@@ -11,6 +11,8 @@ func process_buttons(action):
 			load_circuit()
 		"save":
 			save_circuit()
+		"library":
+			choose_circuit()
 
 
 func save_circuit():
@@ -19,3 +21,7 @@ func save_circuit():
 
 func load_circuit():
 	$VBox/Circuit.request_to_load_scene()
+
+
+func choose_circuit():
+	$VBox/Circuit.request_to_choose_circuit()

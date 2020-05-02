@@ -26,8 +26,9 @@ func _ready():
 	panel_corner = p.rect_position + p.rect_size
 	# warning-ignore:return_value_discarded
 	$c/Confirm.connect("confirmed", self, "part_delete")
-	
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
+	$c/FileDialog.connect("item_selected", self, "choose_circuit")	
+	# warning-ignore:return_value_discarded
 	$c/NameDialog.connect("confirmed", self, "save_scene")
 	return get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
@@ -316,6 +317,18 @@ func set_shape_position():
 	shape.shape.extents = size
 
 
+func request_to_choose_circuit():
+	$c/FileDialog.popup_centered()
+
+
+func choose_circuit(_fn):
+	fn = _fn
+	if fn == "":
+		delete_circuit()
+	else:
+		load_scene()
+
+
 func request_to_save_scene():
 	if fn == "":
 		$c/NameDialog.popup_centered()
@@ -325,7 +338,7 @@ func request_to_save_scene():
 
 func request_to_load_scene():
 	if fn == "":
-		$c/NameDialog.popup_centered()
+		request_to_choose_circuit()
 	else:
 		load_scene()
 
@@ -364,7 +377,7 @@ func save_scene(_title = "", _fn = ""):
 			_part.wires.append([w.end_pin.parent_part.id, w.end_pin.id])
 		circuit.parts.append(_part)
 		id += 1
-		g.save_file(g.PART_FILE_PATH + fn + ".json", circuit)
+	g.save_file(g.PART_FILE_PATH + fn + ".json", circuit)
 
 
 func load_scene():
@@ -398,7 +411,6 @@ func load_scene():
 	$Parts.position = pos
 	$Wires.position = pos
 	title = circuit.title
-	fn = circuit.file_name
 
 
 func delete_circuit():
@@ -406,3 +418,5 @@ func delete_circuit():
 		w.queue_free()
 	for p in $Parts.get_children():
 		p.queue_free()
+	$Parts.position = Vector2(0, 0)
+	$Wires.position = $Parts.position

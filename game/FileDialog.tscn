@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://FileDialog.gd" type="Script" id=1]
+
+[node name="FileDialog" type="WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -896.0
+margin_bottom = -294.0
+window_title = "Choose Circuit"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="M" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="Items" type="ItemList" parent="M"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 374.0
+margin_bottom = 416.0
+[connection signal="about_to_show" from="." to="." method="_on_FileDialog_about_to_show"]
+[connection signal="item_selected" from="M/Items" to="." method="_on_Items_item_selected"]

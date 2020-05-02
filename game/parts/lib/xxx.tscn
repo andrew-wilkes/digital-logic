@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://parts/Gate.gd" type="Script" id=1]
 [ext_resource path="res://parts/bNAND.tscn" type="PackedScene" id=2]
+[ext_resource path="res://parts/aAND.tscn" type="PackedScene" id=3]
 
 [node name="Parts" type="Node2D"]
 
 [node name="NAND" type="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 310, 120 )
+position = Vector2( 340, 150 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -16,3 +17,15 @@ wireable = true
 show_state = false
 is_ext_input = false
 gate_type = "NAND"
+
+[node name="AND" type="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 440, 150 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
