@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/binary.png-3d78a01fd3db8fca30846e0bd4e5deea.stex"
+path="res://.import/gates-m.png-6e9ce491207c86f70373392ad8b0d74e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/binary.png"
-dest_files=[ "res://.import/binary.png-3d78a01fd3db8fca30846e0bd4e5deea.stex" ]
+source_file="res://assets/gates-m.png"
+dest_files=[ "res://.import/gates-m.png-6e9ce491207c86f70373392ad8b0d74e.stex" ]
 
 [params]
 

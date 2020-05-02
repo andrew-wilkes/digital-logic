@@ -40,7 +40,6 @@ _global_script_class_icons={
 
 config/name="Digital Logic"
 run/main_scene="res://Main.tscn"
-config/icon="res://assets/gates-small.png"
 
 [autoload]
 

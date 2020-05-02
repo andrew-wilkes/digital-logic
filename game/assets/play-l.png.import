@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/numbers-small.png-538f9826154705d5dfb4ff560f9f7003.stex"
+path="res://.import/play-l.png-7d832056eac03ed53ed1cc578a768f3b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/numbers-small.png"
-dest_files=[ "res://.import/numbers-small.png-538f9826154705d5dfb4ff560f9f7003.stex" ]
+source_file="res://assets/play-l.png"
+dest_files=[ "res://.import/play-l.png-7d832056eac03ed53ed1cc578a768f3b.stex" ]
 
 [params]
 

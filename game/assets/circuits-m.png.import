@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/circuits-small.png-0b1894876f16b6b9ac4469d35f124434.stex"
+path="res://.import/circuits-m.png-2849178a4903cf2367d2f8ef495ef874.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/circuits-small.png"
-dest_files=[ "res://.import/circuits-small.png-0b1894876f16b6b9ac4469d35f124434.stex" ]
+source_file="res://assets/circuits-m.png"
+dest_files=[ "res://.import/circuits-m.png-2849178a4903cf2367d2f8ef495ef874.stex" ]
 
 [params]
 

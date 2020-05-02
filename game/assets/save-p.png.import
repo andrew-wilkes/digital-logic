@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gates-small.png-21a712e8553ba5d77a5bf3c54017df66.stex"
+path="res://.import/save-p.png-ac97d4ed055f5d3be96b6d9509456ad8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gates-small.png"
-dest_files=[ "res://.import/gates-small.png-21a712e8553ba5d77a5bf3c54017df66.stex" ]
+source_file="res://assets/save-p.png"
+dest_files=[ "res://.import/save-p.png-ac97d4ed055f5d3be96b6d9509456ad8.stex" ]
 
 [params]
 

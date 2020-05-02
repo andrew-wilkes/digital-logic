@@ -10,7 +10,7 @@
 
 [node name="Parts" type="Node2D"]
 
-[node name="NOR10212521" type="Node2D" parent="." instance=ExtResource( 3 )]
+[node name="NOR1021252115" type="Node2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 730, 160 )
 z_index = 1
 script = ExtResource( 1 )
@@ -22,7 +22,7 @@ show_state = false
 is_ext_input = false
 gate_type = "NOR"
 
-[node name="NOT23" type="Node2D" parent="." instance=ExtResource( 4 )]
+[node name="NOT2316" type="Node2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 570, 70 )
 z_index = 1
 script = ExtResource( 1 )
@@ -34,7 +34,7 @@ show_state = false
 is_ext_input = false
 gate_type = "NOT"
 
-[node name="Input" type="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="Input17" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 270, 140 )
 script = ExtResource( 2 )
 highlight_pin = true
@@ -44,7 +44,7 @@ wireable = true
 show_state = true
 is_ext_input = true
 
-[node name="Output2724" type="Node2D" parent="." instance=ExtResource( 7 )]
+[node name="Output272418" type="Node2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 900, 160 )
 script = ExtResource( 5 )
 highlight_pin = true

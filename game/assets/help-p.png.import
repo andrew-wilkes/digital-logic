@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/buttons-small.png-c9d87f134f1afb239cd8620b9d953986.stex"
+path="res://.import/help-p.png-45f40d9ad3ad7649ee01b2a5d16a70d6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buttons-small.png"
-dest_files=[ "res://.import/buttons-small.png-c9d87f134f1afb239cd8620b9d953986.stex" ]
+source_file="res://assets/help-p.png"
+dest_files=[ "res://.import/help-p.png-45f40d9ad3ad7649ee01b2a5d16a70d6.stex" ]
 
 [params]
 
