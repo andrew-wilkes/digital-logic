@@ -7,7 +7,7 @@ var item_to_delete
 
 func _ready():
 	if get_parent().name == "root":
-			show()
+		show()
 	set_items()
 
 
