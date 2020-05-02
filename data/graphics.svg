@@ -311,8 +311,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2"
-     inkscape:cx="-1184.2805"
-     inkscape:cy="-315.74399"
+     inkscape:cx="-1193.7805"
+     inkscape:cy="-327.74399"
      inkscape:document-units="px"
      inkscape:current-layer="layer3"
      showgrid="true"
@@ -797,7 +797,7 @@
        inkscape:export-xdpi="100.39539"
        inkscape:export-ydpi="100.39539" />
     <path
-       style="display:inline;fill:#32afef;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m -1300,1492.5195 h 20 v 25 h 10 l -20,15 -20,-15 h 10 z"
        id="path5463-9-8"
        inkscape:connector-curvature="0"

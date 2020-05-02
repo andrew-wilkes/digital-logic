@@ -259,8 +259,10 @@ func pinclick(gate, pin):
 			pin.wires[0].delete()
 
 func _draw():
+	# Align the circuit area to a point on the grid
 	rect_position = (rect_position / g.GRID_SIZE).floor() * g.GRID_SIZE
-	var r = (rect_size / g.GRID_SIZE - Vector2(1, 1)).ceil() * g.GRID_SIZE 
+	# Get a rect_size aligning to grid cells so that we have solid edges
+	var r = (rect_size / g.GRID_SIZE).ceil() * g.GRID_SIZE 
 	var c: Color = ProjectSettings.get_setting("rendering/environment/default_clear_color").darkened(0.1)
 	var x = 0
 	for i in r.x / g.GRID_SIZE + 1:
