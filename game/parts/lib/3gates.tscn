@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://parts/Gate.gd" type="Script" id=1]
+[ext_resource path="res://parts/Input.gd" type="Script" id=2]
+[ext_resource path="res://parts/Output.gd" type="Script" id=3]
+[ext_resource path="res://parts/bNAND.tscn" type="PackedScene" id=4]
+[ext_resource path="res://parts/dNOR.tscn" type="PackedScene" id=5]
+[ext_resource path="res://parts/zOutput.tscn" type="PackedScene" id=6]
+[ext_resource path="res://parts/zInput.tscn" type="PackedScene" id=7]
+
+[node name="Parts" type="Node2D"]
+position = Vector2( 130, 20 )
+
+[node name="NAND" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 290, 110 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+gate_type = "NAND"
+
+[node name="NAND47" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 340, 340 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+gate_type = "NAND"
+
+[node name="NOR" type="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 530, 210 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+gate_type = "NOR"
+
+[node name="Output" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 800, 200 )
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+
+[node name="Input" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 180, 100 )
+script = ExtResource( 2 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = true
+
+[node name="Input53" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 190, 360 )
+script = ExtResource( 2 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = true

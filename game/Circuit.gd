@@ -267,14 +267,15 @@ func select_part(node):
 
 func confirm_part_delete(_part):
 	part_to_delete = _part
-	$c/Confirm.rect_position = _part.position
+	$c/Confirm.rect_position = _part.global_position
 	$c/Confirm.popup()
 
 
 func part_delete():
-	part_to_delete.delete_wires()
-	part_to_delete.queue_free()
-	part_to_delete = null
+	if part_to_delete:
+		part_to_delete.delete_wires()
+		part_to_delete.queue_free()
+		part_to_delete = null
 
 
 func pinclick(gate, pin):
