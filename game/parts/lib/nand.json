@@ -1,1 +1,0 @@
-{"file_name":"nand","offset":{"x":-20,"y":-10},"parts":[{"id":0,"wires":[[2,0]]},{"id":1,"wires":[[0,0]]},{"id":2,"wires":[]},{"id":3,"wires":[[0,1]]}],"title":"NAND"}

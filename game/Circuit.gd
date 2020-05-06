@@ -3,8 +3,8 @@ extends Control
 const CELL_MARGIN = 4
 
 export var goff = Vector2(0, 0)
+export var DEBUG = false
 
-var DEBUG = false
 var part
 var part_to_delete
 var wire_scene = preload("res://parts/misc/Wire.tscn")
@@ -35,7 +35,6 @@ func _ready():
 func allow_testing():
 	if get_parent().name == "root":
 		# Testing scene in isolation
-		DEBUG = true
 		var p = picker_scene.instance()
 		add_child(p)
 		# warning-ignore:return_value_discarded

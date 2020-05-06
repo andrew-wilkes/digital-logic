@@ -1,1 +1,0 @@
-{"file_name":"3gates","offset":{"x":130,"y":20},"parts":[{"id":0,"wires":[[1,0],[2,0]]},{"id":1,"wires":[[0,1],[2,1]]},{"id":2,"wires":[[3,0]]},{"id":3,"wires":[]},{"id":4,"wires":[[0,0]]},{"id":5,"wires":[[1,1]]}],"title":"3 Gates"}
