@@ -15,7 +15,9 @@ func _ready():
 		node.position = pos
 		node.connect("picked", self, "picked")
 		node.highlight_pin = false
-	$Panel.rect_size = Vector2(130, pos.y + V_MARGIN)
+	var r_size = Vector2(130, pos.y + V_MARGIN)
+	rect_min_size = r_size + Vector2(10, 0)
+	$Panel.rect_size = r_size
 
 
 func picked(node):

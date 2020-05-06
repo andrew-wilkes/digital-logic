@@ -8,9 +8,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 389.012, 291.426 )
 
-[node name="Circuit" type="Control"]
+[node name="Circuit" type="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_clip_content = true
 mouse_filter = 2
 script = ExtResource( 2 )
 __meta__ = {
@@ -24,7 +25,7 @@ __meta__ = {
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="Shape" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 718.208, 377.305 )
+position = Vector2( 384, 291 )
 shape = SubResource( 1 )
 
 [node name="Dot" type="Sprite" parent="."]
