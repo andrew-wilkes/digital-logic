@@ -1,29 +1,26 @@
 extends Control
 
-const DEBUG = false
 const CELL_MARGIN = 4
 
+var DEBUG = false
 var part
 var part_to_delete
 var wire_scene = preload("res://parts/misc/Wire.tscn")
+var picker_scene = preload("res://PartsPicker.tscn")
 var astar: AStar2D
 var region
 var ref
-var min_point = Vector2(-1, 0)
+var min_point: Vector2
 var max_point: Vector2
 var region_size
-var panel_corner
 var panning = false
 var pan_pos
 var fn = ""
 var title = ""
 
 func _ready():
+	allow_testing()
 	astar = AStar2D.new()
-	# warning-ignore:return_value_discarded
-	$PartsPicker.connect("picked", self, "part_picked")
-	var p = $PartsPicker/Panel
-	panel_corner = p.rect_position + p.rect_size
 	# warning-ignore:return_value_discarded
 	$c/Confirm.connect("confirmed", self, "part_delete")
 	# warning-ignore:return_value_discarded
@@ -33,8 +30,14 @@ func _ready():
 	return get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
 
-func is_over_panel(node: Part):
-	return node.position.x < panel_corner.x and node.position.y < panel_corner.y
+func allow_testing():
+	if get_parent().name == "root":
+		# Testing scene in isolation
+		DEBUG = true
+		var p = picker_scene.instance()
+		add_child(p)
+		# warning-ignore:return_value_discarded
+		p.connect("picked", self, "part_picked")
 
 
 func route_all_wires():
@@ -122,7 +125,7 @@ func show_region():
 		region.queue_free()
 		region = null
 	region = ReferenceRect.new()
-	add_child(region)
+	$Wires.add_child(region) # Adding to $Wires makes it track the panning
 	region.editor_only = false
 	region.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	region.rect_position = min_point
@@ -144,7 +147,10 @@ func add_islands():
 		for y in range(p1.y, p2.y + 1):
 			for x in range(p1.x, p2.x + 1):
 				var i = x + y * region_size.x
-				astar.set_point_disabled(i)
+				if astar.has_point(i):
+					astar.set_point_disabled(i)
+				else:
+					breakpoint
 				if DEBUG:
 					region.get_child(x + y * region_size.x).modulate = Color.bisque
 
@@ -154,12 +160,13 @@ func get_cell_coor(pos):
 
 
 func get_extents():
-	min_point.x = -1
+	var init = true
 	for p in $Parts.get_children():
-		if min_point.x < 0:
+		if init:
 			min_point = p.position
 			max_point = min_point
-		var ext = p.get_extents()
+			init = false
+		var ext = p.get_extents() # Uses the Region rectangle of the part and the part's position
 		min_point.x =  min(ext.a.x, min_point.x)
 		min_point.y =  min(ext.a.y, min_point.y)
 		max_point.x = max(ext.b.x, max_point.x)
@@ -253,10 +260,8 @@ func part_dropped():
 		if part.is_ext_input and !part.dropped:
 			part.change_input_state(false) # Set level to trigger updates of states
 		part.dropped = true
-		if is_over_panel(part):
-			part_delete()
 		part = null
-		route_all_wires()
+		call_deferred("route_all_wires")
 
 
 func select_part(node):
