@@ -1,7 +1,5 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://parts/Gate.gd" type="Script" id=1]
-[ext_resource path="res://parts/Output.gd" type="Script" id=2]
 [ext_resource path="res://parts/fXOR.tscn" type="PackedScene" id=3]
 [ext_resource path="res://parts/zOutput.tscn" type="PackedScene" id=4]
 [ext_resource path="res://parts/dNOR.tscn" type="PackedScene" id=5]
@@ -10,72 +8,25 @@
 
 [node name="Parts" type="Node2D"]
 
-[node name="NOR" type="Node2D" parent="." instance=ExtResource( 5 )]
+[node name="NOR" parent="." instance=ExtResource( 5 )]
 position = Vector2( 286, 84 )
 z_index = 1
-script = ExtResource( 1 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = false
-is_ext_input = false
-gate_type = "NOR"
 
-[node name="XOR" type="Node2D" parent="." instance=ExtResource( 3 )]
+[node name="XOR" parent="." instance=ExtResource( 3 )]
 position = Vector2( 546, 124 )
 z_index = 1
-script = ExtResource( 1 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = false
-is_ext_input = false
-gate_type = "XOR"
 
-[node name="NOT" type="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="NOT" parent="." instance=ExtResource( 6 )]
 position = Vector2( 596, 284 )
 z_index = 1
-script = ExtResource( 1 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = false
-is_ext_input = false
-gate_type = "NOT"
 
-[node name="Output" type="Node2D" parent="." instance=ExtResource( 4 )]
+[node name="Output" parent="." instance=ExtResource( 4 )]
 position = Vector2( 846, 274 )
-script = ExtResource( 2 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = true
-is_ext_input = false
 
-[node name="NOT14245" type="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="NOT14245" parent="." instance=ExtResource( 6 )]
 position = Vector2( 346, 224 )
 z_index = 1
-script = ExtResource( 1 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = false
-is_ext_input = false
-gate_type = "NOT"
 
-[node name="OR" type="Node2D" parent="." instance=ExtResource( 7 )]
+[node name="OR" parent="." instance=ExtResource( 7 )]
 position = Vector2( 116, 234 )
 z_index = 1
-script = ExtResource( 1 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = false
-is_ext_input = false
-gate_type = "OR"
