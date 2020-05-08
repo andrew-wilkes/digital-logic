@@ -13,7 +13,7 @@ func _ready():
 
 
 func _on_Label_button_down():
-	$LabelDialog.popup_centered()
+	$c/LabelDialog.popup_centered()
 
 
 func _on_LabelDialog_updated(txt):

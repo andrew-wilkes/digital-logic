@@ -61,6 +61,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelDialog" parent="." instance=ExtResource( 4 )]
+[node name="c" type="CanvasLayer" parent="."]
+
+[node name="LabelDialog" parent="c" instance=ExtResource( 4 )]
 [connection signal="button_down" from="Label" to="." method="_on_Label_button_down"]
-[connection signal="updated" from="LabelDialog" to="." method="_on_LabelDialog_updated"]
+[connection signal="updated" from="c/LabelDialog" to="." method="_on_LabelDialog_updated"]
