@@ -6,7 +6,7 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -860.0
-margin_bottom = -597.0
+margin_bottom = -670.0
 window_title = "Save Circuit"
 script = ExtResource( 1 )
 __meta__ = {
@@ -28,7 +28,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 410.0
-margin_bottom = 193.0
+margin_bottom = 120.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 10
 columns = 2
