@@ -19,3 +19,11 @@ func update_output(pin, value):
 	state = value
 	output = state
 	indicate_state()
+
+
+func _on_Label_button_down():
+	$LabelDialog.popup_centered()
+
+
+func _on_LabelDialog_updated(txt):
+	$Label.text = txt

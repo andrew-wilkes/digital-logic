@@ -18,4 +18,3 @@ func _on_Label_button_down():
 
 func _on_LabelDialog_updated(txt):
 	$Label.text = txt
-	$Label.FOCUS_NONE
