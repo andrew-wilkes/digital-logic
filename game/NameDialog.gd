@@ -10,7 +10,9 @@ func _ready():
 
 
 func confirm():
-	var title = $M/Grid/Title.text
+	var title = $M/Grid/Title.text.strip_edges()
+	if title.empty():
+		title = "Item"
 	var fn = $M/Grid/Filename.text
 	emit_signal("confirmed", title, fn)
 	self.hide()

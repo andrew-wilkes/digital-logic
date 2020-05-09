@@ -17,4 +17,6 @@ func _on_Label_button_down():
 
 
 func _on_LabelDialog_updated(txt):
+	if txt.empty():
+		txt = "?"
 	$Label.text = txt

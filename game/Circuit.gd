@@ -28,7 +28,7 @@ func _ready():
 	# warning-ignore:return_value_discarded
 	$c/FileDialog.connect("item_selected", self, "choose_circuit")	
 	# warning-ignore:return_value_discarded
-	$c/NameDialog.connect("confirmed", self, "save_scene")
+	$c/LabelDialog.connect("updated", self, "save_scene")
 	return get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
 
@@ -339,7 +339,7 @@ func choose_circuit(_fn):
 
 func request_to_save_scene():
 	if fn == "":
-		$c/NameDialog.popup_centered()
+		$c/LabelDialog.popup_centered()
 	else:
 		save_scene()
 
@@ -351,9 +351,11 @@ func request_to_load_scene():
 		load_scene()
 
 
-func save_scene(_title = "", _fn = ""):
-	if _fn != "":
-		fn = _fn
+func save_scene(_title = ""):
+	if _title.empty():
+		_title = "Item"
+	if fn.empty():
+		fn = _title.to_lower().replace(" ", "_")
 		title = _title
 	var off = $Parts.position
 	var circuit = {
