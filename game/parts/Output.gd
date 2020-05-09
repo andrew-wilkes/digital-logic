@@ -11,6 +11,14 @@ func _ready():
 	pin_exit(pin) # Hide
 
 
+func get_label():
+	return $Label.text
+
+
+func set_label(txt):
+	$Label.text = txt
+
+
 func update_output(pin, value):
 	if pin.state_changed():
 		pin.wires[0].delete()

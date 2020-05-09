@@ -1,6 +1,5 @@
 extends Part
 
-
 func _ready():
 	allow_testing()
 	v_spacing = 56
@@ -10,6 +9,14 @@ func _ready():
 	connect_pin($Q)
 	$Q.is_output = true
 	pin_exit($Q) # Hide
+
+
+func get_label():
+	return $Label.text
+
+
+func set_label(txt):
+	$Label.text = txt
 
 
 func _on_Label_button_down():

@@ -1,1 +1,1 @@
-{"c1":{"offset":{"x":0,"y":0},"parts":[{"id":0,"wires":[[1,0]]},{"id":1,"wires":[]}],"title":"Nands"},"c2":{"offset":{"x":0,"y":0},"parts":[{"id":0,"wires":[[1,0]]},{"id":1,"wires":[]},{"id":2,"wires":[[1,1]]}],"title":"And"}}
+{"c1":{"offset":{"x":100,"y":10},"parts":[{"id":0,"label":"","wires":[[1,0]]},{"id":1,"label":"","wires":[[3,0]]},{"id":2,"label":"Input","wires":[[0,0]]},{"id":3,"label":"Out","wires":[]}],"title":"Nands"},"c2":{"offset":{"x":0,"y":0},"parts":[{"id":0,"wires":[[1,0]]},{"id":1,"wires":[]},{"id":2,"wires":[[1,1]]}],"title":"And"}}

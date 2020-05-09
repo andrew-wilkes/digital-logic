@@ -381,9 +381,11 @@ func save_scene(_title = ""):
 	id = 0
 	for p in node.get_children():
 		p.owner = node
-		var _part = { "id": id, "wires": [] }
+		var _part = { "id": id, "wires": [], "label": "" }
 		for w in $Parts.get_child(id).get_output_wires([]):
 			_part.wires.append([w.end_pin.parent_part.id, w.end_pin.id])
+		if p.has_method("get_label"):
+			_part.label = p.get_label()
 		circuit.parts.append(_part)
 		id += 1
 	g.circuits[cid] = circuit
@@ -404,6 +406,8 @@ func load_scene():
 		scene.queue_free()
 		var id = 0
 		for p in parts:
+			if p.has_method("set_label"):
+				p.set_label(circuit.parts[id].label)
 			for w in circuit.parts[id].wires:
 				var wire = wire_scene.instance()
 				wire.start_pin = p.get_node("Q")
