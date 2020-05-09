@@ -3,6 +3,7 @@
 [ext_resource path="res://LabelDialog.gd" type="Script" id=1]
 
 [node name="LabelDialog" type="WindowDialog"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -1010.0
@@ -32,10 +33,11 @@ margin_right = 260.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 
-[node name="TextEdit" type="TextEdit" parent="M/HBox"]
+[node name="LineEdit" type="LineEdit" parent="M/HBox"]
 margin_right = 215.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
+expand_to_text_length = true
 
 [node name="Button" type="Button" parent="M/HBox"]
 margin_left = 219.0
