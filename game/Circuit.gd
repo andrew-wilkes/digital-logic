@@ -17,8 +17,9 @@ var max_point: Vector2
 var region_size
 var panning = false
 var pan_pos
-var fn = ""
 var title = ""
+var cid = ""
+var dots = []
 
 func _ready():
 	allow_testing()
@@ -29,6 +30,10 @@ func _ready():
 	$c/FileDialog.connect("item_selected", self, "choose_circuit")	
 	# warning-ignore:return_value_discarded
 	$c/LabelDialog.connect("updated", self, "save_scene")
+	region = $Region
+	var data = g.load_file(g.PART_FILE_PATH + "data.json")
+	if data:
+		g.circuits = data
 	return get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
 
@@ -45,7 +50,12 @@ func route_all_wires():
 	get_extents()
 	region_size = max_point - min_point
 	if DEBUG:
-		show_region()
+		for dot in dots:
+			dot.queue_free()
+		dots.clear()
+		region.visible = true
+		region.rect_position = min_point + $Parts.position
+		region.rect_size = region_size
 	region_size = region_size / g.GRID_SIZE + Vector2(1, 1)
 	astar.clear()
 	var num_points = region_size.x * region_size.y
@@ -121,23 +131,12 @@ func get_grid_id(x, y):
 	return int(x + region_size.x * y)
 
 
-func show_region():
-	if region:
-		region.queue_free()
-		region = null
-	region = ReferenceRect.new()
-	$Wires.add_child(region) # Adding to $Wires makes it track the panning
-	region.editor_only = false
-	region.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	region.rect_position = min_point
-	region.rect_size = region_size
-
-
 func show_point(pos):
 	var p = $Dot.duplicate()
 	p.show()
 	p.position = pos
 	region.add_child(p)
+	dots.append(p)
 
 
 func add_islands():
@@ -153,7 +152,7 @@ func add_islands():
 				else:
 					breakpoint
 				if DEBUG:
-					region.get_child(x + y * region_size.x).modulate = Color.bisque
+					dots[x + y * region_size.x].modulate = Color.bisque
 
 
 func get_cell_coor(pos):
@@ -202,6 +201,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 				pan_pos = pos
 				$Wires.position += delta
 				$Parts.position += delta
+				region.rect_position += delta
 	# Delete wire on release of mouse button
 	if event is InputEventMouseButton:
 		if g.wire &&  !event.pressed:
@@ -329,23 +329,23 @@ func request_to_choose_circuit():
 	$c/FileDialog.popup_centered()
 
 
-func choose_circuit(_fn):
-	fn = _fn
-	if fn == "":
+func choose_circuit(_cid):
+	cid = _cid
+	if cid.empty():
 		delete_circuit()
 	else:
 		load_scene()
 
 
 func request_to_save_scene():
-	if fn == "":
+	if cid.empty():
 		$c/LabelDialog.popup_centered()
 	else:
 		save_scene()
 
 
 func request_to_load_scene():
-	if fn == "":
+	if cid.empty():
 		request_to_choose_circuit()
 	else:
 		load_scene()
@@ -354,13 +354,12 @@ func request_to_load_scene():
 func save_scene(_title = ""):
 	if _title.empty():
 		_title = "Item"
-	if fn.empty():
-		fn = _title.to_lower().replace(" ", "_")
+	if cid.empty():
+		cid = get_circuit_id()
 		title = _title
 	var off = $Parts.position
 	var circuit = {
 		"title": title,
-		"file_name": fn,
 		"parts": [],
 		"offset": { "x": off.x, "y": off.y }
 	}
@@ -372,7 +371,7 @@ func save_scene(_title = ""):
 	var result = scene.pack(node)
 	if result == OK:
 		# warning-ignore:return_value_discarded
-		ResourceSaver.save(g.PART_FILE_PATH + fn + ".tscn", scene)
+		ResourceSaver.save(g.PART_FILE_PATH + cid + ".tscn", scene)
 	# Assign ids to parts
 	var id = 0
 	for p in $Parts.get_children():
@@ -387,14 +386,15 @@ func save_scene(_title = ""):
 			_part.wires.append([w.end_pin.parent_part.id, w.end_pin.id])
 		circuit.parts.append(_part)
 		id += 1
-	g.save_file(g.PART_FILE_PATH + fn + ".json", circuit)
+	g.circuits[cid] = circuit
+	g.save_file(g.PART_FILE_PATH + "data.json", g.circuits)
 
 
 func load_scene():
 	delete_circuit()
 	var parts = []
-	var circuit = g.load_file(g.PART_FILE_PATH + fn + ".json")
-	var packed_scene = ResourceLoader.load(g.PART_FILE_PATH + fn + ".tscn", "", true)
+	var circuit = g.circuits[cid]
+	var packed_scene = ResourceLoader.load(g.PART_FILE_PATH + cid + ".tscn", "", true)
 	if packed_scene:
 		var scene = packed_scene.instance()
 		for p in scene.get_children():
@@ -430,3 +430,11 @@ func delete_circuit():
 		p.queue_free()
 	$Parts.position = Vector2(0, 0)
 	$Wires.position = $Parts.position
+
+
+func get_circuit_id():
+	var i = 1
+	var id = "c"
+	while(g.circuits.keys().has(id + String(i))):
+		i += 1
+	return id + String(i)
