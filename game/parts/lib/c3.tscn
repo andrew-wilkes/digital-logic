@@ -9,10 +9,10 @@
 [ext_resource path="res://parts/aAND.tscn" type="PackedScene" id=7]
 
 [node name="Parts" type="Node2D"]
-position = Vector2( 150, 20 )
+position = Vector2( 20, -20 )
 
 [node name="Input" type="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 116, 138 )
+position = Vector2( 96, 74 )
 script = ExtResource( 2 )
 highlight_pin = true
 highlight_part = true
@@ -22,7 +22,7 @@ show_state = true
 is_ext_input = true
 
 [node name="Input52" type="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 116, 188 )
+position = Vector2( 96, 204 )
 script = ExtResource( 2 )
 highlight_pin = true
 highlight_part = true
@@ -32,7 +32,7 @@ show_state = true
 is_ext_input = true
 
 [node name="Input57" type="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 116, 258 )
+position = Vector2( 96, 384 )
 script = ExtResource( 2 )
 highlight_pin = true
 highlight_part = true
@@ -41,8 +41,8 @@ wireable = true
 show_state = true
 is_ext_input = true
 
-[node name="NOT" type="Node2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 276, 264 )
+[node name="NOT100" type="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 276, 384 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -54,7 +54,7 @@ is_ext_input = false
 gate_type = "NOT"
 
 [node name="NOT58" type="Node2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 276, 184 )
+position = Vector2( 276, 204 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -66,7 +66,7 @@ is_ext_input = false
 gate_type = "NOT"
 
 [node name="NOT59" type="Node2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 286, 104 )
+position = Vector2( 276, 74 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -78,7 +78,7 @@ is_ext_input = false
 gate_type = "NOT"
 
 [node name="AND" type="Node2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 556, 48 )
+position = Vector2( 546, 94 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -90,7 +90,7 @@ is_ext_input = false
 gate_type = "AND"
 
 [node name="AND62" type="Node2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 696, 48 )
+position = Vector2( 686, 124 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -102,7 +102,7 @@ is_ext_input = false
 gate_type = "AND"
 
 [node name="Output" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1116, 118 )
+position = Vector2( 786, 124 )
 script = ExtResource( 3 )
 highlight_pin = true
 highlight_part = true
@@ -112,7 +112,7 @@ show_state = true
 is_ext_input = false
 
 [node name="AND90" type="Node2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 536, 194 )
+position = Vector2( 546, 184 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -124,7 +124,7 @@ is_ext_input = false
 gate_type = "AND"
 
 [node name="AND91" type="Node2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 696, 188 )
+position = Vector2( 686, 204 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -136,7 +136,7 @@ is_ext_input = false
 gate_type = "AND"
 
 [node name="Output100" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1086, 208 )
+position = Vector2( 786, 204 )
 script = ExtResource( 3 )
 highlight_pin = true
 highlight_part = true
@@ -146,7 +146,7 @@ show_state = true
 is_ext_input = false
 
 [node name="AND102" type="Node2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 546, 284 )
+position = Vector2( 546, 274 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -182,7 +182,7 @@ is_ext_input = false
 gate_type = "AND"
 
 [node name="AND105" type="Node2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 546, 374 )
+position = Vector2( 546, 364 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -266,7 +266,7 @@ is_ext_input = false
 gate_type = "AND"
 
 [node name="AND112" type="Node2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 536, 624 )
+position = Vector2( 546, 634 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -278,7 +278,7 @@ is_ext_input = false
 gate_type = "AND"
 
 [node name="AND113" type="Node2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 536, 704 )
+position = Vector2( 546, 724 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -290,7 +290,7 @@ is_ext_input = false
 gate_type = "AND"
 
 [node name="Output118" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 806, 704 )
+position = Vector2( 796, 704 )
 script = ExtResource( 3 )
 highlight_pin = true
 highlight_part = true
@@ -300,7 +300,7 @@ show_state = true
 is_ext_input = false
 
 [node name="Output123" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 806, 634 )
+position = Vector2( 796, 624 )
 script = ExtResource( 3 )
 highlight_pin = true
 highlight_part = true
@@ -310,7 +310,7 @@ show_state = true
 is_ext_input = false
 
 [node name="Output128" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 806, 534 )
+position = Vector2( 796, 534 )
 script = ExtResource( 3 )
 highlight_pin = true
 highlight_part = true
@@ -320,7 +320,7 @@ show_state = true
 is_ext_input = false
 
 [node name="Output133" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 806, 454 )
+position = Vector2( 796, 454 )
 script = ExtResource( 3 )
 highlight_pin = true
 highlight_part = true
@@ -340,7 +340,7 @@ show_state = true
 is_ext_input = false
 
 [node name="Output143" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1046, 278 )
+position = Vector2( 786, 284 )
 script = ExtResource( 3 )
 highlight_pin = true
 highlight_part = true

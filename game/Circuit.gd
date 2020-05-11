@@ -47,6 +47,7 @@ func allow_testing():
 
 
 func route_all_wires():
+	return
 	get_extents()
 	region_size = max_point - min_point
 	if DEBUG:
@@ -76,6 +77,7 @@ func route_all_wires():
 
 
 func route_wires(_part):
+	return
 	for wire in _part.get_wires():
 		var first_point = wire.points[0]
 		var last_point = wire.points[-1]
@@ -366,7 +368,6 @@ func save_scene(_title = ""):
 	var scene = PackedScene.new()
 	var node = $Parts.duplicate()
 	for ch in node.get_children():
-		print(ch)
 		ch.owner = node
 	var result = scene.pack(node)
 	if result == OK:
@@ -396,6 +397,9 @@ func load_scene():
 	delete_circuit()
 	var parts = []
 	var circuit = g.circuits[cid]
+	var pos = Vector2(circuit.offset.x, circuit.offset.y)
+	$Parts.position = pos
+	$Wires.position = pos
 	var packed_scene = ResourceLoader.load(g.PART_FILE_PATH + cid + ".tscn", "", true)
 	if packed_scene:
 		var scene = packed_scene.instance()
@@ -409,9 +413,12 @@ func load_scene():
 			if p.has_method("set_label"):
 				p.set_label(circuit.parts[id].label)
 			for w in circuit.parts[id].wires:
+				# w is [end_pin.parent_part.id, end input pin.id]
 				var wire = wire_scene.instance()
 				wire.start_pin = p.get_node("Q")
+				wire.start_pin.parent_part = p
 				wire.end_pin = parts[w[0]].get_node("Inputs").get_child(w[1])
+				wire.end_pin.parent_part = parts[w[0]]
 				wire.clear_points()
 				wire.add_point(wire.start_pin.global_position - $Parts.global_position)
 				wire.add_point(wire.end_pin.global_position - $Parts.global_position)
@@ -421,9 +428,6 @@ func load_scene():
 			connect_part(p)
 			id += 1
 	route_all_wires()
-	var pos = Vector2(circuit.offset.x, circuit.offset.y)
-	$Parts.position = pos
-	$Wires.position = pos
 	title = circuit.title
 
 

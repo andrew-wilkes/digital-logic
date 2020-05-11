@@ -60,6 +60,7 @@ func pin_enter(pin: Pin):
 			var source_part = g.wire.start_pin.get_parent()
 			if source_part != self:
 				pin.wires.append(g.wire)
+				pin.parent_part = self
 				g.wire.end_pin = pin
 				g.wire.points[-1] = position + pin.position
 				g.wire.set_color(source_part.output)
