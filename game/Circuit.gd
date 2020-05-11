@@ -434,7 +434,14 @@ func load_scene():
 			connect_part(p)
 			id += 1
 	route_all_wires()
+	init_input_states()
 	title = circuit.title
+
+
+func init_input_states():
+	for p in $Parts.get_children():
+		if p.is_ext_input:
+			p.state = false
 
 
 func delete_circuit():
