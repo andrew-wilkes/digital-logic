@@ -1,6 +1,7 @@
 extends WindowDialog
 
 signal item_selected(cid)
+signal item_deleted
 
 var items = []
 var item_to_delete
@@ -52,5 +53,7 @@ func item_selected(_index):
 func _on_Confirm_confirmed():
 	var cid = items[item_to_delete].cid
 	g.circuits.erase(cid)
+	g.save_file(g.PART_FILE_PATH + "data.json", g.circuits)
 	g.delete_file(g.PART_FILE_PATH, cid + ".tscn")
 	set_items()
+	emit_signal("item_deleted")

@@ -20,6 +20,7 @@ func set_label(txt):
 
 
 func _on_Label_button_down():
+	$c/LabelDialog.window_title = "Enter label text"
 	$c/LabelDialog.set_text(get_label())
 	$c/LabelDialog.popup_centered()
 

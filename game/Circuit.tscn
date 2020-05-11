@@ -70,3 +70,4 @@ popup_exclusive = true
 [node name="LabelDialog" parent="c" instance=ExtResource( 1 )]
 [connection signal="resized" from="." to="." method="set_shape_position"]
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="item_deleted" from="c/FileDialog" to="." method="_on_FileDialog_item_deleted"]

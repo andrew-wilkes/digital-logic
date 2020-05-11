@@ -341,6 +341,7 @@ func choose_circuit(_cid):
 
 func request_to_save_scene():
 	if cid.empty():
+		$c/LabelDialog.window_title = "Enter circuit name"
 		$c/LabelDialog.popup_centered()
 	else:
 		save_scene()
@@ -446,3 +447,7 @@ func get_circuit_id():
 	while(g.circuits.keys().has(id + String(i))):
 		i += 1
 	return id + String(i)
+
+
+func _on_FileDialog_item_deleted():
+	cid = ""
