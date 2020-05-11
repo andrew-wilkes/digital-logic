@@ -207,6 +207,8 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	# Delete wire on release of mouse button
 	if event is InputEventMouseButton:
 		if g.wire &&  !event.pressed:
+			if g.wire.start_pin.wires.size() < 2:
+				g.wire.start_pin.show_it()
 			g.wire.delete()
 			g.wire = null
 		if event.pressed && event.button_index == 2:
@@ -260,9 +262,11 @@ func part_dropped():
 	if part:
 		part.highlight_pin = true
 		part.highlight_part = true
-		if part.is_ext_input and !part.dropped:
-			part.change_input_state(false) # Set level to trigger updates of states
-		part.dropped = true
+		if !part.dropped:
+			part.highlight_pins() # On first drop
+			part.dropped = true
+			if part.is_ext_input:
+				part.change_input_state(false) # Set level to trigger updates of states
 		part = null
 		call_deferred("route_all_wires")
 
@@ -287,21 +291,22 @@ func part_delete():
 
 
 func pinclick(gate, pin):
-	if g.wire:
-		# Delete uncompleted wire
-		g.wire.delete()
-		g.wire = null
 	if pin.is_output:
 		var wire = wire_scene.instance()
 		wire.start_pin = pin
+		pin.hide_it()
 		pin.wires.append(wire)
 		g.wire = wire
 		var pos = gate.position + pin.position
 		g.wire.points = [pos, pos]
 		$Wires.add_child(wire)
 	else:
+		# It's an input pin
 		if pin.wires.size() > 0:
-			pin.wires[0].delete()
+			var w = pin.wires[0]
+			if w.start_pin.wires.size() < 2:
+				w.start_pin.show_it()
+			w.delete()
 
 
 func _draw():

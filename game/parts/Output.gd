@@ -8,7 +8,7 @@ func _ready():
 	connect_signals()
 	var pin = $Inputs/A
 	connect_pin(pin)
-	pin_exit(pin) # Hide
+	pin.hide_it()
 
 
 func get_label():

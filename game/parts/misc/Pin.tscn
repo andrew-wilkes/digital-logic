@@ -6,13 +6,17 @@
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="Pin" type="Area2D"]
+modulate = Color( 0, 1, 0.0156863, 1 )
 script = ExtResource( 2 )
+color = Color( 0, 1, 0.0156863, 1 )
+color_a = Color( 0.00784314, 1, 0, 0.623529 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0, 1, 0.0156863, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 125, 80, 20, 20 )
+[connection signal="mouse_entered" from="." to="." method="_on_Pin_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Pin_mouse_exited"]

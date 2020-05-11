@@ -13,13 +13,13 @@ func _ready():
 	connect_signals()
 	var i = 0
 	for node in $Inputs.get_children():
-		pin_exit(node) # Hide
+		node.hide_it()
 		inputs.append(false)
 		node.id = i
 		connect_pin(node)
 		i += 1
-	pin_exit($Q) # Hide
 	connect_pin($Q)
+	$Q.hide_it()
 	$Q.is_output = true
 	set_output(true)
 

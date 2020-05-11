@@ -52,9 +52,15 @@ func connect_signals():
 	$Area2D.connect("input_event", self, "input_event")
 
 
+func connect_pin(node):
+	node.connect("mouse_entered", self, "pin_enter", [node])
+	node.connect("mouse_exited", self, "pin_exit", [node])
+	node.connect("input_event", self, "pin_click", [node])
+
+
 func pin_enter(pin: Pin):
 	if highlight_pin:
-		pin.get_node("Sprite").show()
+		pin.show_it()
 		# Try to attach end of wire to unconnected input pin
 		if g.wire && !pin.is_output && pin.wires.size() < 1:
 			var source_part = g.wire.start_pin.get_parent()
@@ -69,13 +75,14 @@ func pin_enter(pin: Pin):
 				emit_signal("wire_attached", self, pin, source_part.output)
 
 
+func pin_exit(pin: Pin):
+	if highlight_pin and pin.wires.size() > 0:
+		pin.hide_it()
+
+
 func new_event():
 	for pin in $Inputs.get_children():
 		pin.reset_state_changed()
-
-
-func pin_exit(node):
-	node.get_node("Sprite").hide()
 
 
 func mouse_entered():
@@ -90,12 +97,6 @@ func mouse_exited():
 		$Symbol.modulate = g.COLOR_UNDEFINED
 
 
-func connect_pin(node):
-	node.connect("mouse_entered", self, "pin_enter", [node])
-	node.connect("mouse_exited", self, "pin_exit", [node])
-	node.connect("input_event", self, "pin_click", [node])
-
-
 func pin_click(_viewport, event, _shape_idx, node):
 	if event is InputEventMouseButton && event.pressed && wireable:
 		# Click on output pin to create a new wire
@@ -104,7 +105,7 @@ func pin_click(_viewport, event, _shape_idx, node):
 
 
 func pinclick(node):
-		emit_signal("pinclick", self, node)
+	emit_signal("pinclick", self, node)
 
 
 func change_input_state(value):
@@ -131,6 +132,13 @@ func input_event(_viewport, event, _shape_idx):
 			emit_signal("picked", self)
 		else:
 			emit_signal("dropped")
+
+
+func highlight_pins():
+	if has_node("Q"):
+		$Q.show_it()
+	for pin in $Inputs.get_children():
+		pin.show_it()
 
 
 func update_wire_positions():
