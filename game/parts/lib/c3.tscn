@@ -1,0 +1,350 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://parts/Gate.gd" type="Script" id=1]
+[ext_resource path="res://parts/Input.gd" type="Script" id=2]
+[ext_resource path="res://parts/Output.gd" type="Script" id=3]
+[ext_resource path="res://parts/zInput.tscn" type="PackedScene" id=4]
+[ext_resource path="res://parts/eNOT.tscn" type="PackedScene" id=5]
+[ext_resource path="res://parts/zOutput.tscn" type="PackedScene" id=6]
+[ext_resource path="res://parts/aAND.tscn" type="PackedScene" id=7]
+
+[node name="Parts" type="Node2D"]
+position = Vector2( 150, 20 )
+
+[node name="Input" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 116, 138 )
+script = ExtResource( 2 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = true
+
+[node name="Input52" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 116, 188 )
+script = ExtResource( 2 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = true
+
+[node name="Input57" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 116, 258 )
+script = ExtResource( 2 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = true
+
+[node name="NOT" type="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 276, 264 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+gate_type = "NOT"
+
+[node name="NOT58" type="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 276, 184 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+gate_type = "NOT"
+
+[node name="NOT59" type="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 286, 104 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+gate_type = "NOT"
+
+[node name="AND" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 556, 48 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="AND62" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 696, 48 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="Output" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1116, 118 )
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+
+[node name="AND90" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 536, 194 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="AND91" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 696, 188 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="Output100" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1086, 208 )
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+
+[node name="AND102" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 546, 284 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="AND103" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 686, 284 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="AND104" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 686, 374 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="AND105" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 546, 374 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="AND106" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 686, 454 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="AND107" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 546, 454 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="AND108" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 686, 534 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="AND109" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 686, 624 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="AND110" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 686, 704 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="AND111" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 546, 544 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="AND112" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 536, 624 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="AND113" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 536, 704 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+gate_type = "AND"
+
+[node name="Output118" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 806, 704 )
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+
+[node name="Output123" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 806, 634 )
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+
+[node name="Output128" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 806, 534 )
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+
+[node name="Output133" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 806, 454 )
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+
+[node name="Output138" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 796, 374 )
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+
+[node name="Output143" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1046, 278 )
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false

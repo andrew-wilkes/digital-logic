@@ -3,7 +3,7 @@ extends Control
 const CELL_MARGIN = 4
 
 export var goff = Vector2(0, 0)
-export var DEBUG = false
+export var DEBUG = true
 
 var part
 var part_to_delete

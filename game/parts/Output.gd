@@ -30,10 +30,11 @@ func update_output(pin, value):
 
 
 func _on_Label_button_down():
+	$c/LabelDialog.set_text(get_label())
 	$c/LabelDialog.popup_centered()
 
 
 func _on_LabelDialog_updated(txt):
 	if txt.empty():
 		txt = "?"
-	$Label.text = txt
+	set_label(txt)
