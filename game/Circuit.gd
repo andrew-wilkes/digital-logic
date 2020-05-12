@@ -301,8 +301,10 @@ func load_scene():
 		var scene = packed_scene.instance()
 		for p in scene.get_children():
 			var np = p.duplicate()
+			np.dropped = true # Suppress highlighting of pins on move
 			parts.append(np)
 			$Parts.add_child(np)
+			np.highlight_pins()
 		scene.queue_free()
 		var id = 0
 		for p in parts:
@@ -313,8 +315,10 @@ func load_scene():
 				var wire = wire_scene.instance()
 				wire.start_pin = p.get_node("Q")
 				wire.start_pin.parent_part = p
+				wire.start_pin.hide_it()
 				wire.end_pin = parts[w[0]].get_node("Inputs").get_child(w[1])
 				wire.end_pin.parent_part = parts[w[0]]
+				wire.end_pin.hide_it()
 				wire.clear_points()
 				wire.add_point(wire.start_pin.global_position - $Parts.global_position)
 				wire.add_point(wire.end_pin.global_position - $Parts.global_position)
