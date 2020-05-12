@@ -2,7 +2,7 @@ extends Control
 
 const CELL_MARGIN = 4
 
-signal title_changed(title)
+signal details_changed(circuit)
 
 var part
 var part_to_delete
@@ -25,7 +25,7 @@ func _ready():
 	# warning-ignore:return_value_discarded
 	$c/FileDialog.connect("item_selected", self, "choose_circuit")	
 	# warning-ignore:return_value_discarded
-	$c/LabelDialog.connect("updated", self, "save_scene")
+	$c/DetailsDialog.connect("updated", self, "save_scene")
 	var data = g.load_file(g.PART_FILE_PATH + "data.json")
 	if data:
 		g.circuits = data
@@ -229,14 +229,14 @@ func choose_circuit(_cid):
 	cid = _cid
 	if cid.empty():
 		delete_circuit()
+		emit_signal("details_changed", { "title": "Untitled", "desc": ""} )
 	else:
 		load_scene()
 
 
 func request_to_save_scene():
 	if cid.empty():
-		$c/LabelDialog.window_title = "Enter circuit name"
-		$c/LabelDialog.popup_centered()
+		$c/DetailsDialog.popup_centered()
 	else:
 		save_scene()
 
@@ -248,20 +248,20 @@ func request_to_load_scene():
 		load_scene()
 
 
-func save_scene(title = ""):
+func save_scene(title = "", description = ""):
 	if cid.empty():
 		cid = get_circuit_id()
-		if title.empty():
-			title = "Untitled"
 	else:
 		title = g.circuits[cid].title
+		description = g.circuits[cid].desc
 	var off = $Parts.position
 	var circuit = {
 		"title": title,
+		"desc": description,
 		"parts": [],
 		"offset": { "x": off.x, "y": off.y }
 	}
-	emit_signal("title_changed", title)
+	emit_signal("details_changed", circuit)
 	var scene = PackedScene.new()
 	var node = $Parts.duplicate()
 	for ch in node.get_children():
@@ -330,7 +330,7 @@ func load_scene():
 			id += 1
 	route_all_wires()
 	init_input_states()
-	emit_signal("title_changed", circuit.title)
+	emit_signal("details_changed", circuit)
 
 
 func init_input_states():

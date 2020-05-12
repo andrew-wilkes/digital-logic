@@ -23,7 +23,7 @@ show_state = false
 is_ext_input = false
 gate_type = "NAND"
 
-[node name="Output" type="Node2D" parent="." instance=ExtResource( 3 )]
+[node name="Output232" type="Node2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 334, 140 )
 script = ExtResource( 2 )
 highlight_pin = true
@@ -45,7 +45,7 @@ show_state = false
 is_ext_input = false
 gate_type = "NOT"
 
-[node name="Input" type="Node2D" parent="." instance=ExtResource( 7 )]
+[node name="Input237" type="Node2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( -36, 170 )
 script = ExtResource( 6 )
 highlight_pin = true

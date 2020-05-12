@@ -85,7 +85,7 @@ custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0.172549, 0.580392, 1 )
 text = "Untitled"
 
-[node name="TextPanel" parent="VBox/HBox/VBox2" instance=ExtResource( 4 )]
+[node name="Description" parent="VBox/HBox/VBox2" instance=ExtResource( 4 )]
 margin_top = 157.0
 margin_right = 880.0
 margin_bottom = 294.0
@@ -121,4 +121,4 @@ margin_bottom = 58.0
 popup_exclusive = true
 window_title = "Help"
 dialog_text = "Some text!"
-[connection signal="title_changed" from="VBox/HBox2/Circuit" to="." method="_on_Circuit_title_changed"]
+[connection signal="details_changed" from="VBox/HBox2/Circuit" to="." method="_on_Circuit_details_changed"]

@@ -37,5 +37,6 @@ func show_help():
 	$c/Help.popup_centered()
 
 
-func _on_Circuit_title_changed(title):
-	find_node("Subtitle").text = title
+func _on_Circuit_details_changed(c):
+	find_node("Subtitle").text = c.title
+	find_node("Description").text = c.desc

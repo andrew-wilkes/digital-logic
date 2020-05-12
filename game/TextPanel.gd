@@ -1,6 +1,7 @@
 extends PanelContainer
 
-export(String, MULTILINE) var text
+export(String, MULTILINE) var text setget set_text
 
-func _ready():
-	$Margin/Label.text = text
+
+func set_text(txt):
+	$Margin/Label.text = txt

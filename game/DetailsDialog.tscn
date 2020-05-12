@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://DetailsDialog.gd" type="Script" id=1]
+
+[node name="DetailsDialog" type="WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1010.0
+margin_bottom = -652.0
+window_title = "Circuit Details"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="M" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="M"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 260.0
+margin_bottom = 138.0
+
+[node name="Title" type="LineEdit" parent="M/VBox"]
+margin_right = 250.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Title"
+expand_to_text_length = true
+
+[node name="Description" type="TextEdit" parent="M/VBox"]
+margin_top = 28.0
+margin_right = 250.0
+margin_bottom = 104.0
+size_flags_vertical = 3
+text = "Description
+"
+
+[node name="HBox" type="HBoxContainer" parent="M/VBox"]
+margin_top = 108.0
+margin_right = 250.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="M/VBox/HBox"]
+margin_right = 31.0
+margin_bottom = 20.0
+text = "OK"
+[connection signal="button_down" from="M/VBox/HBox/Button" to="." method="_on_Button_button_down"]

@@ -6,7 +6,7 @@
 [node name="Parts" type="Node2D"]
 
 [node name="OR" type="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 164, 150 )
+position = Vector2( 194, 170 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
