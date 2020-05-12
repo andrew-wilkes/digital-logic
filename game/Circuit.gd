@@ -47,138 +47,24 @@ func allow_testing():
 
 
 func route_all_wires():
-	return
-	get_extents()
-	region_size = max_point - min_point
-	if DEBUG:
-		for dot in dots:
-			dot.queue_free()
-		dots.clear()
-		region.visible = true
-		region.rect_position = min_point + $Parts.position
-		region.rect_size = region_size
-	region_size = region_size / g.GRID_SIZE + Vector2(1, 1)
-	astar.clear()
-	var num_points = region_size.x * region_size.y
-	if astar.get_point_capacity() < num_points:
-		astar.reserve_space(num_points)
-	var i = 0
-	for y in region_size.y:
-		for x in region_size.x:
-			var pos = Vector2(x, y) * g.GRID_SIZE
-			astar.add_point(i, pos + min_point)
-			i += 1
-			if DEBUG:
-				show_point(pos)
-	add_islands()
-	connect_points()
-	for p in $Parts.get_children():
-		route_wires(p)
+	for w in $Wires.get_children():
+		route_wire(w)
 
 
-func route_wires(_part):
-	return
-	for wire in _part.get_wires():
-		var first_point = wire.points[0]
-		var last_point = wire.points[-1]
-		var p = get_cell_coor(first_point)
-		var dx = 2
-		var p1 = get_active_grid_id(p, dx) # Cell to the right
-		while p1 < 0:
-			dx += 1
-			p1 = get_active_grid_id(p, dx)
-		p = get_cell_coor(last_point)
-		dx = -2
-		var p2 = get_active_grid_id(p, dx) # Cell to the left
-		while p2 < 0:
-			dx -= 1
-			p2 = get_active_grid_id(p, dx)
-		var inter_points = astar.get_point_path(p1, p2)
-		# Increase the weights of wire points
-		var ids = astar.get_id_path(p1, p2)
-		for id in ids:
-			astar.set_point_weight_scale(id, 2)
-		wire.clear_points()
-		var points : PoolVector2Array = [first_point]
-		points.append_array(inter_points)
-		points.append(last_point)
-		wire.set_points(points)
-
-
-func get_active_grid_id(p, dx):
-	var id = get_grid_id(p.x + dx, p.y)
-	if astar.is_point_disabled(id):
-		return -1
-	else:
-		return id
-
-
-func connect_points():
-	for y in region_size.y - 1:
-		for x in region_size.x - 1:
-			var p1 = get_grid_id(x, y)
-			if !astar.is_point_disabled(p1):
-				try_connect(p1, p1 + 1)
-				try_connect(p1, p1 + region_size.x)
-				try_connect(p1, p1 + region_size.x + 1)
-				try_connect(p1, p1 + region_size.x - 1)
-
-
-func try_connect(p1, p2):
-	if !astar.is_point_disabled(p2):
-		astar.connect_points(p1, p2)
-
-
-func get_grid_id(x, y):
-	return int(x + region_size.x * y)
-
-
-func show_point(pos):
-	var p = $Dot.duplicate()
-	p.show()
-	p.position = pos
-	region.add_child(p)
-	dots.append(p)
-
-
-func add_islands():
-	for p in $Parts.get_children():
-		var ext = p.get_extents()
-		var p1 = get_cell_coor(ext.a)
-		var p2 = get_cell_coor(ext.b)
-		for y in range(p1.y, p2.y + 1):
-			for x in range(p1.x, p2.x + 1):
-				var i = x + y * region_size.x
-				if astar.has_point(i):
-					astar.set_point_disabled(i)
-				else:
-					breakpoint
-				if DEBUG:
-					dots[x + y * region_size.x].modulate = Color.bisque
-
-
-func get_cell_coor(pos):
-	return (pos - min_point) / g.GRID_SIZE
-
-
-func get_extents():
-	var init = true
-	for p in $Parts.get_children():
-		if init:
-			min_point = p.position
-			max_point = min_point
-			init = false
-		var ext = p.get_extents() # Uses the Region rectangle of the part and the part's position
-		min_point.x =  min(ext.a.x, min_point.x)
-		min_point.y =  min(ext.a.y, min_point.y)
-		max_point.x = max(ext.b.x, max_point.x)
-		max_point.y = max(ext.b.y, max_point.y)
-	# Add margins
-	var margin = g.GRID_SIZE * CELL_MARGIN
-	min_point.x -= margin
-	min_point.y -= margin
-	max_point.x += margin
-	max_point.y += margin
+func route_wire(w):
+		var a = w.points[0]
+		var b = w.points[-1]
+		w.clear_points()
+		w.add_point(a)
+		if a.x < b.x and a.y != b.y:
+			w.add_point(Vector2((a.x + b.x) / 2, a.y))
+			w.add_point(Vector2((a.x + b.x) / 2, b.y))
+		else:
+			w.add_point(Vector2(a.x + g.GRID_SIZE, a.y))
+			w.add_point(Vector2(a.x + g.GRID_SIZE, (a.y + b.y) / 2))
+			w.add_point(Vector2(b.x - g.GRID_SIZE, (a.y + b.y) / 2))
+			w.add_point(Vector2(b.x - g.GRID_SIZE, b.y))
+		w.add_point(b)
 
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
@@ -255,7 +141,7 @@ func state_changed(node: Part, state):
 
 func wire_attached(_part, _pin, _status):
 	_part.update_output(_pin, _status)
-	route_wires(_part)
+	route_wire(_pin.wires[0])
 
 
 func part_dropped():
