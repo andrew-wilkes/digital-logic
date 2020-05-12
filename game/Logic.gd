@@ -36,3 +36,6 @@ func choose_circuit():
 func show_help():
 	$c/Help.popup_centered()
 
+
+func _on_Circuit_title_changed(title):
+	find_node("Subtitle").text = title

@@ -2,7 +2,7 @@ extends Control
 
 const CELL_MARGIN = 4
 
-export var DEBUG = true
+signal title_changed(title)
 
 var part
 var part_to_delete
@@ -13,7 +13,6 @@ var min_point: Vector2
 var max_point: Vector2
 var panning = false
 var pan_pos
-var title = ""
 var cid = ""
 var goff
 
@@ -249,18 +248,20 @@ func request_to_load_scene():
 		load_scene()
 
 
-func save_scene(_title = ""):
-	if _title.empty():
-		_title = "Item"
+func save_scene(title = ""):
 	if cid.empty():
 		cid = get_circuit_id()
-		title = _title
+		if title.empty():
+			title = "Untitled"
+	else:
+		title = g.circuits[cid].title
 	var off = $Parts.position
 	var circuit = {
 		"title": title,
 		"parts": [],
 		"offset": { "x": off.x, "y": off.y }
 	}
+	emit_signal("title_changed", title)
 	var scene = PackedScene.new()
 	var node = $Parts.duplicate()
 	for ch in node.get_children():
@@ -329,7 +330,7 @@ func load_scene():
 			id += 1
 	route_all_wires()
 	init_input_states()
-	title = circuit.title
+	emit_signal("title_changed", circuit.title)
 
 
 func init_input_states():
