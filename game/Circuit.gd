@@ -14,11 +14,8 @@ var max_point: Vector2
 var panning = false
 var pan_pos
 var cid = ""
-var goff
 
 func _ready():
-	goff = $Area2D.global_position - ($Area2D.global_position / g.GRID_SIZE).floor() * g.GRID_SIZE
-	goff /= 2
 	allow_testing()
 	# warning-ignore:return_value_discarded
 	$c/Confirm.connect("confirmed", self, "part_delete")
@@ -76,7 +73,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	# Note that this area defines where the part may be dropped so may define a margin around the viewport edge
 	if event is InputEventMouseMotion:
 		if part:
-			part.global_position = (event.position / g.GRID_SIZE).round() * g.GRID_SIZE - goff
+			part.position = ((event.position - $Parts.global_position) / g.GRID_SIZE).round() * g.GRID_SIZE
 			part.update_wire_positions()
 		elif g.wire:
 			# Move end of wire
@@ -229,7 +226,7 @@ func choose_circuit(_cid):
 	cid = _cid
 	if cid.empty():
 		delete_circuit()
-		emit_signal("details_changed", { "title": "Untitled", "desc": ""} )
+		emit_signal("details_changed", { "title": "Untitled", "desc": "" } )
 	else:
 		load_scene()
 
