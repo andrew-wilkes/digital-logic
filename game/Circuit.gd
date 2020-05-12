@@ -2,35 +2,31 @@ extends Control
 
 const CELL_MARGIN = 4
 
-export var goff = Vector2(0, 0)
 export var DEBUG = true
 
 var part
 var part_to_delete
 var wire_scene = preload("res://parts/misc/Wire.tscn")
 var picker_scene = preload("res://PartsPicker.tscn")
-var astar: AStar2D
-var region
 var ref
 var min_point: Vector2
 var max_point: Vector2
-var region_size
 var panning = false
 var pan_pos
 var title = ""
 var cid = ""
-var dots = []
+var goff
 
 func _ready():
+	goff = $Area2D.global_position - ($Area2D.global_position / g.GRID_SIZE).floor() * g.GRID_SIZE
+	goff /= 2
 	allow_testing()
-	astar = AStar2D.new()
 	# warning-ignore:return_value_discarded
 	$c/Confirm.connect("confirmed", self, "part_delete")
 	# warning-ignore:return_value_discarded
 	$c/FileDialog.connect("item_selected", self, "choose_circuit")	
 	# warning-ignore:return_value_discarded
 	$c/LabelDialog.connect("updated", self, "save_scene")
-	region = $Region
 	var data = g.load_file(g.PART_FILE_PATH + "data.json")
 	if data:
 		g.circuits = data
@@ -56,23 +52,32 @@ func route_wire(w):
 		var b = w.points[-1]
 		w.clear_points()
 		w.add_point(a)
-		if a.x < b.x and a.y != b.y:
-			w.add_point(Vector2((a.x + b.x) / 2, a.y))
-			w.add_point(Vector2((a.x + b.x) / 2, b.y))
-		else:
-			var dx = g.GRID_SIZE if a.y > b.y else 2 * g.GRID_SIZE
-			w.add_point(Vector2(a.x + dx, a.y))
-			w.add_point(Vector2(a.x + dx, (a.y + b.y) / 2))
-			w.add_point(Vector2(b.x - dx, (a.y + b.y) / 2))
-			w.add_point(Vector2(b.x - dx, b.y))
+		if a.y != b.y:
+			if a.x < b.x:
+				var x = align_to_grid((a.x + b.x) / 2)
+				w.add_point(Vector2(x, a.y))
+				w.add_point(Vector2(x, b.y))
+			else:
+				var dx = g.GRID_SIZE if a.y > b.y else 2 * g.GRID_SIZE
+				var x = align_to_grid(a.x + dx)
+				w.add_point(Vector2(x, a.y))
+				var y = align_to_grid((a.y + b.y) / 2)
+				w.add_point(Vector2(x, y))
+				x = align_to_grid(b.x - dx)
+				w.add_point(Vector2(x, y))
+				w.add_point(Vector2(x, b.y))
 		w.add_point(b)
+
+
+func align_to_grid(p):
+	return round(p / g.GRID_SIZE) * g.GRID_SIZE
 
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	# Note that this area defines where the part may be dropped so may define a margin around the viewport edge
 	if event is InputEventMouseMotion:
 		if part:
-			part.global_position = (event.position / g.GRID_SIZE).round() * g.GRID_SIZE
+			part.global_position = (event.position / g.GRID_SIZE).round() * g.GRID_SIZE - goff
 			part.update_wire_positions()
 		elif g.wire:
 			# Move end of wire
@@ -90,7 +95,6 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 				pan_pos = pos
 				$Wires.position += delta
 				$Parts.position += delta
-				region.rect_position += delta
 	# Delete wire on release of mouse button
 	if event is InputEventMouseButton:
 		if g.wire &&  !event.pressed:
@@ -201,14 +205,13 @@ func _draw():
 	var r = (rect_size / g.GRID_SIZE).ceil() 
 	var rect = (r - Vector2(1, 1)) * g.GRID_SIZE
 	var c: Color = ProjectSettings.get_setting("rendering/environment/default_clear_color").darkened(0.1)
-	rect += goff
-	var x = goff.x
+	var x = 0
 	for i in r.x:
-		draw_line(Vector2(x, goff.y), Vector2(x, rect.y), c, 1.0)
+		draw_line(Vector2(x, 0), Vector2(x, rect.y), c, 1.0)
 		x += g.GRID_SIZE
-	var y = goff.y
+	var y = 0
 	for i in r.y:
-		draw_line(Vector2(goff.x, y), Vector2(rect.x, y), c, 1.0)
+		draw_line(Vector2(0, y), Vector2(rect.x, y), c, 1.0)
 		y += g.GRID_SIZE
 
 
