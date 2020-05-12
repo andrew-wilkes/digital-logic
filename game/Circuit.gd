@@ -60,10 +60,11 @@ func route_wire(w):
 			w.add_point(Vector2((a.x + b.x) / 2, a.y))
 			w.add_point(Vector2((a.x + b.x) / 2, b.y))
 		else:
-			w.add_point(Vector2(a.x + g.GRID_SIZE, a.y))
-			w.add_point(Vector2(a.x + g.GRID_SIZE, (a.y + b.y) / 2))
-			w.add_point(Vector2(b.x - g.GRID_SIZE, (a.y + b.y) / 2))
-			w.add_point(Vector2(b.x - g.GRID_SIZE, b.y))
+			var dx = g.GRID_SIZE if a.y > b.y else 2 * g.GRID_SIZE
+			w.add_point(Vector2(a.x + dx, a.y))
+			w.add_point(Vector2(a.x + dx, (a.y + b.y) / 2))
+			w.add_point(Vector2(b.x - dx, (a.y + b.y) / 2))
+			w.add_point(Vector2(b.x - dx, b.y))
 		w.add_point(b)
 
 
