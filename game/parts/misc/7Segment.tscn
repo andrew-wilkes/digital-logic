@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/symbols.png" type="Texture" id=1]
+[ext_resource path="res://parts/misc/7Segment.gd" type="Script" id=2]
+
+[node name="7Segment" type="Node2D"]
+script = ExtResource( 2 )
+color = Color( 0.92549, 0, 0, 1 )
+off_color = Color( 0, 0, 0, 0.0823529 )
+
+[node name="TextureRect" type="ColorRect" parent="."]
+margin_right = 174.0
+margin_bottom = 276.0
+color = Color( 0.266667, 0.266667, 0.266667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Segments" type="Node2D" parent="."]
+
+[node name="A" type="Sprite" parent="Segments"]
+position = Vector2( 84, 30 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 4, 327, 101, 30 )
+
+[node name="B" type="Sprite" parent="Segments"]
+position = Vector2( 138, 84 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 4, 327, 101, 30 )
+
+[node name="C" type="Sprite" parent="Segments"]
+position = Vector2( 138, 192 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 4, 327, 101, 30 )
+
+[node name="D" type="Sprite" parent="Segments"]
+position = Vector2( 84, 246 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 4, 327, 101, 30 )
+
+[node name="E" type="Sprite" parent="Segments"]
+position = Vector2( 30, 192 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 4, 327, 101, 30 )
+
+[node name="F" type="Sprite" parent="Segments"]
+position = Vector2( 30, 84 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 4, 327, 101, 30 )
+
+[node name="G" type="Sprite" parent="Segments"]
+position = Vector2( 84, 138 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 4, 327, 101, 30 )
+
+[node name="DP" type="Sprite" parent="Segments"]
+position = Vector2( 156, 252 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 125, 79, 20, 21 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
