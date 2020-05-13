@@ -1,8 +1,8 @@
-extends Node2D
+extends Part
 
 onready var s = $Segments
 
-export(Color, RGB) var color
+export(Color, RGB) var on_color
 export(Color, RGBA) var off_color
 
 var map = [
@@ -10,16 +10,27 @@ var map = [
 ]
 
 var count = 0
+var inputs = []
 
 func _ready():
 	if get_parent().name == "root":
 		set_segment(7, 0)
 		$Timer.start()
+	else:
+		z_index = 1 # Display above wires
+		connect_signals()
+		var i = 0
+		for node in $Inputs.get_children():
+			#node.hide_it()
+			inputs.append(false)
+			node.id = i
+			connect_pin(node)
+			i += 1
 
 
 func set_segment(i: int, b: bool):
 		if b:
-			s.get_child(i).modulate = color
+			s.get_child(i).modulate = on_color
 		else:
 			s.get_child(i).modulate = off_color
 
