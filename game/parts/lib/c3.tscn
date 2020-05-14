@@ -9,7 +9,7 @@
 [ext_resource path="res://parts/aAND.tscn" type="PackedScene" id=7]
 
 [node name="Parts" type="Node2D"]
-position = Vector2( 450, -140 )
+position = Vector2( 370, -150 )
 
 [node name="Input" type="Node2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( -130, 120 )
@@ -22,7 +22,7 @@ show_state = true
 is_ext_input = true
 
 [node name="Input52" type="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( -120, 380 )
+position = Vector2( -290, 390 )
 script = ExtResource( 2 )
 highlight_pin = true
 highlight_part = true
@@ -32,7 +32,7 @@ show_state = true
 is_ext_input = true
 
 [node name="Input57" type="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( -120, 480 )
+position = Vector2( -290, 480 )
 script = ExtResource( 2 )
 highlight_pin = true
 highlight_part = true
@@ -42,7 +42,7 @@ show_state = true
 is_ext_input = true
 
 [node name="NOT100" type="Node2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 50, 430 )
+position = Vector2( 230, 400 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -54,7 +54,7 @@ is_ext_input = false
 gate_type = "NOT"
 
 [node name="NOT58" type="Node2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( -10, 240 )
+position = Vector2( 50, 240 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true

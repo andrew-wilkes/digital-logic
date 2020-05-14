@@ -43,6 +43,7 @@ func route_all_wires():
 	vx.clear()
 	for w in $Wires.get_children():
 		route_wire(w)
+	add_dots_to_wires()
 
 
 func route_wire(w):
@@ -63,13 +64,13 @@ func route_wire(w):
 				var y = align_to_grid((a.y + b.y) / 2)
 				w.add_point(Vector2(x, y))
 				x = align_to_grid(b.x)
-				x = get_next_x(x, -1)
+				x = get_next_x(x, -2)
 				w.add_point(Vector2(x, y))
 				w.add_point(Vector2(x, b.y))
 		w.add_point(b)
 
 
-func get_next_x(x, dir = 1):
+func get_next_x(x, dir = 2):
 	var do = true
 	while do:
 		x += g.GRID_SIZE * dir
@@ -80,6 +81,23 @@ func get_next_x(x, dir = 1):
 
 func align_to_grid(p):
 	return round(p / g.GRID_SIZE) * g.GRID_SIZE
+
+
+func add_dots_to_wires():
+	for p in $Parts.get_children():
+		var wires = p.get_output_wires([])
+		for i in wires.size() - 1:
+			var w = wires[i]
+			if w.points.size() > 2:
+				var dot
+				if w.get_child_count() == 0:
+					dot = $Dot.duplicate()
+					w.add_child(dot)
+					dot.scale *= 0.4
+					dot.show()
+				else:
+					dot = w.get_child(0)
+				dot.position = w.points[1]
 
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
@@ -156,6 +174,7 @@ func state_changed(node: Part, state):
 func wire_attached(_part, _pin, _status):
 	_part.update_output(_pin, _status)
 	route_wire(_pin.wires[0])
+	add_dots_to_wires()
 
 
 func part_dropped():
