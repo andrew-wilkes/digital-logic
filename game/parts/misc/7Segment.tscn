@@ -12,9 +12,10 @@ script = ExtResource( 2 )
 on_color = Color( 0.0784314, 1, 0, 1 )
 off_color = Color( 0.192157, 0.192157, 0.192157, 0.0823529 )
 
-[node name="TextureRect" type="ColorRect" parent="."]
+[node name="Symbol" type="ColorRect" parent="."]
 margin_right = 120.0
 margin_bottom = 180.0
+mouse_filter = 2
 color = Color( 0.266667, 0.266667, 0.266667, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

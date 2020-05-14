@@ -27,9 +27,12 @@ var v_spacing
 var color = g.COLOR_UNDEFINED
 
 func allow_testing():
+	var ok = false
 	if get_parent().name == "root":
 		# Testing scene in isolation
 		position = Vector2(100, 100) # Bring into view
+		ok = true
+	return ok
 
 
 func unstable():

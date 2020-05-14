@@ -13,19 +13,18 @@ var count = 0
 var inputs = []
 
 func _ready():
-	if get_parent().name == "root":
+	if allow_testing():
 		set_segment(7, 0)
 		$Timer.start()
-	else:
-		z_index = 1 # Display above wires
-		connect_signals()
-		var i = 0
-		for node in $Inputs.get_children():
-			#node.hide_it()
-			inputs.append(false)
-			node.id = i
-			connect_pin(node)
-			i += 1
+	z_index = 1 # Display above wires
+	connect_signals()
+	var i = 0
+	for node in $Inputs.get_children():
+		#node.hide_it()
+		inputs.append(false)
+		node.id = i
+		connect_pin(node)
+		i += 1
 
 
 func set_segment(i: int, b: bool):
@@ -47,3 +46,16 @@ func _on_Timer_timeout():
 	count += 1
 	if count > 0xf:
 		count = 0
+
+
+func update_output(pin: Pin, state):
+	# Only update on change of state
+	if inputs[pin.id] == state and pin.was_connected_to:
+		return
+	if pin.state_changed():
+		pin.wires[0].delete()
+		unstable()
+		return
+	pin.was_connected_to = true
+	inputs[pin.id] = state
+	set_segment(pin.id, state)
