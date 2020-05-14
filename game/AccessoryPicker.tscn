@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://AccessoryPicker.gd" type="Script" id=1]
+
+[node name="AccessoryPicker" type="WindowDialog"]
+visible = true
+margin_right = 479.0
+margin_bottom = 256.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="M" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="ItemList" type="ItemList" parent="M"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 469.0
+margin_bottom = 246.0
+size_flags_horizontal = 3
+allow_reselect = true
+[connection signal="gui_input" from="M/ItemList" to="." method="_on_ItemList_gui_input"]
+[connection signal="item_selected" from="M/ItemList" to="." method="_on_ItemList_item_selected"]

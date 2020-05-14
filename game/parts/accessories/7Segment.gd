@@ -16,6 +16,8 @@ func _ready():
 	if allow_testing():
 		set_segment(7, 0)
 		$Timer.start()
+	else:
+		set_segments(0)
 	z_index = 1 # Display above wires
 	connect_signals()
 	var i = 0
@@ -36,15 +38,15 @@ func set_segment(i: int, b: bool):
 
 func set_segments(x):
 	var n = 1
-	for i in 7:
+	for i in 8:
 		set_segment(i, n & x)
 		n = n << 1
 
 
 func _on_Timer_timeout():
-	set_segments(map[count])
+	set_segments(map[count & 0xf] + (count & 0x10) * 0x8)
 	count += 1
-	if count > 0xf:
+	if count > 0x1f:
 		count = 0
 
 

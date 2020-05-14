@@ -7,6 +7,8 @@ func _ready():
 	menu.connect("button_pressed", self, "process_buttons")
 	# warning-ignore:return_value_discarded
 	$VBox/HBox2/PartsPicker.connect("picked", circuit, "part_picked")
+	# warning-ignore:return_value_discarded
+	$c/AccessoryPicker.connect("item_selected", self, "add_accessory_to_circuit")
 
 
 func process_buttons(action):
@@ -40,3 +42,11 @@ func show_help():
 func _on_Circuit_details_changed(c):
 	find_node("Subtitle").text = c.title
 	find_node("Description").text = c.desc
+
+
+func _on_Access_button_down():
+	$c/AccessoryPicker.popup_centered()
+
+
+func add_accessory_to_circuit(item):
+	circuit.part_picked(item)

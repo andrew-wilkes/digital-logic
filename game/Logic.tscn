@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Buttons.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/subtitle_font.tres" type="DynamicFont" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://Buttons2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Logic.gd" type="Script" id=7]
 [ext_resource path="res://PartsPicker.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/access.png" type="Texture" id=9]
+[ext_resource path="res://assets/access-l.png" type="Texture" id=10]
+[ext_resource path="res://AccessoryPicker.tscn" type="PackedScene" id=11]
 
 [node name="Logic" type="MarginContainer"]
 anchor_right = 1.0
@@ -59,6 +62,18 @@ margin_left = 0.0
 margin_top = 84.0
 margin_right = 360.0
 margin_bottom = 148.0
+
+[node name="Misc" type="HBoxContainer" parent="VBox/HBox/VBox"]
+margin_top = 168.0
+margin_right = 360.0
+margin_bottom = 232.0
+
+[node name="Access" type="TextureButton" parent="VBox/HBox/VBox/Misc"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
 
 [node name="VBox2" type="VBoxContainer" parent="VBox/HBox"]
 margin_left = 380.0
@@ -121,4 +136,7 @@ margin_bottom = 58.0
 popup_exclusive = true
 window_title = "Help"
 dialog_text = "Some text!"
+
+[node name="AccessoryPicker" parent="c" instance=ExtResource( 11 )]
+[connection signal="button_down" from="VBox/HBox/VBox/Misc/Access" to="." method="_on_Access_button_down"]
 [connection signal="details_changed" from="VBox/HBox2/Circuit" to="." method="_on_Circuit_details_changed"]
