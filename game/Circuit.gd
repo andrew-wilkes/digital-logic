@@ -223,8 +223,14 @@ func pinclick(gate, pin):
 		# It's an input pin
 		if pin.wires.size() > 0:
 			var w = pin.wires[0]
-			if w.start_pin.wires.size() < 2:
+			var num_wires = w.start_pin.wires.size()
+			if num_wires < 2:
 				w.start_pin.show_it()
+			else:
+				# Try to delete the dot on a previous sibling wire node if deleting the last wire node
+				if num_wires > 1 and w.start_pin.wires[num_wires - 1] == w:
+						if w.start_pin.wires[num_wires - 2].get_child_count() > 0:
+							w.start_pin.wires[num_wires - 2].get_child(0).queue_free()
 			w.delete()
 
 
