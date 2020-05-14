@@ -14,6 +14,7 @@ var max_point: Vector2
 var panning = false
 var pan_pos
 var cid = ""
+var vx = []
 
 func _ready():
 	allow_testing()
@@ -39,6 +40,7 @@ func allow_testing():
 
 
 func route_all_wires():
+	vx.clear()
 	for w in $Wires.get_children():
 		route_wire(w)
 
@@ -50,19 +52,30 @@ func route_wire(w):
 		w.add_point(a)
 		if a.y != b.y:
 			if a.x < b.x:
-				var x = align_to_grid((a.x + b.x) / 2)
+				var x = align_to_grid(a.x)
+				x = get_next_x(x)
 				w.add_point(Vector2(x, a.y))
 				w.add_point(Vector2(x, b.y))
 			else:
-				var dx = g.GRID_SIZE if a.y > b.y else 2 * g.GRID_SIZE
-				var x = align_to_grid(a.x + dx)
+				var x = align_to_grid(a.x)
+				x = get_next_x(x)
 				w.add_point(Vector2(x, a.y))
 				var y = align_to_grid((a.y + b.y) / 2)
 				w.add_point(Vector2(x, y))
-				x = align_to_grid(b.x - dx)
+				x = align_to_grid(b.x)
+				x = get_next_x(x, -1)
 				w.add_point(Vector2(x, y))
 				w.add_point(Vector2(x, b.y))
 		w.add_point(b)
+
+
+func get_next_x(x, dir = 1):
+	var do = true
+	while do:
+		x += g.GRID_SIZE * dir
+		do = vx.has(x)
+	vx.append(x)
+	return x
 
 
 func align_to_grid(p):
