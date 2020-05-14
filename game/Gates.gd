@@ -8,7 +8,7 @@ func _ready():
 		var id = 0
 		for pin in part.get_node("Inputs").get_children():
 			var i: Part = input_part.instance()
-			i.position = -i.get_node("Q").position
+			i.get_node("Label").hide()
 			i.highlight_pin = false
 			i.moveable = false
 			i.wireable = false
@@ -19,23 +19,25 @@ func _ready():
 			i.parent = part
 			# warning-ignore:return_value_discarded
 			i.connect("picked", self, "clicked")
-			pin.add_child(i)
+			i.position = pin.position - i.get_node("Q").position
+			part.add_child(i)
 			id += 1
 		var q: Part = output_part.instance()
-		q.position = -q.get_node("Symbol").position
+		q.get_node("Label").hide()
 		q.highlight_pin = false
 		q.highlight_part = false
 		q.moveable = false
 		q.wireable = false
 		q.show_state = true
 		q.z_index = -1
-		part.get_node("Q").add_child(q)
+		q.position = part.get_node("Q").position - q.get_node("Symbol").position
+		part.add_child(q)
 
 
 func clicked(part: Part):
 	part.state = !part.state
 	part.parent.inputs[part.id] = part.state
 	part.parent.set_output(part.state)
-	var q = part.parent.get_node("Q").get_child(2)
+	var q = part.parent.get_node("Output")
 	q.state = part.parent.output
 	q.indicate_state()

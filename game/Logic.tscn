@@ -138,5 +138,6 @@ window_title = "Help"
 dialog_text = "Some text!"
 
 [node name="AccessoryPicker" parent="c" instance=ExtResource( 11 )]
+visible = false
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Access" to="." method="_on_Access_button_down"]
 [connection signal="details_changed" from="VBox/HBox2/Circuit" to="." method="_on_Circuit_details_changed"]
