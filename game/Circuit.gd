@@ -43,7 +43,7 @@ func route_all_wires():
 	vx.clear()
 	for w in $Wires.get_children():
 		route_wire(w)
-	add_dots_to_wires()
+	add_dots_to_all_wires()
 
 
 func route_wire(w):
@@ -79,16 +79,33 @@ func get_next_x(x, dir = 2):
 	return x
 
 
+func remove_points(w):
+	var s = w.points.size()
+	if s > 2:
+		vx.erase(w.points[2].x)
+	if s > 4:
+		vx.erase(w.points[3].x)
+
+
 func align_to_grid(p):
 	return round(p / g.GRID_SIZE) * g.GRID_SIZE
 
 
-func add_dots_to_wires():
+func add_dots_to_all_wires():
+	# Add dots to 2nd point of all but furthest wire in x direction
 	for p in $Parts.get_children():
-		var wires = p.get_output_wires([])
-		for i in wires.size() - 1:
-			var w = wires[i]
-			if w.points.size() > 2:
+		add_dots_to_wires(p.get_output_wires([]))
+
+
+func add_dots_to_wires(wires):
+		var idx = get_furthest_index(wires)
+		var i = 0
+		for w in wires:
+			if i == idx:
+				# Remove existing dot
+				if w.get_child_count() > 0:
+					w.get_child(0).queue_free()
+			else:
 				var dot
 				if w.get_child_count() == 0:
 					dot = $Dot.duplicate()
@@ -98,6 +115,20 @@ func add_dots_to_wires():
 				else:
 					dot = w.get_child(0)
 				dot.position = w.points[1]
+			i += 1
+
+
+func get_furthest_index(wires: Array):
+	var x = -INF
+	var index = 0
+	var i = 0
+	for w in wires:
+		var v = w.points[1].x
+		if  v > x:
+			x = v
+			index = i
+		i += 1
+	return index
 
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
@@ -174,7 +205,7 @@ func state_changed(node: Part, state):
 func wire_attached(_part, _pin, _status):
 	_part.update_output(_pin, _status)
 	route_wire(_pin.wires[0])
-	add_dots_to_wires()
+	add_dots_to_wires(_pin.wires[0].start_pin.wires)
 
 
 func part_dropped():
@@ -223,15 +254,13 @@ func pinclick(gate, pin):
 		# It's an input pin
 		if pin.wires.size() > 0:
 			var w = pin.wires[0]
-			var num_wires = w.start_pin.wires.size()
+			var start_pin = w.start_pin
+			var num_wires = start_pin.wires.size()
 			if num_wires < 2:
-				w.start_pin.show_it()
-			else:
-				# Try to delete the dot on a previous sibling wire node if deleting the last wire node
-				if num_wires > 1 and w.start_pin.wires[num_wires - 1] == w:
-						if w.start_pin.wires[num_wires - 2].get_child_count() > 0:
-							w.start_pin.wires[num_wires - 2].get_child(0).queue_free()
+				start_pin.show_it()
+			remove_points(w)
 			w.delete()
+			add_dots_to_wires(start_pin.wires)
 
 
 func _draw():
