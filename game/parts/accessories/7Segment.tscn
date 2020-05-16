@@ -142,7 +142,6 @@ width = 2.0
 default_color = Color( 1, 1, 1, 1 )
 
 [node name="Pins2" type="Node2D" parent="."]
-visible = false
 
 [node name="p9" type="Line2D" parent="Pins2"]
 position = Vector2( -40, 110 )
