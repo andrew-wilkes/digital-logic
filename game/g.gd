@@ -45,3 +45,12 @@ func load_file(fn):
 	if file.file_exists(fn):
 		file.open(fn, File.READ)
 		return parse_json(file.get_as_text())
+
+
+func indicate_state(ob, state):
+	var color
+	if state:
+		color = g.COLOR_HIGH
+	else:
+		color = g.COLOR_LOW
+	ob.modulate = color

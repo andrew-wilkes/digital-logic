@@ -114,17 +114,9 @@ func pinclick(node):
 func change_input_state(value):
 	state = value
 	output = state
-	indicate_state()
+	g.indicate_state($Symbol, state)
 	emit_signal("new_event")
 	emit_signal("state_changed", self, state)
-
-
-func indicate_state():
-	if state:
-		color = g.COLOR_HIGH
-	else:
-		color = g.COLOR_LOW
-	$Symbol.modulate = color
 
 
 func input_event(_viewport, event, _shape_idx):
