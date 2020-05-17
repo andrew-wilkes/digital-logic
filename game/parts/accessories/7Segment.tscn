@@ -12,6 +12,7 @@ script = ExtResource( 3 )
 show_state = true
 on_color = Color( 0.0784314, 1, 0, 1 )
 off_color = Color( 0.192157, 0.192157, 0.192157, 0.454902 )
+decode = true
 
 [node name="Symbol" type="ColorRect" parent="."]
 margin_left = -60.0

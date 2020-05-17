@@ -36,6 +36,8 @@ func _ready():
 			$Inputs.get_child(i).position = $Pins2.get_child(i).position
 		for i in range(5, 8):
 			$Inputs.get_child(i).hide()
+	else:
+		$Pins2.hide()
 
 
 func set_segment(i: int, b: bool):
@@ -76,16 +78,21 @@ func update_output(pin: Pin, state):
 	pin.was_connected_to = true
 	inputs[pin.id] = state
 	if decode:
-		g.indicate_state($Pins2.get_child(pin.id), state)
-		set_segments(decode_inputs())
+		var id = pin.id
+		if id == 7:
+			id = 4
+		$Pins2.get_child(id).modulate = g.get_state_color(state)
+		var x = decode_inputs()
+		set_segments(get_map(x & 0xf))
+		set_segment(7, x > 15)
 	else:
 		set_segment(pin.id, state)
 
 
 func decode_inputs():
 	var x = 0
-	for i in 5:
+	for i in range(4, -1, -1):
 		x = x << 1
-		if inputs.pop_back():
+		if inputs[i]:
 			x += 1
 	return x
