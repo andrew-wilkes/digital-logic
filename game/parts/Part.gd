@@ -114,7 +114,7 @@ func pinclick(node):
 func change_input_state(value):
 	state = value
 	output = state
-	g.indicate_state($Symbol, state)
+	g.indicate_state(self, state)
 	emit_signal("new_event")
 	emit_signal("state_changed", self, state)
 

@@ -26,7 +26,7 @@ func update_output(pin, value):
 		return
 	state = value
 	output = state
-	indicate_state()
+	g.indicate_state(self, state)
 
 
 func _on_Label_button_down():

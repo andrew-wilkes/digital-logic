@@ -48,9 +48,8 @@ func load_file(fn):
 
 
 func indicate_state(ob, state):
-	var color
 	if state:
-		color = g.COLOR_HIGH
+		ob.color = g.COLOR_HIGH
 	else:
-		color = g.COLOR_LOW
-	ob.modulate = color
+		ob.color = g.COLOR_LOW
+	ob.get_node("Symbol").modulate = ob.color
