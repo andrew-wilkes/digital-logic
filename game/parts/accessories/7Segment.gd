@@ -44,7 +44,7 @@ func set_segment(i: int, b: bool):
 		else:
 			s.get_child(i).modulate = off_color
 		if !decode:
-			g.indicate_state($Pins1.get_child(i), b)
+			$Pins1.get_child(i).modulate = g.get_state_color(b)
 
 
 func set_segments(x):

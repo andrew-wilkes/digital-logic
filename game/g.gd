@@ -47,9 +47,8 @@ func load_file(fn):
 		return parse_json(file.get_as_text())
 
 
-func indicate_state(ob, state):
+func get_state_color(state):
 	if state:
-		ob.color = g.COLOR_HIGH
+		return g.COLOR_HIGH
 	else:
-		ob.color = g.COLOR_LOW
-	ob.get_node("Symbol").modulate = ob.color
+		return g.COLOR_LOW

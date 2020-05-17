@@ -26,7 +26,8 @@ func update_output(pin, value):
 		return
 	state = value
 	output = state
-	g.indicate_state(self, state)
+	color = g.get_state_color(state)
+	$Symbol.modulate = color
 
 
 func _on_Label_button_down():
