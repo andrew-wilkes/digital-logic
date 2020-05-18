@@ -3,7 +3,6 @@ extends WindowDialog
 signal confirmed(title, fn)
 
 func _ready():
-	# warning-ignore:return_value_discarded
 	$M/Grid/OK.connect("button_down", self, "confirm")
 	if get_parent().name == "root":
 		show()

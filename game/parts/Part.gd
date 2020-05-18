@@ -4,7 +4,7 @@ class_name Part
 
 signal pinclick(gate, pin)
 signal wire_attached(pin, state)
-signal state_changed(node, state)
+signal state_changed(node, output_index, state)
 signal picked(node)
 signal dropped
 signal doubleclick
@@ -47,18 +47,16 @@ func get_extents():
 
 
 func connect_signals():
-	# warning-ignore:return_value_discarded
 	$Area2D.connect("mouse_entered", self, "mouse_entered")
-	# warning-ignore:return_value_discarded
 	$Area2D.connect("mouse_exited", self, "mouse_exited")
-	# warning-ignore:return_value_discarded
 	$Area2D.connect("input_event", self, "input_event")
 
 
-func connect_pin(node):
-	node.connect("mouse_entered", self, "pin_enter", [node])
-	node.connect("mouse_exited", self, "pin_exit", [node])
-	node.connect("input_event", self, "pin_click", [node])
+func connect_pin(pin: Pin):
+	pin.connect("mouse_entered", self, "pin_enter", [pin])
+	pin.connect("mouse_exited", self, "pin_exit", [pin])
+	pin.connect("input_event", self, "pin_click", [pin])
+	pin.parent_part = self
 
 
 func pin_enter(pin: Pin):
@@ -66,7 +64,7 @@ func pin_enter(pin: Pin):
 		pin.show_it()
 		# Try to attach end of wire to unconnected input pin
 		if g.wire && !pin.is_output && pin.wires.size() < 1:
-			var source_part = g.wire.start_pin.get_parent()
+			var source_part = g.wire.start_pin.parent_part
 			if source_part != self:
 				pin.wires.append(g.wire)
 				pin.parent_part = self
@@ -111,13 +109,14 @@ func pinclick(node):
 	emit_signal("pinclick", self, node)
 
 
+# Change color of Input part and signal change of state
 func change_input_state(value):
 	state = value
 	output = state
 	color = g.get_state_color(state)
 	$Symbol.modulate = color
 	emit_signal("new_event")
-	emit_signal("state_changed", self, state)
+	emit_signal("state_changed", self, 0, state)
 
 
 func input_event(_viewport, event, _shape_idx):
@@ -131,44 +130,32 @@ func input_event(_viewport, event, _shape_idx):
 
 
 func highlight_pins():
-	if has_node("Q"):
-		$Q.show_it()
+	for pin in $Outputs.get_children():
+		pin.show_it()
 	for pin in $Inputs.get_children():
 		pin.show_it()
 
 
 func update_wire_positions():
-	if has_node("Q"):
-		for i in $Q.wires.size():
-			$Q.wires[i].points[0] = position + $Q.position
+	for pin in $Outputs.get_children():
+		for w in pin.wires:
+			w.points[0] = position + pin.position
 	for pin in $Inputs.get_children():
 		if pin.wires.size() > 0:
 			pin.wires[0].points[-1] = position + pin.position
 
 
-func get_wires():
-	return get_input_wires(get_output_wires([]))
-
-
-func get_output_wires(wires):
-	if has_node("Q"):
-		for i in $Q.wires.size():
-			wires.append($Q.wires[i])
-	return wires
-
-
-func get_input_wires(wires):
-	for pin in $Inputs.get_children():
-		pin.parent_part = self
-		if pin.wires.size() > 0:
-			wires.append(pin.wires[0])
-	return wires
+func get_output_wires():
+	var w = []
+	for pin in $Outputs.get_children():
+		w.append(pin.wires)
+	return w
 
 
 func delete_wires():
-	if has_node("Q"):
-		for i in $Q.wires.size():
-			$Q.wires[0].delete() # The delete operation removes element from array shrinking it.
+	for pin in $Outputs.get_children():
+		for w in pin.wires:
+			w.delete() # The delete operation removes element from array shrinking it.
 	for pin in $Inputs.get_children():
 		if pin.wires.size() > 0:
 			pin.wires[0].delete()

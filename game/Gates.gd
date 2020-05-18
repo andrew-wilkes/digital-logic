@@ -17,7 +17,6 @@ func _ready():
 			i.z_index = -1
 			i.id = id
 			i.parent = part
-			# warning-ignore:return_value_discarded
 			i.connect("picked", self, "clicked")
 			i.position = pin.position - i.get_node("Q").position
 			part.add_child(i)

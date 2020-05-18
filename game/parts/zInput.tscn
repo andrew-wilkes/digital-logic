@@ -32,7 +32,9 @@ shape = SubResource( 1 )
 
 [node name="Inputs" type="Node2D" parent="."]
 
-[node name="Q" parent="." instance=ExtResource( 3 )]
+[node name="Outputs" type="Node2D" parent="."]
+
+[node name="Q" parent="Outputs" instance=ExtResource( 3 )]
 position = Vector2( 20, 0 )
 
 [node name="Region" type="ReferenceRect" parent="."]

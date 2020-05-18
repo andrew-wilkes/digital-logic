@@ -45,6 +45,10 @@ run/main_scene="res://Main.tscn"
 
 g="*res://g.gd"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=1280

@@ -207,4 +207,6 @@ scale = Vector2( 0.5, 0.5 )
 [node name="Pin8" parent="Inputs" instance=ExtResource( 1 )]
 position = Vector2( -80, 70 )
 scale = Vector2( 0.5, 0.5 )
+
+[node name="Outputs" type="Node2D" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

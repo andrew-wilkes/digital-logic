@@ -6,9 +6,9 @@ func _ready():
 	color = g.COLOR_UNDEFINED
 	modulate = color
 	connect_signals()
-	connect_pin($Q)
-	$Q.is_output = true
-	$Q.hide_it()
+	connect_pin($Outputs/Q)
+	$Outputs/Q.is_output = true
+	$Outputs/Q.hide_it()
 
 
 func get_label():

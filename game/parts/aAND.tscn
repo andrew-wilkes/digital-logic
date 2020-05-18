@@ -36,7 +36,9 @@ position = Vector2( -31, -20 )
 [node name="B" parent="Inputs" instance=ExtResource( 3 )]
 position = Vector2( -31, 20 )
 
-[node name="Q" parent="." instance=ExtResource( 3 )]
+[node name="Outputs" type="Node2D" parent="."]
+
+[node name="Q" parent="Outputs" instance=ExtResource( 3 )]
 position = Vector2( 31, 0 )
 
 [node name="Area2D" type="Area2D" parent="."]

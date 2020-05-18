@@ -28,6 +28,8 @@ region_rect = Rect2( 9, 78, 23, 24 )
 [node name="A" parent="Inputs" instance=ExtResource( 3 )]
 position = Vector2( -20, 0 )
 
+[node name="Outputs" type="Node2D" parent="."]
+
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( -20, 0 )
 

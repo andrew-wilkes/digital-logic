@@ -12,15 +12,16 @@ func _ready():
 	z_index = 1 # Display above wires
 	connect_signals()
 	var i = 0
-	for node in $Inputs.get_children():
-		node.hide_it()
+	for pin in $Inputs.get_children():
+		pin.hide_it()
 		inputs.append(false)
-		node.id = i
-		connect_pin(node)
+		pin.id = i
+		connect_pin(pin)
 		i += 1
-	connect_pin($Q)
-	$Q.hide_it()
-	$Q.is_output = true
+	for pin in $Outputs.get_children():
+		connect_pin(pin)
+		pin.hide_it()
+		pin.is_output = true
 	set_output(true)
 
 
@@ -35,7 +36,7 @@ func update_output(pin: Pin, state):
 	pin.was_connected_to = true
 	inputs[pin.id] = state
 	set_output(state)
-	emit_signal("state_changed", self, output)
+	emit_signal("state_changed", self, 0, output)
 
 
 func set_output(state):

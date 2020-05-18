@@ -18,11 +18,8 @@ var vx = []
 
 func _ready():
 	allow_testing()
-	# warning-ignore:return_value_discarded
 	$c/Confirm.connect("confirmed", self, "part_delete")
-	# warning-ignore:return_value_discarded
 	$c/FileDialog.connect("item_selected", self, "choose_circuit")	
-	# warning-ignore:return_value_discarded
 	$c/DetailsDialog.connect("updated", self, "save_scene")
 	var data = g.load_file(g.PART_FILE_PATH + "data.json")
 	if data:
@@ -35,7 +32,6 @@ func allow_testing():
 		# Testing scene in isolation
 		var p = picker_scene.instance()
 		add_child(p)
-		# warning-ignore:return_value_discarded
 		p.connect("picked", self, "part_picked")
 
 
@@ -99,7 +95,8 @@ func align_to_grid(p):
 func add_dots_to_all_wires():
 	# Add dots to 2nd point of all but furthest wire in x direction
 	for p in $Parts.get_children():
-		add_dots_to_wires(p.get_output_wires([]))
+		for w in p.get_output_wires():
+			add_dots_to_wires(w)
 
 
 func add_dots_to_wires(wires):
@@ -199,9 +196,9 @@ func new_event():
 		p.new_event()
 
 
-func state_changed(node: Part, state):
+func state_changed(node: Part, output_num, state):
 	# The output state of a part has changed
-	for wire in node.get_output_wires([]):
+	for wire in node.get_output_wires()[output_num]:
 		wire.set_color(state)
 		node = wire.end_pin.parent_part
 		node.update_output(wire.end_pin, state)
@@ -337,7 +334,6 @@ func save_scene(title = "", description = ""):
 		ch.owner = node
 	var result = scene.pack(node)
 	if result == OK:
-		# warning-ignore:return_value_discarded
 		ResourceSaver.save(g.PART_FILE_PATH + cid + ".tscn", scene)
 	# Assign ids to parts
 	var id = 0
@@ -349,8 +345,11 @@ func save_scene(title = "", description = ""):
 	for p in node.get_children():
 		p.owner = node
 		var _part = { "id": id, "wires": [], "label": "" }
-		for w in $Parts.get_child(id).get_output_wires([]):
-			_part.wires.append([w.end_pin.parent_part.id, w.end_pin.id])
+		for wires in $Parts.get_child(id).get_output_wires():
+			var pin_wires = []
+			for w in wires:
+				pin_wires.append([w.end_pin.parent_part.id, w.end_pin.id])
+			_part.wires.append(pin_wires)
 		if p.has_method("get_label"):
 			_part.label = p.get_label()
 		circuit.parts.append(_part)
@@ -383,7 +382,7 @@ func load_scene():
 			for w in circuit.parts[id].wires:
 				# w is [end_pin.parent_part.id, end input pin.id]
 				var wire = wire_scene.instance()
-				wire.start_pin = p.get_node("Q")
+				wire.start_pin = p.get_node("Outputs").get_child(0)
 				wire.start_pin.parent_part = p
 				wire.start_pin.hide_it()
 				wire.end_pin = parts[w[0]].get_node("Inputs").get_child(w[1])

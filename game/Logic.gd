@@ -5,9 +5,7 @@ onready var circuit = $VBox/HBox2/Circuit
 func _ready():
 	var menu = find_node("Menu")
 	menu.connect("button_pressed", self, "process_buttons")
-	# warning-ignore:return_value_discarded
 	$VBox/HBox2/PartsPicker.connect("picked", circuit, "part_picked")
-	# warning-ignore:return_value_discarded
 	$c/AccessoryPicker.connect("item_selected", self, "add_accessory_to_circuit")
 
 
