@@ -10,6 +10,7 @@ var was_connected_to = false
 var updated = 0
 export(Color, RGB) var color
 export(Color, RGBA) var color_a
+export(bool) var vert = false
 
 func _ready():
 	modulate = color_a

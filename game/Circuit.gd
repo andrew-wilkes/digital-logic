@@ -47,27 +47,32 @@ func route_all_wires():
 
 
 func route_wire(w):
-		var a = w.points[0]
-		var b = w.points[-1]
-		w.clear_points()
-		w.add_point(a)
-		if a.y != b.y:
-			if a.x < b.x:
-				var x = align_to_grid(a.x)
+	var v = w.end_pin.vert
+	var a = w.points[0]
+	var b = w.points[-1]
+	w.clear_points()
+	w.add_point(a)
+	if a.y != b.y:
+		if a.x < b.x:
+			var x = b.x
+			if !v:
+				x = align_to_grid(a.x)
 				x = get_next_x(x)
-				w.add_point(Vector2(x, a.y))
-				w.add_point(Vector2(x, b.y))
-			else:
-				var x = align_to_grid(a.x)
-				x = get_next_x(x)
-				w.add_point(Vector2(x, a.y))
-				var y = align_to_grid((a.y + b.y) / 2)
-				w.add_point(Vector2(x, y))
+			w.add_point(Vector2(x, a.y))
+			w.add_point(Vector2(x, b.y))
+		else:
+			var x = align_to_grid(a.x)
+			x = get_next_x(x)
+			w.add_point(Vector2(x, a.y))
+			var y = align_to_grid((a.y + b.y) / 2)
+			w.add_point(Vector2(x, y))
+			x = b.x
+			if !v:
 				x = align_to_grid(b.x)
 				x = get_next_x(x, -2)
-				w.add_point(Vector2(x, y))
-				w.add_point(Vector2(x, b.y))
-		w.add_point(b)
+			w.add_point(Vector2(x, y))
+			w.add_point(Vector2(x, b.y))
+	w.add_point(b)
 
 
 func get_next_x(x, dir = 2):

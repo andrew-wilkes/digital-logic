@@ -34,6 +34,7 @@ func _ready():
 		# Move inputs
 		for i in 5:
 			$Inputs.get_child(i).position = $Pins2.get_child(i).position
+			$Inputs.get_child(i).vert = true # Align wires vertically
 		for i in range(5, 8):
 			$Inputs.get_child(i).hide()
 	else:
