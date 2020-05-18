@@ -379,21 +379,22 @@ func load_scene():
 		for p in parts:
 			if p.has_method("set_label"):
 				p.set_label(circuit.parts[id].label)
-			for w in circuit.parts[id].wires:
-				# w is [end_pin.parent_part.id, end input pin.id]
-				var wire = wire_scene.instance()
-				wire.start_pin = p.get_node("Outputs").get_child(0)
-				wire.start_pin.parent_part = p
-				wire.start_pin.hide_it()
-				wire.end_pin = parts[w[0]].get_node("Inputs").get_child(w[1])
-				wire.end_pin.parent_part = parts[w[0]]
-				wire.end_pin.hide_it()
-				wire.clear_points()
-				wire.add_point(wire.start_pin.global_position - $Parts.global_position)
-				wire.add_point(wire.end_pin.global_position - $Parts.global_position)
-				wire.start_pin.wires.append(wire)
-				wire.end_pin.wires.append(wire)
-				$Wires.add_child(wire)
+			for pin_wires in circuit.parts[id].wires:
+				for w in pin_wires:
+					# w is [end_pin.parent_part.id, end input pin.id]
+					var wire = wire_scene.instance()
+					wire.start_pin = p.get_node("Outputs").get_child(0)
+					wire.start_pin.parent_part = p
+					wire.start_pin.hide_it()
+					wire.end_pin = parts[w[0]].get_node("Inputs").get_child(w[1])
+					wire.end_pin.parent_part = parts[w[0]]
+					wire.end_pin.hide_it()
+					wire.clear_points()
+					wire.add_point(wire.start_pin.global_position - $Parts.global_position)
+					wire.add_point(wire.end_pin.global_position - $Parts.global_position)
+					wire.start_pin.wires.append(wire)
+					wire.end_pin.wires.append(wire)
+					$Wires.add_child(wire)
 			connect_part(p)
 			id += 1
 	route_all_wires()
