@@ -64,17 +64,10 @@ margin_right = 250.0
 margin_bottom = 98.0
 rect_min_size = Vector2( 0, 80 )
 size_flags_vertical = 3
-text = "
-"
 
-[node name="HBox" type="HBoxContainer" parent="M/VBox"]
+[node name="Button" type="Button" parent="M/VBox"]
 margin_top = 160.0
 margin_right = 250.0
 margin_bottom = 180.0
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="M/VBox/HBox"]
-margin_right = 31.0
-margin_bottom = 20.0
 text = "OK"
-[connection signal="button_down" from="M/VBox/HBox/Button" to="." method="_on_Button_button_down"]
+[connection signal="button_down" from="M/VBox/Button" to="." method="_on_Button_button_down"]
