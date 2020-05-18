@@ -6,7 +6,7 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -1010.0
-margin_bottom = -652.0
+margin_bottom = -600.0
 window_title = "Circuit Details"
 script = ExtResource( 1 )
 __meta__ = {
@@ -29,27 +29,48 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 260.0
-margin_bottom = 138.0
+margin_bottom = 190.0
+custom_constants/separation = 10
 
-[node name="Title" type="LineEdit" parent="M/VBox"]
+[node name="VBox1" type="VBoxContainer" parent="M/VBox"]
 margin_right = 250.0
-margin_bottom = 24.0
+margin_bottom = 42.0
+
+[node name="TLabel" type="Label" parent="M/VBox/VBox1"]
+margin_right = 250.0
+margin_bottom = 14.0
+text = "Title:"
+
+[node name="Title" type="LineEdit" parent="M/VBox/VBox1"]
+margin_top = 18.0
+margin_right = 250.0
+margin_bottom = 42.0
 size_flags_horizontal = 3
-text = "Title"
 expand_to_text_length = true
 
-[node name="Description" type="TextEdit" parent="M/VBox"]
-margin_top = 28.0
+[node name="VBox2" type="VBoxContainer" parent="M/VBox"]
+margin_top = 52.0
 margin_right = 250.0
-margin_bottom = 104.0
+margin_bottom = 150.0
+
+[node name="DLabel" type="Label" parent="M/VBox/VBox2"]
+margin_right = 250.0
+margin_bottom = 14.0
+text = "Description:"
+
+[node name="Description" type="TextEdit" parent="M/VBox/VBox2"]
+margin_top = 18.0
+margin_right = 250.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 0, 80 )
 size_flags_vertical = 3
-text = "Description
+text = "
 "
 
 [node name="HBox" type="HBoxContainer" parent="M/VBox"]
-margin_top = 108.0
+margin_top = 160.0
 margin_right = 250.0
-margin_bottom = 128.0
+margin_bottom = 180.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="M/VBox/HBox"]
