@@ -34,5 +34,5 @@ func _on_LabelDialog_updated(txt):
 
 
 func show_label():
-	if get_parent().name != "Panel":
+	if get_parent().name == "Parts":
 		$Label.show()

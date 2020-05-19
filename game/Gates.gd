@@ -18,7 +18,7 @@ func _ready():
 			i.id = id
 			i.parent = part
 			i.connect("picked", self, "clicked")
-			i.position = pin.position - i.get_node("Q").position
+			i.position = pin.position - i.get_node("Outputs").get_child(0).position
 			part.add_child(i)
 			id += 1
 		var q: Part = output_part.instance()
@@ -29,7 +29,7 @@ func _ready():
 		q.wireable = false
 		q.show_state = true
 		q.z_index = -1
-		q.position = part.get_node("Q").position - q.get_node("Symbol").position
+		q.position = part.get_node("Outputs").get_child(0).position - q.get_node("Symbol").position
 		part.add_child(q)
 
 
@@ -39,4 +39,4 @@ func clicked(part: Part):
 	part.parent.set_output(part.state)
 	var q = part.parent.get_node("Output")
 	q.state = part.parent.output
-	q.indicate_state()
+	q.get_node("Symbol").modulate = g.get_state_color(q.state)
