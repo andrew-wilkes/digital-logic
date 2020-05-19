@@ -22,7 +22,7 @@ show_state = true
 is_ext_input = true
 
 [node name="Input52" type="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( -290, 390 )
+position = Vector2( -280, 390 )
 script = ExtResource( 2 )
 highlight_pin = true
 highlight_part = true

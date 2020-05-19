@@ -292,6 +292,7 @@ func request_to_choose_circuit():
 
 
 func choose_circuit(_cid):
+	var reloading = cid == _cid
 	cid = _cid
 	if cid.empty():
 		delete_circuit()
@@ -360,6 +361,7 @@ func save_scene(title = "", description = ""):
 
 func load_scene():
 	delete_circuit()
+	$Wires.hide()
 	var parts = []
 	var circuit = g.circuits[cid]
 	var pos = Vector2(circuit.offset.x, circuit.offset.y)
@@ -397,8 +399,11 @@ func load_scene():
 					$Wires.add_child(wire)
 			connect_part(p)
 			id += 1
-	route_all_wires()
 	init_input_states()
+	# Need a delay to allow for previous circuit to be fully deleted
+	yield(get_tree(), "idle_frame")
+	route_all_wires()
+	$Wires.show()
 	emit_signal("details_changed", circuit)
 
 
