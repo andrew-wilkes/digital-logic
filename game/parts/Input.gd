@@ -9,6 +9,8 @@ func _ready():
 	connect_pin($Outputs/Q)
 	$Outputs/Q.is_output = true
 	$Outputs/Q.hide_it()
+	connect("dropped", self, "show_label")
+	$Label.hide()
 
 
 func get_label():
@@ -29,3 +31,8 @@ func _on_LabelDialog_updated(txt):
 	if txt.empty():
 		txt = "?"
 	set_label(txt)
+
+
+func show_label():
+	if get_parent().name != "Panel":
+		$Label.show()

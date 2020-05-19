@@ -9,6 +9,8 @@ func _ready():
 	var pin = $Inputs/A
 	connect_pin(pin)
 	pin.hide_it()
+	$Label.hide()
+	connect("dropped", self, "show_label")
 
 
 func get_label():
@@ -40,3 +42,7 @@ func _on_LabelDialog_updated(txt):
 	if txt.empty():
 		txt = "?"
 	set_label(txt)
+
+
+func show_label():
+	$Label.show()
