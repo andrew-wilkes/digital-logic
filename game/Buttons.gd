@@ -7,7 +7,7 @@ func _ready():
 
 
 func disable_button(idx):
-	get_child(idx).visible = false
+	get_child(idx).disabled = true
 
 
 func _on_Home_button_down():
