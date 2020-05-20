@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60, 90 )
 
-[node name="7 Segment Display" type="Node2D"]
+[node name="Decoded 7 Segment Display" type="Node2D"]
 script = ExtResource( 3 )
 show_state = true
 on_color = Color( 0.0784314, 1, 0, 1 )

@@ -18,7 +18,7 @@ export(bool) var wireable = true
 export(bool) var show_state = false
 export(bool) var is_ext_input = false
 
-var output = false
+var outputs = []
 var state = false setget change_input_state
 var dropped = false
 var id = 0
@@ -66,14 +66,15 @@ func pin_enter(pin: Pin):
 		if g.wire && !pin.is_output && pin.wires.size() < 1:
 			var source_part = g.wire.start_pin.parent_part
 			if source_part != self:
+				var state = source_part.outputs[g.wire.start_pin.id]
 				pin.wires.append(g.wire)
 				pin.parent_part = self
 				g.wire.end_pin = pin
 				g.wire.points[-1] = position + pin.position
-				g.wire.set_color(source_part.output)
+				g.wire.set_color(state)
 				g.wire = null
 				emit_signal("new_event")
-				emit_signal("wire_attached", self, pin, source_part.output)
+				emit_signal("wire_attached", self, pin, state)
 
 
 func pin_exit(pin: Pin):
@@ -112,7 +113,7 @@ func pinclick(node):
 # Change color of Input part and signal change of state
 func change_input_state(value):
 	state = value
-	output = state
+	outputs[0] = state
 	color = g.get_state_color(state)
 	$Symbol.modulate = color
 	emit_signal("new_event")

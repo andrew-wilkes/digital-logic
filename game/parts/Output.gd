@@ -10,6 +10,7 @@ func _ready():
 	connect_pin(pin)
 	pin.hide_it()
 	$Label.hide()
+	outputs = [false]
 	connect("dropped", self, "show_label")
 
 
@@ -27,7 +28,7 @@ func update_output(pin, value):
 		unstable()
 		return
 	state = value
-	output = state
+	outputs[0] = state
 	color = g.get_state_color(state)
 	$Symbol.modulate = color
 

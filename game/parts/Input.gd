@@ -8,6 +8,7 @@ func _ready():
 	connect_signals()
 	connect_pin($Outputs/Q)
 	$Outputs/Q.is_output = true
+	outputs = [false]
 	$Outputs/Q.hide_it()
 	connect("dropped", self, "show_label")
 	$Label.hide()

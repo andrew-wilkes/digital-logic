@@ -18,10 +18,11 @@ func _ready():
 		pin.id = i
 		connect_pin(pin)
 		i += 1
-	for pin in $Outputs.get_children():
-		connect_pin(pin)
-		pin.hide_it()
-		pin.is_output = true
+	var pin = $Outputs.get_child(0)
+	connect_pin(pin)
+	pin.hide_it()
+	pin.is_output = true
+	outputs = [false]
 	set_output(true)
 
 
@@ -36,7 +37,7 @@ func update_output(pin: Pin, state):
 	pin.was_connected_to = true
 	inputs[pin.id] = state
 	set_output(state)
-	emit_signal("state_changed", self, 0, output)
+	emit_signal("state_changed", self, 0, outputs[0])
 
 
 func set_output(state):
@@ -60,4 +61,4 @@ func set_output(state):
 	match gate_type:
 		"NOR", "NAND", "XNOR":
 			result = !result
-	output = result
+	outputs[0] = result
