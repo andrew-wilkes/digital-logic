@@ -292,7 +292,6 @@ func request_to_choose_circuit():
 
 
 func choose_circuit(_cid):
-	var reloading = cid == _cid
 	cid = _cid
 	if cid.empty():
 		delete_circuit()

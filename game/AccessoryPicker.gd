@@ -12,7 +12,7 @@ func _ready():
 	for file in files:
 		var node = load("res://parts/accessories/" + file).instance()
 		items.append(node)
-		$M/ItemList.add_item(node.name)
+		$M/ItemList.add_item(String(file).replace("_", " "))
 
 
 func _on_ItemList_item_selected(index):
