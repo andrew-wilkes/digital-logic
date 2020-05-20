@@ -1,7 +1,5 @@
 extends Part
 
-onready var slider = $VSlider
-
 func _ready():
 	allow_testing()
 	z_index = 1 # Display above wires
