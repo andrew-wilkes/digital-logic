@@ -70,4 +70,5 @@ margin_top = 160.0
 margin_right = 250.0
 margin_bottom = 180.0
 text = "OK"
+[connection signal="text_entered" from="M/VBox/VBox1/Title" to="." method="_on_Title_text_entered"]
 [connection signal="button_down" from="M/VBox/Button" to="." method="_on_Button_button_down"]

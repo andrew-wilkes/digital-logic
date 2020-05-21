@@ -14,3 +14,7 @@ func _on_Button_button_down():
 	var description = find_node("Description").text.strip_edges()
 	emit_signal("updated", title, description)
 	hide()
+
+
+func _on_Title_text_entered(_new_text):
+	_on_Button_button_down()
