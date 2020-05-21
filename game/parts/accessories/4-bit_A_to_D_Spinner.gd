@@ -4,7 +4,7 @@ const REPEAT_INTERVAL = 0.1
 const DELAY = 0.5
 
 var delta = 0
-var x = 0
+var x = 1
 
 func _ready():
 	allow_testing()
@@ -17,7 +17,7 @@ func _ready():
 		connect_pin(node)
 		outputs.append(false)
 		i += 1
-	set_value(x)
+	call_deferred("set_value", -1)
 
 
 func _on_Up_button_down():

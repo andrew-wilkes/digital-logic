@@ -15,6 +15,7 @@ var panning = false
 var pan_pos
 var cid = ""
 var vx = []
+var last_details
 
 func _ready():
 	allow_testing()
@@ -288,6 +289,10 @@ func set_shape_position():
 
 
 func request_to_choose_circuit():
+	if cid.empty():
+		last_details = { "title": "Untitled", "desc": "" }
+	else:
+		last_details = g.circuits[cid]
 	$c/FileDialog.popup_centered()
 
 
@@ -299,15 +304,15 @@ func choose_circuit(_cid):
 			emit_signal("details_changed", { "title": "Untitled", "desc": "" } )
 		"rename":
 			cid = ""
-			request_to_save_scene()
+			request_to_save_scene(last_details.title, last_details.desc)
 		_:
 			cid = _cid
 			load_scene()
 
 
-func request_to_save_scene():
+func request_to_save_scene(title = "", desc = ""):
 	if cid.empty():
-		$c/DetailsDialog.set_text()
+		$c/DetailsDialog.set_text(title, desc)
 		$c/DetailsDialog.popup_centered()
 	else:
 		save_scene()

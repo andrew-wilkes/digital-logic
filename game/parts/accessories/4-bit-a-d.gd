@@ -11,6 +11,7 @@ func _ready():
 		connect_pin(node)
 		outputs.append(false)
 		i += 1
+	call_deferred("_on_VSlider_value_changed", 0)
 
 
 func _on_VSlider_value_changed(x):

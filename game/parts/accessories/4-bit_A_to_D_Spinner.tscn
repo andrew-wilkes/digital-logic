@@ -93,7 +93,7 @@ texture_normal = ExtResource( 3 )
 margin_top = 24.0
 margin_right = 50.0
 margin_bottom = 38.0
-text = "0x1"
+text = "0x0"
 align = 2
 
 [node name="Down" type="TextureButton" parent="VBox"]

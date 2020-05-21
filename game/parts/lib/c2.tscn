@@ -7,9 +7,6 @@
 [ext_resource path="res://parts/accessories/4-bit_A_to_D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://parts/accessories/Decoded_7-Segment_Display.tscn" type="PackedScene" id=6]
 
-
-
-
 [node name="Parts" type="Node2D"]
 position = Vector2( -270, -90 )
 

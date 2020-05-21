@@ -18,7 +18,7 @@ wireable = true
 show_state = false
 is_ext_input = false
 
-[node name="Decoded 7 Segment Display" type="Node2D" parent="." instance=ExtResource( 3 )]
+[node name="Decoded 7 Segment Display68" type="Node2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 690, 140 )
 z_index = 1
 script = ExtResource( 2 )
