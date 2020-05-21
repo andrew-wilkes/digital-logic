@@ -78,3 +78,13 @@ wireable = true
 show_state = false
 is_ext_input = false
 gate_type = "NAND"
+
+[node name="Input" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( -70, 80 )
+script = ExtResource( 6 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = true

@@ -390,6 +390,7 @@ func load_scene():
 		var id = 0
 		for p in parts:
 			if p.has_method("set_label"):
+				p.show_label()
 				p.set_label(circuit.parts[id].label)
 			for pin_wires in circuit.parts[id].wires:
 				for w in pin_wires:
