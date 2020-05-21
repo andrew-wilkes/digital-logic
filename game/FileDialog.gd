@@ -15,7 +15,11 @@ func _ready():
 func set_items():
 	items = [{
 		"title": "New Circuit",
-		"cid": "",
+		"cid": "new",
+	},
+	{
+		"title": "Rename Circuit",
+		"cid": "rename",
 	}]
 	for cid in g.circuits.keys():
 		items.append({
@@ -38,7 +42,7 @@ func _on_FileDialog_about_to_show():
 
 
 func _on_Items_item_rmb_selected(index, _at_position):
-	if index > 0: # Ignore New Circuit option
+	if index > 1: # Ignore functional options
 		item_to_delete = index
 
 

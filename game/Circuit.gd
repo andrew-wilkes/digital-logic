@@ -292,16 +292,22 @@ func request_to_choose_circuit():
 
 
 func choose_circuit(_cid):
-	cid = _cid
-	if cid.empty():
-		delete_circuit()
-		emit_signal("details_changed", { "title": "Untitled", "desc": "" } )
-	else:
-		load_scene()
+	match _cid:
+		"new":
+			cid = ""
+			delete_circuit()
+			emit_signal("details_changed", { "title": "Untitled", "desc": "" } )
+		"rename":
+			cid = ""
+			request_to_save_scene()
+		_:
+			cid = _cid
+			load_scene()
 
 
 func request_to_save_scene():
 	if cid.empty():
+		$c/DetailsDialog.set_text()
 		$c/DetailsDialog.popup_centered()
 	else:
 		save_scene()

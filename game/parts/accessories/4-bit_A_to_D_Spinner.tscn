@@ -1,0 +1,110 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://parts/misc/Pin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://parts/accessories/4-bit_A_to_D_Spinner.gd" type="Script" id=2]
+[ext_resource path="res://assets/arrow.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 44, 40 )
+
+[node name="4 Bit Analog to Digital Spin Box" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Symbol" type="ColorRect" parent="."]
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 78.0
+margin_bottom = 70.0
+mouse_filter = 2
+color = Color( 0.266667, 0.266667, 0.266667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( -40, -60 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 74, 90 )
+shape = SubResource( 1 )
+
+[node name="Pins" type="Node2D" parent="."]
+position = Vector2( 20, 30 )
+
+[node name="p1" type="Line2D" parent="Pins"]
+position = Vector2( 78, -40 )
+points = PoolVector2Array( 0, 10, -20, 10 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="p2" type="Line2D" parent="Pins"]
+position = Vector2( 78, -20 )
+points = PoolVector2Array( 0, 10, -20, 10 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="p3" type="Line2D" parent="Pins"]
+position = Vector2( 78, 0 )
+points = PoolVector2Array( 0, 10, -20, 10 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="p4" type="Line2D" parent="Pins"]
+position = Vector2( 78, 20 )
+points = PoolVector2Array( 0, 10, -20, 10 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Inputs" type="Node2D" parent="."]
+position = Vector2( 20, 30 )
+
+[node name="Outputs" type="Node2D" parent="."]
+
+[node name="Pin1" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 98, 0 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Pin2" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 98, 20 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Pin3" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 98, 40 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Pin4" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 98, 60 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_left = 10.0
+margin_right = 60.0
+margin_bottom = 62.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Up" type="TextureButton" parent="VBox"]
+margin_right = 50.0
+margin_bottom = 20.0
+texture_normal = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="VBox"]
+margin_top = 24.0
+margin_right = 50.0
+margin_bottom = 38.0
+text = "0x1"
+align = 2
+
+[node name="Down" type="TextureButton" parent="VBox"]
+margin_top = 42.0
+margin_right = 50.0
+margin_bottom = 62.0
+texture_normal = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="button_down" from="VBox/Up" to="." method="_on_Up_button_down"]
+[connection signal="button_up" from="VBox/Up" to="." method="_on_Up_button_up"]
+[connection signal="button_down" from="VBox/Down" to="." method="_on_Down_button_down"]
+[connection signal="button_up" from="VBox/Down" to="." method="_on_Down_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
