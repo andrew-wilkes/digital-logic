@@ -3,9 +3,12 @@
 [ext_resource path="res://parts/accessories/7Segment.gd" type="Script" id=1]
 [ext_resource path="res://parts/accessories/4-bit_D_to_A.gd" type="Script" id=2]
 [ext_resource path="res://parts/accessories/4-bit-a-d.gd" type="Script" id=3]
-[ext_resource path="res://parts/accessories/4-bit_A_to_D.tscn" type="PackedScene" id=4]
-[ext_resource path="res://parts/accessories/4-bit_D_to_A.tscn" type="PackedScene" id=5]
+[ext_resource path="res://parts/accessories/4-bit_D_to_A.tscn" type="PackedScene" id=4]
+[ext_resource path="res://parts/accessories/4-bit_A_to_D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://parts/accessories/Decoded_7-Segment_Display.tscn" type="PackedScene" id=6]
+
+
+
 
 [node name="Parts" type="Node2D"]
 position = Vector2( -270, -90 )

@@ -157,8 +157,6 @@ func delete_wires():
 	for pin in $Outputs.get_children():
 		while pin.wires.size() > 0:
 			pin.wires.pop_front().delete()
-		#for w in pin.wires.duplicate(): # Deleting an element reduces the size of the array so need a copy
-			#w.delete() # The delete operation removes element from array shrinking it.
 	for pin in $Inputs.get_children():
 		if pin.wires.size() > 0:
 			pin.wires[0].delete()
