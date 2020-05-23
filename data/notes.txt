@@ -1,0 +1,12 @@
+Circuits scene
+
+Categories
+Items
+
+Learn about a part.
+Navigate forwards and back.
+Display stats
+
+Logic scene
+Draw circuit
+Test circuit - find inputs and outputs, drive inputs with truth table values, compare outputs to expected values.
