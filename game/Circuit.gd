@@ -8,6 +8,9 @@ var part
 var part_to_delete
 var wire_scene = preload("res://parts/misc/Wire.tscn")
 var picker_scene = preload("res://PartsPicker.tscn")
+var in_node
+var out_node
+
 var ref
 var min_point: Vector2
 var max_point: Vector2
@@ -16,6 +19,8 @@ var pan_pos
 var cid = ""
 var vx = []
 var last_details
+var ips = []
+var ops = []
 
 func _ready():
 	allow_testing()
@@ -25,7 +30,33 @@ func _ready():
 	var data = g.load_file(g.PART_FILE_PATH + "data.json")
 	if data:
 		g.circuits = data
-	return get_tree().get_root().connect("size_changed", self, "set_shape_position")
+	in_node = load("res://parts/zInput.tscn")
+	out_node = load("res://parts/zOutput.tscn")
+	add_inputs(["A1", "A2"])
+	add_ouputs(["O1", "O2"])
+	get_tree().get_root().connect("size_changed", self, "set_shape_position")
+
+
+func add_inputs(txts):
+	add_io(txts, Vector2(100, 50), in_node, ips)
+
+
+func add_ouputs(txts):
+	var x = align_to_grid(rect_size.x)
+	add_io(txts, Vector2(x - 200, 50), out_node, ops)
+
+
+func add_io(txts, pos, resc, list: Array):
+	list.clear()
+	for txt in txts:
+		var node = resc.instance()
+		node.set_label(txt)
+		node.position = pos
+		list.append(node)
+		part_picked(node)
+		part_dropped()
+		node.show_label()
+		pos.y += 50
 
 
 func allow_testing():
