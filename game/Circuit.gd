@@ -35,6 +35,35 @@ func _ready():
 	get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
 
+func apply_input(value): # to multi-input part
+	var error_code = ips.size() - 1
+	if error_code == 0:
+		ips[0].state = value
+	return error_code
+
+
+func apply_inputs(vals: Array): # to input pin parts
+	var error_code = vals.size() - ips.size()
+	if error_code == 0:
+		for i in vals.size():
+			ips[i].state = vals[i]
+	return error_code
+
+
+func get_output_state(): # from accessory inputs
+	if ops.size() > 0:
+		return []
+	else:
+		return ops[0].inputs
+
+
+func get_output_states(): # from output pin parts
+	var s = []
+	for op in ops:
+		s.append(op.state)
+	return s
+
+
 func get_inputs():
 	ips.clear()
 	for p in $Parts.get_children():

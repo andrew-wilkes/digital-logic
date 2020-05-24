@@ -113,7 +113,7 @@ func pinclick(node):
 
 # Change color of Input part and signal change of state
 func change_input_state(value):
-	state = value
+	state = bool(value) # May receive a test value for a multi-input part in error
 	outputs[0] = state
 	color = g.get_state_color(state)
 	$Symbol.modulate = color
