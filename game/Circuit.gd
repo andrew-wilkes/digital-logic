@@ -8,8 +8,8 @@ var part
 var part_to_delete
 var wire_scene = preload("res://parts/misc/Wire.tscn")
 var picker_scene = preload("res://PartsPicker.tscn")
-var in_node
-var out_node
+var in_node = preload("res://parts/zInput.tscn")
+var out_node = preload("res://parts/zOutput.tscn")
 
 var ref
 var min_point: Vector2
@@ -30,11 +30,23 @@ func _ready():
 	var data = g.load_file(g.PART_FILE_PATH + "data.json")
 	if data:
 		g.circuits = data
-	in_node = load("res://parts/zInput.tscn")
-	out_node = load("res://parts/zOutput.tscn")
 	add_inputs(["A1", "A2"])
 	add_ouputs(["O1", "O2"])
 	get_tree().get_root().connect("size_changed", self, "set_shape_position")
+
+
+func get_inputs():
+	ips.clear()
+	for p in $Parts.get_children():
+		if p.is_ext_input:
+			ips.append(p)
+
+
+func get_outputs():
+	ops.clear()
+	for p in $Parts.get_children():
+		if p.is_ext_output:
+			ops.append(p)
 
 
 func add_inputs(txts):

@@ -33,17 +33,5 @@ func update_output(pin, value):
 	$Symbol.modulate = color
 
 
-func _on_Label_button_down():
-	$c/LabelDialog.window_title = "Enter label text"
-	$c/LabelDialog.set_text(get_label())
-	$c/LabelDialog.popup_centered()
-
-
-func _on_LabelDialog_updated(txt):
-	if txt.empty():
-		txt = "?"
-	set_label(txt)
-
-
 func show_label():
 	$Label.show()

@@ -3,7 +3,7 @@
 [ext_resource path="res://parts/Output.gd" type="Script" id=1]
 [ext_resource path="res://assets/arrow.png" type="Texture" id=2]
 [ext_resource path="res://parts/misc/Pin.tscn" type="PackedScene" id=3]
-[ext_resource path="res://LabelDialog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://EditableLabel.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20.6381, 10 )
@@ -37,33 +37,9 @@ position = Vector2( -20, 0 )
 position = Vector2( 30.6251, 0 )
 shape = SubResource( 1 )
 
-[node name="Region" type="ReferenceRect" parent="."]
-margin_left = -30.0
-margin_top = -20.0
-margin_right = 50.0
-margin_bottom = 20.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="ToolButton" parent="."]
-margin_left = 30.0
+[node name="Label" parent="." instance=ExtResource( 4 )]
+margin_left = 32.0
 margin_top = -10.0
-margin_right = 48.0
+margin_right = 50.0
 margin_bottom = 12.0
-focus_mode = 0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0.34, 0.34, 0.34, 1 )
-enabled_focus_mode = 0
-text = "?"
 align = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="c" type="CanvasLayer" parent="."]
-
-[node name="LabelDialog" parent="c" instance=ExtResource( 4 )]
-[connection signal="button_down" from="Label" to="." method="_on_Label_button_down"]
-[connection signal="updated" from="c/LabelDialog" to="." method="_on_LabelDialog_updated"]

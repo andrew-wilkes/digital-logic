@@ -17,6 +17,7 @@ export(bool) var moveable = true
 export(bool) var wireable = true
 export(bool) var show_state = false
 export(bool) var is_ext_input = false
+export(bool) var is_ext_output = false
 
 var outputs = []
 var state = false setget change_input_state

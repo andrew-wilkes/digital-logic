@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://EditableLabel.gd" type="Script" id=1]
+[ext_resource path="res://LabelDialog.tscn" type="PackedScene" id=2]
+
+[node name="EditableLabel" type="ToolButton"]
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.341176, 0.341176, 0.341176, 1 )
+text = "?"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="c" type="CanvasLayer" parent="."]
+
+[node name="LabelDialog" parent="c" instance=ExtResource( 2 )]
+[connection signal="button_down" from="." to="." method="_on_Label_button_down"]
+[connection signal="updated" from="c/LabelDialog" to="." method="_on_LabelDialog_updated"]
