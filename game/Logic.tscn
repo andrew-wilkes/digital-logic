@@ -53,7 +53,7 @@ margin_left = 0.0
 margin_top = 0.0
 margin_right = 360.0
 margin_bottom = 64.0
-page_id = 3
+page_id = -1
 
 [node name="Menu" parent="VBox/HBox/VBox" instance=ExtResource( 6 )]
 anchor_right = 0.0

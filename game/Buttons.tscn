@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/circuits.png" type="Texture" id=1]
 [ext_resource path="res://assets/systems-l.png" type="Texture" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://assets/home-l.png" type="Texture" id=9]
 [ext_resource path="res://assets/numbers-l.png" type="Texture" id=10]
 [ext_resource path="res://assets/gates-l.png" type="Texture" id=11]
+[ext_resource path="res://assets/numbers-f.png" type="Texture" id=12]
+[ext_resource path="res://assets/circuits-f.png" type="Texture" id=14]
+[ext_resource path="res://assets/systems-f.png" type="Texture" id=15]
+[ext_resource path="res://assets/gates-f.png" type="Texture" id=16]
 
 [node name="Buttons" type="HBoxContainer"]
 anchor_right = 1.0
@@ -47,6 +51,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource( 8 )
 texture_hover = ExtResource( 10 )
+texture_disabled = ExtResource( 12 )
 
 [node name="Gates" type="TextureButton" parent="."]
 margin_left = 148.0
@@ -58,6 +63,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource( 7 )
 texture_hover = ExtResource( 11 )
+texture_disabled = ExtResource( 16 )
 
 [node name="Circuits" type="TextureButton" parent="."]
 margin_left = 222.0
@@ -69,6 +75,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource( 1 )
 texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 14 )
 
 [node name="Systems" type="TextureButton" parent="."]
 margin_left = 296.0
@@ -80,6 +87,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource( 3 )
 texture_hover = ExtResource( 2 )
+texture_disabled = ExtResource( 15 )
 [connection signal="button_down" from="Home" to="." method="_on_Home_button_down"]
 [connection signal="button_down" from="Numbers" to="." method="_on_Numbers_button_down"]
 [connection signal="button_down" from="Gates" to="." method="_on_Gates_button_down"]
