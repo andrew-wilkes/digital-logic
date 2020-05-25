@@ -14,10 +14,6 @@
 [node name="Main" type="CenterContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -384.774
-margin_top = -49.5311
-margin_right = -384.774
-margin_bottom = -49.531
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
