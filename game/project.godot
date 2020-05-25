@@ -44,6 +44,7 @@ run/main_scene="res://Main.tscn"
 [autoload]
 
 g="*res://g.gd"
+tt="*res://tt.gd"
 
 [debug]
 

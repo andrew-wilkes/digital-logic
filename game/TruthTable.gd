@@ -4,29 +4,13 @@ var g1
 var g2
 var ni
 var no
-var values
 
 func _ready():
 	g1 = find_node("Grid")
 	g2 = find_node("Grid2")
-	var data = {
-		title = "Three-to-eight Decoder",
-		inputs = ["A2","A1","A0"],
-		outputs = ["Y0","Y1","Y2","Y3","Y4","Y5","Y6","Y7"],
-		values = [
-			[0,0,0,1,0,0,0,0,0,0,0],
-			[0,0,1,0,1,0,0,0,0,0,0],
-			[0,1,0,0,0,1,0,0,0,0,0],
-			[0,1,1,0,0,0,1,0,0,0,0],
-			[1,0,0,0,0,0,0,1,0,0,0],
-			[1,0,1,0,0,0,0,0,1,0,0],
-			[1,1,0,0,0,0,0,0,0,1,0],
-			[1,1,1,0,0,0,0,0,0,0,1]
-		]
-	}
-	values = data.values
+	var data = tt.data[0]
 	populate(data)
-	var ok = check_truth([
+	var ok = check_truth(data.values, [
 			[0,0,0,1,0,0,1,0,0,0,0],
 			[0,0,1,0,1,0,0,0,0,0,0],
 			[0,1,0,0,0,1,0,0,0,0,0],
@@ -39,10 +23,10 @@ func _ready():
 	print(ok)
 
 
-func check_truth(data):
+func check_truth(values, map):
 	var ok = true
 	var n = 0
-	for row in data:
+	for row in map:
 		for i in no:
 			var v1 = values[n][i + ni]
 			var v2 = row[i + ni]
