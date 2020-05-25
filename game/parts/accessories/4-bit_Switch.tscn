@@ -87,18 +87,22 @@ __meta__ = {
 [node name="CheckButton" type="CheckButton" parent="Buttons"]
 margin_right = 76.0
 margin_bottom = 40.0
+focus_mode = 0
 
 [node name="CheckButton2" type="CheckButton" parent="Buttons"]
 margin_top = 40.0
 margin_right = 76.0
 margin_bottom = 80.0
+focus_mode = 0
 
 [node name="CheckButton3" type="CheckButton" parent="Buttons"]
 margin_top = 80.0
 margin_right = 76.0
 margin_bottom = 120.0
+focus_mode = 0
 
 [node name="CheckButton4" type="CheckButton" parent="Buttons"]
 margin_top = 120.0
 margin_right = 76.0
 margin_bottom = 160.0
+focus_mode = 0
