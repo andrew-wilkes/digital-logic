@@ -15,7 +15,9 @@ var data = [
 			[1,1,0,0,0,0,0,0,0,1,0],
 			[1,1,1,0,0,0,0,0,0,0,1]
 		],
-		desc = "Description text"
+		desc = "This is an example of a decoder. It takes a 3-bit binary input and decodes it to one of eight possible outputs.",
+		hint = "We can combine AND gates and NOT gates. For example: Y5 = A2 * [u]A1[/u] * A0"
+		
 	},
 	{
 		title = "Full Adder",
@@ -31,6 +33,7 @@ var data = [
 			[1,1,0,0,1],
 			[1,1,1,1,1]
 		],
-		desc = "Description text"
+		desc = "A full adder adds together a carry input, A, and B to give two outputs: sum and carry out.",
+		hint = "We have 3 bits to add together producin numbers in a range 0 to 3. In binary: 00 to 11 with the least significant bit the sum, and the most significant bit the carry out.\nTo get the sum, we may exclusive-or together, the three inputs: A @ B @ Cin\nThe carry out is high if at least two of the inputs are high, so: Cout = A * B + A * Cin + B * Cin"
 	}
 ]
