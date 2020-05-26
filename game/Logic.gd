@@ -17,7 +17,7 @@ func process_buttons(action):
 			save_circuit()
 		"library":
 			choose_circuit()
-		"help":
+		"info":
 			show_help()
 
 
@@ -48,3 +48,11 @@ func _on_Access_button_down():
 
 func add_accessory_to_circuit(item):
 	circuit.part_picked(item)
+
+
+func _on_Hint_button_down():
+	pass # Replace with function body.
+
+
+func _on_Truth_button_down():
+	pass # Replace with function body.

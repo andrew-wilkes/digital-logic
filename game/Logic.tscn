@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Buttons.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/subtitle_font.tres" type="DynamicFont" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://assets/access.png" type="Texture" id=9]
 [ext_resource path="res://assets/access-l.png" type="Texture" id=10]
 [ext_resource path="res://AccessoryPicker.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/help-l.png" type="Texture" id=12]
+[ext_resource path="res://assets/help.png" type="Texture" id=14]
+[ext_resource path="res://assets/truth.png" type="Texture" id=15]
+[ext_resource path="res://assets/truth-l.png" type="Texture" id=16]
 
 [node name="Logic" type="MarginContainer"]
 anchor_right = 1.0
@@ -67,6 +71,7 @@ margin_bottom = 148.0
 margin_top = 168.0
 margin_right = 360.0
 margin_bottom = 232.0
+custom_constants/separation = 10
 
 [node name="Access" type="TextureButton" parent="VBox/HBox/VBox/Misc"]
 margin_right = 64.0
@@ -74,6 +79,30 @@ margin_bottom = 64.0
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 10 )
+
+[node name="Control" type="Control" parent="VBox/HBox/VBox/Misc"]
+margin_left = 74.0
+margin_right = 212.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+
+[node name="Hint" type="TextureButton" parent="VBox/HBox/VBox/Misc"]
+margin_left = 222.0
+margin_right = 286.0
+margin_bottom = 64.0
+hint_tooltip = "Get hints"
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 12 )
+
+[node name="Truth" type="TextureButton" parent="VBox/HBox/VBox/Misc"]
+margin_left = 296.0
+margin_right = 360.0
+margin_bottom = 64.0
+hint_tooltip = "Display truth table"
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
 
 [node name="VBox2" type="VBoxContainer" parent="VBox/HBox"]
 margin_left = 380.0
@@ -140,4 +169,6 @@ dialog_text = "Some text!"
 [node name="AccessoryPicker" parent="c" instance=ExtResource( 11 )]
 visible = false
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Access" to="." method="_on_Access_button_down"]
+[connection signal="button_down" from="VBox/HBox/VBox/Misc/Hint" to="." method="_on_Hint_button_down"]
+[connection signal="button_down" from="VBox/HBox/VBox/Misc/Truth" to="." method="_on_Truth_button_down"]
 [connection signal="details_changed" from="VBox/HBox2/Circuit" to="." method="_on_Circuit_details_changed"]

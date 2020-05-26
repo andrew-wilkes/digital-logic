@@ -18,5 +18,5 @@ func _on_Library_button_down():
 	emit_signal("button_pressed", "library")
 
 
-func _on_Help_button_down():
-	emit_signal("button_pressed", "help")
+func _on_Info_button_down():
+	emit_signal("button_pressed", "info")
