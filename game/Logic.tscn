@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Buttons.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/subtitle_font.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/title_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/subtitle_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/title_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://TextPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Circuit.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Buttons2.tscn" type="PackedScene" id=6]
@@ -37,13 +37,13 @@ __meta__ = {
 
 [node name="HBox" type="HBoxContainer" parent="VBox"]
 margin_right = 1260.0
-margin_bottom = 294.0
+margin_bottom = 232.0
 size_flags_horizontal = 3
 custom_constants/separation = 20
 
 [node name="VBox" type="VBoxContainer" parent="VBox/HBox"]
 margin_right = 360.0
-margin_bottom = 294.0
+margin_bottom = 232.0
 custom_constants/separation = 20
 
 [node name="Buttons" parent="VBox/HBox/VBox" instance=ExtResource( 1 )]
@@ -78,7 +78,7 @@ texture_hover = ExtResource( 10 )
 [node name="VBox2" type="VBoxContainer" parent="VBox/HBox"]
 margin_left = 380.0
 margin_right = 1260.0
-margin_bottom = 294.0
+margin_bottom = 232.0
 size_flags_horizontal = 3
 custom_constants/separation = 20
 __meta__ = {
@@ -103,11 +103,11 @@ text = "Untitled"
 [node name="Description" parent="VBox/HBox/VBox2" instance=ExtResource( 4 )]
 margin_top = 157.0
 margin_right = 880.0
-margin_bottom = 294.0
+margin_bottom = 232.0
 text = "We may wire up logic gates to make circuits to perform various useful functions such as decoding, encoding, selecting, adding, counting, and memory."
 
 [node name="HBox2" type="HBoxContainer" parent="VBox"]
-margin_top = 298.0
+margin_top = 236.0
 margin_right = 1260.0
 margin_bottom = 780.0
 mouse_filter = 2
@@ -116,7 +116,7 @@ size_flags_vertical = 3
 [node name="PartsPicker" parent="VBox/HBox2" instance=ExtResource( 8 )]
 anchor_bottom = 0.0
 margin_right = 100.0
-margin_bottom = 482.0
+margin_bottom = 544.0
 rect_min_size = Vector2( 100, 300 )
 
 [node name="Circuit" parent="VBox/HBox2" instance=ExtResource( 5 )]
@@ -124,7 +124,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 104.0
 margin_right = 1260.0
-margin_bottom = 482.0
+margin_bottom = 544.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
