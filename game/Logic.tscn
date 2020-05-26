@@ -182,8 +182,10 @@ margin_right = 533.0
 margin_bottom = 196.0
 
 [node name="TruthPanel" type="AcceptDialog" parent="c"]
-margin_right = 362.0
-margin_bottom = 271.0
+margin_right = 119.0
+margin_bottom = 100.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 window_title = "Truth Table"
 
 [node name="TruthTable" parent="c/TruthPanel" instance=ExtResource( 13 )]

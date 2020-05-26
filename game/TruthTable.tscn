@@ -2,34 +2,25 @@
 
 [ext_resource path="res://TruthTable.gd" type="Script" id=1]
 
-[node name="TruthTable" type="Control"]
+[node name="TruthTable" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 20
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-margin_right = 14.0
-margin_bottom = 14.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBox" type="HBoxContainer" parent="PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 27.0
-margin_bottom = 7.0
-custom_constants/separation = 20
-
-[node name="Grid" type="GridContainer" parent="PanelContainer/HBox"]
+[node name="Grid" type="GridContainer" parent="."]
+margin_bottom = 800.0
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
 
-[node name="Grid2" type="GridContainer" parent="PanelContainer/HBox"]
+[node name="Grid2" type="GridContainer" parent="."]
 margin_left = 20.0
 margin_right = 20.0
+margin_bottom = 800.0
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
