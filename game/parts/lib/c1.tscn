@@ -21,6 +21,7 @@ moveable = true
 wireable = true
 show_state = false
 is_ext_input = false
+is_ext_output = false
 gate_type = "NAND"
 
 [node name="Output232203" type="Node2D" parent="." instance=ExtResource( 3 )]
@@ -32,6 +33,7 @@ moveable = true
 wireable = true
 show_state = true
 is_ext_input = false
+is_ext_output = false
 
 [node name="NOT204" type="Node2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 84, 250 )
@@ -43,6 +45,7 @@ moveable = true
 wireable = true
 show_state = false
 is_ext_input = false
+is_ext_output = false
 gate_type = "NOT"
 
 [node name="Input237209" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -54,6 +57,7 @@ moveable = true
 wireable = true
 show_state = true
 is_ext_input = true
+is_ext_output = false
 
 [node name="NAND76210" type="Node2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 240, 140 )
@@ -65,6 +69,7 @@ moveable = true
 wireable = true
 show_state = false
 is_ext_input = false
+is_ext_output = false
 gate_type = "NAND"
 
 [node name="NAND77211" type="Node2D" parent="." instance=ExtResource( 4 )]
@@ -77,9 +82,10 @@ moveable = true
 wireable = true
 show_state = false
 is_ext_input = false
+is_ext_output = false
 gate_type = "NAND"
 
-[node name="Input" type="Node2D" parent="." instance=ExtResource( 7 )]
+[node name="Input100" type="Node2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( -70, 80 )
 script = ExtResource( 6 )
 highlight_pin = true
@@ -88,3 +94,4 @@ moveable = true
 wireable = true
 show_state = true
 is_ext_input = true
+is_ext_output = false

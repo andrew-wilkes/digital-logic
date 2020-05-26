@@ -8,19 +8,19 @@ var item_to_delete
 
 func _ready():
 	if get_parent().name == "root":
-		show()
-	set_items()
+		set_items()
 
 
-func set_items():
+func set_items(editable = true):
 	items = [{
 		"title": "New Circuit",
 		"cid": "new",
-	},
-	{
-		"title": "Rename Circuit",
-		"cid": "rename",
 	}]
+	if editable:
+		items.append({
+			"title": "Rename Circuit",
+			"cid": "rename",
+		})
 	for cid in g.circuits.keys():
 		items.append({
 			"title": g.circuits[cid].title,
@@ -29,16 +29,13 @@ func set_items():
 	$M/Items.clear()
 	for i in items:
 		$M/Items.add_item(i.title)
+	popup_centered()
 
 
 func _on_Items_item_selected(index):
 	# This is triggered by any mouse button click
 	item_to_delete = null
 	call_deferred("item_selected", index)
-
-
-func _on_FileDialog_about_to_show():
-	set_items()
 
 
 func _on_Items_item_rmb_selected(index, _at_position):

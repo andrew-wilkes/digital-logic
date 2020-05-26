@@ -20,6 +20,7 @@ moveable = true
 wireable = true
 show_state = true
 is_ext_input = false
+is_ext_output = false
 on_color = Color( 0.0784314, 1, 0, 1 )
 off_color = Color( 0.192157, 0.192157, 0.192157, 0.454902 )
 decode = true
@@ -34,6 +35,7 @@ moveable = true
 wireable = true
 show_state = false
 is_ext_input = false
+is_ext_output = false
 
 [node name="4 Bit Analog to Digital Converter" type="Node2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 320, 360 )
@@ -45,3 +47,4 @@ moveable = true
 wireable = true
 show_state = false
 is_ext_input = false
+is_ext_output = false

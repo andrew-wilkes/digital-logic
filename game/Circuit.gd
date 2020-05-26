@@ -361,11 +361,13 @@ func set_shape_position():
 
 
 func request_to_choose_circuit():
+	var editable = false
 	if cid.empty():
 		last_details = { "title": "Untitled", "desc": "" }
 	else:
 		last_details = g.circuits[cid]
-	$c/FileDialog.popup_centered()
+		editable = g.circuits[cid].id == "-"
+	$c/FileDialog.set_items(editable)
 
 
 func choose_circuit(_cid):
@@ -405,6 +407,7 @@ func save_scene(title = "", description = ""):
 		description = g.circuits[cid].desc
 	var off = $Parts.position
 	var circuit = {
+		"id": "-",
 		"title": title,
 		"desc": description,
 		"parts": [],

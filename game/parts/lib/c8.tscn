@@ -20,6 +20,7 @@ moveable = true
 wireable = true
 show_state = true
 is_ext_input = true
+is_ext_output = false
 
 [node name="Input187" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 160, 170 )
@@ -30,6 +31,7 @@ moveable = true
 wireable = true
 show_state = true
 is_ext_input = true
+is_ext_output = false
 
 [node name="Input192" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 160, 340 )
@@ -40,6 +42,7 @@ moveable = true
 wireable = true
 show_state = true
 is_ext_input = true
+is_ext_output = false
 
 [node name="Output" type="Node2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 790, 270 )
@@ -50,6 +53,7 @@ moveable = true
 wireable = true
 show_state = true
 is_ext_input = false
+is_ext_output = false
 
 [node name="Output201" type="Node2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 790, 130 )
@@ -60,6 +64,7 @@ moveable = true
 wireable = true
 show_state = true
 is_ext_input = false
+is_ext_output = false
 
 [node name="XOR" type="Node2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 460, 110 )
@@ -71,6 +76,7 @@ moveable = true
 wireable = true
 show_state = false
 is_ext_input = false
+is_ext_output = false
 gate_type = "XOR"
 
 [node name="XOR203" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -83,6 +89,7 @@ moveable = true
 wireable = true
 show_state = false
 is_ext_input = false
+is_ext_output = false
 gate_type = "XOR"
 
 [node name="AND" type="Node2D" parent="." instance=ExtResource( 5 )]
@@ -95,6 +102,7 @@ moveable = true
 wireable = true
 show_state = true
 is_ext_input = false
+is_ext_output = false
 gate_type = "AND"
 
 [node name="AND207" type="Node2D" parent="." instance=ExtResource( 5 )]
@@ -107,6 +115,7 @@ moveable = true
 wireable = true
 show_state = true
 is_ext_input = false
+is_ext_output = false
 gate_type = "AND"
 
 [node name="AND208" type="Node2D" parent="." instance=ExtResource( 5 )]
@@ -119,6 +128,7 @@ moveable = true
 wireable = true
 show_state = true
 is_ext_input = false
+is_ext_output = false
 gate_type = "AND"
 
 [node name="OR" type="Node2D" parent="." instance=ExtResource( 8 )]
@@ -131,6 +141,7 @@ moveable = true
 wireable = true
 show_state = false
 is_ext_input = false
+is_ext_output = false
 gate_type = "OR"
 
 [node name="OR216" type="Node2D" parent="." instance=ExtResource( 8 )]
@@ -143,4 +154,5 @@ moveable = true
 wireable = true
 show_state = false
 is_ext_input = false
+is_ext_output = false
 gate_type = "OR"

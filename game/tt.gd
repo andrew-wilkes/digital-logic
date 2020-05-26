@@ -1,6 +1,7 @@
 extends Node
 
-var data = [
+var data = {
+	"3to8dec":
 	{
 		title = "Three-to-eight Decoder",
 		inputs = ["A2","A1","A0"],
@@ -19,6 +20,7 @@ var data = [
 		hint = "We can combine AND gates and NOT gates. For example: Y5 = A2 * [u]A1[/u] * A0"
 		
 	},
+	"fulladder":
 	{
 		title = "Full Adder",
 		inputs = ["A","B","Cin"],
@@ -36,4 +38,4 @@ var data = [
 		desc = "A full adder adds together a carry input, A, and B to give two outputs: sum and carry out.",
 		hint = "We have 3 bits to add together producin numbers in a range 0 to 3. In binary: 00 to 11 with the least significant bit the sum, and the most significant bit the carry out.\nTo get the sum, we may exclusive-or together, the three inputs: A @ B @ Cin\nThe carry out is high if at least two of the inputs are high, so: Cout = A * B + A * Cin + B * Cin"
 	}
-]
+}
