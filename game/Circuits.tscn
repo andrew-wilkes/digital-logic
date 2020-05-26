@@ -40,8 +40,3 @@ text = "Combinational Logic Circuits"
 [node name="TextPanel" parent="VBox" instance=ExtResource( 4 )]
 margin_right = 743.0
 margin_bottom = 220.0
-text = "We may wire up logic gates to make circuits to perform various useful functions such as decoding, encoding, selecting, adding, counting, and memory.
-
-Connection rules are:
-All inputs must be fed from an external input or the output of another gate.
-Outputs must not be connected together."

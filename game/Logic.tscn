@@ -100,6 +100,7 @@ margin_left = 296.0
 margin_right = 360.0
 margin_bottom = 64.0
 hint_tooltip = "Display truth table"
+shortcut_in_tooltip = false
 texture_normal = ExtResource( 15 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 16 )
@@ -133,7 +134,6 @@ text = "Untitled"
 margin_top = 157.0
 margin_right = 880.0
 margin_bottom = 232.0
-text = "We may wire up logic gates to make circuits to perform various useful functions such as decoding, encoding, selecting, adding, counting, and memory."
 
 [node name="HBox2" type="HBoxContainer" parent="VBox"]
 margin_top = 236.0
@@ -168,6 +168,17 @@ dialog_text = "Some text!"
 
 [node name="AccessoryPicker" parent="c" instance=ExtResource( 11 )]
 visible = false
+
+[node name="HintPanel" type="AcceptDialog" parent="c"]
+margin_right = 541.0
+margin_bottom = 232.0
+window_title = "Hint"
+
+[node name="TextPanel" parent="c/HintPanel" instance=ExtResource( 4 )]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 533.0
+margin_bottom = 196.0
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Access" to="." method="_on_Access_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Hint" to="." method="_on_Hint_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Truth" to="." method="_on_Truth_button_down"]
