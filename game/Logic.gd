@@ -75,4 +75,9 @@ func _on_Hint_button_down():
 
 
 func _on_Truth_button_down():
-	pass # Replace with function body.
+	$c/TruthPanel/TruthTable.populate(tt.data[cid])
+	$c/TruthPanel.popup_centered()
+
+
+func _on_TruthPanel_popup_hide():
+	$c/TruthPanel/TruthTable.clear()

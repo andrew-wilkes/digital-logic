@@ -8,19 +8,20 @@ var no
 func _ready():
 	g1 = find_node("Grid")
 	g2 = find_node("Grid2")
-	var data = tt.data[0]
-	populate(data)
-	var ok = check_truth(data.values, [
-			[0,0,0,1,0,0,1,0,0,0,0],
-			[0,0,1,0,1,0,0,0,0,0,0],
-			[0,1,0,0,0,1,0,0,0,0,0],
-			[0,1,1,0,0,0,1,0,0,0,0],
-			[1,0,0,0,0,0,0,1,0,0,0],
-			[1,0,1,0,0,0,0,0,1,0,0],
-			[1,1,0,0,0,0,0,0,0,1,0],
-			[1,1,1,0,0,0,0,0,0,0,1]
-		])
-	print(ok)
+	if get_parent().name == "root":
+		var data = tt.data.values()[0]
+		populate(data)
+		var ok = check_truth(data.values, [
+				[0,0,0,1,0,0,1,0,0,0,0],
+				[0,0,1,0,1,0,0,0,0,0,0],
+				[0,1,0,0,0,1,0,0,0,0,0],
+				[0,1,1,0,0,0,1,0,0,0,0],
+				[1,0,0,0,0,0,0,1,0,0,0],
+				[1,0,1,0,0,0,0,0,1,0,0],
+				[1,1,0,0,0,0,0,0,0,1,0],
+				[1,1,1,0,0,0,0,0,0,0,1]
+			])
+		print(ok)
 
 
 func check_truth(values, map):
@@ -69,3 +70,13 @@ func add_label(g, txt, color = Color.white):
 	l.align = Label.ALIGN_CENTER
 	l.modulate = color
 	g.add_child(l)
+
+
+func clear():
+	clear_grid(g1)
+	clear_grid(g2)
+
+
+func clear_grid(g):
+	for n in g.get_children():
+		n.queue_free()
