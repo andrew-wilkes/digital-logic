@@ -30,8 +30,9 @@ func _ready():
 	var data = g.load_file(g.PART_FILE_PATH + "data.json")
 	if data:
 		g.circuits = data
-	add_inputs(["A1", "A2"])
-	add_ouputs(["O1", "O2"])
+	if g.param:
+		add_inputs(tt.data[g.param].inputs)
+		add_ouputs(tt.data[g.param].outputs)
 	get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
 

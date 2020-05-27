@@ -3,7 +3,6 @@
 [ext_resource path="res://AccessoryPicker.gd" type="Script" id=1]
 
 [node name="AccessoryPicker" type="WindowDialog"]
-visible = true
 margin_right = 479.0
 margin_bottom = 256.0
 script = ExtResource( 1 )

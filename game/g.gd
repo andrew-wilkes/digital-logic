@@ -10,6 +10,7 @@ const UNSTABLE_THRESHOLD = 20
 
 var wire = null
 var circuits = {}
+var param
 
 func delete_file(path, fn):
 	var dir = Directory.new()

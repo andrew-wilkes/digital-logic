@@ -17,6 +17,12 @@ func _ready():
 	hp = $c/HintPanel
 	hint_button.visible = false
 	truth_button.visible = false
+	if g.param:
+		_on_Circuit_details_changed({
+			id = g.param,
+			title = "",
+			desc = ""
+		})
 
 
 func process_buttons(action):
