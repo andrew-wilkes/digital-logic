@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Buttons.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/subtitle_font.tres" type="DynamicFont" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/help.png" type="Texture" id=14]
 [ext_resource path="res://assets/truth.png" type="Texture" id=15]
 [ext_resource path="res://assets/truth-l.png" type="Texture" id=16]
+[ext_resource path="res://RichTextPopup.tscn" type="PackedScene" id=17]
 
 [node name="Logic" type="MarginContainer"]
 anchor_right = 1.0
@@ -170,16 +171,7 @@ dialog_text = "Some text!"
 [node name="AccessoryPicker" parent="c" instance=ExtResource( 11 )]
 visible = false
 
-[node name="HintPanel" type="AcceptDialog" parent="c"]
-margin_right = 541.0
-margin_bottom = 232.0
-window_title = "Hint"
-
-[node name="TextPanel" parent="c/HintPanel" instance=ExtResource( 4 )]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 533.0
-margin_bottom = 196.0
+[node name="HintPanel" parent="c" instance=ExtResource( 17 )]
 
 [node name="TruthPanel" type="AcceptDialog" parent="c"]
 margin_right = 119.0

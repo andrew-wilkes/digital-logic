@@ -70,8 +70,7 @@ func add_accessory_to_circuit(item):
 
 
 func _on_Hint_button_down():
-	hp.get_node("TextPanel").text = tt.data[cid].hint
-	hp.popup_centered()
+	hp.text = tt.data[cid].hint
 
 
 func _on_Truth_button_down():

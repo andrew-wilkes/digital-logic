@@ -52,3 +52,9 @@ func get_state_color(state):
 		return g.COLOR_HIGH
 	else:
 		return g.COLOR_LOW
+
+
+func format_text(txt):
+	txt = txt.replace("@", "[code]%s[/code]" % char(197))
+	txt = txt.replace("*", "[code]%s[/code]" % char(215))
+	return "[_]" + txt

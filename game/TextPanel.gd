@@ -7,6 +7,4 @@ func _ready():
 
 
 func set_text(txt):
-	txt = txt.replace("@", "[code]%s[/code]" % char(197))
-	txt = txt.replace("*", "[code]%s[/code]" % char(215))
-	$Margin/Label.bbcode_text = "[_]" + txt
+	$Margin/Label.bbcode_text = g.format_text(txt)
