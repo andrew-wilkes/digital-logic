@@ -172,6 +172,8 @@ dialog_text = "Some text!"
 visible = false
 
 [node name="HintPanel" parent="c" instance=ExtResource( 17 )]
+visible = false
+window_title = "Hint"
 
 [node name="TruthPanel" type="AcceptDialog" parent="c"]
 margin_right = 119.0
