@@ -12,7 +12,7 @@
 [ext_resource path="res://assets/access-l.png" type="Texture" id=10]
 [ext_resource path="res://AccessoryPicker.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/help-l.png" type="Texture" id=12]
-[ext_resource path="res://TruthTable.tscn" type="PackedScene" id=13]
+[ext_resource path="res://TruthPanel.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/help.png" type="Texture" id=14]
 [ext_resource path="res://assets/truth.png" type="Texture" id=15]
 [ext_resource path="res://assets/truth-l.png" type="Texture" id=16]
@@ -175,20 +175,10 @@ visible = false
 visible = false
 window_title = "Hint"
 
-[node name="TruthPanel" type="AcceptDialog" parent="c"]
-margin_right = 119.0
-margin_bottom = 100.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-window_title = "Truth Table"
-
-[node name="TruthTable" parent="c/TruthPanel" instance=ExtResource( 13 )]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = -36.0
+[node name="TruthPanel" parent="c" instance=ExtResource( 13 )]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Access" to="." method="_on_Access_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Hint" to="." method="_on_Hint_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Truth" to="." method="_on_Truth_button_down"]
 [connection signal="details_changed" from="VBox/HBox2/Circuit" to="." method="_on_Circuit_details_changed"]
 [connection signal="popup_hide" from="c/TruthPanel" to="." method="_on_TruthPanel_popup_hide"]
+[connection signal="test_button_down" from="c/TruthPanel" to="." method="_on_TruthPanel_test_button_down"]

@@ -25,6 +25,9 @@ func process_buttons(action):
 			load_circuit()
 		"save":
 			save_circuit()
+		"play":
+			if truth_button.visible:
+				test_circuit(true)
 		"library":
 			choose_circuit()
 		"info":
@@ -76,9 +79,18 @@ func _on_Hint_button_down():
 func _on_Truth_button_down():
 	$c/TruthPanel/TruthTable.populate(tt.data[cid])
 	$c/TruthPanel.rect_size = Vector2(100, 100)
-	#$c/TruthPanel.rect_min_size = $c/TruthPanel/TruthTable.rect_size
 	$c/TruthPanel.popup_centered()
 
 
 func _on_TruthPanel_popup_hide():
 	$c/TruthPanel/TruthTable.clear()
+
+
+func _on_TruthPanel_test_button_down():
+	print("test_button_pressed")
+	test_circuit(false)
+
+
+func test_circuit(open_tt):
+	if open_tt:
+		_on_Truth_button_down()
