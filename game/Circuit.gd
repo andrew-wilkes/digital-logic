@@ -23,6 +23,7 @@ var ips = []
 var ops = []
 
 func _ready():
+	#g.add_property_to_data("status", 0)
 	allow_testing()
 	$c/Confirm.connect("confirmed", self, "part_delete")
 	$c/FileDialog.connect("item_selected", self, "choose_circuit")	
@@ -412,7 +413,8 @@ func save_scene(title = "", description = ""):
 		"title": title,
 		"desc": description,
 		"parts": [],
-		"offset": { "x": off.x, "y": off.y }
+		"offset": { "x": off.x, "y": off.y },
+		"status": 0
 	}
 	emit_signal("details_changed", circuit)
 	var scene = PackedScene.new()

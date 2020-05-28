@@ -59,3 +59,11 @@ func format_text(txt):
 	txt = txt.replace("@", "[code]%s[/code]" % char(197))
 	txt = txt.replace("*", "[code]%s[/code]" % char(215))
 	return "[_]" + txt
+
+
+func add_property_to_data(key, value):
+	var data = g.load_file(g.PART_FILE_PATH + "data.json")
+	for item in data.values():
+		item[key] = value
+		print(item.title, item[key])
+	save_file(PART_FILE_PATH + "data.json", data)
