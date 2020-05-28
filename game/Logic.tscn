@@ -162,11 +162,11 @@ size_flags_vertical = 3
 [node name="c" type="CanvasLayer" parent="."]
 
 [node name="Help" type="AcceptDialog" parent="c"]
-margin_right = 83.0
-margin_bottom = 58.0
+margin_right = 323.0
+margin_bottom = 225.0
 popup_exclusive = true
-window_title = "Help"
-dialog_text = "Some text!"
+window_title = "Information"
+dialog_text = "Instructions for how to use this page"
 
 [node name="AccessoryPicker" parent="c" instance=ExtResource( 11 )]
 
