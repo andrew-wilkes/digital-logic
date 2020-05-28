@@ -5,6 +5,7 @@ signal item_deleted
 
 var items = []
 var item_to_delete
+var num_funcs = 0
 
 func _ready():
 	if get_parent().name == "root":
@@ -12,11 +13,13 @@ func _ready():
 
 
 func set_items(editable = true):
+	num_funcs = 1
 	items = [{
 		"title": "New Circuit",
 		"cid": "new",
 	}]
 	if editable:
+		num_funcs = 2
 		items.append({
 			"title": "Rename Circuit",
 			"cid": "rename",
@@ -26,9 +29,9 @@ func set_items(editable = true):
 			"title": g.circuits[cid].title,
 			"cid": cid
 		})
-	$ButtonList.clear()
+	$SC/ButtonList.clear()
 	for i in items:
-		$ButtonList.add_item(i.title)
+		$SC/ButtonList.add_item(i.title)
 	popup_centered()
 
 
@@ -38,7 +41,7 @@ func _on_ButtonList_item_selected(index):
 
 
 func _on_ButtonList_rmb_click(index):
-	if index > 1: # Ignore functional options
+	if index >= num_funcs: # Ignore functional options
 		item_to_delete = index
 		$Confirm.popup_centered()
 

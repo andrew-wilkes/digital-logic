@@ -4,10 +4,11 @@
 [ext_resource path="res://ButtonList.tscn" type="PackedScene" id=2]
 
 [node name="FileDialog" type="WindowDialog"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -896.0
-margin_bottom = -294.0
+margin_bottom = -523.0
 window_title = "Choose Circuit"
 script = ExtResource( 1 )
 __meta__ = {
@@ -15,12 +16,22 @@ __meta__ = {
 }
 
 [node name="Confirm" type="ConfirmationDialog" parent="."]
-visible = true
 margin_right = 200.0
 margin_bottom = 70.0
 dialog_text = "Delete saved data? "
 
-[node name="ButtonList" parent="." instance=ExtResource( 2 )]
+[node name="SC" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonList" parent="SC" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 384.0
+margin_bottom = 277.0
 [connection signal="confirmed" from="Confirm" to="." method="_on_Confirm_confirmed"]
-[connection signal="item_selected" from="ButtonList" to="." method="_on_ButtonList_item_selected"]
-[connection signal="rmb_click" from="ButtonList" to="." method="_on_ButtonList_rmb_click"]
+[connection signal="item_selected" from="SC/ButtonList" to="." method="_on_ButtonList_item_selected"]
+[connection signal="rmb_click" from="SC/ButtonList" to="." method="_on_ButtonList_rmb_click"]
