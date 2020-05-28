@@ -26,29 +26,26 @@ func set_items(editable = true):
 			"title": g.circuits[cid].title,
 			"cid": cid
 		})
-	$M/Items.clear()
+	$ButtonList.clear()
 	for i in items:
-		$M/Items.add_item(i.title)
+		$ButtonList.add_item(i.title)
 	popup_centered()
 
 
-func _on_Items_item_selected(index):
-	# This is triggered by any mouse button click
+func _on_ButtonList_item_selected(index):
 	item_to_delete = null
 	call_deferred("item_selected", index)
 
 
-func _on_Items_item_rmb_selected(index, _at_position):
+func _on_ButtonList_rmb_click(index):
 	if index > 1: # Ignore functional options
 		item_to_delete = index
+		$Confirm.popup_centered()
 
 
 func item_selected(_index):
-	if item_to_delete:
-		$Confirm.popup_centered()
-	else:
-		emit_signal("item_selected", items[_index].cid)
-		self.hide()
+	emit_signal("item_selected", items[_index].cid)
+	self.hide()
 
 
 func _on_Confirm_confirmed():

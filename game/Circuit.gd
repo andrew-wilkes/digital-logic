@@ -376,7 +376,7 @@ func choose_circuit(_cid):
 		"new":
 			cid = ""
 			delete_circuit()
-			emit_signal("details_changed", { "title": "Untitled", "desc": "" } )
+			emit_signal("details_changed", { "title": "Untitled", "desc": "", "id": "" } )
 		"rename":
 			cid = ""
 			request_to_save_scene(last_details.title, last_details.desc)

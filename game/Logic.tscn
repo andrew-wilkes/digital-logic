@@ -169,10 +169,8 @@ window_title = "Help"
 dialog_text = "Some text!"
 
 [node name="AccessoryPicker" parent="c" instance=ExtResource( 11 )]
-visible = false
 
 [node name="HintPanel" parent="c" instance=ExtResource( 17 )]
-visible = false
 window_title = "Hint"
 
 [node name="TruthPanel" parent="c" instance=ExtResource( 13 )]
