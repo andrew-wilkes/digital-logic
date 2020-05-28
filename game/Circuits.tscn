@@ -65,7 +65,7 @@ text = "In this section you are challenged to wire up gates to make logic circui
 
 Combinational logic is where outputs depend only on the current combination of input levels. And sequential logic has state or memory.
 
-Work your way through the examples given below."
+Work your way through the circuit-building challenges  below:"
 autowrap = true
 
 [node name="Panel2" type="PanelContainer" parent="VBox"]
