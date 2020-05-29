@@ -16,3 +16,9 @@ func _ready():
 
 func b_pressed():
 	emit_signal("test_button_down")
+
+
+func open(cid):
+	$TruthTable.populate(tt.data[cid])
+	rect_size = Vector2(100, 100)
+	popup_centered()

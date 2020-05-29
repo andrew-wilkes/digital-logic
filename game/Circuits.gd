@@ -14,5 +14,5 @@ func _ready():
 
 func _on_ButtonList_item_selected(index):
 	if index < items.size():
-		g.param = items[index]
+		g.param = items[index] # Store the ID of selected circuit
 	return get_tree().change_scene("res://Logic.tscn")

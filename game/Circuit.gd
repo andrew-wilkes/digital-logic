@@ -21,6 +21,14 @@ var vx = []
 var last_details
 var ips = []
 var ops = []
+var test_state = START_TESTING
+
+enum { START_TESTING, CHECKING_INPUTS, CHECKING_OUTPUTS }
+
+func test():
+	match test_state:
+		START_TESTING:
+			pass
 
 func _ready():
 	#g.add_property_to_data("status", 0)

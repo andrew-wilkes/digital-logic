@@ -83,9 +83,7 @@ func _on_Hint_button_down():
 
 
 func _on_Truth_button_down():
-	$c/TruthPanel/TruthTable.populate(tt.data[cid])
-	$c/TruthPanel.rect_size = Vector2(100, 100)
-	$c/TruthPanel.popup_centered()
+	$c/TruthPanel.open(cid)
 
 
 func _on_TruthPanel_popup_hide():
