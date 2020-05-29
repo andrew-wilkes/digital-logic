@@ -17,12 +17,6 @@ func _ready():
 	hp = $c/HintPanel
 	hint_button.visible = false
 	truth_button.visible = false
-	if g.param:
-		_on_Circuit_details_changed({
-			id = g.param,
-			title = "",
-			desc = ""
-		})
 
 
 func process_buttons(action):
@@ -98,3 +92,4 @@ func _on_TruthPanel_test_button_down():
 func test_circuit(open_tt):
 	if open_tt:
 		_on_Truth_button_down()
+	$c/TruthPanel.test_circuit(circuit)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://parts/Gate.gd" type="Script" id=1]
-[ext_resource path="res://parts/Output.gd" type="Script" id=2]
-[ext_resource path="res://parts/Input.gd" type="Script" id=3]
+[ext_resource path="res://parts/Input.gd" type="Script" id=2]
+[ext_resource path="res://parts/Output.gd" type="Script" id=3]
 [ext_resource path="res://parts/zOutput.tscn" type="PackedScene" id=4]
 [ext_resource path="res://parts/aAND.tscn" type="PackedScene" id=5]
 [ext_resource path="res://parts/zInput.tscn" type="PackedScene" id=6]
@@ -13,7 +13,7 @@
 
 [node name="Input" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 160, 90 )
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 highlight_pin = true
 highlight_part = true
 moveable = true
@@ -24,7 +24,7 @@ is_ext_output = false
 
 [node name="Input187" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 160, 170 )
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 highlight_pin = true
 highlight_part = true
 moveable = true
@@ -35,35 +35,13 @@ is_ext_output = false
 
 [node name="Input192" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 160, 340 )
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 highlight_pin = true
 highlight_part = true
 moveable = true
 wireable = true
 show_state = true
 is_ext_input = true
-is_ext_output = false
-
-[node name="Output" type="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 790, 270 )
-script = ExtResource( 2 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = true
-is_ext_input = false
-is_ext_output = false
-
-[node name="Output201" type="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 790, 130 )
-script = ExtResource( 2 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = true
-is_ext_input = false
 is_ext_output = false
 
 [node name="XOR" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -156,3 +134,25 @@ show_state = false
 is_ext_input = false
 is_ext_output = false
 gate_type = "OR"
+
+[node name="Output" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 780, 130 )
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+is_ext_output = true
+
+[node name="Output147" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 780, 270 )
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+is_ext_output = true

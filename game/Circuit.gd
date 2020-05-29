@@ -16,19 +16,11 @@ var min_point: Vector2
 var max_point: Vector2
 var panning = false
 var pan_pos
-var cid = ""
+var idx = ""
 var vx = []
 var last_details
 var ips = []
 var ops = []
-var test_state = START_TESTING
-
-enum { START_TESTING, CHECKING_INPUTS, CHECKING_OUTPUTS }
-
-func test():
-	match test_state:
-		START_TESTING:
-			pass
 
 func _ready():
 	#g.add_property_to_data("status", 0)
@@ -39,9 +31,18 @@ func _ready():
 	var data = g.load_file(g.PART_FILE_PATH + "data.json")
 	if data:
 		g.circuits = data
-	if g.param:
-		add_inputs(tt.data[g.param].inputs)
-		add_ouputs(tt.data[g.param].outputs)
+	if g.param: # It's a tutorial scene
+		idx = g.param
+		if g.circuits.keys().has(g.param):
+			load_scene()
+		else:
+			var d = tt.data[g.param]
+			add_inputs(d.inputs)
+			add_ouputs(d.outputs)
+			g.circuits[idx] = {
+				"title": d.title,
+				"desc": d.desc
+			}
 	get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
 
@@ -183,10 +184,10 @@ func add_dots_to_all_wires():
 
 
 func add_dots_to_wires(wires):
-		var idx = get_furthest_index(wires)
+		var fidx = get_furthest_index(wires)
 		var i = 0
 		for w in wires:
-			if i == idx:
+			if i == fidx:
 				# Remove existing dot
 				if w.get_child_count() > 0:
 					w.get_child(0).queue_free()
@@ -372,30 +373,30 @@ func set_shape_position():
 
 func request_to_choose_circuit():
 	var editable = false
-	if cid.empty():
+	if idx.empty():
 		last_details = { "title": "Untitled", "desc": "" }
 	else:
-		last_details = g.circuits[cid]
-		editable = g.circuits[cid].id == "-"
+		last_details = g.circuits[idx]
+		editable = g.circuits[idx].id == "-"
 	$c/FileDialog.set_items(editable)
 
 
-func choose_circuit(_cid):
-	match _cid:
+func choose_circuit(_idx):
+	match _idx:
 		"new":
-			cid = ""
+			idx = ""
 			delete_circuit()
 			emit_signal("details_changed", { "title": "Untitled", "desc": "", "id": "" } )
 		"rename":
-			cid = ""
+			idx = ""
 			request_to_save_scene(last_details.title, last_details.desc)
 		_:
-			cid = _cid
+			idx = _idx
 			load_scene()
 
 
 func request_to_save_scene(title = "", desc = ""):
-	if cid.empty():
+	if idx.empty():
 		$c/DetailsDialog.set_text(title, desc)
 		$c/DetailsDialog.popup_centered()
 	else:
@@ -403,21 +404,22 @@ func request_to_save_scene(title = "", desc = ""):
 
 
 func request_to_load_scene():
-	if cid.empty():
+	if idx.empty():
 		request_to_choose_circuit()
 	else:
 		load_scene()
 
 
-func save_scene(title = "", description = ""):
-	if cid.empty():
-		cid = get_circuit_id()
+func save_scene(title = "", description = "", cid = "-"):
+	if idx.empty():
+		idx = get_circuit_id()
 	else:
-		title = g.circuits[cid].title
-		description = g.circuits[cid].desc
+		title = g.circuits[idx].title
+		description = g.circuits[idx].desc
+		cid = g.circuits[idx].id
 	var off = $Parts.position
 	var circuit = {
-		"id": "-",
+		"id": cid,
 		"title": title,
 		"desc": description,
 		"parts": [],
@@ -431,7 +433,7 @@ func save_scene(title = "", description = ""):
 		ch.owner = node
 	var result = scene.pack(node)
 	if result == OK:
-		ResourceSaver.save(g.PART_FILE_PATH + cid + ".tscn", scene)
+		ResourceSaver.save(g.PART_FILE_PATH + idx + ".tscn", scene)
 	# Assign ids to parts
 	var id = 0
 	for p in $Parts.get_children():
@@ -451,7 +453,7 @@ func save_scene(title = "", description = ""):
 			_part.label = p.get_label()
 		circuit.parts.append(_part)
 		id += 1
-	g.circuits[cid] = circuit
+	g.circuits[idx] = circuit
 	g.save_file(g.PART_FILE_PATH + "data.json", g.circuits)
 
 
@@ -459,11 +461,11 @@ func load_scene():
 	delete_circuit()
 	$Wires.hide()
 	var parts = []
-	var circuit = g.circuits[cid]
+	var circuit = g.circuits[idx]
 	var pos = Vector2(circuit.offset.x, circuit.offset.y)
 	$Parts.position = pos
 	$Wires.position = pos
-	var packed_scene = ResourceLoader.load(g.PART_FILE_PATH + cid + ".tscn", "", true)
+	var packed_scene = ResourceLoader.load(g.PART_FILE_PATH + idx + ".tscn", "", true)
 	if packed_scene:
 		var scene = packed_scene.instance()
 		for p in scene.get_children():
@@ -528,4 +530,4 @@ func get_circuit_id():
 
 
 func _on_FileDialog_item_deleted():
-	cid = ""
+	idx = ""

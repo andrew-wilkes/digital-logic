@@ -16,3 +16,16 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = -8.0
 margin_bottom = -36.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Msg" type="AcceptDialog" parent="."]
+visible = true
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 124.0
+margin_bottom = 66.0
+window_title = "Failed!"
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
