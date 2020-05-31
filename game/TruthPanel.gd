@@ -141,10 +141,13 @@ func _on_Timer_timeout():
 			$Msg.window_title = "Failed!"
 			$Msg.dialog_text = msg
 			$Msg.popup_centered()
+			circuit.set_status(2)
 		PASSED:
 			$Msg.window_title = "Passed!"
 			$Msg.dialog_text = ""
 			$Msg.popup_centered()
+			circuit.set_status(3)
+
 
 func get_cell_color(grid, index):
 	return table[grid].get_child(index).modulate

@@ -39,6 +39,4 @@ custom_fonts/mono_font = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
-bbcode_text = "Hello"
-text = "Hello"
 custom_effects = [ SubResource( 2 ) ]

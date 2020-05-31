@@ -882,7 +882,7 @@
                 "wires": []
             }
         ],
-        "status": 1,
+        "status": 3,
         "title": "Full Adder"
     }
 }

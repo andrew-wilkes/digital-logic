@@ -44,6 +44,10 @@ func _ready():
 	get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
 
+func set_status(n):
+	g.circuits[idx].status = n
+
+
 func apply_input(value): # to multi-input part
 	var error_code = ips.size() - 1
 	if error_code == 0:
@@ -408,13 +412,14 @@ func request_to_load_scene():
 		load_scene()
 
 
-func save_scene(title = "", description = "", cid = "-"):
+func save_scene(title = "", description = "", cid = "-", cstatus = 0):
 	if idx.empty():
 		idx = get_circuit_id()
 	else:
 		title = g.circuits[idx].title
 		description = g.circuits[idx].desc
 		cid = g.circuits[idx].id
+		cstatus = g.circuits[idx].status
 	var off = $Parts.position
 	var circuit = {
 		"id": cid,
@@ -422,7 +427,7 @@ func save_scene(title = "", description = "", cid = "-"):
 		"desc": description,
 		"parts": [],
 		"offset": { "x": off.x, "y": off.y },
-		"status": 0
+		"status": cstatus
 	}
 	emit_signal("details_changed", circuit)
 	var scene = PackedScene.new()
