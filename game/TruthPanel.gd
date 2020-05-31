@@ -7,7 +7,6 @@ enum { CHECKING_INPUTS, CHECKING_OUTPUTS, CHECKING_TRUTH, FAILED, PASSED }
 var state
 var circuit
 var data
-var checked
 var i
 var table
 var color
@@ -45,11 +44,18 @@ func test_circuit(c):
 	circuit = c
 	c.get_inputs()
 	c.get_outputs()
-	checked = false
+	clear_grid_colors()
 	i = 0
 	passed = false
 	state = CHECKING_INPUTS
 	$Timer.start()
+
+
+func clear_grid_colors():
+	for i in range(data.inputs.size(), table.g1.get_child_count()):
+		table.g1.get_child(i).modulate = Color.white
+	for i in range(data.outputs.size(), table.g2.get_child_count()):
+		table.g2.get_child(i).modulate = Color.white
 
 
 func _on_Timer_timeout():
@@ -132,6 +138,7 @@ func _on_Timer_timeout():
 					msg = "Incorrect logic!"
 			$Timer.start()
 		FAILED:
+			$Msg.window_title = "Failed!"
 			$Msg.dialog_text = msg
 			$Msg.popup_centered()
 		PASSED:
