@@ -1,13 +1,13 @@
 extends Control
 
 var items = []
-var cols = [Color.red, Color.orange, Color.green]
 
 func _ready():
+	g.load_circuits()
 	var list = $VBox/Panel2/ButtonList
 	for id in tt.data.keys():
 		var item = tt.data[id]
-		list.add_item(item.title, cols[0])
+		list.add_item(item.title, g.STATUS_COLORS[g.circuits[id].status])
 		items.append(id)
 	list.add_item("Your circuits")
 

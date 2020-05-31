@@ -7,10 +7,17 @@ const COLOR_UNDEFINED = Color.white
 const GRID_SIZE = 10
 const PART_FILE_PATH = "res://parts/lib/"
 const UNSTABLE_THRESHOLD = 20
+const STATUS_COLORS = [Color.white, Color.orange, Color.red, Color.green]
 
 var wire = null
 var circuits = {}
 var param
+
+func load_circuits():
+	var data = load_file(g.PART_FILE_PATH + "data.json")
+	if data:
+		circuits = data
+
 
 func delete_file(path, fn):
 	var dir = Directory.new()

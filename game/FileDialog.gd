@@ -17,21 +17,24 @@ func set_items(editable = true):
 	items = [{
 		"title": "New Circuit",
 		"cid": "new",
+		"status": 0
 	}]
 	if editable:
 		num_funcs = 2
 		items.append({
 			"title": "Rename Circuit",
 			"cid": "rename",
+			"status": 0
 		})
 	for cid in g.circuits.keys():
 		items.append({
 			"title": g.circuits[cid].title,
-			"cid": cid
+			"cid": cid,
+			"status": g.circuits[cid].status
 		})
 	$SC/ButtonList.clear()
 	for i in items:
-		$SC/ButtonList.add_item(i.title)
+		$SC/ButtonList.add_item(i.title, g.STATUS_COLORS[i.status])
 	popup_centered()
 
 

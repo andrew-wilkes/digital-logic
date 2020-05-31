@@ -9,7 +9,7 @@
 [ext_resource path="res://parts/aAND.tscn" type="PackedScene" id=7]
 
 [node name="Parts" type="Node2D"]
-position = Vector2( 380, -20 )
+position = Vector2( 390, -20 )
 
 [node name="Input" type="Node2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( -130, 120 )

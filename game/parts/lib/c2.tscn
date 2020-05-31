@@ -26,7 +26,7 @@ off_color = Color( 0.192157, 0.192157, 0.192157, 0.454902 )
 decode = true
 
 [node name="4 Bit  Digital to Analog Converter" type="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 680, 390 )
+position = Vector2( 750, 390 )
 z_index = 1
 script = ExtResource( 2 )
 highlight_pin = true

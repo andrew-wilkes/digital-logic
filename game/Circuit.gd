@@ -28,9 +28,7 @@ func _ready():
 	$c/Confirm.connect("confirmed", self, "part_delete")
 	$c/FileDialog.connect("item_selected", self, "choose_circuit")	
 	$c/DetailsDialog.connect("updated", self, "save_scene")
-	var data = g.load_file(g.PART_FILE_PATH + "data.json")
-	if data:
-		g.circuits = data
+	g.load_circuits()
 	if g.param: # It's a tutorial scene
 		idx = g.param
 		if g.circuits.keys().has(g.param):
@@ -374,10 +372,10 @@ func set_shape_position():
 func request_to_choose_circuit():
 	var editable = false
 	if idx.empty():
-		last_details = { "title": "Untitled", "desc": "" }
+		last_details = { "title": "Untitled", "desc": "", "id": "-" }
 	else:
 		last_details = g.circuits[idx]
-		editable = g.circuits[idx].id == "-"
+		editable = last_details.id == "-"
 	$c/FileDialog.set_items(editable)
 
 
