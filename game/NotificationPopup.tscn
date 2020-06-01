@@ -26,7 +26,6 @@ __meta__ = {
 }
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
-visible = true
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 8.0
 margin_bottom = 8.0
@@ -49,5 +48,5 @@ anims/Fade = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
-autostart = true
+[connection signal="animation_finished" from="Anim" to="." method="_on_Anim_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
