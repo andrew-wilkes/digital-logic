@@ -6,6 +6,7 @@ var cid
 var hint_button
 var truth_button
 var hp
+var np
 
 func _ready():
 	var menu = find_node("Menu")
@@ -15,6 +16,7 @@ func _ready():
 	hint_button = find_node("Hint")
 	truth_button = find_node("Truth")
 	hp = $c/HintPanel
+	np = $c/NotificationPopup
 	hint_button.visible = false
 	truth_button.visible = false
 
@@ -35,11 +37,13 @@ func process_buttons(action):
 
 
 func save_circuit():
-	circuit.request_to_save_scene()
+	if circuit.request_to_save_scene():
+		np.notify("Saved")
 
 
 func load_circuit():
-	circuit.request_to_load_scene()
+	if circuit.request_to_load_scene():
+		np.notify("Reloaded")
 
 
 func choose_circuit():

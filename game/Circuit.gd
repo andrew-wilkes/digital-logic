@@ -398,18 +398,24 @@ func choose_circuit(_idx):
 
 
 func request_to_save_scene(title = "", desc = ""):
+	var saved = false
 	if idx.empty():
 		$c/DetailsDialog.set_text(title, desc)
 		$c/DetailsDialog.popup_centered()
 	else:
 		save_scene()
+		saved = true
+	return saved
 
 
 func request_to_load_scene():
+	var reloaded = false
 	if idx.empty():
 		request_to_choose_circuit()
 	else:
 		load_scene()
+		reloaded = true
+	return reloaded
 
 
 func save_scene(title = "", description = "", cid = "-", cstatus = 0):

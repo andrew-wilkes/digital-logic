@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Buttons.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/subtitle_font.tres" type="DynamicFont" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/truth.png" type="Texture" id=15]
 [ext_resource path="res://assets/truth-l.png" type="Texture" id=16]
 [ext_resource path="res://RichTextPopup.tscn" type="PackedScene" id=17]
+[ext_resource path="res://NotificationPopup.tscn" type="PackedScene" id=18]
 
 [node name="Logic" type="MarginContainer"]
 anchor_right = 1.0
@@ -174,6 +175,9 @@ dialog_text = "Instructions for how to use this page"
 window_title = "Hint"
 
 [node name="TruthPanel" parent="c" instance=ExtResource( 13 )]
+
+[node name="NotificationPopup" parent="c" instance=ExtResource( 18 )]
+visible = false
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Access" to="." method="_on_Access_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Hint" to="." method="_on_Hint_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Truth" to="." method="_on_Truth_button_down"]
