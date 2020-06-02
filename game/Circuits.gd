@@ -7,7 +7,10 @@ func _ready():
 	var list = $VBox/Panel2/ButtonList
 	for id in tt.data.keys():
 		var item = tt.data[id]
-		list.add_item(item.title, g.STATUS_COLORS[g.circuits[id].status])
+		var status = 0
+		if g.circuits.keys().has(id):
+			status = g.circuits[id].status
+		list.add_item(item.title, g.STATUS_COLORS[status])
 		items.append(id)
 	list.add_item("Your circuits")
 

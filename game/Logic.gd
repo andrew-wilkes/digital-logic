@@ -19,6 +19,23 @@ func _ready():
 	np = $c/NotificationPopup
 	hint_button.visible = false
 	truth_button.visible = false
+	# This is done here rather than in cicuits scene because details changed signal from save_scene() affects hint_button
+	g.load_circuits()
+	if g.param: # It's a tutorial scene
+		circuit.idx = g.param
+		if g.circuits.keys().has(circuit.idx):
+			circuit.load_scene()
+		else:
+			var d = tt.data[circuit.idx]
+			circuit.add_inputs(d.inputs)
+			circuit.add_ouputs(d.outputs)
+			g.circuits[circuit.idx] = {
+				"title": d.title,
+				"desc": d.desc,
+				"id": circuit.idx,
+				"status": 0
+			}
+			circuit.save_scene()
 
 
 func process_buttons(action):

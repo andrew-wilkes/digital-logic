@@ -28,19 +28,6 @@ func _ready():
 	$c/Confirm.connect("confirmed", self, "part_delete")
 	$c/FileDialog.connect("item_selected", self, "choose_circuit")	
 	$c/DetailsDialog.connect("updated", self, "save_scene")
-	g.load_circuits()
-	if g.param: # It's a tutorial scene
-		idx = g.param
-		if g.circuits.keys().has(g.param):
-			load_scene()
-		else:
-			var d = tt.data[g.param]
-			add_inputs(d.inputs)
-			add_ouputs(d.outputs)
-			g.circuits[idx] = {
-				"title": d.title,
-				"desc": d.desc
-			}
 	get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
 

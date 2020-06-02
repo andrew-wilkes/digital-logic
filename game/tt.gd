@@ -20,6 +20,26 @@ var data = {
 		hint = "To decode the inputs, we can combine AND gates and NOT gates.\n\nFor example: [i]Y5 = A2 * [u]A1[/u] * A0[/i]"
 		
 	},
+	"7-segment":
+	{
+		title = "7-Segment Decoder",
+		inputs = ["I3", "I2","I1","I0"],
+		outputs = ["a","b","c","d","e","f","g"],
+		values = [
+			[0,0,0,0,1,1,1,1,1,1,0], #0
+			[0,0,0,1,0,1,1,0,0,0,0], #1
+			[0,0,1,0,1,1,0,1,1,0,1], #2
+			[0,0,1,1,1,1,1,1,0,0,1], #3
+			[0,1,0,0,0,1,1,0,0,1,1], #4
+			[0,1,0,1,1,0,1,1,0,1,1], #5
+			[0,1,1,0,1,0,1,1,1,1,1], #6
+			[0,1,1,1,1,1,1,0,0,0,0], #7
+			[1,0,0,0,1,1,1,1,1,1,1], #8
+			[1,0,0,1,1,1,1,1,0,1,1]  #9
+		],
+		desc = "The 7-segment decoder is used to select the 7 segments of a seven-segment display. Only input values from 0-9 need to be decoded.",
+		hint = "Combine AND, NAND, OR, and NOT gates."
+	},
 	"fulladder":
 	{
 		title = "Full Adder",
