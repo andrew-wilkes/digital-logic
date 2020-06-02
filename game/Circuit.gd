@@ -68,14 +68,14 @@ func get_inputs():
 	ips.clear()
 	for p in $Parts.get_children():
 		if p.is_ext_input:
-			ips.append(p)
+			ips.append({ "part": p, "labels": p.get_labels() })
 
 
 func get_outputs():
 	ops.clear()
 	for p in $Parts.get_children():
 		if p.is_ext_output:
-			ops.append(p)
+			ops.append({ "part": p, "labels": p.get_labels() })
 
 
 func add_inputs(txts):

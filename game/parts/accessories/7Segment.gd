@@ -97,3 +97,11 @@ func decode_inputs():
 		if inputs[i]:
 			x += 1
 	return x
+
+
+func get_labels():
+	return ["a","b","c","d","e","f","g"]
+
+
+func get_state(idx):
+	return inputs[idx]

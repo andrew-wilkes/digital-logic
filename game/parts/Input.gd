@@ -14,8 +14,8 @@ func _ready():
 	$Label.hide()
 
 
-func get_label():
-	return $Label.text
+func get_labels():
+	return [$Label.text]
 
 
 func set_label(txt):
@@ -25,3 +25,8 @@ func set_label(txt):
 func show_label():
 	if get_parent().name == "Parts":
 		$Label.show()
+
+
+# Used when testing
+func set_state(value, _idx):
+	change_input_state(value)

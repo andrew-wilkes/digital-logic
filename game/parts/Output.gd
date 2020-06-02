@@ -14,12 +14,16 @@ func _ready():
 	connect("dropped", self, "show_label")
 
 
-func get_label():
-	return $Label.text
+func get_labels():
+	return [$Label.text]
 
 
 func set_label(txt):
 	$Label.text = txt
+
+
+func get_state(_idx):
+	return state
 
 
 func update_output(pin, value):

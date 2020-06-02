@@ -21,4 +21,14 @@ func _ready():
 func update_output(value, idx):
 	outputs[idx] = value
 	$Pins.get_child(idx).modulate = g.get_state_color(value)
+	emit_signal("new_event")
 	emit_signal("state_changed", self, idx, value)
+
+
+func get_labels():
+	return ["I0","I1","I2","I3"]
+
+
+func set_state(value, idx):
+	$Buttons.get_child(idx).pressed = value
+	update_output(value, idx)

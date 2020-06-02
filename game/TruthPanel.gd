@@ -73,7 +73,7 @@ func _on_Timer_timeout():
 				var s = data.inputs[i]
 				var pos = 0
 				for ip in circuit.ips:
-					if ip.get_label() == s:
+					if ip.labels.has(s):
 						ipmap.append(pos)
 						passed = true
 						color = get_cell_color("g1", i)
@@ -98,7 +98,7 @@ func _on_Timer_timeout():
 				var s = data.outputs[i]
 				var pos = 0
 				for op in circuit.ops:
-					if op.get_label() == s:
+					if op.labels.has(s):
 						opmap.append(pos)
 						passed = true
 						color = get_cell_color("g2", i)
@@ -122,17 +122,33 @@ func _on_Timer_timeout():
 				# Apply input values
 				var isize = data.inputs.size()
 				var osize = data.outputs.size()
+				var pin_index = 0
+				var part_index = 0
+				var last_part_index = 0
 				for n in isize:
-					circuit.ips[ipmap[n]].state = io[n]
+					part_index = ipmap[n]
+					if part_index != last_part_index:
+						pin_index = 0
+						last_part_index = part_index
+					circuit.ips[part_index].part.set_state(io[n], pin_index)
 					set_cell_color("g1", isize * i + n + isize, 0)
+					pin_index += 1
 				# Check output values
 				passed = true
+				pin_index = 0
+				part_index = 0
+				last_part_index = 0
 				for n in data.outputs.size():
-					if bool(io[n + isize]) == circuit.ops[opmap[n]].state:
+					part_index = opmap[n]
+					if part_index != last_part_index:
+						pin_index = 0
+						last_part_index = part_index
+					if bool(io[n + isize]) == circuit.ops[part_index].part.get_state(pin_index):
 						set_cell_color("g2", osize * i + n + osize, 0)
 					else:
 						set_cell_color("g2", osize * i + n + osize, 1)
 						passed = false
+					pin_index += 1
 				if !passed:
 					state = FAILED
 					msg = "Incorrect logic!"

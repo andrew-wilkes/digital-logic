@@ -59,3 +59,7 @@ func _on_Down_button_up():
 func _on_Timer_timeout():
 	set_value(delta)
 	$Timer.start(REPEAT_INTERVAL)
+
+
+func get_labels():
+	return ["I0","I1","I2","I3"]
