@@ -18,6 +18,8 @@ export(bool) var wireable = true
 export(bool) var show_state = false
 export(bool) var is_ext_input = false
 export(bool) var is_ext_output = false
+export(bool) var is_input_block = false
+export(bool) var is_output_block = false
 
 var outputs = []
 var state = false setget change_input_state
@@ -40,11 +42,12 @@ func unstable():
 	emit_signal("unstable")
 
 
+func get_postion():
+	return $Area2D.position + $Area2D/CollisionShape2D.position
+
+
 func get_extents():
-	return {
-		"a": position + $Region.rect_position,
-		"b": position + $Region.rect_position + $Region.rect_size
-	}
+	return $Area2D/CollisionShape2D.shape.extents
 
 
 func connect_signals():

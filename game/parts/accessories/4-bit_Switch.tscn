@@ -8,6 +8,7 @@ extents = Vector2( 60, 90 )
 
 [node name="4 Bit Switch Bank" type="Node2D"]
 script = ExtResource( 2 )
+is_input_block = true
 
 [node name="Symbol" type="ColorRect" parent="."]
 margin_left = -10.0

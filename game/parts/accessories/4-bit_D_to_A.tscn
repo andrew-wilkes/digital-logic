@@ -9,6 +9,7 @@ extents = Vector2( 40, 50 )
 
 [node name="4 Bit  Digital to Analog Converter" type="Node2D"]
 script = ExtResource( 2 )
+is_output_block = true
 
 [node name="Symbol" type="ColorRect" parent="."]
 margin_left = -40.0

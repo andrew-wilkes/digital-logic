@@ -1,39 +1,39 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://parts/zInput.tscn" type="PackedScene" id=3]
-[ext_resource path="res://parts/zOutput.tscn" type="PackedScene" id=4]
+[ext_resource path="res://parts/accessories/4-bit_Switch.gd" type="Script" id=1]
+[ext_resource path="res://parts/accessories/7Segment.gd" type="Script" id=2]
+[ext_resource path="res://parts/accessories/4-bit_Switch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://parts/accessories/7-Segment_Display.tscn" type="PackedScene" id=4]
 
 [node name="Parts" type="Node2D"]
 
-[node name="Input" parent="." instance=ExtResource( 3 )]
-position = Vector2( 100, 50 )
+[node name="4 Bit Switch Bank" type="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 50, 70 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = true
+is_output_block = false
 
-[node name="Input163" parent="." instance=ExtResource( 3 )]
-position = Vector2( 100, 100 )
-
-[node name="Input168" parent="." instance=ExtResource( 3 )]
-position = Vector2( 100, 150 )
-
-[node name="Input173" parent="." instance=ExtResource( 3 )]
-position = Vector2( 100, 200 )
-
-[node name="Output" parent="." instance=ExtResource( 4 )]
-position = Vector2( 960, 50 )
-
-[node name="Output182" parent="." instance=ExtResource( 4 )]
-position = Vector2( 960, 100 )
-
-[node name="Output187" parent="." instance=ExtResource( 4 )]
-position = Vector2( 960, 150 )
-
-[node name="Output192" parent="." instance=ExtResource( 4 )]
-position = Vector2( 960, 200 )
-
-[node name="Output197" parent="." instance=ExtResource( 4 )]
-position = Vector2( 960, 250 )
-
-[node name="Output202" parent="." instance=ExtResource( 4 )]
-position = Vector2( 960, 300 )
-
-[node name="Output207" parent="." instance=ExtResource( 4 )]
-position = Vector2( 960, 350 )
+[node name="7 Segment Display" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1010, 150 )
+z_index = 1
+script = ExtResource( 2 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = true
+on_color = Color( 0.0784314, 1, 0, 1 )
+off_color = Color( 0.192157, 0.192157, 0.192157, 0.454902 )
+decode = false

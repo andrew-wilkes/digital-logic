@@ -27,8 +27,7 @@ func _ready():
 			circuit.load_scene()
 		else:
 			var d = tt.data[circuit.idx]
-			circuit.add_inputs(d.inputs)
-			circuit.add_ouputs(d.outputs)
+			circuit.add_io_parts(d)
 			g.circuits[circuit.idx] = {
 				"title": d.title,
 				"desc": d.desc,

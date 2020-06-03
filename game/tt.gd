@@ -5,7 +5,9 @@ var data = {
 	{
 		title = "Three-to-eight Decoder",
 		inputs = ["A2","A1","A0"],
+		iparts = [],
 		outputs = ["Y0","Y1","Y2","Y3","Y4","Y5","Y6","Y7"],
+		oparts = [],
 		values = [
 			[0,0,0,1,0,0,0,0,0,0,0],
 			[0,0,1,0,1,0,0,0,0,0,0],
@@ -24,7 +26,9 @@ var data = {
 	{
 		title = "7-Segment Decoder",
 		inputs = ["I3", "I2","I1","I0"],
+		iparts = ["4-bit_Switch"],
 		outputs = ["a","b","c","d","e","f","g"],
+		oparts = ["7-Segment_Display"],
 		values = [
 			[0,0,0,0,1,1,1,1,1,1,0], #0
 			[0,0,0,1,0,1,1,0,0,0,0], #1
@@ -44,7 +48,9 @@ var data = {
 	{
 		title = "Full Adder",
 		inputs = ["A","B","Cin"],
+		iparts = [],
 		outputs = ["Sum","Cout"],
+		oparts = [],
 		values = [
 			[0,0,0,0,0],
 			[0,0,1,1,0],

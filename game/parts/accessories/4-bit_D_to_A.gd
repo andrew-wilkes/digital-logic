@@ -1,6 +1,7 @@
 extends Part
 
 var inputs = []
+var labels =  ["I0","I1","I2","I3"]
 
 func _ready():
 	allow_testing()
@@ -32,7 +33,3 @@ func decode_inputs():
 		if inputs[i]:
 			x += 1
 	return x
-
-
-func get_labels():
-	return ["I0","I1","I2","I3"]

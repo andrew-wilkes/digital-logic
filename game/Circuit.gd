@@ -21,6 +21,7 @@ var vx = []
 var last_details
 var ips = []
 var ops = []
+var part_pos = Vector2(100, 150)
 
 func _ready():
 	#g.add_property_to_data("status", 0)
@@ -67,37 +68,61 @@ func get_output_states(): # from output pin parts
 func get_inputs():
 	ips.clear()
 	for p in $Parts.get_children():
-		if p.is_ext_input:
-			ips.append({ "part": p, "labels": p.get_labels() })
+		if p.is_ext_input or p.is_input_block:
+			ips.append({ "part": p, "labels": p.labels })
 
 
 func get_outputs():
 	ops.clear()
 	for p in $Parts.get_children():
-		if p.is_ext_output:
-			ops.append({ "part": p, "labels": p.get_labels() })
+		if p.is_ext_output or p.is_output_block:
+			ops.append({ "part": p, "labels": p.labels })
 
 
-func add_inputs(txts):
-	add_io(txts, Vector2(100, 50), in_node, ips)
+func add_io_parts(data):
+	var i = 0
+	var origin = part_pos
+	for part_name in data.iparts:
+		var node = load("res://parts/accessories/%s.tscn" % part_name).instance()
+		node.position = part_pos - node.get_postion()
+		var end = i + node.labels.size()
+		add_io_block(node, data.inputs.slice(i, end), ips)
+		i = end
+		part_pos.y += node.get_postion().y + node.get_extents().y + 50
+	if i < data.inputs.size():
+		add_io(data.inputs.slice(i, data.inputs.size() - 1), in_node, ips)
+	origin.x = align_to_grid(rect_size.x) - 150
+	part_pos = origin
+	for part_name in data.oparts:
+		var node = load("res://parts/accessories/%s.tscn" % part_name).instance()
+		node.position = part_pos - node.get_postion()
+		var end = i + node.labels.size()
+		add_io_block(node, data.outputs.slice(i, end), ops)
+		i = end
+		part_pos.y += node.get_postion().y + node.get_extents().y + 50
+	if i < data.outputs.size():
+		add_io(data.outputs.slice(i, data.outputs.size() - 1), out_node, ops)
 
 
-func add_ouputs(txts):
-	var x = align_to_grid(rect_size.x)
-	add_io(txts, Vector2(x - 200, 50), out_node, ops)
-
-
-func add_io(txts, pos, resc, list: Array):
+func add_io(labels, resc, list: Array):
 	list.clear()
-	for txt in txts:
+	for txt in labels:
 		var node = resc.instance()
 		node.set_label(txt)
-		node.position = pos
+		node.position = part_pos
 		list.append(node)
 		part_picked(node)
 		part_dropped()
 		node.show_label()
-		pos.y += 50
+		part_pos.y += 50
+
+
+func add_io_block(node, labels: Array, list: Array):
+	list.clear()
+	node.labels = labels
+	list.append(node)
+	part_picked(node)
+	part_dropped()
 
 
 func allow_testing():

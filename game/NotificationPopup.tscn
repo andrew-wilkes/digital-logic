@@ -26,6 +26,7 @@ __meta__ = {
 }
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
+visible = true
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 8.0
 margin_bottom = 8.0

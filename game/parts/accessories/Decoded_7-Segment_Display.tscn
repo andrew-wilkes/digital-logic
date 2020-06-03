@@ -10,6 +10,7 @@ extents = Vector2( 60, 90 )
 [node name="Decoded 7 Segment Display" type="Node2D"]
 script = ExtResource( 3 )
 show_state = true
+is_output_block = true
 on_color = Color( 0.0784314, 1, 0, 1 )
 off_color = Color( 0.192157, 0.192157, 0.192157, 0.454902 )
 decode = true

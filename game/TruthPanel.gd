@@ -130,7 +130,7 @@ func _on_Timer_timeout():
 					if part_index != last_part_index:
 						pin_index = 0
 						last_part_index = part_index
-					circuit.ips[part_index].part.set_state(io[n], pin_index)
+					circuit.ips[part_index].part.set_state(bool(io[n]), pin_index)
 					set_cell_color("g1", isize * i + n + isize, 0)
 					pin_index += 1
 				# Check output values
