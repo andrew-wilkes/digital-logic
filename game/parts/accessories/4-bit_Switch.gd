@@ -27,6 +27,12 @@ func update_output(value, idx):
 	emit_signal("state_changed", self, idx, value)
 
 
+func reset_outputs():
+	for i in outputs.size():
+		update_output(false, i)
+
+
 func set_state(value, idx):
+	idx = outputs.size() - idx - 1 # Reverse the order of inputs
 	$Buttons.get_child(idx).pressed = value
 	update_output(value, idx)

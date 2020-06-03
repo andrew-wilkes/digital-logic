@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://parts/accessories/4-bit_Switch.gd" type="Script" id=1]
 [ext_resource path="res://parts/accessories/7Segment.gd" type="Script" id=2]
 [ext_resource path="res://parts/accessories/4-bit_Switch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://parts/accessories/7-Segment_Display.tscn" type="PackedScene" id=4]
+[ext_resource path="res://parts/Gate.gd" type="Script" id=5]
+[ext_resource path="res://parts/eNOT.tscn" type="PackedScene" id=6]
 
 [node name="Parts" type="Node2D"]
 
@@ -22,7 +24,7 @@ is_input_block = true
 is_output_block = false
 
 [node name="7 Segment Display" type="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1010, 150 )
+position = Vector2( 760, 150 )
 z_index = 1
 script = ExtResource( 2 )
 highlight_pin = true
@@ -37,3 +39,18 @@ is_output_block = true
 on_color = Color( 0.0784314, 1, 0, 1 )
 off_color = Color( 0.192157, 0.192157, 0.192157, 0.454902 )
 decode = false
+
+[node name="NOT" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 430, 90 )
+z_index = 1
+script = ExtResource( 5 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+gate_type = "NOT"

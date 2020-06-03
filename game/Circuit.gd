@@ -531,6 +531,8 @@ func init_input_states():
 	for p in $Parts.get_children():
 		if p.is_ext_input:
 			p.state = false
+		if p.is_input_block:
+			p.reset_outputs()
 
 
 func delete_circuit():
