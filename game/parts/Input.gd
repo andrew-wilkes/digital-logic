@@ -1,5 +1,7 @@
 extends Part
 
+var labels = [] setget ,get_labels
+
 func _ready():
 	allow_testing()
 	v_spacing = 56
@@ -20,6 +22,7 @@ func get_labels():
 
 func set_label(txt):
 	$Label.text = txt
+	labels.append(txt)
 
 
 func show_label():

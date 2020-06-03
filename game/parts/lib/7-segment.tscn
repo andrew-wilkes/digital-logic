@@ -40,7 +40,7 @@ on_color = Color( 0.0784314, 1, 0, 1 )
 off_color = Color( 0.192157, 0.192157, 0.192157, 0.454902 )
 decode = false
 
-[node name="NOT" type="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="NOT134" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 430, 90 )
 z_index = 1
 script = ExtResource( 5 )
