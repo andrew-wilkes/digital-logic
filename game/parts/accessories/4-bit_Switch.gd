@@ -17,6 +17,7 @@ func _ready():
 	i = 0
 	for node in $Buttons.get_children():
 		node.connect("toggled", self, "update_output", [i])
+		node.focus_mode = 0
 		i += 1
 
 
