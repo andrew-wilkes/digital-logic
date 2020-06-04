@@ -74,3 +74,12 @@ func add_property_to_data(key, value):
 		item[key] = value
 		print(item.title, item[key])
 	save_file(PART_FILE_PATH + "data.json", data)
+
+
+func change_property_of_data(key):
+	var data = g.load_file(g.PART_FILE_PATH + "data.json")
+	for item in data.values():
+		for p in item.parts:
+			p[key] = [p[key]]
+			print(p[key])
+	save_file(PART_FILE_PATH + "data.json", data)

@@ -44,6 +44,26 @@ var data = {
 		desc = "The 7-segment decoder is used to select the 7 segments of a seven-segment display. Only input values from 0-9 need to be decoded.",
 		hint = "Combine AND, NAND, OR, and NOT gates."
 	},
+	"2-1multiplexer":
+	{
+		title = "Two-to-one Multiplexer",
+		inputs = ["B","A","Select"],
+		iparts = [],
+		outputs = ["Out"],
+		oparts = [],
+		values = [
+			[0,0,0,0],
+			[0,0,1,0],
+			[0,1,0,1],
+			[0,1,1,1],
+			[1,0,0,0],
+			[1,0,1,1],
+			[1,1,0,0],
+			[1,1,1,1]
+		],
+		desc = "A multiplexer is used to select one of it's inputs to pass to the output like a switch.",
+		hint = "[i]Out = [u]Select[/u] * A + Select * B[/i]"
+	},
 	"fulladder":
 	{
 		title = "Full Adder",
@@ -63,5 +83,44 @@ var data = {
 		],
 		desc = "A full adder adds together a carry input, A, and B to give two outputs: sum and carry out.",
 		hint = "We have 3 bits to add together producing numbers in a range 0 to 3.\n\nIn binary: 00 to 11 with the least significant bit the sum, and the most significant bit the carry out.\n\nTo get the sum we can use exclusive OR: [i]A @ B @ Cin[/i]\n\nThe carry out is high if at least two of the inputs are high, so:\n[i]Cout = A * B + A * Cin + B * Cin[/i]"
+	},
+	"srflipflop":
+	{
+		title = "SR Flip Flop",
+		inputs = ["R", "S"],
+		iparts = [],
+		outputs = ["+Q", "-Q"],
+		oparts = [],
+		values = [
+			[0,0,1,0],
+			[0,1,0,1],
+			[0,0,0,1],
+			[1,0,1,0],
+			[0,0,1,0]
+		],
+		desc = "An SR flip flop remembers the state as long as both R and S are low. Pulsing R high resets the state (+Q low), and pulsing S high sets the state (+Q high).",
+		hint = "Use two NOR gates."
+	},
+	"srflipflopenable":
+	{
+		title = "SR Flip Flop with enable",
+		inputs = ["R", "S", "E"],
+		iparts = [],
+		outputs = ["+Q", "-Q"],
+		oparts = [],
+		values = [
+			[0,0,0,1,0],
+			[0,0,1,1,0],
+			[0,0,0,1,0],
+			[0,1,0,1,0],
+			[0,0,0,1,0],
+			[1,0,0,1,0],
+			[1,0,1,0,1],
+			[1,0,0,0,1],
+			[1,1,0,1,0],
+			[1,0,0,1,0]
+		],
+		desc = "We can add an enable input (E) to an SR flip-flop so that it can only change state when E is high.",
+		hint = "Add AND gates to the inputs."
 	}
 }

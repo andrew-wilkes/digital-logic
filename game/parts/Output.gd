@@ -1,6 +1,6 @@
 extends Part
 
-var labels = [] setget ,get_labels
+var labels = [] setget set_label, get_label
 
 func _ready():
 	allow_testing()
@@ -16,13 +16,14 @@ func _ready():
 	connect("dropped", self, "show_label")
 
 
-func get_labels():
+func get_label():
 	return [$Label.text]
 
 
-func set_label(txt):
-	$Label.text = txt
-	labels.append(txt)
+func set_label(arr):
+	if !arr.empty():
+		$Label.text = arr[0]
+		labels = arr
 
 
 func get_state(_idx):

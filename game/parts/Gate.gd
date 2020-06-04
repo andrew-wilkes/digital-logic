@@ -5,6 +5,7 @@ class_name Gate
 export(String) var gate_type
 
 var inputs = []
+var labels = []
 
 func _ready():
 	allow_testing()

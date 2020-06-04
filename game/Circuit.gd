@@ -24,7 +24,6 @@ var ops = []
 var part_pos = Vector2(100, 150)
 
 func _ready():
-	#g.add_property_to_data("status", 0)
 	allow_testing()
 	$c/Confirm.connect("confirmed", self, "part_delete")
 	$c/FileDialog.connect("item_selected", self, "choose_circuit")	
@@ -464,14 +463,13 @@ func save_scene(title = "", description = "", cid = "-", cstatus = 0):
 	id = 0
 	for p in node.get_children():
 		p.owner = node
-		var _part = { "id": id, "wires": [], "label": "" }
+		var _part = { "id": id, "wires": [], "labels": [] }
 		for wires in $Parts.get_child(id).get_output_wires():
 			var pin_wires = []
 			for w in wires:
 				pin_wires.append([w.end_pin.parent_part.id, w.end_pin.id])
 			_part.wires.append(pin_wires)
-		if p.has_method("get_label"):
-			_part.label = p.get_label()
+		_part.labels = p.labels
 		circuit.parts.append(_part)
 		id += 1
 	g.circuits[idx] = circuit
@@ -498,9 +496,9 @@ func load_scene():
 		scene.queue_free()
 		var id = 0
 		for p in parts:
-			if p.has_method("set_label"):
+			if p.has_method("show_label"):
 				p.show_label()
-				p.set_label(circuit.parts[id].label)
+			p.labels = circuit.parts[id].labels
 			for pin_wires in circuit.parts[id].wires:
 				for w in pin_wires:
 					# w is [end_pin.parent_part.id, end input pin.id]
