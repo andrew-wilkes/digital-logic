@@ -20,10 +20,11 @@ func get_label():
 	return [$Label.text]
 
 
-func set_label(arr):
-	if !arr.empty():
-		$Label.text = arr[0]
-		labels = arr
+func set_label(txt):
+	if txt.empty():
+		txt = "?"
+	$Label.text = txt
+	labels = [txt]
 
 
 func show_label():

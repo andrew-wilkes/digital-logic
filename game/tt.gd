@@ -105,7 +105,7 @@ var data = {
 	"srflipflopenable":
 	{
 		title = "SR Flip Flop with enable",
-		inputs = ["R", "S", "E"],
+		inputs = ["E", "S", "R"],
 		iparts = [],
 		outputs = ["+Q", "-Q"],
 		oparts = [],
