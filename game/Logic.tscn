@@ -182,5 +182,6 @@ visible = false
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Hint" to="." method="_on_Hint_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Truth" to="." method="_on_Truth_button_down"]
 [connection signal="details_changed" from="VBox/HBox2/Circuit" to="." method="_on_Circuit_details_changed"]
+[connection signal="popup_hide" from="c/HintPanel" to="." method="_on_HintPanel_popup_hide"]
 [connection signal="popup_hide" from="c/TruthPanel" to="." method="_on_TruthPanel_popup_hide"]
 [connection signal="test_button_down" from="c/TruthPanel" to="." method="_on_TruthPanel_test_button_down"]

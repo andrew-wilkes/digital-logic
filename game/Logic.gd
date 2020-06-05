@@ -94,14 +94,18 @@ func add_accessory_to_circuit(item):
 
 func _on_Hint_button_down():
 	hp.text = tt.data[cid].hint
+	hint_button.disabled = true
 
 
 func _on_Truth_button_down():
 	$c/TruthPanel.open(cid)
+	truth_button.disabled = true
 
 
 func _on_TruthPanel_popup_hide():
 	$c/TruthPanel/TruthTable.clear()
+	# Clicking on button closes the window so need to block it activating immediately
+	truth_button.call_deferred("set_disabled", false)
 
 
 func _on_TruthPanel_test_button_down():
@@ -113,3 +117,7 @@ func test_circuit(open_tt):
 	if open_tt:
 		_on_Truth_button_down()
 	$c/TruthPanel.test_circuit(circuit)
+
+
+func _on_HintPanel_popup_hide():
+	hint_button.call_deferred("set_disabled", false)

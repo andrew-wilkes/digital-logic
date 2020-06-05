@@ -71,7 +71,7 @@ func _on_Timer_timeout():
 			else:
 				# Look for named input in circuit
 				var s = data.inputs[i]
-				var pos = 0
+				var pos = 0 # Index of part containing label
 				for ip in circuit.ips:
 					if ip.labels.has(s):
 						ipmap.append(pos)
