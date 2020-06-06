@@ -47,18 +47,18 @@ var data = {
 	"2-1multiplexer":
 	{
 		title = "Two-to-one Multiplexer",
-		inputs = ["B","A","Select"],
+		inputs = ["A","B","Select"],
 		iparts = [],
 		outputs = ["Out"],
 		oparts = [],
 		values = [
 			[0,0,0,0],
 			[0,0,1,0],
-			[0,1,0,1],
+			[0,1,0,0],
 			[0,1,1,1],
-			[1,0,0,0],
-			[1,0,1,1],
-			[1,1,0,0],
+			[1,0,0,1],
+			[1,0,1,0],
+			[1,1,0,1],
 			[1,1,1,1]
 		],
 		desc = "A multiplexer is used to select one of it's inputs to pass to the output like a switch.",
