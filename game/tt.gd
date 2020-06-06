@@ -124,5 +124,23 @@ var data = {
 		],
 		desc = "We can add an enable input (E) to an SR flip-flop so that it can only change state when E is high.",
 		hint = "Add AND gates to the inputs."
+	},
+	"dlatch":
+	{
+		title = "D Latch",
+		inputs = ["E", "D"],
+		iparts = [],
+		outputs = ["+Q", "-Q"],
+		oparts = [],
+		values = [
+			[1,0,0,1],
+			[0,0,0,1],
+			[0,1,0,1],
+			[1,1,1,0],
+			[0,1,1,0],
+			[0,0,1,0]
+		],
+		desc = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value.",
+		hint = "Simply add a NOT gate to the input of an SR flip flop."
 	}
 }
