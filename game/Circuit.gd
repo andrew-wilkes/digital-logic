@@ -33,6 +33,7 @@ func _ready():
 
 func set_status(n):
 	g.circuits[idx].status = n
+	save_scene()
 
 
 func apply_input(value): # to multi-input part

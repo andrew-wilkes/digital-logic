@@ -21,6 +21,8 @@ wireable = true
 show_state = true
 is_ext_input = true
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 
 [node name="Input52" type="Node2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( -280, 390 )
@@ -32,6 +34,8 @@ wireable = true
 show_state = true
 is_ext_input = true
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 
 [node name="Input57" type="Node2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( -290, 480 )
@@ -43,6 +47,8 @@ wireable = true
 show_state = true
 is_ext_input = true
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 
 [node name="NOT100" type="Node2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 230, 400 )
@@ -55,6 +61,8 @@ wireable = true
 show_state = false
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "NOT"
 
 [node name="NOT58" type="Node2D" parent="." instance=ExtResource( 5 )]
@@ -68,6 +76,8 @@ wireable = true
 show_state = false
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "NOT"
 
 [node name="NOT59" type="Node2D" parent="." instance=ExtResource( 5 )]
@@ -81,6 +91,8 @@ wireable = true
 show_state = false
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "NOT"
 
 [node name="AND" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -94,6 +106,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="AND62" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -107,6 +121,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="Output" type="Node2D" parent="." instance=ExtResource( 6 )]
@@ -119,6 +135,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = true
+is_input_block = false
+is_output_block = false
 
 [node name="AND90" type="Node2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 580, 190 )
@@ -131,6 +149,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="AND91" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -144,6 +164,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="Output100" type="Node2D" parent="." instance=ExtResource( 6 )]
@@ -156,6 +178,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = true
+is_input_block = false
+is_output_block = false
 
 [node name="AND102" type="Node2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 590, 300 )
@@ -168,6 +192,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="AND103" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -181,6 +207,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="AND104" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -194,6 +222,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="AND105" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -207,6 +237,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="AND106" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -220,6 +252,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="AND107" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -233,6 +267,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="AND108" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -246,6 +282,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="AND109" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -259,6 +297,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="AND110" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -272,6 +312,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="AND111" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -285,6 +327,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="AND112" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -298,6 +342,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="AND113" type="Node2D" parent="." instance=ExtResource( 7 )]
@@ -311,6 +357,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = false
+is_input_block = false
+is_output_block = false
 gate_type = "AND"
 
 [node name="Output118" type="Node2D" parent="." instance=ExtResource( 6 )]
@@ -323,6 +371,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = true
+is_input_block = false
+is_output_block = false
 
 [node name="Output123" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 814, 620 )
@@ -334,6 +384,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = true
+is_input_block = false
+is_output_block = false
 
 [node name="Output128" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 804, 530 )
@@ -345,6 +397,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = true
+is_input_block = false
+is_output_block = false
 
 [node name="Output133" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 830, 440 )
@@ -356,6 +410,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = true
+is_input_block = false
+is_output_block = false
 
 [node name="Output138" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 814, 360 )
@@ -367,6 +423,8 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = true
+is_input_block = false
+is_output_block = false
 
 [node name="Output143" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 824, 280 )
@@ -378,3 +436,5 @@ wireable = true
 show_state = true
 is_ext_input = false
 is_ext_output = true
+is_input_block = false
+is_output_block = false
