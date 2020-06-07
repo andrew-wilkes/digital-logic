@@ -27,9 +27,5 @@ func _on_VSlider_value_changed(x):
 		n = n << 1
 
 
-func get_labels():
-	return ["I0","I1","I2","I3"]
-
-
 func set_state(_value, _idx):
 	pass
