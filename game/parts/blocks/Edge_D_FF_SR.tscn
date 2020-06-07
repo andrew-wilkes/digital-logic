@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/blocks.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 59.4921, 60.5048 )
+extents = Vector2( 40, 40 )
 
 [node name="Edge-triggered D Flip Flop with SR" type="Node2D"]
 script = ExtResource( 2 )
@@ -13,34 +13,31 @@ script = ExtResource( 2 )
 [node name="Symbol" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 0, 130, 122, 122 )
+region_rect = Rect2( 0, 190, 82, 82 )
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2( -40, -60 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 40, 60 )
 shape = SubResource( 1 )
 
 [node name="Inputs" type="Node2D" parent="."]
-position = Vector2( 20, 30 )
 
 [node name="Pin1" parent="Inputs" instance=ExtResource( 1 )]
-position = Vector2( -80, -70 )
+position = Vector2( -40, -20 )
 
 [node name="Pin2" parent="Inputs" instance=ExtResource( 1 )]
-position = Vector2( -80, 10 )
+position = Vector2( -40, 20 )
+
+[node name="Pin3" parent="Inputs" instance=ExtResource( 1 )]
+position = Vector2( 0, -40 )
+
+[node name="Pin4" parent="Inputs" instance=ExtResource( 1 )]
+position = Vector2( 0, 40 )
 
 [node name="Outputs" type="Node2D" parent="."]
 
 [node name="Pin1" parent="Outputs" instance=ExtResource( 1 )]
-position = Vector2( 60, -40 )
+position = Vector2( 40, -20 )
 
 [node name="Pin2" parent="Outputs" instance=ExtResource( 1 )]
-position = Vector2( 60, 40 )
-
-[node name="Pin3" parent="Outputs" instance=ExtResource( 1 )]
-position = Vector2( 0, -60 )
-
-[node name="Pin4" parent="Outputs" instance=ExtResource( 1 )]
-position = Vector2( 0, 60 )
+position = Vector2( 40, 20 )

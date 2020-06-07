@@ -12,7 +12,8 @@ func _ready():
 	var menu = find_node("Menu")
 	menu.connect("button_pressed", self, "process_buttons")
 	$VBox/HBox2/PartsPicker.connect("picked", circuit, "part_picked")
-	$c/AccessoryPicker.connect("item_selected", self, "add_accessory_to_circuit")
+	$c/AccessoryPicker.connect("item_selected", self, "add_item_to_circuit")
+	$c/BlockPicker.connect("item_selected", self, "add_item_to_circuit")
 	hint_button = find_node("Hint")
 	truth_button = find_node("Truth")
 	hp = $c/HintPanel
@@ -88,7 +89,7 @@ func _on_Access_button_down():
 	$c/AccessoryPicker.popup_centered()
 
 
-func add_accessory_to_circuit(item):
+func add_item_to_circuit(item):
 	circuit.part_picked(item)
 
 
@@ -121,3 +122,7 @@ func test_circuit(open_tt):
 
 func _on_HintPanel_popup_hide():
 	hint_button.call_deferred("set_disabled", false)
+
+
+func _on_Block_button_down():
+	$c/BlockPicker.popup_centered()
