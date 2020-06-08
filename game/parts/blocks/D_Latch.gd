@@ -33,13 +33,19 @@ func update_output(pin: Pin, state):
 		pin.wires[0].delete()
 		unstable()
 		return
-	pin.was_connected_to = true
 	inputs[pin.id] = state
+	if !pin.was_connected_to:
+		pin.was_connected_to = true
+		emit_signals()
 	# Return if not enabled
 	if inputs[E] == false:
 		return
-	outputs[Q1] = state
-	outputs[Q2] = !state
+	if inputs[D] == outputs[Q2]:
+		outputs[Q1] = inputs[D]
+		outputs[Q2] = !inputs[D]
+		emit_signals()
+
+func emit_signals():
 	emit_signal("new_event")
 	for n in 2:
 		emit_signal("state_changed", self, n, outputs[n])
