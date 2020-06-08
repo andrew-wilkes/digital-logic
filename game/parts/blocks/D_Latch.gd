@@ -1,5 +1,8 @@
 extends Part
 
+enum { D, E }
+enum { Q1, Q2}
+
 var inputs = []
 var labels =  ["D","E","+Q","-Q"]
 
@@ -13,6 +16,7 @@ func _ready():
 		pin.id = i
 		connect_pin(pin)
 		i += 1
+	i = 0
 	for node in $Outputs.get_children():
 		node.id = i
 		node.is_output = true
@@ -31,10 +35,11 @@ func update_output(pin: Pin, state):
 		return
 	pin.was_connected_to = true
 	inputs[pin.id] = state
-	set_output(state)
-	emit_signal("state_changed", self, 0, outputs[0])
-
-
-func set_output(state):
-	var result = false
-	outputs[0] = result
+	# Return if not enabled
+	if inputs[E] == false:
+		return
+	outputs[Q1] = state
+	outputs[Q2] = !state
+	emit_signal("new_event")
+	for n in 2:
+		emit_signal("state_changed", self, n, outputs[n])
