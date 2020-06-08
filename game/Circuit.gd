@@ -18,6 +18,7 @@ var panning = false
 var pan_pos
 var idx = ""
 var vx = []
+var vy = []
 var last_details
 var ips = []
 var ops = []
@@ -135,46 +136,68 @@ func allow_testing():
 
 func route_all_wires():
 	vx.clear()
+	vy.clear()
 	for w in $Wires.get_children():
 		route_wire(w)
 	add_dots_to_all_wires()
 
 
 func route_wire(w):
-	var v = w.end_pin.vert
+	var v1 = w.start_pin.vert
+	var v2 = w.end_pin.vert
 	var a = w.points[0]
 	var b = w.points[-1]
+	var x
+	var y
 	w.clear_points()
 	w.add_point(a)
 	if a.y != b.y:
 		if a.x < b.x:
-			var x = b.x
-			if !v:
-				x = align_to_grid(a.x)
-				x = get_next_x(x)
-			w.add_point(Vector2(x, a.y))
-			w.add_point(Vector2(x, b.y))
+			if v1:
+				x = a.x
+				if v2:
+					if a.y > b.y:
+						y = get_next_pos(vy, b.y)
+					else:
+						y = get_next_pos(vy, b.y, -2)
+				else:
+					y = b.y
+				w.add_point(Vector2(x, y))
+				w.add_point(Vector2(b.x, y))
+			else:
+				if v2:
+					x = b.x
+					y = a.y
+					w.add_point(Vector2(x, y))
+				else:
+					x = align_to_grid(a.x)
+					x = get_next_pos(vx, x)
+					w.add_point(Vector2(x, a.y))
+					w.add_point(Vector2(x, b.y))
 		else:
-			var x = align_to_grid(a.x)
-			x = get_next_x(x)
-			w.add_point(Vector2(x, a.y))
-			var y = align_to_grid((a.y + b.y) / 2)
+			if v1:
+				x = a.x
+			else:
+				x = align_to_grid(a.x)
+				x = get_next_pos(vx, x)
+				w.add_point(Vector2(x, a.y))
+			y = get_next_pos(vy, align_to_grid((a.y + b.y) / 2), 1)
 			w.add_point(Vector2(x, y))
 			x = b.x
-			if !v:
+			if !v2:
 				x = align_to_grid(b.x)
-				x = get_next_x(x, -2)
+				x = get_next_pos(vx, x, -2)
 			w.add_point(Vector2(x, y))
 			w.add_point(Vector2(x, b.y))
 	w.add_point(b)
 
 
-func get_next_x(x, dir = 2):
+func get_next_pos(points, x, dir = 2):
 	var do = true
 	while do:
 		x += g.GRID_SIZE * dir
-		do = vx.has(x)
-	vx.append(x)
+		do = points.has(x)
+	points.append(x)
 	return x
 
 

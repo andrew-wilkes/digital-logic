@@ -38,7 +38,7 @@ func update_output(pin: Pin, state):
 		pin.was_connected_to = true
 		emit_signals()
 	var sum = int(inputs[A]) + int(inputs[B]) + int(inputs[Cin])
-	outputs[Sum] = sum % 2
+	outputs[Sum] = bool(sum % 2)
 	outputs[Cout] = sum > 1
 	emit_signals()
 
