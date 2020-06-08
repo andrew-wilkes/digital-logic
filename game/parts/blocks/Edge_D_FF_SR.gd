@@ -5,7 +5,6 @@ enum { QP, QN}
 
 var inputs = []
 var labels =  ["D","CLK","+Q","-Q"]
-var q1 = false
 
 func _ready():
 	allow_testing()
@@ -34,25 +33,30 @@ func update_output(pin: Pin, state):
 		pin.wires[0].delete()
 		unstable()
 		return
-	pin.was_connected_to = true
 	inputs[pin.id] = state
-	if pin.id == S and inputs[S] and outputs[QN]:
-		q1 = true
-		set_outputs()
-		return
-	if pin.id == R and inputs[R] and outputs[QP]:
-		q1 = false
-		set_outputs()
-		return
-	if inputs[CLK] == false:
-		q1 = inputs[D] # Store D in the first latch 
-	elif pin.id == CLK and outputs[QP] != q1: # q1 has changed and the clk has gone low > high 
-		set_outputs()
+	if !pin.was_connected_to:
+		pin.was_connected_to = true
+		emit_signals()
+	if outputs[QP]:
+		if pin.id == S and state == false and inputs[R]:
+			set_outputs(false)
+		if pin.id == R and state and inputs[S] == false:
+			set_outputs(false)
+		if pin.id == CLK and state and inputs[S] == false and inputs[D] == false:
+			set_outputs(false)
+	else:
+		if pin.id == S and state:
+			set_outputs(true)
+		if pin.id == CLK and state and inputs[R] == false and inputs[D] == true:
+			set_outputs(true)
 
 
-func set_outputs():
-		outputs[QP] = q1
-		outputs[QN] = !q1
-		emit_signal("new_event")
-		for n in 2:
-			emit_signal("state_changed", self, n, outputs[n])
+func set_outputs(v):
+		outputs[QP] = v
+		outputs[QN] = !v
+		emit_signals()
+
+func emit_signals():
+	emit_signal("new_event")
+	for n in 2:
+		emit_signal("state_changed", self, n, outputs[n])

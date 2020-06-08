@@ -10,7 +10,7 @@
 [node name="Parts" type="Node2D"]
 
 [node name="Input" type="Node2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 220, 180 )
+position = Vector2( 200, 170 )
 script = ExtResource( 2 )
 highlight_pin = true
 highlight_part = true

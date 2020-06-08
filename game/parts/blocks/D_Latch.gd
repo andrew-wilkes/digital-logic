@@ -45,6 +45,7 @@ func update_output(pin: Pin, state):
 		outputs[Q2] = !inputs[D]
 		emit_signals()
 
+
 func emit_signals():
 	emit_signal("new_event")
 	for n in 2:
