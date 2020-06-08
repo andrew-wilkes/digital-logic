@@ -74,7 +74,7 @@ func update_output(pin: Pin, state):
 	if inputs[pin.id] == state and pin.was_connected_to:
 		return
 	if pin.state_changed():
-		pin.wires[0].delete()
+		pinclick(pin)
 		unstable()
 		return
 	pin.was_connected_to = true

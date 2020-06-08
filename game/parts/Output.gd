@@ -37,7 +37,7 @@ func get_state(_idx):
 
 func update_output(pin, value):
 	if pin.state_changed():
-		pin.wires[0].delete()
+		pinclick(pin)
 		unstable()
 		return
 	state = value

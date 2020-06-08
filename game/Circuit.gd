@@ -181,7 +181,11 @@ func route_wire(w):
 				x = align_to_grid(a.x)
 				x = get_next_pos(vx, x)
 				w.add_point(Vector2(x, a.y))
-			y = get_next_pos(vy, align_to_grid((a.y + b.y) / 2), 1)
+			var p = w.start_pin.parent_part
+			if p == w.end_pin.parent_part: # If feedback wire
+				y = align_to_grid(a.y - p.get_extents().y - w.start_pin.position.y - 20);
+			else:
+				y = get_next_pos(vy, align_to_grid((a.y + b.y) / 2), 1)
 			w.add_point(Vector2(x, y))
 			x = b.x
 			if !v2:
@@ -327,8 +331,11 @@ func state_changed(node: Part, output_num, state):
 
 func wire_attached(_part, _pin, _status):
 	_part.update_output(_pin, _status)
-	route_wire(_pin.wires[0])
-	add_dots_to_wires(_pin.wires[0].start_pin.wires)
+	if _pin.wires.empty():
+		print("wires empty") # As a result of unstable circuit where wire deleted
+	else:
+		route_wire(_pin.wires[0])
+		add_dots_to_wires(_pin.wires[0].start_pin.wires)
 
 
 func part_dropped():
@@ -381,6 +388,7 @@ func pinclick(gate, pin):
 			var num_wires = start_pin.wires.size()
 			if num_wires < 2:
 				start_pin.show_it()
+			w.end_pin.show_it()
 			remove_points(w)
 			w.delete()
 			add_dots_to_wires(start_pin.wires)

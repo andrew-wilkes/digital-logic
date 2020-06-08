@@ -30,7 +30,7 @@ func update_output(pin: Pin, state):
 	if inputs[pin.id] == state and pin.was_connected_to:
 		return
 	if pin.state_changed():
-		pin.wires[0].delete()
+		pinclick(pin)
 		unstable()
 		return
 	inputs[pin.id] = state
@@ -47,6 +47,5 @@ func update_output(pin: Pin, state):
 
 
 func emit_signals():
-	emit_signal("new_event")
 	for n in 2:
 		emit_signal("state_changed", self, n, outputs[n])
