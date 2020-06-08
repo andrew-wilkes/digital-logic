@@ -500,11 +500,12 @@ func load_scene():
 			if p.has_method("show_label"):
 				p.show_label()
 			p.labels = circuit.parts[id].labels
+			var output_idx = 0
 			for pin_wires in circuit.parts[id].wires:
 				for w in pin_wires:
 					# w is [end_pin.parent_part.id, end input pin.id]
 					var wire = wire_scene.instance()
-					wire.start_pin = p.get_node("Outputs").get_child(0)
+					wire.start_pin = p.get_node("Outputs").get_child(output_idx)
 					wire.start_pin.parent_part = p
 					wire.start_pin.hide_it()
 					wire.end_pin = parts[w[0]].get_node("Inputs").get_child(w[1])
@@ -516,6 +517,7 @@ func load_scene():
 					wire.start_pin.wires.append(wire)
 					wire.end_pin.wires.append(wire)
 					$Wires.add_child(wire)
+				output_idx += 1
 			connect_part(p)
 			id += 1
 	init_input_states()
