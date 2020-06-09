@@ -7,9 +7,16 @@ var hint_button
 var truth_button
 var hp
 var np
+var buttons
+var button
 
 func _ready():
 	var menu = find_node("Menu")
+	buttons = find_node("Buttons")
+	button = buttons.get_node("Circuits")
+	button_change_state(true)
+	button.connect("mouse_entered", self, "button_change_state", [false])
+	button.connect("mouse_exited", self, "button_change_state", [true])
 	menu.connect("button_pressed", self, "process_buttons")
 	$VBox/HBox2/PartsPicker.connect("picked", circuit, "part_picked")
 	$c/AccessoryPicker.connect("item_selected", self, "add_item_to_circuit")
@@ -36,6 +43,10 @@ func _ready():
 				"status": 0
 			}
 			circuit.save_scene()
+
+
+func button_change_state(disabled):
+	button.disabled = disabled
 
 
 func process_buttons(action):
