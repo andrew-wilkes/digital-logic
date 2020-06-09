@@ -7,13 +7,11 @@ var hint_button
 var truth_button
 var hp
 var np
-var buttons
 var button
 
 func _ready():
 	var menu = find_node("Menu")
-	buttons = find_node("Buttons")
-	button = buttons.get_node("Circuits")
+	button = find_node("Circuits")
 	button_change_state(true)
 	button.connect("mouse_entered", self, "button_change_state", [false])
 	button.connect("mouse_exited", self, "button_change_state", [true])
