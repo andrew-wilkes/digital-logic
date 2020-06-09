@@ -149,50 +149,133 @@ func route_wire(w):
 	var b = w.points[-1]
 	var x
 	var y
+	var s = 1 # State
+	var routing = true
 	w.clear_points()
 	w.add_point(a)
-	if a.y != b.y:
-		if a.x < b.x:
-			if v1:
-				x = a.x
-				if v2:
-					if a.y > b.y:
-						y = get_next_pos(vy, b.y)
-					else:
-						y = get_next_pos(vy, b.y, -2)
+	while routing:
+		match s:
+			1:
+				if a.x == b.x and b.y > a.y or a.y == b.y and b.x > a.x:
+					routing = false
 				else:
-					y = b.y
-				w.add_point(Vector2(x, y))
-				w.add_point(Vector2(b.x, y))
-			else:
-				if v2:
-					x = b.x
-					y = a.y
-					w.add_point(Vector2(x, y))
+					s = 10
+			10:
+				if v1:
+					x = a.x
+					s = 20
 				else:
 					x = align_to_grid(a.x)
-					x = get_next_pos(vx, x)
-					w.add_point(Vector2(x, a.y))
-					w.add_point(Vector2(x, b.y))
-		else:
-			if v1:
-				x = a.x
-			else:
-				x = align_to_grid(a.x)
+					s = 30
+			30:
 				x = get_next_pos(vx, x)
-				w.add_point(Vector2(x, a.y))
-			var p = w.start_pin.parent_part
-			if p == w.end_pin.parent_part: # If feedback wire
-				y = align_to_grid(a.y - p.get_extents().y - w.start_pin.position.y - 20);
-			else:
-				y = get_next_pos(vy, align_to_grid((a.y + b.y) / 2), 1)
-			w.add_point(Vector2(x, y))
-			x = b.x
-			if !v2:
+				y = a.y
+				w.add_point(Vector2(x, y))
+				if v2:
+					s = 32
+				else:
+					s = 200
+			32:
+				if a.x < b.x:
+					s = 34
+				else:
+					s = 36
+			34:
+				if a.y < b.y:
+					x = b.x
+					w.add_point(Vector2(x, y))
+				else:
+					y = get_next_pos(vy, b.y, -2)
+					w.add_point(Vector2(x, y))
+					x = b.x
+					w.add_point(Vector2(x, y))
+				s = 0
+			36:
+				y = get_next_pos(vy, b.y, -2)
+				w.add_point(Vector2(x, y))
+				x = b.x
+				w.add_point(Vector2(x, y))
+				s = 0
+			200:
+				if a.x < b.x:
+					y = b.y
+					w.add_point(Vector2(x, y))
+				else:
+					var p = w.start_pin.parent_part
+					if p == w.end_pin.parent_part: # If feedback wire
+						y = a.y - p.get_extents().y - w.start_pin.position.y - 20
+					else:
+						y = (a.y + b.y) / 2
+					y = get_next_pos(vy, align_to_grid(y), -1)
+					w.add_point(Vector2(x, y))
+					x = align_to_grid(b.x)
+					x = get_next_pos(vx, x, -2)
+					w.add_point(Vector2(x, y))
+					w.add_point(Vector2(x, b.y))
+				s = 0
+			20:
+				if v2:
+					y = get_next_pos(vy, a.y)
+					w.add_point(Vector2(x, y))
+					s = 40
+				else:
+					s = 50
+			40:
+				if a.y < b.y:
+					x = b.x
+					w.add_point(Vector2(x, y))
+				else:
+					var p = w.start_pin.parent_part
+					if p == w.end_pin.parent_part: # If feedback wire
+						x = align_to_grid(a.x + p.get_extents().x + w.start_pin.position.x + 20);
+					else:
+						x = get_next_pos(vx, align_to_grid((a.x + b.x) / 2), 1)
+					w.add_point(Vector2(x, y))
+					y = get_next_pos(vy, b.y, -2)
+					w.add_point(Vector2(x, y))
+					x = b.x
+					w.add_point(Vector2(x, y))
+				s = 0
+			50:
+				if a.y < b.y:
+					s = 60
+				else:
+					s = 70
+			60:
+				if a.x < b.x:
+					y = b.y
+					w.add_point(Vector2(x, y))
+				else:
+					y = get_next_pos(vy, align_to_grid((a.y + b.y) / 2), 1)
+					w.add_point(Vector2(x, y))
+					x = align_to_grid(b.x)
+					x = get_next_pos(vx, x, -2)
+					w.add_point(Vector2(x, y))
+					y = b.y
+					w.add_point(Vector2(x, y))
+				s = 0
+			70:
+				y = get_next_pos(vy, a.y)
+				w.add_point(Vector2(x, y))
+				if a.x > b.x:
+					s = 80
+				else:
+					s = 90
+			80:
 				x = align_to_grid(b.x)
 				x = get_next_pos(vx, x, -2)
-			w.add_point(Vector2(x, y))
-			w.add_point(Vector2(x, b.y))
+				w.add_point(Vector2(x, y))
+				s = 100
+			90:
+				x = get_next_pos(vx, align_to_grid((a.x + b.x) / 2), 1)
+				w.add_point(Vector2(x, y))
+				s = 100
+			100:
+				y = b.y
+				w.add_point(Vector2(x, y))
+				s = 0
+			0:
+				routing = false
 	w.add_point(b)
 
 

@@ -21,7 +21,10 @@ func get_label():
 
 
 func set_labels(arr):
-	set_label(arr[0])
+	if arr.empty():
+		$Label.text = "?"
+	else:
+		set_label(arr[0])
 
 
 func set_label(txt):

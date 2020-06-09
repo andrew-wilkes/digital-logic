@@ -1,0 +1,127 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://parts/zInput.tscn" type="PackedScene" id=1]
+[ext_resource path="res://parts/Input.gd" type="Script" id=2]
+[ext_resource path="res://parts/blocks/Full_Adder.gd" type="Script" id=3]
+[ext_resource path="res://parts/blocks/Full_Adder.tscn" type="PackedScene" id=4]
+[ext_resource path="res://parts/accessories/4-bit_A_to_D_Spinner.gd" type="Script" id=5]
+[ext_resource path="res://parts/accessories/7Segment.gd" type="Script" id=6]
+[ext_resource path="res://parts/accessories/4-bit_A_to_D_Spinner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://parts/accessories/Decoded_7-Segment_Display.tscn" type="PackedScene" id=8]
+
+[node name="Parts" type="Node2D"]
+position = Vector2( 310, 230 )
+
+[node name="Full Adder" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 250, 200 )
+z_index = 1
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Full Adder86" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 250, 320 )
+z_index = 1
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Full Adder89" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 250, 80 )
+z_index = 1
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Full Adder90" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 360, 450 )
+z_index = 1
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Input" type="Node2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 120, 20 )
+script = ExtResource( 2 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = true
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="4 Bit Analog to Digital Spin Box" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( -110, 70 )
+z_index = 1
+script = ExtResource( 5 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = true
+is_output_block = false
+
+[node name="4 Bit Analog to Digital Spin Box110" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( -110, 410 )
+z_index = 1
+script = ExtResource( 5 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = true
+is_output_block = false
+
+[node name="Decoded 7 Segment Display" type="Node2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 540, -80 )
+z_index = 1
+script = ExtResource( 6 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = true
+on_color = Color( 0.0784314, 1, 0, 1 )
+off_color = Color( 0.192157, 0.192157, 0.192157, 0.454902 )
+decode = true
