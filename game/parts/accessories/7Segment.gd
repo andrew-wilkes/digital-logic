@@ -18,6 +18,7 @@ func _ready():
 	if allow_testing():
 		set_segment(7, 0)
 		$Timer.start()
+		position.y += 50
 	else:
 		set_segments(0)
 	z_index = 1 # Display above wires

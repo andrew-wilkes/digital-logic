@@ -146,31 +146,36 @@ default_color = Color( 1, 1, 1, 1 )
 [node name="Pins2" type="Node2D" parent="."]
 
 [node name="p9" type="Line2D" parent="Pins2"]
-position = Vector2( -40, 110 )
+position = Vector2( -40, -110 )
+rotation = 3.14159
 points = PoolVector2Array( 0, -20, 0, 0 )
 width = 2.0
 default_color = Color( 1, 1, 1, 1 )
 
 [node name="p10" type="Line2D" parent="Pins2"]
-position = Vector2( -20, 110 )
+position = Vector2( -20, -110 )
+rotation = 3.14159
 points = PoolVector2Array( 0, -20, 0, 0 )
 width = 2.0
 default_color = Color( 1, 1, 1, 1 )
 
 [node name="p11" type="Line2D" parent="Pins2"]
-position = Vector2( 0, 110 )
+position = Vector2( 0, -110 )
+rotation = 3.14159
 points = PoolVector2Array( 0, -20, 0, 0 )
 width = 2.0
 default_color = Color( 1, 1, 1, 1 )
 
 [node name="p12" type="Line2D" parent="Pins2"]
-position = Vector2( 20, 110 )
+position = Vector2( 20, -110 )
+rotation = 3.14159
 points = PoolVector2Array( 0, -20, 0, 0 )
 width = 2.0
 default_color = Color( 1, 1, 1, 1 )
 
 [node name="p13" type="Line2D" parent="Pins2"]
-position = Vector2( 40, 110 )
+position = Vector2( 40, -110 )
+rotation = 3.14159
 points = PoolVector2Array( 0, -20, 0, 0 )
 width = 2.0
 default_color = Color( 1, 1, 1, 1 )
