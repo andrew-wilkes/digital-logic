@@ -329,11 +329,17 @@ func add_dots_to_wires(wires):
 
 
 func get_furthest_index(wires: Array):
+	if wires.empty():
+		return
+	# Set which set of coors to scan
+	var xy = 0
+	if wires[0].start_pin.vert:
+		xy = 1
 	var x = -INF
 	var index = 0
 	var i = 0
 	for w in wires:
-		var v = w.points[1].x
+		var v = w.points[1][xy]
 		if  v > x:
 			x = v
 			index = i
