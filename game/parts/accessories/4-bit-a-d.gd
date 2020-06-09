@@ -27,5 +27,16 @@ func _on_VSlider_value_changed(x):
 		n = n << 1
 
 
-func set_state(_value, _idx):
-	pass
+func set_state(value, idx):
+	outputs[idx] = value
+	$VSlider.value = g.decode_inputs(outputs)
+
+
+func update_output(value, idx):
+	set_state(value, idx)
+
+
+func reset_outputs():
+	for idx in outputs.size():
+		outputs[idx] = false
+	$VSlider.value = 0

@@ -83,3 +83,12 @@ func change_property_of_data(key):
 			p[key] = [p[key]]
 			print(p[key])
 	save_file(PART_FILE_PATH + "data.json", data)
+
+
+func decode_inputs(inputs):
+	var x = 0
+	for i in range(inputs.size() - 1, -1, -1):
+		x = x << 1
+		if inputs[i]:
+			x += 1
+	return x

@@ -23,13 +23,4 @@ func update_output(pin: Pin, state):
 	pin.was_connected_to = true
 	inputs[pin.id] = state
 	$Pins.get_child(pin.id).modulate = g.get_state_color(state)
-	$ProgressBar.value = decode_inputs()
-
-
-func decode_inputs():
-	var x = 0
-	for i in range(3, -1, -1):
-		x = x << 1
-		if inputs[i]:
-			x += 1
-	return x
+	$ProgressBar.value = g.decode_inputs(inputs)

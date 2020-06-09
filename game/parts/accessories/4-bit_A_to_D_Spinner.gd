@@ -60,3 +60,18 @@ func _on_Down_button_up():
 func _on_Timer_timeout():
 	set_value(delta)
 	$Timer.start(REPEAT_INTERVAL)
+
+
+func set_state(value, idx):
+	outputs[idx] = value
+	set_value(g.decode_inputs(outputs))
+
+
+func update_output(value, idx):
+	set_state(value, idx)
+
+
+func reset_outputs():
+	for idx in outputs.size():
+		outputs[idx] = false
+	set_value(0)
