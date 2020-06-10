@@ -44,6 +44,5 @@ func update_output(pin: Pin, state):
 
 
 func emit_signals():
-	emit_signal("new_event")
 	for n in 2:
 		emit_signal("state_changed", self, n, outputs[n])
