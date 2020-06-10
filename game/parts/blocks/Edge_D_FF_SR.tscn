@@ -29,11 +29,11 @@ position = Vector2( -40, -20 )
 position = Vector2( -40, 20 )
 
 [node name="Pin3" parent="Inputs" instance=ExtResource( 1 )]
-position = Vector2( 0, -40 )
+position = Vector2( -20, -40 )
 vert = true
 
 [node name="Pin4" parent="Inputs" instance=ExtResource( 1 )]
-position = Vector2( 0, 40 )
+position = Vector2( 20, -40 )
 vert = true
 
 [node name="Outputs" type="Node2D" parent="."]

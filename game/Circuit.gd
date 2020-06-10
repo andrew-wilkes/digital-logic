@@ -157,7 +157,7 @@ func route_wire(w):
 		match s:
 			1:
 				if a.x == b.x and b.y > a.y or a.y == b.y and b.x > a.x:
-					routing = false
+					s = 0
 				else:
 					s = 10
 			10:
@@ -176,19 +176,15 @@ func route_wire(w):
 				else:
 					s = 200
 			32:
-				if a.x < b.x:
+				if x < b.x:
 					s = 34
 				else:
 					s = 36
 			34:
-				if a.y < b.y:
-					x = b.x
-					add_point(w, x, y)
-				else:
-					y = get_next_pos(vy, b.y, -2)
-					add_point(w, x, y)
-					x = b.x
-					add_point(w, x, y)
+				y = get_next_pos(vy, b.y, -2)
+				add_point(w, x, y)
+				x = b.x
+				add_point(w, x, y)
 				s = 0
 			36:
 				y = get_next_pos(vy, b.y, -2)
@@ -203,15 +199,14 @@ func route_wire(w):
 				else:
 					var p = w.start_pin.parent_part
 					if p == w.end_pin.parent_part: # If feedback wire
-						y = a.y - p.get_extents().y - w.start_pin.position.y - 20
+						y = get_next_pos(vy, a.y - p.get_extents().y - w.start_pin.position.y - 20, -1)
 					else:
-						y = (a.y + b.y) / 2
-					y = get_next_pos(vy, align_to_grid(y), -1)
+						y = get_mid_point(vy, a.y, b.y)
 					add_point(w, x, y)
 					x = align_to_grid(b.x)
 					x = get_next_pos(vx, x, -2)
 					add_point(w, x, y)
-					w.add_point(Vector2(x, b.y))
+					add_point(w, x, b.y)
 				s = 0
 			20:
 				if v2:
@@ -227,7 +222,7 @@ func route_wire(w):
 				else:
 					var p = w.start_pin.parent_part
 					if p == w.end_pin.parent_part: # If feedback wire
-						x = align_to_grid(a.x + p.get_extents().x + w.start_pin.position.x + 20);
+						x = align_to_grid(a.x + p.get_extents().x + w.start_pin.position.x + 40);
 					else:
 						x = get_mid_point(vx, a.x, b.x)
 					add_point(w, x, y)

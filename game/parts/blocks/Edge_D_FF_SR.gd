@@ -57,6 +57,6 @@ func set_outputs(v):
 		emit_signals()
 
 func emit_signals():
-	emit_signal("new_event")
 	for n in 2:
+		emit_signal("new_event")
 		emit_signal("state_changed", self, n, outputs[n])
