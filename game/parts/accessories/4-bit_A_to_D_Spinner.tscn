@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://parts/misc/Pin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://parts/accessories/4-bit_A_to_D_Spinner.gd" type="Script" id=2]
-[ext_resource path="res://assets/arrow.png" type="Texture" id=3]
+[ext_resource path="res://assets/arrow-up.png" type="Texture" id=3]
+[ext_resource path="res://assets/arrow-down.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 45, 40 )
@@ -101,7 +102,7 @@ align = 2
 margin_top = 42.0
 margin_right = 50.0
 margin_bottom = 62.0
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
 [connection signal="button_down" from="VBox/Up" to="." method="_on_Up_button_down"]
