@@ -14,7 +14,7 @@ var circuits = {}
 var param
 
 func load_circuits():
-	var data = load_file(g.PART_FILE_PATH + "data.json")
+	var data = load_file(PART_FILE_PATH + "data.json")
 	if data:
 		circuits = data
 

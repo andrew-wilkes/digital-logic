@@ -17,9 +17,9 @@
 [ext_resource path="res://parts/blocks/Edge_D_FF_SR.tscn" type="PackedScene" id=15]
 
 [node name="Parts" type="Node2D"]
-position = Vector2( 100, 80 )
+position = Vector2( 100, 90 )
 
-[node name="NAND" type="Node2D" parent="." instance=ExtResource( 7 )]
+[node name="NAND155" type="Node2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 140, 110 )
 z_index = 1
 script = ExtResource( 2 )
@@ -34,7 +34,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "NAND"
 
-[node name="NOR" type="Node2D" parent="." instance=ExtResource( 10 )]
+[node name="NOR156" type="Node2D" parent="." instance=ExtResource( 10 )]
 position = Vector2( 330, 10 )
 z_index = 1
 script = ExtResource( 2 )
@@ -49,8 +49,8 @@ is_input_block = false
 is_output_block = false
 gate_type = "NOR"
 
-[node name="XOR" type="Node2D" parent="." instance=ExtResource( 9 )]
-position = Vector2( 330, 200 )
+[node name="XOR157" type="Node2D" parent="." instance=ExtResource( 9 )]
+position = Vector2( 340, 220 )
 z_index = 1
 script = ExtResource( 2 )
 highlight_pin = true
@@ -64,7 +64,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "XOR"
 
-[node name="AND" type="Node2D" parent="." instance=ExtResource( 11 )]
+[node name="AND158" type="Node2D" parent="." instance=ExtResource( 11 )]
 position = Vector2( 150, 270 )
 z_index = 1
 script = ExtResource( 2 )
@@ -79,7 +79,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "AND"
 
-[node name="AND95" type="Node2D" parent="." instance=ExtResource( 11 )]
+[node name="AND95159" type="Node2D" parent="." instance=ExtResource( 11 )]
 position = Vector2( 110, 10 )
 z_index = 1
 script = ExtResource( 2 )
@@ -94,7 +94,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "AND"
 
-[node name="Input" type="Node2D" parent="." instance=ExtResource( 4 )]
+[node name="Input164" type="Node2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( -30, 90 )
 script = ExtResource( 3 )
 highlight_pin = true
@@ -107,7 +107,7 @@ is_ext_output = false
 is_input_block = false
 is_output_block = false
 
-[node name="Input107" type="Node2D" parent="." instance=ExtResource( 4 )]
+[node name="Input107169" type="Node2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( -20, 190 )
 script = ExtResource( 3 )
 highlight_pin = true
@@ -120,7 +120,7 @@ is_ext_output = false
 is_input_block = false
 is_output_block = false
 
-[node name="Full Adder330" type="Node2D" parent="." instance=ExtResource( 8 )]
+[node name="Full Adder330170" type="Node2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( 460, 110 )
 z_index = 1
 script = ExtResource( 5 )
@@ -134,8 +134,8 @@ is_ext_output = false
 is_input_block = false
 is_output_block = false
 
-[node name="NOT" type="Node2D" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 290 )
+[node name="NOT171" type="Node2D" parent="." instance=ExtResource( 12 )]
+position = Vector2( 460, 320 )
 z_index = 1
 script = ExtResource( 2 )
 highlight_pin = true
@@ -149,7 +149,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "NOT"
 
-[node name="7 Segment Display" type="Node2D" parent="." instance=ExtResource( 13 )]
+[node name="7 Segment Display172" type="Node2D" parent="." instance=ExtResource( 13 )]
 position = Vector2( 310, 370 )
 z_index = 1
 script = ExtResource( 1 )
@@ -166,8 +166,8 @@ on_color = Color( 0.0784314, 1, 0, 1 )
 off_color = Color( 0.192157, 0.192157, 0.192157, 0.454902 )
 decode = false
 
-[node name="Decoded 7 Segment Display152" type="Node2D" parent="." instance=ExtResource( 14 )]
-position = Vector2( 610, 330 )
+[node name="Decoded 7 Segment Display152173" type="Node2D" parent="." instance=ExtResource( 14 )]
+position = Vector2( 620, 300 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -183,7 +183,7 @@ on_color = Color( 0.0784314, 1, 0, 1 )
 off_color = Color( 0.192157, 0.192157, 0.192157, 0.454902 )
 decode = true
 
-[node name="Edge-triggered D Flip Flop with SR" type="Node2D" parent="." instance=ExtResource( 15 )]
+[node name="Edge-triggered D Flip Flop with SR174" type="Node2D" parent="." instance=ExtResource( 15 )]
 position = Vector2( 580, 10 )
 z_index = 1
 script = ExtResource( 6 )

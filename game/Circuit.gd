@@ -284,6 +284,7 @@ func get_mid_point(v, a, b):
 
 
 func get_next_pos(points, x, dir = 2):
+	x = round(x)
 	var do = true
 	while do:
 		x += g.GRID_SIZE * dir
