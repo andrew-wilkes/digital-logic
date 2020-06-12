@@ -12,7 +12,7 @@
 position = Vector2( 390, -20 )
 
 [node name="Input" type="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( -130, 120 )
+position = Vector2( -290, 70 )
 script = ExtResource( 2 )
 highlight_pin = true
 highlight_part = true
@@ -81,7 +81,7 @@ is_output_block = false
 gate_type = "NOT"
 
 [node name="NOT59" type="Node2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 290, 80 )
+position = Vector2( 270, 70 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -362,7 +362,7 @@ is_output_block = false
 gate_type = "AND"
 
 [node name="Output118" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 840, 700 )
+position = Vector2( 830, 700 )
 script = ExtResource( 3 )
 highlight_pin = true
 highlight_part = true
@@ -375,7 +375,7 @@ is_input_block = false
 is_output_block = false
 
 [node name="Output123" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 814, 620 )
+position = Vector2( 830, 620 )
 script = ExtResource( 3 )
 highlight_pin = true
 highlight_part = true
@@ -388,7 +388,7 @@ is_input_block = false
 is_output_block = false
 
 [node name="Output128" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 804, 530 )
+position = Vector2( 830, 530 )
 script = ExtResource( 3 )
 highlight_pin = true
 highlight_part = true
@@ -414,7 +414,7 @@ is_input_block = false
 is_output_block = false
 
 [node name="Output138" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 814, 360 )
+position = Vector2( 830, 360 )
 script = ExtResource( 3 )
 highlight_pin = true
 highlight_part = true

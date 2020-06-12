@@ -1,10 +1,7 @@
 extends Part
 
-enum { A, B, Cin }
-enum { Sum, Cout }
-
 var inputs = []
-var labels =  ["A", "B", "Cin", "Sum", "Cout"]
+var labels =  []
 
 func _ready():
 	allow_testing()
@@ -21,11 +18,11 @@ func _ready():
 		node.id = i
 		node.is_output = true
 		connect_pin(node)
+		outputs.append(false)
 		i += 1
-	outputs = [false, true]
 
 
-func update_output(pin: Pin, state):
+func update_output(pin, state):
 	# Only update on change of state
 	if inputs[pin.id] == state and pin.was_connected_to:
 		return
@@ -36,12 +33,3 @@ func update_output(pin: Pin, state):
 	inputs[pin.id] = state
 	if !pin.was_connected_to:
 		pin.was_connected_to = true
-	var sum = int(inputs[A]) + int(inputs[B]) + int(inputs[Cin])
-	outputs[Sum] = bool(sum % 2)
-	outputs[Cout] = sum > 1
-	emit_signals()
-
-
-func emit_signals():
-	for n in 2:
-		emit_signal("state_changed", self, n, outputs[n])

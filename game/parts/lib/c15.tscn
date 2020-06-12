@@ -1,87 +1,28 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://parts/Gate.gd" type="Script" id=1]
-[ext_resource path="res://parts/accessories/7Segment.gd" type="Script" id=2]
-[ext_resource path="res://parts/blocks/Edge_D_FF_SR.gd" type="Script" id=3]
 [ext_resource path="res://parts/eNOT.tscn" type="PackedScene" id=4]
 [ext_resource path="res://parts/blocks/Edge_D_FF_SR.tscn" type="PackedScene" id=5]
 [ext_resource path="res://parts/accessories/Decoded_7-Segment_Display.tscn" type="PackedScene" id=6]
 [ext_resource path="res://parts/bNAND.tscn" type="PackedScene" id=7]
 [ext_resource path="res://parts/zInput.tscn" type="PackedScene" id=8]
-[ext_resource path="res://parts/Input.gd" type="Script" id=9]
 
 [node name="Parts" type="Node2D"]
 
-[node name="Edge-triggered D Flip Flop with SR384" type="Node2D" parent="." instance=ExtResource( 5 )]
+[node name="Edge-triggered D Flip Flop with SR384" parent="." instance=ExtResource( 5 )]
 position = Vector2( 340, 150 )
 z_index = 1
-script = ExtResource( 3 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = false
-is_ext_input = false
-is_ext_output = false
-is_input_block = false
-is_output_block = false
 
-[node name="Decoded 7 Segment Display" type="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="Decoded 7 Segment Display" parent="." instance=ExtResource( 6 )]
 position = Vector2( 580, 180 )
 z_index = 1
-script = ExtResource( 2 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = true
-is_ext_input = false
-is_ext_output = false
-is_input_block = false
-is_output_block = true
-on_color = Color( 0.0784314, 1, 0, 1 )
-off_color = Color( 0.192157, 0.192157, 0.192157, 0.454902 )
-decode = true
 
-[node name="NAND385" type="Node2D" parent="." instance=ExtResource( 7 )]
+[node name="NAND385" parent="." instance=ExtResource( 7 )]
 position = Vector2( 150, 230 )
 z_index = 1
-script = ExtResource( 1 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = false
-is_ext_input = false
-is_ext_output = false
-is_input_block = false
-is_output_block = false
-gate_type = "NAND"
 
-[node name="NOT386" type="Node2D" parent="." instance=ExtResource( 4 )]
+[node name="NOT386" parent="." instance=ExtResource( 4 )]
 position = Vector2( 300, 290 )
 z_index = 1
-script = ExtResource( 1 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = false
-is_ext_input = false
-is_ext_output = false
-is_input_block = false
-is_output_block = false
-gate_type = "NOT"
 
-[node name="Input" type="Node2D" parent="." instance=ExtResource( 8 )]
+[node name="Input" parent="." instance=ExtResource( 8 )]
 position = Vector2( 50, 210 )
-script = ExtResource( 9 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = true
-is_ext_input = true
-is_ext_output = false
-is_input_block = false
-is_output_block = false

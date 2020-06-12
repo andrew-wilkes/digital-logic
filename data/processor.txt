@@ -1,0 +1,28 @@
+Instruction Set
+
+add a b		m[b] = m[b] + m[a]
+sub a b		m[b] = m[b] - m[a]
+mov a b		m[b] = m[a]
+mvi n b		m[b] = n
+inc a
+dec b
+jp a		pc = a
+jz a		pc = a in Z flag is set
+in a		read inputs to m[a]
+out a		output m[a]
+
+Write a compiler
+
+Machine code
+# comment
+label : a b
+label : a b c
+label :w n
+
+Hardware
+8 bit data
+8 bit address
+Memory-mapped features:
+inputs
+outputs
+memory page	Writing to this location will set pc = 0
