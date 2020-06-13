@@ -4,7 +4,9 @@
 [ext_resource path="res://Circuit.gd" type="Script" id=2]
 [ext_resource path="res://DetailsDialog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/symbols.png" type="Texture" id=4]
-[ext_resource path="res://FileDialog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ButtonListDialog.tscn" type="PackedScene" id=5]
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 389.012, 291.426 )

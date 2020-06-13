@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://FileDialog.gd" type="Script" id=1]
+[ext_resource path="res://CircuitsDialog.gd" type="Script" id=1]
 [ext_resource path="res://ButtonList.tscn" type="PackedScene" id=2]
 
-[node name="FileDialog" type="WindowDialog"]
+[node name="ButtonListDialog" type="WindowDialog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -896.0
