@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/load.png" type="Texture" id=3]
 [ext_resource path="res://assets/save.png" type="Texture" id=4]
 [ext_resource path="res://assets/library.png" type="Texture" id=5]
-[ext_resource path="res://Buttons2.gd" type="Script" id=6]
+[ext_resource path="res://buttons/Buttons2.gd" type="Script" id=6]
 [ext_resource path="res://assets/library-l.png" type="Texture" id=7]
 [ext_resource path="res://assets/play-l.png" type="Texture" id=8]
 [ext_resource path="res://assets/load-l.png" type="Texture" id=9]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/save-p.png" type="Texture" id=14]
 [ext_resource path="res://assets/library-p.png" type="Texture" id=15]
 [ext_resource path="res://assets/info-h.png" type="Texture" id=16]
+
 
 [node name="Buttons2" type="HBoxContainer"]
 anchor_right = 1.0

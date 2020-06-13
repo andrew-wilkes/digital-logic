@@ -7,7 +7,7 @@ signal details_changed(circuit)
 var part
 var part_to_delete
 var wire_scene = preload("res://parts/misc/Wire.tscn")
-var picker_scene = preload("res://PartsPicker.tscn")
+var picker_scene = preload("res://panels/PartsPicker.tscn")
 var in_node = preload("res://parts/zInput.tscn")
 var out_node = preload("res://parts/zOutput.tscn")
 
