@@ -20,7 +20,7 @@
 [ext_resource path="res://NotificationPopup.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/block-l.png" type="Texture" id=19]
 [ext_resource path="res://assets/block.png" type="Texture" id=20]
-[ext_resource path="res://BlockPicker.tscn" type="PackedScene" id=21]
+[ext_resource path="res://BlockPicker.gd" type="Script" id=21]
 [ext_resource path="res://ButtonListDialog.tscn" type="PackedScene" id=22]
 
 [node name="Logic" type="MarginContainer"]
@@ -181,8 +181,6 @@ popup_exclusive = true
 window_title = "Information"
 dialog_text = "Instructions for how to use this page"
 
-[node name="BlockPicker" parent="c" instance=ExtResource( 21 )]
-
 [node name="HintPanel" parent="c" instance=ExtResource( 17 )]
 window_title = "Hint"
 
@@ -193,6 +191,9 @@ visible = false
 
 [node name="AccessoryPicker" parent="c" instance=ExtResource( 22 )]
 script = ExtResource( 11 )
+
+[node name="BlockPicker" parent="c" instance=ExtResource( 22 )]
+script = ExtResource( 21 )
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Access" to="." method="_on_Access_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Block" to="." method="_on_Block_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Hint" to="." method="_on_Hint_button_down"]

@@ -3,25 +3,18 @@ extends WindowDialog
 signal item_selected(item)
 
 var items = []
-var pos
 
 func _ready():
-	if get_parent().name == "root":
-		show()
+	var list = $SC/ButtonList
 	var files = g.get_files("parts/blocks", "tscn")
 	for file in files:
 		var node = load("res://parts/blocks/" + file).instance()
 		items.append(node)
-		$M/ItemList.add_item(node.name)
+		list.add_item(node.name)
 
 
-func _on_ItemList_item_selected(index):
+func _on_ButtonList_item_selected(index):
 	var item = items[index].duplicate()
-	if pos:
-		item.position = pos
+	item.position = rect_position
 	emit_signal("item_selected", item)
 	hide()
-
-
-func _on_ItemList_gui_input(event):
-	pos = event.position
