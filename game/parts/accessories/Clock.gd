@@ -1,8 +1,6 @@
 extends Part
 
-enum { STOPPED, PULSING, OSCILLATING }
-
-const rates = [0, 2, 4, 8, 15, 30, 60, 120, 240]
+enum { STOPPED, PULSING, OSCILLATING, RESETTING }
 
 var labels =  []
 var count = 0
@@ -24,7 +22,7 @@ func _ready():
 		node.is_output = true
 		connect_pin(node)
 		i += 1
-	outputs = [true, false] # cause outputs to flip
+	outputs = [true, false, false] # cause outputs to flip
 	call_deferred("reset_output")
 	set_rate()
 
@@ -35,10 +33,13 @@ func _process(_delta):
 			if reset:
 				reset = false
 				reset_output()
+				update_output(true, 2)
+				run_timer()
+				clk_state = RESETTING
 			if start:
 				start = false
 				$Start.text = "STOP"
-				start_oscillating()
+				run_timer()
 				$Fire.disabled = true
 				clk_state = OSCILLATING
 			if fire:
@@ -57,7 +58,7 @@ func _process(_delta):
 			if timer_stopped:
 				timer_stopped = false
 				flip_outputs()
-				start_oscillating()
+				run_timer()
 		PULSING:
 			if reset:
 				$Start.disabled = false
@@ -73,7 +74,12 @@ func _process(_delta):
 					$Fire.disabled = false
 					clk_state = STOPPED
 				else:
-					start_oscillating()
+					run_timer()
+		RESETTING:
+			if timer_stopped:
+				timer_stopped = false
+				update_output(false, 2)
+				clk_state = STOPPED
 
 
 func flip_outputs():
@@ -89,11 +95,11 @@ func update_output(value, idx):
 
 
 func start_pulsing():
-	count = pow(2, $VSlider.value)
-	start_oscillating()
+	count = rate
+	run_timer()
 
 
-func start_oscillating(): 
+func run_timer(): 
 	delay = 1.0 / rate
 	$Timer.wait_time = delay
 	$Timer.start()
@@ -133,5 +139,5 @@ func set_led():
 
 
 func set_rate():
-	rate = rates[int($VSlider.value)]
+	rate = pow(2, $VSlider.value)
 	print(rate)
