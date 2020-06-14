@@ -24,12 +24,10 @@ func _ready():
 
 
 func capture():
-	if count >= clock.rate:
-		count = 0
+	if clock.count == 0:
 		clear_data()
 	for i in num_ch:
 		data[i].append(inputs[i])
-	count += 1
 	draw_traces()
 
 
@@ -56,7 +54,7 @@ func draw_traces():
 		for i in num_ch:
 			traces[i].clear_points()
 			var x = 0
-			var last_v = false
+			var last_v = !data[i][0] # Make sure that we draw a starting segment
 			for v in data[i]:
 				if v:
 					if !last_v:

@@ -42,6 +42,7 @@ func _process(_delta):
 			if start:
 				start = false
 				$Start.text = "STOP"
+				flip_outputs()
 				run_timer()
 				$Fire.disabled = true
 				count = 0
@@ -63,7 +64,7 @@ func _process(_delta):
 				timer_stopped = false
 				flip_outputs()
 				count += 1
-				if count == num_ticks:
+				if count > num_ticks:
 					count = 0
 				run_timer()
 		PULSING:
@@ -76,10 +77,11 @@ func _process(_delta):
 				timer_stopped = false
 				flip_outputs()
 				count += 1
-				if count == num_ticks:
+				if count >= num_ticks:
 					$Start.disabled = false
 					$Fire.disabled = false
 					clk_state = STOPPED
+					emit_signal("clock")
 				else:
 					run_timer()
 		RESETTING:

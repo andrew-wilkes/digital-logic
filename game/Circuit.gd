@@ -419,8 +419,9 @@ func state_changed(node: Part, output_num, state):
 	# The output state of a part has changed
 	for wire in node.get_output_wires()[output_num]:
 		wire.set_color(state)
-		node = wire.end_pin.parent_part
-		node.update_output(wire.end_pin, state)
+		if wire.end_pin: # A wire connected to a clock may not have an end pin
+			node = wire.end_pin.parent_part
+			node.update_output(wire.end_pin, state)
 
 
 func wire_attached(_part, _pin, _status):
