@@ -13,6 +13,7 @@ var fire = false
 var reset = false
 var timer_stopped = true
 var rate
+var num_ticks
 
 func _ready():
 	allow_testing()
@@ -43,6 +44,7 @@ func _process(_delta):
 				$Start.text = "STOP"
 				run_timer()
 				$Fire.disabled = true
+				count = 0
 				clk_state = OSCILLATING
 			if fire:
 				fire = false
@@ -60,6 +62,9 @@ func _process(_delta):
 			if timer_stopped:
 				timer_stopped = false
 				flip_outputs()
+				count += 1
+				if count == num_ticks:
+					count = 0
 				run_timer()
 		PULSING:
 			if reset:
@@ -70,8 +75,8 @@ func _process(_delta):
 			if timer_stopped:
 				timer_stopped = false
 				flip_outputs()
-				count -= 1
-				if count == 0:
+				count += 1
+				if count == num_ticks:
 					$Start.disabled = false
 					$Fire.disabled = false
 					clk_state = STOPPED
@@ -97,7 +102,7 @@ func update_output(value, idx):
 
 
 func start_pulsing():
-	count = rate * 2 - 1
+	count = 0
 	flip_outputs()
 	run_timer()
 
@@ -144,4 +149,4 @@ func set_led():
 
 func set_rate():
 	rate = pow(2, $VSlider.value)
-	print(rate)
+	num_ticks = rate * 2 - 1
