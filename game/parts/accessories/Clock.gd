@@ -1,5 +1,7 @@
 extends Part
 
+signal clock
+
 enum { STOPPED, PULSING, OSCILLATING, RESETTING }
 
 var labels =  []
@@ -95,12 +97,13 @@ func update_output(value, idx):
 
 
 func start_pulsing():
-	count = rate
+	count = rate * 2 - 1
+	flip_outputs()
 	run_timer()
 
 
 func run_timer(): 
-	delay = 1.0 / rate
+	delay = 0.5 / rate
 	$Timer.wait_time = delay
 	$Timer.start()
 	timer_stopped = false
@@ -128,6 +131,7 @@ func reset_output():
 
 func _on_Timer_timeout():
 	timer_stopped = true
+	emit_signal("clock")
 
 
 func _on_VSlider_value_changed(_value):

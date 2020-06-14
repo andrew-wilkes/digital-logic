@@ -3,7 +3,7 @@ extends Node2D
 class_name Part
 
 signal pinclick(gate, pin)
-signal wire_attached(pin, state)
+signal wire_attached(node, pin, state)
 signal state_changed(node, output_index, state)
 signal picked(node)
 signal dropped
