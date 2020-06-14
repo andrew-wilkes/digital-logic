@@ -49,7 +49,8 @@ func clear_data():
 
 func draw_traces():
 	if clock:
-		var step = 20
+		var step = Vector2(20, 20)
+		step.x = clamp(step.x * 8 / clock.num_ticks, 0, 40)
 		var y = 0
 		for i in num_ch:
 			traces[i].clear_points()
@@ -58,12 +59,11 @@ func draw_traces():
 			for v in data[i]:
 				if v:
 					if !last_v:
-						traces[i].add_point(Vector2(x, y - step))
-					traces[i].add_point(Vector2(x + step, y - step))
+						traces[i].add_point(Vector2(x, y - step.y))
+					traces[i].add_point(Vector2(x + step.x, y - step.y))
 				else:
 					if last_v:
 						traces[i].add_point(Vector2(x, y))
-					traces[i].add_point(Vector2(x + step, y))
+					traces[i].add_point(Vector2(x + step.x, y))
 				last_v = v
-				x += step
-			y += 30
+				x += step.x

@@ -8,7 +8,7 @@
 [node name="Parts" type="Node2D"]
 
 [node name="Probe" type="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 460, 240 )
+position = Vector2( 600, 240 )
 z_index = 1
 script = ExtResource( 1 )
 highlight_pin = true
@@ -22,7 +22,7 @@ is_input_block = false
 is_output_block = false
 
 [node name="Clock" type="Node2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 180, 200 )
+position = Vector2( 140, 190 )
 z_index = 1
 script = ExtResource( 2 )
 highlight_pin = true
