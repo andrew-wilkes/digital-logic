@@ -190,9 +190,11 @@ window_title = "Hint"
 visible = false
 
 [node name="AccessoryPicker" parent="c" instance=ExtResource( 22 )]
+window_title = "Accessory Picker"
 script = ExtResource( 11 )
 
 [node name="BlockPicker" parent="c" instance=ExtResource( 22 )]
+window_title = "Block Picker"
 script = ExtResource( 21 )
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Access" to="." method="_on_Access_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Block" to="." method="_on_Block_button_down"]
