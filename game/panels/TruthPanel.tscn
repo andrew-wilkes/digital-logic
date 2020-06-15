@@ -3,8 +3,6 @@
 [ext_resource path="res://panels/TruthPanel.gd" type="Script" id=1]
 [ext_resource path="res://panels/TruthTable.tscn" type="PackedScene" id=2]
 
-
-
 [node name="TruthPanel" type="AcceptDialog"]
 margin_right = 132.0
 margin_bottom = 100.0

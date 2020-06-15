@@ -87,4 +87,4 @@ func draw_traces():
 func _on_Slider_value_changed(value):
 	marker.position.x = value * step.x
 	if value <= clock.num_ticks and value < samples.size():
-		$Value.text = "%X" % samples[value]
+		$Value.text = "0x%X" % samples[value]
