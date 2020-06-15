@@ -12,7 +12,7 @@
 [node name="Parts" type="Node2D"]
 
 [node name="Clock" type="Node2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 90, 90 )
+position = Vector2( 100, 240 )
 z_index = 1
 script = ExtResource( 3 )
 highlight_pin = true
@@ -40,7 +40,7 @@ is_input_block = false
 is_output_block = false
 
 [node name="Edge-triggered D Flip Flop" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 420, 530 )
+position = Vector2( 440, 520 )
 z_index = 1
 script = ExtResource( 4 )
 highlight_pin = true
@@ -54,7 +54,7 @@ is_input_block = false
 is_output_block = false
 
 [node name="Edge-triggered D Flip Flop135" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 590, 420 )
+position = Vector2( 610, 360 )
 z_index = 1
 script = ExtResource( 4 )
 highlight_pin = true
@@ -68,7 +68,7 @@ is_input_block = false
 is_output_block = false
 
 [node name="Edge-triggered D Flip Flop136" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 770, 310 )
+position = Vector2( 830, 260 )
 z_index = 1
 script = ExtResource( 4 )
 highlight_pin = true
@@ -82,7 +82,7 @@ is_input_block = false
 is_output_block = false
 
 [node name="Edge-triggered D Flip Flop137" type="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 260, 630 )
+position = Vector2( 270, 640 )
 z_index = 1
 script = ExtResource( 4 )
 highlight_pin = true
