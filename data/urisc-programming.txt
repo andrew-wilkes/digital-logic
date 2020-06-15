@@ -1,0 +1,24 @@
+Reset the system
+PC = 0
+
+Loop:
+MAR = [PC] ; get address of A
+MDR = [MAR] ; get A	
+
+MAR = PC + 1 ; get next PC address
+PC = MAR
+MAR = [PC] ; get address of B
+R = [MAR] ; get B
+MDR = R - MDR
+[MAR] = MDR
+
+MAR = PC + 1
+if N or Z
+  PC = [MAR]
+else
+ MAR = PC + 1
+ PC = MAR
+Loop
+
+  
+

@@ -1,5 +1,7 @@
 extends Part
 
+const TRACE_SIZE = 20
+
 var labels =  []
 var data = []
 var num_ch = 0
@@ -10,7 +12,7 @@ var traces = []
 var slider
 var samples = [0, 0]
 var marker
-var step = Vector2(20, 20)
+var step = Vector2(TRACE_SIZE, TRACE_SIZE)
 
 func _ready():
 	allow_testing()
@@ -64,7 +66,7 @@ func clear_data():
 
 func draw_traces():
 	if clock:
-		step.x = clamp(step.x * 8 / clock.num_ticks, 0, 40)
+		step.x = clamp(TRACE_SIZE * 8 / clock.num_ticks, 0, 40)
 		var y = 0
 		for i in num_ch:
 			traces[i].clear_points()

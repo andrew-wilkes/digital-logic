@@ -45,7 +45,6 @@ shape = SubResource( 1 )
 position = Vector2( -80, -60 )
 
 [node name="T1" type="Line2D" parent="Traces"]
-position = Vector2( 2, 2 )
 points = PoolVector2Array( 0, 0, 20, 0 )
 width = 2.0
 __meta__ = {
@@ -53,7 +52,7 @@ __meta__ = {
 }
 
 [node name="T2" type="Line2D" parent="Traces"]
-position = Vector2( 2, 32 )
+position = Vector2( 0, 30 )
 points = PoolVector2Array( 0, 0, 20, 0 )
 width = 2.0
 __meta__ = {
@@ -61,7 +60,7 @@ __meta__ = {
 }
 
 [node name="T3" type="Line2D" parent="Traces"]
-position = Vector2( 2, 62 )
+position = Vector2( 0, 60 )
 points = PoolVector2Array( 0, 0, 20, 0 )
 width = 2.0
 __meta__ = {
@@ -69,7 +68,7 @@ __meta__ = {
 }
 
 [node name="T4" type="Line2D" parent="Traces"]
-position = Vector2( 2, 92 )
+position = Vector2( 0, 90 )
 points = PoolVector2Array( 0, 0, 20, 0 )
 width = 2.0
 __meta__ = {
@@ -77,7 +76,7 @@ __meta__ = {
 }
 
 [node name="T5" type="Line2D" parent="Traces"]
-position = Vector2( 2, 122 )
+position = Vector2( 0, 120 )
 points = PoolVector2Array( 0, 0, 20, 0 )
 width = 2.0
 __meta__ = {
@@ -109,7 +108,7 @@ __meta__ = {
 }
 
 [node name="Marker" type="Node2D" parent="."]
-position = Vector2( -78, 0 )
+position = Vector2( -80, 0 )
 
 [node name="Line" type="Line2D" parent="Marker"]
 position = Vector2( 0, -86 )
