@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://parts/accessories/Probe.gd" type="Script" id=1]
+[ext_resource path="res://parts/accessories/7Segment.gd" type="Script" id=2]
+[ext_resource path="res://parts/accessories/Clock.gd" type="Script" id=3]
+[ext_resource path="res://parts/blocks/Edge_D_FF.gd" type="Script" id=4]
+[ext_resource path="res://parts/accessories/Clock.tscn" type="PackedScene" id=5]
+[ext_resource path="res://parts/blocks/Edge_D_FF.tscn" type="PackedScene" id=6]
+[ext_resource path="res://parts/accessories/Probe.tscn" type="PackedScene" id=7]
+[ext_resource path="res://parts/accessories/Decoded_7-Segment_Display.tscn" type="PackedScene" id=8]
+
+[node name="Parts" type="Node2D"]
+
+[node name="Clock" type="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 90, 90 )
+z_index = 1
+script = ExtResource( 3 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Probe" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1120, 130 )
+z_index = 1
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Edge-triggered D Flip Flop" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 420, 530 )
+z_index = 1
+script = ExtResource( 4 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Edge-triggered D Flip Flop135" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 590, 420 )
+z_index = 1
+script = ExtResource( 4 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Edge-triggered D Flip Flop136" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 770, 310 )
+z_index = 1
+script = ExtResource( 4 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Edge-triggered D Flip Flop137" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 260, 630 )
+z_index = 1
+script = ExtResource( 4 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Decoded 7 Segment Display" type="Node2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 930, 630 )
+z_index = 1
+script = ExtResource( 2 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = true
+on_color = Color( 0.0784314, 1, 0, 1 )
+off_color = Color( 0.192157, 0.192157, 0.192157, 0.454902 )
+decode = true

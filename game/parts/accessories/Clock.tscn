@@ -36,21 +36,19 @@ shape = SubResource( 2 )
 
 [node name="Pin1" parent="Outputs" instance=ExtResource( 1 )]
 position = Vector2( 80.5, 0 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="Pin2" parent="Outputs" instance=ExtResource( 1 )]
 position = Vector2( 80.5, 20 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="Pin3" parent="Outputs" instance=ExtResource( 1 )]
 position = Vector2( 80.5, 80 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="VSlider" type="VSlider" parent="."]
 margin_left = -70.0
 margin_top = -10.0
 margin_right = -54.0
 margin_bottom = 90.0
+hint_tooltip = "Rate / Count"
 min_value = 1.0
 max_value = 6.0
 value = 1.0
