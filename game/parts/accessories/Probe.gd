@@ -7,7 +7,6 @@ var data = []
 var num_ch = 0
 var inputs = []
 var clock
-var count = 0
 var traces = []
 var slider
 var samples = [0, 0]
