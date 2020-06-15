@@ -7,6 +7,10 @@ var inputs = []
 var clock
 var count = 0
 var traces = []
+var slider
+var samples = [0, 0]
+var marker
+var step = Vector2(20, 20)
 
 func _ready():
 	allow_testing()
@@ -21,14 +25,25 @@ func _ready():
 		inputs.append(false)
 	num_ch = i
 	traces = $Traces.get_children()
+	slider = $Slider
+	marker = $Marker/Line
 
 
 func capture():
 	if clock.count == 0:
 		clear_data()
+		samples.clear()
+	var v = 0 
 	for i in num_ch:
 		data[i].append(inputs[i])
+		if i > 0:
+			v *= 2
+			if inputs[i]:
+				v += 1
+	samples.append(v)
 	draw_traces()
+	slider.max_value = clock.num_ticks + 1
+	slider.value = clock.count
 
 
 func update_output(pin, value):
@@ -49,7 +64,6 @@ func clear_data():
 
 func draw_traces():
 	if clock:
-		var step = Vector2(20, 20)
 		step.x = clamp(step.x * 8 / clock.num_ticks, 0, 40)
 		var y = 0
 		for i in num_ch:
@@ -67,3 +81,9 @@ func draw_traces():
 					traces[i].add_point(Vector2(x + step.x, y))
 				last_v = v
 				x += step.x
+
+
+func _on_Slider_value_changed(value):
+	marker.position.x = value * step.x
+	if value <= clock.num_ticks:
+		$Value.text = "%X" % samples[value]
