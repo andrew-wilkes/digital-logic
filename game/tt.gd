@@ -1,9 +1,29 @@
 extends Node
 
+var categories = {
+	"Combinational Logic": 
+		{
+			"Decoders": "dec",
+			"Encoders": "enc",
+			"Multiplexers": "mult",
+			"Demultiplexers": "demult",
+			"Mathematical": "math"
+		},
+	"Sequential Logic":
+		{
+			"SR Flip-flop": "sr",
+			"JK Flip-flop": "jk",
+			"D Flip-flop": "d",
+			"Shift Register": "shift",
+			"Counters": "count"
+		}
+}
+
 var data = {
 	"3to8dec":
 	{
 		title = "Three-to-eight Decoder",
+		cat = "dec",
 		inputs = ["A2","A1","A0"],
 		iparts = [],
 		outputs = ["Y0","Y1","Y2","Y3","Y4","Y5","Y6","Y7"],
@@ -25,6 +45,7 @@ var data = {
 	"7-segment":
 	{
 		title = "7-Segment Decoder",
+		cat = "dec",
 		inputs = ["I3", "I2","I1","I0"],
 		iparts = ["4-bit_Switch"],
 		outputs = ["a","b","c","d","e","f","g"],
@@ -47,6 +68,7 @@ var data = {
 	"2-1multiplexer":
 	{
 		title = "Two-to-one Multiplexer",
+		cat = "mult",
 		inputs = ["A","B","Select"],
 		iparts = [],
 		outputs = ["Out"],
@@ -67,6 +89,7 @@ var data = {
 	"fulladder":
 	{
 		title = "Full Adder",
+		cat = "math",
 		inputs = ["A","B","Cin"],
 		iparts = [],
 		outputs = ["Sum","Cout"],
@@ -87,6 +110,7 @@ var data = {
 	"srflipflop":
 	{
 		title = "SR Flip Flop",
+		cat = "sr",
 		inputs = ["S", "R"],
 		iparts = [],
 		outputs = ["+Q", "-Q"],
@@ -105,6 +129,7 @@ var data = {
 	"srflipflopenable":
 	{
 		title = "SR Flip Flop with enable",
+		cat = "sr",
 		inputs = ["E", "S", "R"],
 		iparts = [],
 		outputs = ["+Q", "-Q"],
@@ -128,6 +153,7 @@ var data = {
 	"dlatch":
 	{
 		title = "D Latch",
+		cat = "d",
 		inputs = ["E", "D"],
 		iparts = [],
 		outputs = ["+Q", "-Q"],
