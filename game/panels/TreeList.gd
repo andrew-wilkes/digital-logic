@@ -9,7 +9,7 @@ func _ready():
 	item_script = load("res://panels/item.gd")
 	tree = $Tree
 	tree.connect("cell_selected", self, "tree_item_selected")
-	populate(tt.categories, tt.data)
+	#populate(tt.categories, tt.data)
 
 
 func populate(cats, data):

@@ -4,61 +4,80 @@
 [ext_resource path="res://center.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/title_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Circuits.gd" type="Script" id=4]
-[ext_resource path="res://panels/ButtonList.tscn" type="PackedScene" id=5]
+[ext_resource path="res://panels/TreeList.tscn" type="PackedScene" id=5]
 
-[node name="Circuits" type="Control"]
+[node name="Circuits" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Buttons" parent="." instance=ExtResource( 1 )]
-page_id = 3
-
 [node name="VBox" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -371.057
-margin_top = -176.829
-margin_right = 228.943
-margin_bottom = 142.171
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1270.0
+margin_bottom = 790.0
 custom_constants/separation = 20
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="VBox"]
-margin_right = 600.0
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+margin_right = 1260.0
+margin_bottom = 64.0
+custom_constants/separation = 20
+
+[node name="Buttons" parent="VBox/HBox" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 360.0
+margin_bottom = 64.0
+page_id = 3
+
+[node name="Label" type="Label" parent="VBox/HBox"]
+margin_left = 380.0
+margin_right = 725.0
 margin_bottom = 64.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Logic Circuits"
 align = 1
 
-[node name="Panel" type="PanelContainer" parent="VBox"]
+[node name="HBox2" type="HBoxContainer" parent="VBox"]
 margin_top = 84.0
-margin_right = 600.0
-margin_bottom = 217.0
+margin_right = 1260.0
+margin_bottom = 780.0
+size_flags_vertical = 3
 
-[node name="M1" type="MarginContainer" parent="VBox/Panel"]
+[node name="Panel" type="PanelContainer" parent="VBox/HBox2"]
+margin_right = 628.0
+margin_bottom = 696.0
+size_flags_horizontal = 3
+
+[node name="M1" type="MarginContainer" parent="VBox/HBox2/Panel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 593.0
+margin_right = 621.0
 margin_bottom = 126.0
+size_flags_vertical = 0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
 custom_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="VBox/Panel/M1"]
+[node name="Label" type="Label" parent="VBox/HBox2/Panel/M1"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 576.0
+margin_right = 604.0
 margin_bottom = 109.0
 custom_colors/font_color = Color( 0.87451, 0.87451, 0.87451, 1 )
 text = "In this section you are challenged to wire up gates to make logic circuits.
@@ -68,18 +87,19 @@ Combinational logic is where outputs depend only on the current combination of i
 Work your way through the circuit-building challenges  below:"
 autowrap = true
 
-[node name="Panel2" type="PanelContainer" parent="VBox"]
-margin_top = 237.0
-margin_right = 600.0
-margin_bottom = 296.0
+[node name="Panel2" type="PanelContainer" parent="VBox/HBox2"]
+margin_left = 632.0
+margin_right = 1260.0
+margin_bottom = 696.0
 rect_min_size = Vector2( 0, 50 )
 mouse_filter = 2
+size_flags_horizontal = 3
 
-[node name="ButtonList" parent="VBox/Panel2" instance=ExtResource( 5 )]
+[node name="TreeList" parent="VBox/HBox2/Panel2" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 593.0
-margin_bottom = 52.0
-[connection signal="item_selected" from="VBox/Panel2/ButtonList" to="." method="_on_ButtonList_item_selected"]
+margin_right = 621.0
+margin_bottom = 689.0
+[connection signal="tree_item_selected" from="VBox/HBox2/Panel2/TreeList" to="." method="_on_TreeList_tree_item_selected"]
