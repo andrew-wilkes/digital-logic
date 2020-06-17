@@ -17,11 +17,11 @@ func populate(cats, data):
 	for cat in cats.keys():
 		var b = tree.create_item(root)
 		b.set_text(0, cat)
-		b.set_collapsed(true)
+		b.set_collapsed(false)
 		for sub_cat in cats[cat].keys():
 			var b2 = tree.create_item(b)
 			b2.set_text(0, sub_cat)
-			b2.set_collapsed(true)
+			b2.set_collapsed(false)
 			for key in data.keys():
 				var item = data[key]
 				if item.cat == cats[cat][sub_cat]:

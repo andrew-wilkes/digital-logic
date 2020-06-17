@@ -63,18 +63,22 @@ margin_right = 628.0
 margin_bottom = 696.0
 size_flags_horizontal = 3
 
-[node name="M1" type="MarginContainer" parent="VBox/HBox2/Panel"]
+[node name="VBox" type="VBoxContainer" parent="VBox/HBox2/Panel"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 621.0
-margin_bottom = 126.0
+margin_bottom = 689.0
+
+[node name="M1" type="MarginContainer" parent="VBox/HBox2/Panel/VBox"]
+margin_right = 614.0
+margin_bottom = 119.0
 size_flags_vertical = 0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
 custom_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="VBox/HBox2/Panel/M1"]
+[node name="Label" type="Label" parent="VBox/HBox2/Panel/VBox/M1"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 604.0
@@ -87,6 +91,14 @@ Combinational logic is where outputs depend only on the current combination of i
 Work your way through the circuit-building challenges  below:"
 autowrap = true
 
+[node name="TreeList" parent="VBox/HBox2/Panel/VBox" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 123.0
+margin_right = 614.0
+margin_bottom = 682.0
+size_flags_vertical = 3
+
 [node name="Panel2" type="PanelContainer" parent="VBox/HBox2"]
 margin_left = 632.0
 margin_right = 1260.0
@@ -95,11 +107,33 @@ rect_min_size = Vector2( 0, 50 )
 mouse_filter = 2
 size_flags_horizontal = 3
 
-[node name="TreeList" parent="VBox/HBox2/Panel2" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="M" type="MarginContainer" parent="VBox/HBox2/Panel2"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 621.0
 margin_bottom = 689.0
-[connection signal="tree_item_selected" from="VBox/HBox2/Panel2/TreeList" to="." method="_on_TreeList_tree_item_selected"]
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="VBox/HBox2/Panel2/M"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 604.0
+margin_bottom = 672.0
+custom_constants/separation = 20
+
+[node name="Button" type="Button" parent="VBox/HBox2/Panel2/M/VBox"]
+margin_right = 133.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+text = "Open Circuit Editor"
+
+[node name="Label" type="Label" parent="VBox/HBox2/Panel2/M/VBox"]
+margin_top = 40.0
+margin_right = 594.0
+margin_bottom = 54.0
+text = "Stats"
+[connection signal="tree_item_selected" from="VBox/HBox2/Panel/VBox/TreeList" to="." method="_on_TreeList_tree_item_selected"]
+[connection signal="button_down" from="VBox/HBox2/Panel2/M/VBox/Button" to="." method="_on_Button_button_down"]
