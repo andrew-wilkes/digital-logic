@@ -23,7 +23,7 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 1270.0
 margin_bottom = 790.0
-custom_constants/separation = 20
+custom_constants/separation = 10
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -53,24 +53,25 @@ text = "Logic Circuits"
 align = 1
 
 [node name="HBox2" type="HBoxContainer" parent="VBox"]
-margin_top = 84.0
+margin_top = 74.0
 margin_right = 1260.0
 margin_bottom = 780.0
 size_flags_vertical = 3
+custom_constants/separation = 10
 
 [node name="Panel" type="PanelContainer" parent="VBox/HBox2"]
-margin_right = 628.0
-margin_bottom = 696.0
+margin_right = 625.0
+margin_bottom = 706.0
 size_flags_horizontal = 3
 
 [node name="VBox" type="VBoxContainer" parent="VBox/HBox2/Panel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 621.0
-margin_bottom = 689.0
+margin_right = 618.0
+margin_bottom = 699.0
 
 [node name="M1" type="MarginContainer" parent="VBox/HBox2/Panel/VBox"]
-margin_right = 614.0
+margin_right = 611.0
 margin_bottom = 119.0
 size_flags_vertical = 0
 custom_constants/margin_right = 10
@@ -81,7 +82,7 @@ custom_constants/margin_bottom = 10
 [node name="Label" type="Label" parent="VBox/HBox2/Panel/VBox/M1"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 604.0
+margin_right = 601.0
 margin_bottom = 109.0
 custom_colors/font_color = Color( 0.87451, 0.87451, 0.87451, 1 )
 text = "In this section you are challenged to wire up gates to make logic circuits.
@@ -95,14 +96,14 @@ autowrap = true
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 123.0
-margin_right = 614.0
-margin_bottom = 682.0
+margin_right = 611.0
+margin_bottom = 692.0
 size_flags_vertical = 3
 
 [node name="Panel2" type="PanelContainer" parent="VBox/HBox2"]
-margin_left = 632.0
+margin_left = 635.0
 margin_right = 1260.0
-margin_bottom = 696.0
+margin_bottom = 706.0
 rect_min_size = Vector2( 0, 50 )
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -110,8 +111,8 @@ size_flags_horizontal = 3
 [node name="M" type="MarginContainer" parent="VBox/HBox2/Panel2"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 621.0
-margin_bottom = 689.0
+margin_right = 618.0
+margin_bottom = 699.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -120,8 +121,8 @@ custom_constants/margin_bottom = 10
 [node name="VBox" type="VBoxContainer" parent="VBox/HBox2/Panel2/M"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 604.0
-margin_bottom = 672.0
+margin_right = 601.0
+margin_bottom = 682.0
 custom_constants/separation = 20
 
 [node name="Button" type="Button" parent="VBox/HBox2/Panel2/M/VBox"]
@@ -132,7 +133,7 @@ text = "Open Circuit Editor"
 
 [node name="Label" type="Label" parent="VBox/HBox2/Panel2/M/VBox"]
 margin_top = 40.0
-margin_right = 594.0
+margin_right = 591.0
 margin_bottom = 54.0
 text = "Stats"
 [connection signal="tree_item_selected" from="VBox/HBox2/Panel/VBox/TreeList" to="." method="_on_TreeList_tree_item_selected"]

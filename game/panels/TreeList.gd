@@ -25,7 +25,7 @@ func populate(cats, data):
 			for key in data.keys():
 				var item = data[key]
 				if item.cat == cats[cat][sub_cat]:
-					var leaf = tree.create_item(b2)
+					var leaf: TreeItem = tree.create_item(b2)
 					leaf.set_text(0, item.title)
 					var status = 0
 					if g.circuits.keys().has(key):
