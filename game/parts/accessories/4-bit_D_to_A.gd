@@ -16,11 +16,14 @@ func _ready():
 		
 
 
-func update_output(pin: Pin, state):
-	# Only update on change of state
-	if inputs[pin.id] == state and pin.was_connected_to:
+func set_input(pin, state):
+	if pin.state_changed():
+		pinclick(pin)
+		unstable()
 		return
-	pin.was_connected_to = true
 	inputs[pin.id] = state
+
+
+func update_output(pin, state, _force = false):
 	$Pins.get_child(pin.id).modulate = g.get_state_color(state)
 	$ProgressBar.value = g.decode_inputs(inputs)

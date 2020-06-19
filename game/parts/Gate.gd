@@ -24,22 +24,17 @@ func _ready():
 	pin.hide_it()
 	pin.is_output = true
 	outputs = [false]
-	update_output()
 
 
 func set_input(pin, state):
-	# Ignore if no change and the inital state was established after part was dropped from the palette
-	if inputs[pin.id] == state and pin.was_connected_to:
-		return
 	if pin.state_changed(state):
 		pinclick(pin) # Cause wire to be removed
 		unstable()
 		return
-	pin.was_connected_to = true
 	inputs[pin.id] = state
 
 
-func update_output(force = false):
+func update_output(_pin, _state, force = false):
 	# Only update on change of state
 	var new_state = evaluate()
 	if outputs[0] != new_state or force:

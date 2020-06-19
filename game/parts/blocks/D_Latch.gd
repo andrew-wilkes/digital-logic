@@ -25,20 +25,17 @@ func _ready():
 	outputs = [false, true]
 
 
-func update_output(pin: Pin, state):
-	# Only update on change of state
-	if inputs[pin.id] == state and pin.was_connected_to:
-		return
+func set_input(pin, state):
 	if pin.state_changed():
 		pinclick(pin)
 		unstable()
 		return
 	inputs[pin.id] = state
-	if !pin.was_connected_to:
-		pin.was_connected_to = true
-		emit_signals()
+
+
+func update_output(_pin, _state, _force = false):
 	# Return if not enabled
-	if inputs[E] == false:
+	if inputs[E] == false or !_force:
 		return
 	if inputs[D] == outputs[Q2]:
 		outputs[Q1] = inputs[D]

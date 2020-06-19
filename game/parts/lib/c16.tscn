@@ -1,36 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://parts/accessories/Probe.gd" type="Script" id=1]
-[ext_resource path="res://parts/accessories/Clock.gd" type="Script" id=2]
 [ext_resource path="res://parts/accessories/Clock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://parts/accessories/Probe.tscn" type="PackedScene" id=4]
 
 [node name="Parts" type="Node2D"]
 
-[node name="Probe" type="Node2D" parent="." instance=ExtResource( 4 )]
+[node name="Probe" parent="." instance=ExtResource( 4 )]
 position = Vector2( 600, 240 )
 z_index = 1
-script = ExtResource( 1 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = false
-is_ext_input = false
-is_ext_output = false
-is_input_block = false
-is_output_block = false
 
-[node name="Clock" type="Node2D" parent="." instance=ExtResource( 3 )]
+[node name="Clock" parent="." instance=ExtResource( 3 )]
 position = Vector2( 140, 190 )
 z_index = 1
-script = ExtResource( 2 )
-highlight_pin = true
-highlight_part = true
-moveable = true
-wireable = true
-show_state = false
-is_ext_input = false
-is_ext_output = false
-is_input_block = false
-is_output_block = false

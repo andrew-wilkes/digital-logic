@@ -47,7 +47,15 @@ func capture():
 	slider.value = clock.count
 
 
-func update_output(pin, value):
+func set_input(pin, state):
+	if pin.state_changed():
+		pinclick(pin)
+		unstable()
+		return
+	inputs[pin.id] = state
+
+
+func update_output(pin, _state, _force = false):
 	if pin.id == 0:
 		var src = pin.wires[0].start_pin.parent_part
 		if clock != src:
@@ -55,7 +63,6 @@ func update_output(pin, value):
 				clock.disconnect("clock", self, "capture")
 			clock = src
 			clock.connect("clock", self, "capture")
-	inputs[pin.id] = value
 
 
 func clear_data():

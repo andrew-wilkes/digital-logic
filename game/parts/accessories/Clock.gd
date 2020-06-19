@@ -129,8 +129,7 @@ func _on_Reset_button_down():
 
 
 func reset_output():
-	if outputs[0]:
-		flip_outputs()
+	reset_outputs()
 	emit_signal("new_event")
 	emit_signal("state_changed", self, 2, true)
 	set_led()
@@ -152,3 +151,8 @@ func set_led():
 func set_rate():
 	rate = pow(2, $VSlider.value)
 	num_ticks = rate * 2 - 1
+
+
+func reset_outputs():
+	if outputs[0]:
+		flip_outputs()

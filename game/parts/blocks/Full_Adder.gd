@@ -25,17 +25,15 @@ func _ready():
 	outputs = [false, true]
 
 
-func update_output(pin: Pin, state):
-	# Only update on change of state
-	if inputs[pin.id] == state and pin.was_connected_to:
-		return
+func set_input(pin, state):
 	if pin.state_changed():
 		pinclick(pin)
 		unstable()
 		return
 	inputs[pin.id] = state
-	if !pin.was_connected_to:
-		pin.was_connected_to = true
+
+
+func update_output(_pin, _state, _force = false):
 	var sum = int(inputs[A]) + int(inputs[B]) + int(inputs[Cin])
 	outputs[Sum] = bool(sum % 2)
 	outputs[Cout] = sum > 1

@@ -70,16 +70,15 @@ func get_map(n):
 	return map[n & 0xf] + (n & 0x10) * 0x8
 
 
-func update_output(pin: Pin, state):
-	# Only update on change of state
-	if inputs[pin.id] == state and pin.was_connected_to:
-		return
+func set_input(pin, state):
 	if pin.state_changed():
 		pinclick(pin)
 		unstable()
 		return
-	pin.was_connected_to = true
 	inputs[pin.id] = state
+
+
+func update_output(pin, state, _force = false):
 	if decode:
 		var id = pin.id
 		if id == 7:

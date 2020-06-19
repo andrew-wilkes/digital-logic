@@ -67,7 +67,7 @@ func set_state(value, idx):
 	set_value(g.decode_inputs(outputs))
 
 
-func update_output(value, idx):
+func xupdate_output(value, idx):
 	set_state(value, idx)
 
 

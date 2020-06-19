@@ -8,7 +8,7 @@ const GRID_SIZE = 10
 const PART_FILE_PATH = "res://parts/lib/"
 const UNSTABLE_THRESHOLD = 4
 const STATUS_COLORS = [Color.white, Color.orange, Color.red, Color.green]
-const DEBUG = true
+const DEBUG = false
 
 var wire = null
 var circuits = {}
