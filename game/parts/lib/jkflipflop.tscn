@@ -1,0 +1,239 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://parts/Input.gd" type="Script" id=1]
+[ext_resource path="res://parts/zOutput.tscn" type="PackedScene" id=2]
+[ext_resource path="res://parts/zInput.tscn" type="PackedScene" id=3]
+[ext_resource path="res://parts/Output.gd" type="Script" id=4]
+[ext_resource path="res://parts/Gate.gd" type="Script" id=5]
+[ext_resource path="res://parts/bNAND.tscn" type="PackedScene" id=6]
+[ext_resource path="res://parts/aAND.tscn" type="PackedScene" id=7]
+
+[node name="Parts" type="Node2D"]
+
+[node name="Input" type="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 100, 150 )
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = true
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Input127" type="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 80, 60 )
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = true
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Input132" type="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 70, 270 )
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = true
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Output" type="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 980, 90 )
+script = ExtResource( 4 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+is_ext_output = true
+is_input_block = false
+is_output_block = false
+
+[node name="Output141" type="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 990, 260 )
+script = ExtResource( 4 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+is_ext_output = true
+is_input_block = false
+is_output_block = false
+
+[node name="NAND" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 680, 90 )
+z_index = 1
+script = ExtResource( 5 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+gate_type = "NAND"
+
+[node name="NAND157" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 690, 260 )
+z_index = 1
+script = ExtResource( 5 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+gate_type = "NAND"
+
+[node name="NAND159" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 590, 70 )
+z_index = 1
+script = ExtResource( 5 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+gate_type = "NAND"
+
+[node name="NAND160" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 600, 280 )
+z_index = 1
+script = ExtResource( 5 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+gate_type = "NAND"
+
+[node name="AND" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 220, 290 )
+z_index = 1
+script = ExtResource( 5 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+gate_type = "AND"
+
+[node name="AND161" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 240, 80 )
+z_index = 1
+script = ExtResource( 5 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+gate_type = "AND"
+
+[node name="NAND172" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 360, 100 )
+z_index = 1
+script = ExtResource( 5 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+gate_type = "NAND"
+
+[node name="NAND174" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 350, 270 )
+z_index = 1
+script = ExtResource( 5 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+gate_type = "NAND"
+
+[node name="NAND178" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 480, 120 )
+z_index = 1
+script = ExtResource( 5 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+gate_type = "NAND"
+
+[node name="NAND179" type="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 460, 250 )
+z_index = 1
+script = ExtResource( 5 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = false
+is_ext_input = false
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+gate_type = "NAND"
+
+[node name="Output330" type="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 680, 340 )
+script = ExtResource( 4 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+is_ext_output = true
+is_input_block = false
+is_output_block = false

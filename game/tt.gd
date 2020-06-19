@@ -168,5 +168,24 @@ var data = {
 		],
 		desc = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value.",
 		hint = "Simply add a NOT gate to the input of an SR flip flop."
+	},
+	"jkflipflop":
+	{
+		title = "JK Flip Flop",
+		cat = "jk",
+		inputs = ["CLK", "J", "K"],
+		iparts = [],
+		outputs = ["+Q", "-Q"],
+		oparts = [],
+		values = [
+			[0,1,0,0,1],
+			[1,0,0,0,1],
+			[0,0,1,0,1],
+			[1,1,1,1,0],
+			[1,0,1,1,0],
+			[1,0,0,1,0]
+		],
+		desc = "The JK flip flop is similar to the SR flip flop but has no invalid input states.",
+		hint = "Use NAND gates to make a SR flip flop and the inputs are gated by 3-input NAND gates.\n[i][u]S[/u] = CLK * J * -Q[/i]\n[i][u]R[/u] = CLK * K * +Q[/i]"
 	}
 }
