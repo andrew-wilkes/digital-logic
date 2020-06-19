@@ -4,7 +4,6 @@ class_name Gate
 
 export(String) var gate_type
 
-var inputs = []
 var labels = []
 
 func _ready():
@@ -24,14 +23,6 @@ func _ready():
 	pin.hide_it()
 	pin.is_output = true
 	outputs = [false]
-
-
-func set_input(pin, state):
-	if pin.state_changed(state):
-		pinclick(pin) # Cause wire to be removed
-		unstable()
-		return
-	inputs[pin.id] = state
 
 
 func update_output(_pin, _state, force = false):

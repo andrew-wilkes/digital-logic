@@ -3,7 +3,6 @@ extends Part
 enum { A, B, Cin }
 enum { Sum, Cout }
 
-var inputs = []
 var labels =  ["A", "B", "Cin", "Sum", "Cout"]
 
 func _ready():
@@ -23,14 +22,6 @@ func _ready():
 		connect_pin(node)
 		i += 1
 	outputs = [false, true]
-
-
-func set_input(pin, state):
-	if pin.state_changed():
-		pinclick(pin)
-		unstable()
-		return
-	inputs[pin.id] = state
 
 
 func update_output(_pin, _state, _force = false):

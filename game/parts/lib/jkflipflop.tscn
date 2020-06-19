@@ -11,8 +11,8 @@
 [node name="Parts" type="Node2D"]
 position = Vector2( 10, 10 )
 
-[node name="Input551" type="Node2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 70, 150 )
+[node name="Input551202" type="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 70, 190 )
 script = ExtResource( 1 )
 highlight_pin = true
 highlight_part = true
@@ -24,8 +24,8 @@ is_ext_output = false
 is_input_block = false
 is_output_block = false
 
-[node name="Input127556" type="Node2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 80, 60 )
+[node name="Input127556207" type="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 70, 100 )
 script = ExtResource( 1 )
 highlight_pin = true
 highlight_part = true
@@ -37,7 +37,7 @@ is_ext_output = false
 is_input_block = false
 is_output_block = false
 
-[node name="Input132561" type="Node2D" parent="." instance=ExtResource( 3 )]
+[node name="Input132561212" type="Node2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 70, 270 )
 script = ExtResource( 1 )
 highlight_pin = true
@@ -50,8 +50,8 @@ is_ext_output = false
 is_input_block = false
 is_output_block = false
 
-[node name="Output566" type="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 980, 90 )
+[node name="Output566217" type="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 910, 90 )
 script = ExtResource( 4 )
 highlight_pin = true
 highlight_part = true
@@ -63,8 +63,8 @@ is_ext_output = true
 is_input_block = false
 is_output_block = false
 
-[node name="Output141571" type="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 990, 260 )
+[node name="Output141571222" type="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 910, 260 )
 script = ExtResource( 4 )
 highlight_pin = true
 highlight_part = true
@@ -76,7 +76,7 @@ is_ext_output = true
 is_input_block = false
 is_output_block = false
 
-[node name="NAND572" type="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="NAND572223" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 700, 90 )
 z_index = 1
 script = ExtResource( 5 )
@@ -91,7 +91,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "NAND"
 
-[node name="NAND157573" type="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="NAND157573224" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 740, 260 )
 z_index = 1
 script = ExtResource( 5 )
@@ -106,7 +106,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "NAND"
 
-[node name="NAND159574" type="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="NAND159574225" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 590, 70 )
 z_index = 1
 script = ExtResource( 5 )
@@ -121,7 +121,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "NAND"
 
-[node name="NAND160575" type="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="NAND160575226" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 610, 320 )
 z_index = 1
 script = ExtResource( 5 )
@@ -136,7 +136,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "NAND"
 
-[node name="AND576" type="Node2D" parent="." instance=ExtResource( 7 )]
+[node name="AND576227" type="Node2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 220, 290 )
 z_index = 1
 script = ExtResource( 5 )
@@ -151,7 +151,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "AND"
 
-[node name="AND161577" type="Node2D" parent="." instance=ExtResource( 7 )]
+[node name="AND161577228" type="Node2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 240, 80 )
 z_index = 1
 script = ExtResource( 5 )
@@ -166,7 +166,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "AND"
 
-[node name="NAND172578" type="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="NAND172578229" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 360, 100 )
 z_index = 1
 script = ExtResource( 5 )
@@ -181,7 +181,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "NAND"
 
-[node name="NAND174579" type="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="NAND174579230" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 350, 270 )
 z_index = 1
 script = ExtResource( 5 )
@@ -196,7 +196,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "NAND"
 
-[node name="NAND178580" type="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="NAND178580231" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 480, 120 )
 z_index = 1
 script = ExtResource( 5 )
@@ -211,7 +211,7 @@ is_input_block = false
 is_output_block = false
 gate_type = "NAND"
 
-[node name="NAND179581" type="Node2D" parent="." instance=ExtResource( 6 )]
+[node name="NAND179581232" type="Node2D" parent="." instance=ExtResource( 6 )]
 position = Vector2( 460, 250 )
 z_index = 1
 script = ExtResource( 5 )

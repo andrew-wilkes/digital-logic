@@ -1,6 +1,5 @@
 extends Part
 
-var inputs = []
 var labels =  []
 
 func _ready():

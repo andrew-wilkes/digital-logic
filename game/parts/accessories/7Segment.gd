@@ -11,7 +11,6 @@ var map = [
 ]
 
 var count = 0
-var inputs = []
 var labels = ["a","b","c","d","e","f","g"]
 
 func _ready():
@@ -68,14 +67,6 @@ func _on_Timer_timeout():
 
 func get_map(n):
 	return map[n & 0xf] + (n & 0x10) * 0x8
-
-
-func set_input(pin, state):
-	if pin.state_changed():
-		pinclick(pin)
-		unstable()
-		return
-	inputs[pin.id] = state
 
 
 func update_output(pin, state, _force = false):

@@ -1,6 +1,5 @@
 extends Part
 
-var inputs = []
 var labels =  ["I0","I1","I2","I3"]
 
 func _ready():
@@ -13,15 +12,6 @@ func _ready():
 		node.id = i
 		connect_pin(node)
 		i += 1
-		
-
-
-func set_input(pin, state):
-	if pin.state_changed():
-		pinclick(pin)
-		unstable()
-		return
-	inputs[pin.id] = state
 
 
 func update_output(pin, state, _force = false):

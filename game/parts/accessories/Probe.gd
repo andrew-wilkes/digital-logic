@@ -5,7 +5,6 @@ const TRACE_SIZE = 20
 var labels =  []
 var data = []
 var num_ch = 0
-var inputs = []
 var clock
 var traces = []
 var slider

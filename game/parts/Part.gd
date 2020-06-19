@@ -21,6 +21,7 @@ export(bool) var is_ext_output = false
 export(bool) var is_input_block = false
 export(bool) var is_output_block = false
 
+var inputs = []
 var outputs = []
 var state = false setget change_input_state
 var dropped = false
@@ -163,3 +164,11 @@ func delete_wires():
 	for pin in $Inputs.get_children():
 		if pin.wires.size() > 0:
 			pin.wires[0].delete()
+
+
+func set_input(pin, _state):
+	if pin.state_changed(_state):
+		pinclick(pin) # Cause wire to be removed
+		unstable()
+		return
+	inputs[pin.id] = _state
