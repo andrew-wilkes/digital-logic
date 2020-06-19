@@ -39,7 +39,7 @@ func get_state(_idx):
 
 
 func update_output(pin, value):
-	if pin.state_changed():
+	if pin.state_changed(value):
 		pinclick(pin)
 		unstable()
 		return

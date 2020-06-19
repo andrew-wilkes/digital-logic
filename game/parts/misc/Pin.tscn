@@ -18,5 +18,15 @@ shape = SubResource( 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 125, 80, 20, 20 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Debug"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="mouse_entered" from="." to="." method="_on_Pin_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Pin_mouse_exited"]

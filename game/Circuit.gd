@@ -604,6 +604,7 @@ func save_scene(title = "", description = "", cid = "-", cstatus = 0):
 
 
 func load_scene():
+	g.debug_id = 0
 	delete_circuit()
 	$Wires.hide()
 	var parts = []

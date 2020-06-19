@@ -31,7 +31,7 @@ func update_output(pin: Pin, state):
 	# Only update on change of state
 	if inputs[pin.id] == state and pin.was_connected_to:
 		return
-	if pin.state_changed():
+	if pin.state_changed(state):
 		pinclick(pin)
 		unstable()
 		return

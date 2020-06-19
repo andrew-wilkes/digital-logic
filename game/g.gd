@@ -6,12 +6,19 @@ const COLOR_ACTIVE = Color.green
 const COLOR_UNDEFINED = Color.white
 const GRID_SIZE = 10
 const PART_FILE_PATH = "res://parts/lib/"
-const UNSTABLE_THRESHOLD = 20
+const UNSTABLE_THRESHOLD = 4
 const STATUS_COLORS = [Color.white, Color.orange, Color.red, Color.green]
+const DEBUG = true
 
 var wire = null
 var circuits = {}
 var param
+var debug_id = 0
+
+func get_debug_id():
+	debug_id += 1
+	return debug_id
+
 
 func load_circuits():
 	var data = load_file(PART_FILE_PATH + "data.json")
