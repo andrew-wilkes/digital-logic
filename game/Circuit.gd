@@ -417,15 +417,21 @@ func new_event():
 
 func state_changed(node: Part, output_num, state):
 	# The output state of a part has changed
+	var connected_parts = []
 	for wire in node.get_output_wires()[output_num]:
 		wire.set_color(state)
 		if wire.end_pin: # A wire connected to a clock may not have an end pin
 			node = wire.end_pin.parent_part
-			node.update_output(wire.end_pin, state)
+			# Update all connected part inputs before running their output update methods
+			node.set_input(wire.end_pin, state)
+			connected_parts.append(node)
+	for node in connected_parts:
+		node.update_output()
 
 
 func wire_attached(_part, _pin, _status):
-	_part.update_output(_pin, _status)
+	_part.set_input(_pin, _status)
+	_part.update_output()
 	if _pin.wires.empty():
 		print("wires empty") # As a result of unstable circuit where wire deleted
 	else:
@@ -652,6 +658,7 @@ func load_scene():
 	yield(get_tree(), "idle_frame")
 	route_all_wires()
 	$Wires.show()
+	init_gate_states()
 	emit_signal("details_changed", circuit)
 
 
@@ -661,6 +668,12 @@ func init_input_states():
 			p.state = false
 		if p.is_input_block:
 			p.reset_outputs()
+
+
+func init_gate_states():
+	for p in $Parts.get_children():
+		if !p.is_ext_input:
+			p.update_output(true)
 
 
 func delete_circuit():

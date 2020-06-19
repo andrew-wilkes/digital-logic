@@ -38,12 +38,15 @@ func get_state(_idx):
 	return state
 
 
-func update_output(pin, value):
+func set_input(pin, value):
 	if pin.state_changed(value):
-		pinclick(pin)
+		pinclick(pin) # Cause wire to be removed
 		unstable()
 		return
 	state = value
+
+
+func update_output(_force = false):
 	outputs[0] = state
 	color = g.get_state_color(state)
 	$Symbol.modulate = color
