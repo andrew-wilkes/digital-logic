@@ -37,7 +37,7 @@ func evaluate():
 	var result = false
 	match gate_type:
 		"NOT":
-			result = !outputs[0]
+			result = !inputs[0]
 		"OR", "NOR":
 			for b in inputs:
 				if b:
