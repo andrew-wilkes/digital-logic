@@ -51,6 +51,7 @@ run/main_scene="res://Main.tscn"
 
 g="*res://g.gd"
 tt="*res://tt.gd"
+u="*res://utility.gd"
 
 [debug]
 

@@ -109,7 +109,7 @@ var data = {
 	},
 	"srflipflop":
 	{
-		title = "SR Flip Flop",
+		title = "SR Flip-flop",
 		cat = "sr",
 		inputs = ["S", "R"],
 		iparts = [],
@@ -123,12 +123,12 @@ var data = {
 			[1,0,1,0],
 			[0,0,1,0]
 		],
-		desc = "An SR flip flop remembers the state as long as both R and S are low. Pulsing R high resets the state (+Q low), and pulsing S high sets the state (+Q high).",
+		desc = "An SR flip-flop remembers the state as long as both R and S are low. Pulsing R high resets the state (+Q low), and pulsing S high sets the state (+Q high).",
 		hint = "Use two NOR gates."
 	},
 	"srflipflopenable":
 	{
-		title = "SR Flip Flop with enable",
+		title = "SR Flip-flop with enable",
 		cat = "sr",
 		inputs = ["E", "S", "R"],
 		iparts = [],
@@ -171,21 +171,55 @@ var data = {
 	},
 	"jkflipflop":
 	{
-		title = "JK Flip Flop",
+		title = "JK Flip-flop",
 		cat = "jk",
 		inputs = ["CLK", "J", "K"],
 		iparts = [],
 		outputs = ["+Q", "-Q"],
 		oparts = [],
 		values = [
-			[0,1,0,0,1],
+			[0,0,0,0,1],
 			[1,0,0,0,1],
-			[0,0,1,0,1],
-			[1,1,1,1,0],
+			[0,0,0,0,1],
+			[0,1,0,0,1],
+			[1,1,0,0,1],
+			[0,1,0,1,0],
+			[0,0,0,1,0],
+			[0,0,1,1,0],
 			[1,0,1,1,0],
-			[1,0,0,1,0]
+			[0,0,1,0,1],
+			[0,0,0,0,1]
 		],
-		desc = "The JK flip flop is similar to the SR flip flop but has no invalid input states.",
-		hint = "Use NAND gates to make a SR flip flop and the inputs are gated by 3-input NAND gates.\n[i][u]S[/u] = CLK * J * -Q[/i]\n[i][u]R[/u] = CLK * K * +Q[/i]"
+		desc = "The JK flip-flop is similar to the SR flip-flop but has no invalid input states.",
+		hint = "Use NAND gates to make a SR flip-flop and the inputs are gated by 3-input NAND gates.\n[i][u]S[/u] = CLK * J * -Q[/i]\n[i][u]R[/u] = CLK * K * +Q[/i]"
+	},
+	"msjkflipflop":
+	{
+		title = "Master-slave JK Flip-flop",
+		cat = "jk",
+		inputs = ["CLK", "J", "K"],
+		iparts = [],
+		outputs = ["+Q", "-Q"],
+		oparts = [],
+		values = [
+			[0,0,0,0,1],
+			[1,0,0,0,1],
+			[0,0,0,0,1],
+			[0,1,0,0,1],
+			[1,1,0,0,1],
+			[0,1,0,1,0],
+			[0,0,0,1,0],
+			[0,0,1,1,0],
+			[1,0,1,1,0],
+			[0,0,1,0,1],
+			[0,1,1,0,1],
+			[1,1,1,0,1],
+			[0,1,1,1,0],
+			[1,1,1,1,0],
+			[0,1,1,0,1],
+			[0,0,0,0,1]
+		],
+		desc = "The Master-slave JK flip-flop combines two JK flip-flops to create a more stable circuit than a single JK flip-flop.",
+		hint = "Gate the outputs of the first master flip-flop to the slave and feed back the outputs of the slave to the input gates."
 	}
 }
