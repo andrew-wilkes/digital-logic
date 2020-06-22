@@ -75,8 +75,8 @@ func _process(_delta):
 				return
 			if timer_stopped:
 				timer_stopped = false
-				flip_outputs()
 				count += 1
+				flip_outputs()
 				if count >= num_ticks:
 					$Start.disabled = false
 					$Fire.disabled = false
@@ -95,6 +95,7 @@ func flip_outputs():
 	update_output(!outputs[0], 0)
 	update_output(!outputs[1], 1)
 	set_led()
+	emit_signal("clock")
 
 
 func update_output(value, idx):
@@ -137,7 +138,6 @@ func reset_output():
 
 func _on_Timer_timeout():
 	timer_stopped = true
-	emit_signal("clock")
 
 
 func _on_VSlider_value_changed(_value):
