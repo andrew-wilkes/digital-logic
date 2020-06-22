@@ -1,7 +1,8 @@
 extends Part
 
 const TRACE_SIZE = 20
-const NUM_ASYNC_SAMPLES = 16
+const MIN_TICKS = 3
+const MAX_TICKS = 63
 
 var labels =  []
 var data = []
@@ -15,6 +16,10 @@ var step = Vector2(TRACE_SIZE, TRACE_SIZE)
 var async = true
 var count = 0
 var enabled = false
+var num_ticks = 3
+var syncing = false
+var time = 0
+var ticks = 0
 
 func _ready():
 	allow_testing()
@@ -31,16 +36,14 @@ func _ready():
 	traces = $Traces.get_children()
 	slider = $Slider
 	marker = $Marker/Line
-	yield(get_tree().create_timer(0.2), "timeout")
-	set_input($Inputs.get_child(0), inputs[0]) # Make traces match input levels of loaded scene
 
 
 func capture():
 	if !async:
 		count = clock.count
+		num_ticks = clock.num_ticks
 	if count == 0:
 		clear_data()
-		samples.clear()
 	var v = 0 
 	for i in num_ch:
 		data[i].append(inputs[i])
@@ -49,32 +52,31 @@ func capture():
 			if inputs[i]:
 				v += 1
 	samples.append(v)
-	if !async:
-		slider.max_value = clock.num_ticks + 1
-		print(count, " ", inputs[0])
+	slider.max_value = num_ticks + 1
 	slider.value = count
+	# Ignore initial connection count
+	if enabled:
+		count += 1
+	else:
+		enabled = true
 	draw_traces()
 
 
 func set_input(pin, state):
-	if !enabled: # Ignore initial connection
-		enabled = true
-		return
 	if pin.state_changed():
 		pinclick(pin)
 		unstable()
 		return
 	inputs[pin.id] = state
 	if pin.id == 0:
-		print("Pin: ", state)
 		clock = pin.wires[0].start_pin.parent_part
 		async = !clock.has_method("set_rate")
-		capture()
 		if async:
-			slider.max_value = NUM_ASYNC_SAMPLES
-			count += 1
-			if count == NUM_ASYNC_SAMPLES:
-				count = 0
+			num_ticks = clamp(ticks, MIN_TICKS, MAX_TICKS)
+			if ticks == 0: # Start reset timer
+				$Timer.start()
+			ticks += 1
+		capture()
 
 
 func update_output(_pin, _state, _force = false):
@@ -84,13 +86,13 @@ func update_output(_pin, _state, _force = false):
 func clear_data():
 	for i in num_ch:
 		data[i].clear()
+	samples.clear()
 
 
 func draw_traces():
 	if clock:
-		step.x = clamp(TRACE_SIZE * 8 / clock.num_ticks, 0, 40)
+		step.x = clamp(TRACE_SIZE * 8 / num_ticks, 0, 40)
 		var y = 0
-		print(data[0])
 		for i in num_ch:
 			traces[i].clear_points()
 			var x = 0
@@ -110,5 +112,19 @@ func draw_traces():
 
 func _on_Slider_value_changed(value):
 	marker.position.x = value * step.x
-	if value <= clock.num_ticks and value < samples.size():
+	if value <= num_ticks and value < samples.size():
 		$Value.text = "0x%X" % samples[value]
+
+
+func reset():
+	ticks = 0
+	count = 0
+	clear_data()
+
+
+func _on_Reset_button_down():
+	reset()
+
+
+func _on_Timer_timeout():
+	reset()

@@ -92,8 +92,8 @@ func _process(_delta):
 
 
 func flip_outputs():
-	update_output(!outputs[0], 0)
 	update_output(!outputs[1], 1)
+	update_output(!outputs[0], 0)
 	set_led()
 	emit_signal("clock")
 

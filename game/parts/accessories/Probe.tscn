@@ -85,10 +85,10 @@ __meta__ = {
 }
 
 [node name="Slider" type="HScrollBar" parent="."]
-margin_left = -80.0
-margin_top = 90.0
-margin_right = 100.0
-margin_bottom = 102.0
+margin_left = -78.1093
+margin_top = 93.7815
+margin_right = 101.891
+margin_bottom = 105.781
 max_value = 1.0
 step = 1.0
 rounded = true
@@ -116,4 +116,9 @@ position = Vector2( 0, -86 )
 points = PoolVector2Array( 0, 0, 0, 156 )
 width = 2.0
 default_color = Color( 0, 1, 0, 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 [connection signal="value_changed" from="Slider" to="." method="_on_Slider_value_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
