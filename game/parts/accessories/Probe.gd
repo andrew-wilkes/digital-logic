@@ -20,6 +20,7 @@ var num_ticks = 3
 var syncing = false
 var time = 0
 var ticks = 0
+var clock_pin = 0
 
 func _ready():
 	allow_testing()
@@ -68,7 +69,7 @@ func set_input(pin, state):
 		unstable()
 		return
 	inputs[pin.id] = state
-	if pin.id == 0:
+	if pin.id == clock_pin:
 		clock = pin.wires[0].start_pin.parent_part
 		async = !clock.has_method("set_rate")
 		if async:
@@ -76,7 +77,7 @@ func set_input(pin, state):
 			if ticks == 0: # Start reset timer
 				$Timer.start()
 			ticks += 1
-		capture()
+		call_deferred("capture")
 
 
 func update_output(_pin, _state, _force = false):
