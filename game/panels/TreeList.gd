@@ -37,13 +37,13 @@ func populate(cats, data):
 
 func _on_Tree_gui_input(event):
 	if event is InputEventMouseMotion:
-		$Bar.rect_position = Vector2(0, get_y(event.position.y))
-		$Bar.rect_size = Vector2(rect_size.x, 18)
+		$Bar.rect_position = Vector2(2, get_y(event.position.y))
+		$Bar.rect_size = Vector2(rect_size.x - 12, 17)
 
 
 func get_y(y):
 	var step = 22
-	return floor(y / step) * step + 6
+	return floor(y / step) * step + 7
 
 
 func _on_Tree_mouse_entered():
