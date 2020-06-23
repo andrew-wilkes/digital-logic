@@ -1,5 +1,6 @@
 extends Part
 
+const TRACE_WIDTH = 180
 const TRACE_SIZE = 20
 const MIN_TICKS = 3
 const MAX_TICKS = 63
@@ -92,7 +93,7 @@ func clear_data():
 
 func draw_traces():
 	if clock:
-		step.x = clamp(TRACE_SIZE * 8 / num_ticks, 0, 40)
+		step.x = clamp(TRACE_WIDTH / data[0].size(), 0, TRACE_SIZE)
 		var y = 0
 		for i in num_ch:
 			traces[i].clear_points()
