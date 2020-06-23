@@ -8,7 +8,7 @@ var item_script
 func _ready():
 	item_script = load("res://panels/item.gd")
 	tree = $Tree
-	tree.connect("cell_selected", self, "tree_item_selected")
+	$Bar.hide()
 	populate(tt.categories, tt.data)
 
 
@@ -35,18 +35,26 @@ func populate(cats, data):
 					leaf.id = key
 
 
-func tree_item_selected():
-	var item = tree.get_selected()
-	if "id" in item:
-		emit_signal("tree_item_selected", item.id)
-
-
 func _on_Tree_gui_input(event):
 	if event is InputEventMouseMotion:
 		$Bar.rect_position = Vector2(0, get_y(event.position.y))
-		$Bar.rect_size = Vector2(rect_size.x, 16)
+		$Bar.rect_size = Vector2(rect_size.x, 18)
 
 
 func get_y(y):
 	var step = 22
 	return floor(y / step) * step + 6
+
+
+func _on_Tree_mouse_entered():
+	$Bar.show()
+
+
+func _on_Tree_item_selected():
+	var item = tree.get_selected()
+	if "id" in item:
+		emit_signal("tree_item_selected", item.id)
+
+
+func _on_Tree_mouse_exited():
+	$Bar.hide()

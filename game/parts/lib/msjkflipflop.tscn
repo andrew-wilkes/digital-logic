@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://parts/Input.gd" type="Script" id=1]
+[ext_resource path="res://parts/zInput.tscn" type="PackedScene" id=2]
+[ext_resource path="res://parts/zOutput.tscn" type="PackedScene" id=3]
+[ext_resource path="res://parts/Output.gd" type="Script" id=4]
+
+[node name="Parts" type="Node2D"]
+
+[node name="Input" type="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 100, 150 )
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = true
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Input123" type="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 100, 200 )
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = true
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Input128" type="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 100, 250 )
+script = ExtResource( 1 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = true
+is_ext_output = false
+is_input_block = false
+is_output_block = false
+
+[node name="Output" type="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1000, 150 )
+script = ExtResource( 4 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+is_ext_output = true
+is_input_block = false
+is_output_block = false
+
+[node name="Output137" type="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1000, 200 )
+script = ExtResource( 4 )
+highlight_pin = true
+highlight_part = true
+moveable = true
+wireable = true
+show_state = true
+is_ext_input = false
+is_ext_output = true
+is_input_block = false
+is_output_block = false
