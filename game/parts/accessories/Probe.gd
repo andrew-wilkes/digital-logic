@@ -124,9 +124,5 @@ func reset():
 	clear_data()
 
 
-func _on_Reset_button_down():
-	reset()
-
-
 func _on_Timer_timeout():
 	reset()

@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://panels/TreeList.gd" type="Script" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment() {
+    vec3 c = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
+	if (c.r < 0.3 || c.g < 0.3 || c.b < 0.3) c *= 1.2;
+    COLOR.rgb = c;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 
 [node name="TreeList" type="MarginContainer"]
 anchor_right = 1.0
@@ -14,3 +26,12 @@ __meta__ = {
 margin_right = 1280.0
 margin_bottom = 800.0
 hide_root = true
+
+[node name="Bar" type="ColorRect" parent="."]
+material = SubResource( 2 )
+margin_right = 100.0
+margin_bottom = 5.0
+rect_min_size = Vector2( 100, 5 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+[connection signal="gui_input" from="Tree" to="." method="_on_Tree_gui_input"]
