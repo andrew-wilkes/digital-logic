@@ -6,7 +6,6 @@ var tree : Tree
 var item_script
 
 func _ready():
-	item_script = load("res://panels/item.gd")
 	tree = $Tree
 	$Bar.hide()
 	populate(tt.categories, tt.data)
@@ -31,8 +30,7 @@ func populate(cats, data):
 					if g.circuits.keys().has(key):
 						status = g.circuits[key].status
 					leaf.set_custom_color(0, g.STATUS_COLORS[status])
-					leaf.set_script(item_script)
-					leaf.id = key
+					leaf.set_metadata(0, key)
 
 
 func _on_Tree_gui_input(event):
@@ -51,9 +49,10 @@ func _on_Tree_mouse_entered():
 
 
 func _on_Tree_item_selected():
-	var item = tree.get_selected()
-	if "id" in item:
-		emit_signal("tree_item_selected", item.id)
+	var id = tree.get_selected().get_metadata(0)
+	if id:
+		emit_signal("tree_item_selected", id)
+		print(id)
 
 
 func _on_Tree_mouse_exited():
