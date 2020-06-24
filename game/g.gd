@@ -6,6 +6,7 @@ const COLOR_ACTIVE = Color.green
 const COLOR_UNDEFINED = Color.white
 const GRID_SIZE = 10
 const PART_FILE_PATH = "res://parts/lib/"
+const STATE_FILE_PATH = "res://state.json"
 const UNSTABLE_THRESHOLD = 4
 const STATUS_COLORS = [Color.white, Color.orange, Color.red, Color.green]
 const DEBUG = false
@@ -14,10 +15,30 @@ var wire = null
 var circuits = {}
 var param
 var debug_id = 0
+var state = {
+	"ci": [ # Lists of collapsed tree item references
+		[]
+	]
+}
+
+
+func _ready():
+	load_state()
+
 
 func get_debug_id():
 	debug_id += 1
 	return debug_id
+
+
+func load_state():
+	var data = load_file(STATE_FILE_PATH)
+	if data:
+		state = data
+
+
+func save_state():
+	save_file(STATE_FILE_PATH, state)
 
 
 func load_circuits():
@@ -62,8 +83,8 @@ func load_file(fn):
 		return parse_json(file.get_as_text())
 
 
-func get_state_color(state):
-	if state:
+func get_state_color(_state):
+	if _state:
 		return g.COLOR_HIGH
 	else:
 		return g.COLOR_LOW

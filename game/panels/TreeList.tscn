@@ -36,6 +36,7 @@ mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 [connection signal="gui_input" from="Tree" to="." method="_on_Tree_gui_input"]
+[connection signal="item_collapsed" from="Tree" to="." method="_on_Tree_item_collapsed"]
 [connection signal="item_selected" from="Tree" to="." method="_on_Tree_item_selected"]
 [connection signal="mouse_entered" from="Tree" to="." method="_on_Tree_mouse_entered"]
 [connection signal="mouse_exited" from="Tree" to="." method="_on_Tree_mouse_exited"]
