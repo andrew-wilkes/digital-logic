@@ -16,14 +16,20 @@ var circuits = {}
 var param
 var debug_id = 0
 var state = {
-	"ci": [ # Lists of collapsed tree item references
+	"ci": [# Lists of collapsed tree item references
+		[],
+		[],
+		[],
+		[],
+		[],
 		[]
 	]
 }
 
 
 func _ready():
-	load_state()
+	#load_state()
+	pass
 
 
 func get_debug_id():

@@ -10,7 +10,7 @@ var ready
 func _ready():
 	tree = $Tree
 	$Bar.hide()
-	populate(tt.categories, tt.data, 0)
+	#populate(tt.categories, tt.data, 0)
 
 
 func populate(cats, data, _cid):

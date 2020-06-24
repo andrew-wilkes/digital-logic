@@ -10,7 +10,7 @@
 [ext_resource path="res://panels/PartsPicker.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/access.png" type="Texture" id=9]
 [ext_resource path="res://assets/access-l.png" type="Texture" id=10]
-[ext_resource path="res://panels/AccessoryPicker.gd" type="Script" id=11]
+[ext_resource path="res://panels/TreeListDialog.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/help-l.png" type="Texture" id=12]
 [ext_resource path="res://panels/TruthPanel.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/help.png" type="Texture" id=14]
@@ -190,13 +190,11 @@ window_title = "Hint"
 [node name="NotificationPopup" parent="c" instance=ExtResource( 18 )]
 visible = false
 
-[node name="AccessoryPicker" parent="c" instance=ExtResource( 22 )]
-window_title = "Accessory Picker"
-script = ExtResource( 11 )
-
 [node name="BlockPicker" parent="c" instance=ExtResource( 22 )]
 window_title = "Block Picker"
 script = ExtResource( 21 )
+
+[node name="AccessoryPicker" parent="c" instance=ExtResource( 11 )]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Access" to="." method="_on_Access_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Block" to="." method="_on_Block_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Hint" to="." method="_on_Hint_button_down"]
