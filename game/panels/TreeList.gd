@@ -14,6 +14,7 @@ func _ready():
 
 
 func populate(cats, data, _cid):
+	tree.clear()
 	ready = false
 	cid = _cid
 	var root = tree.create_item()

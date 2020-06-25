@@ -29,6 +29,7 @@ func _ready():
 	$c/Confirm.connect("confirmed", self, "part_delete")
 	$c/FileDialog.connect("item_selected", self, "choose_circuit")	
 	$c/DetailsDialog.connect("updated", self, "save_scene")
+	$c/DeleteConfirm.connect("item_deleted", self, "confirm_delete_circuit")
 	get_tree().get_root().connect("size_changed", self, "set_shape_position")
 
 
@@ -517,10 +518,6 @@ func set_shape_position():
 
 
 func request_to_choose_circuit():
-	if idx.empty():
-		last_details = { "title": "Untitled", "desc": "", "id": "-" }
-	else:
-		last_details = g.circuits[idx]
 	var cats = tt.categories.duplicate(true)
 	cats["Custom"] = { "Uncategorized": "unc" }
 	var data_keys = tt.data.keys()
@@ -700,5 +697,21 @@ func get_circuit_id():
 	return id + String(i)
 
 
-func _on_FileDialog_item_deleted():
+func edit_details():
+	var title = ""
+	var desc = ""
+	if idx != "":
+		title = g.circuits[idx].title
+		desc = g.circuits[idx].desc
+	$c/DetailsDialog.set_text(title, desc)
+	$c/DetailsDialog.popup_centered()
+
+
+func request_delete_circuit():
+	if idx != "":
+		$c/DeleteConfirm.open(idx)
+
+
+func confirm_delete_circuit():
 	idx = ""
+	delete_circuit()

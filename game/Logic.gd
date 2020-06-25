@@ -135,3 +135,11 @@ func _on_HintPanel_popup_hide():
 
 func _on_Block_button_down():
 	$c/BlockPicker.popup_centered()
+
+
+func _on_Edit_button_down():
+	circuit.edit_details()
+
+
+func _on_Delete_button_down():
+	circuit.request_delete_circuit()

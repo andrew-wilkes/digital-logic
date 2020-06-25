@@ -4,7 +4,7 @@ signal item_selected(id)
 
 func open(cats, items, save_id):
 	$TreeList.populate(cats, items, save_id)
-	show()
+	popup_centered()
 
 
 func _on_TreeList_tree_item_selected(_id):
