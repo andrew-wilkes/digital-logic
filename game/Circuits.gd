@@ -5,7 +5,7 @@ var items = []
 func _ready():
 	g.load_circuits()
 	var list = find_node("TreeList")
-	list.populate(tt.categories, tt.data)
+	list.populate(tt.categories, tt.data, 0)
 
 
 func _on_TreeList_tree_item_selected(id):

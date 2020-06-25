@@ -517,13 +517,21 @@ func set_shape_position():
 
 
 func request_to_choose_circuit():
-	var editable = false
 	if idx.empty():
 		last_details = { "title": "Untitled", "desc": "", "id": "-" }
 	else:
 		last_details = g.circuits[idx]
-		editable = last_details.id == "-"
-	$c/FileDialog.set_items(editable)
+	var cats = tt.categories.duplicate(true)
+	cats["Custom"] = { "Uncategorized": "unc" }
+	var data_keys = tt.data.keys()
+	var circuits = tt.data.duplicate()
+	for c_key in g.circuits.keys():
+		if !data_keys.has(c_key):
+			circuits[c_key] = {
+				title = g.circuits[c_key].title,
+				cat = "unc"
+			}
+	$c/FileDialog.open(cats, circuits, 1)
 
 
 func choose_circuit(_idx):
