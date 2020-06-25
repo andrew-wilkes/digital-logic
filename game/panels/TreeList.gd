@@ -47,7 +47,8 @@ func _on_Tree_gui_input(event):
 
 func get_y(y):
 	var step = 22
-	return floor(y / step) * step + 7
+	var dy = tree.get_scroll().y
+	return floor(y  / step) * step + 7 - dy + step * floor(dy / step)
 
 
 func _on_Tree_mouse_entered():
