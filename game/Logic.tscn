@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://buttons/Buttons.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/subtitle_font.tres" type="DynamicFont" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://panels/PartsPicker.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/access.png" type="Texture" id=9]
 [ext_resource path="res://assets/access-l.png" type="Texture" id=10]
-[ext_resource path="res://panels/TreeListDialog.tscn" type="PackedScene" id=11]
+[ext_resource path="res://panels/ListDialog.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/help-l.png" type="Texture" id=12]
 [ext_resource path="res://panels/TruthPanel.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/help.png" type="Texture" id=14]
@@ -20,8 +20,6 @@
 [ext_resource path="res://panels/NotificationPopup.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/block-l.png" type="Texture" id=19]
 [ext_resource path="res://assets/block.png" type="Texture" id=20]
-[ext_resource path="res://panels/BlockPicker.gd" type="Script" id=21]
-[ext_resource path="res://panels/ButtonListDialog.tscn" type="PackedScene" id=22]
 [ext_resource path="res://assets/pencil.png" type="Texture" id=23]
 [ext_resource path="res://assets/delete.png" type="Texture" id=24]
 
@@ -219,11 +217,9 @@ window_title = "Hint"
 [node name="NotificationPopup" parent="c" instance=ExtResource( 18 )]
 visible = false
 
-[node name="BlockPicker" parent="c" instance=ExtResource( 22 )]
-window_title = "Block Picker"
-script = ExtResource( 21 )
-
 [node name="AccessoryPicker" parent="c" instance=ExtResource( 11 )]
+
+[node name="BlockPicker" parent="c" instance=ExtResource( 11 )]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Access" to="." method="_on_Access_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Block" to="." method="_on_Block_button_down"]
 [connection signal="button_down" from="VBox/HBox/VBox/Misc/Hint" to="." method="_on_Hint_button_down"]

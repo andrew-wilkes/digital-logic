@@ -8,6 +8,10 @@ var truth_button
 var hp
 var np
 var button
+var accessories = []
+var a_names = []
+var blocks = []
+var b_names = []
 
 func _ready():
 	var menu = find_node("Menu")
@@ -17,14 +21,16 @@ func _ready():
 	button.connect("mouse_exited", self, "button_change_state", [true])
 	menu.connect("button_pressed", self, "process_buttons")
 	$VBox/HBox2/PartsPicker.connect("picked", circuit, "part_picked")
-	$c/AccessoryPicker.connect("item_selected", self, "add_item_to_circuit")
-	$c/BlockPicker.connect("item_selected", self, "add_item_to_circuit")
+	$c/AccessoryPicker.connect("item_selected", self, "accessory_picked")
+	$c/BlockPicker.connect("item_selected", self, "block_picked")
 	hint_button = find_node("Hint")
 	truth_button = find_node("Truth")
 	hp = $c/HintPanel
 	np = $c/NotificationPopup
 	hint_button.visible = false
 	truth_button.visible = false
+	get_accessories()
+	get_blocks()
 	# This is done here rather than in cicuits scene because details changed signal from save_scene() affects hint_button
 	g.load_circuits()
 	if g.param: # It's a tutorial scene
@@ -41,6 +47,22 @@ func _ready():
 				"status": 0
 			}
 			circuit.save_scene()
+
+
+func get_accessories():
+	var files = g.get_files("parts/accessories", "tscn")
+	for file in files:
+		var node = load("res://parts/accessories/" + file).instance()
+		accessories.append(node)
+		a_names.append(node.name)
+
+
+func get_blocks():
+	var files = g.get_files("parts/blocks", "tscn")
+	for file in files:
+		var node = load("res://parts/blocks/" + file).instance()
+		blocks.append(node)
+		b_names.append(node.name)
 
 
 func button_change_state(disabled):
@@ -95,7 +117,23 @@ func _on_Circuit_details_changed(c):
 
 
 func _on_Access_button_down():
-	$c/AccessoryPicker.popup_centered()
+	$c/AccessoryPicker.open(a_names)
+
+
+func accessory_picked(index):
+	var item = accessories[index].duplicate()
+	item.position = rect_position
+	add_item_to_circuit(item)
+
+
+func _on_Block_button_down():
+	$c/BlockPicker.open(b_names)
+
+
+func block_picked(index):
+	var item = blocks[index].duplicate()
+	item.position = rect_position
+	add_item_to_circuit(item)
 
 
 func add_item_to_circuit(item):
@@ -131,10 +169,6 @@ func test_circuit(open_tt):
 
 func _on_HintPanel_popup_hide():
 	hint_button.call_deferred("set_disabled", false)
-
-
-func _on_Block_button_down():
-	$c/BlockPicker.popup_centered()
 
 
 func _on_Edit_button_down():
