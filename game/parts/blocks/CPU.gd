@@ -23,7 +23,7 @@ func _ready():
 
 func update_output(pin, state):
 	# Only update on change of state
-	if inputs[pin.id] == state and pin.was_connected_to:
+	if inputs[pin.id] == state:
 		return
 	if pin.state_changed():
 		pinclick(pin)

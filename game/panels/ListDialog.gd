@@ -2,7 +2,9 @@ extends WindowDialog
 
 signal item_selected(id)
 
-func open(items):
+func open(items, title = "Pick an item"):
+	window_title = title
+	$sc/ItemList.clear()
 	for item in items:
 		$sc/ItemList.add_item(item)
 	$Bar.hide()
