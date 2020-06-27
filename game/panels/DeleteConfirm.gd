@@ -10,7 +10,6 @@ func open(_id):
 
 
 func _on_DeleteConfirm_confirmed():
-	print(cid)
 	g.circuits.erase(cid)
 	g.save_file(g.PART_FILE_PATH + "data.json", g.circuits)
 	g.delete_file(g.PART_FILE_PATH, cid + ".tscn")
