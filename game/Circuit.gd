@@ -548,8 +548,7 @@ func choose_circuit(_idx):
 func request_to_save_scene(title = "", desc = ""):
 	var saved = false
 	if idx.empty():
-		$c/DetailsDialog.set_text(title, desc)
-		$c/DetailsDialog.popup_centered()
+		$c/DetailsDialog.open(title, desc)
 	else:
 		save_scene()
 		saved = true
@@ -703,8 +702,7 @@ func edit_details():
 	if idx != "":
 		title = g.circuits[idx].title
 		desc = g.circuits[idx].desc
-	$c/DetailsDialog.set_text(title, desc)
-	$c/DetailsDialog.popup_centered()
+	$c/DetailsDialog.open(title, desc)
 
 
 func request_delete_circuit():

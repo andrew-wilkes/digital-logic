@@ -2,9 +2,10 @@ extends WindowDialog
 
 signal updated(title, description)
 
-func set_text(title = "", description = ""):
+func open(title = "", description = ""):
 	find_node("Title").text = title
 	find_node("Description").text = description
+	popup_centered()
 
 
 func _on_Button_button_down():
