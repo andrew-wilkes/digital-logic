@@ -10,6 +10,7 @@ void fragment() {
 	if (c.r < 0.3 || c.g < 0.3 || c.b < 0.3) c *= 1.2;
     COLOR.rgb = c;
 }"
+custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )

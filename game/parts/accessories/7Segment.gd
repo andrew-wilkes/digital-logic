@@ -33,11 +33,11 @@ func _ready():
 		$Pins1.hide()
 		$Pins2.show()
 		# Move inputs
-		for i in 5:
-			$Inputs.get_child(i).position = $Pins2.get_child(i).position
-			$Inputs.get_child(i).vert = true # Align wires vertically
-		for i in range(5, 8):
-			$Inputs.get_child(i).hide()
+		for j in 5:
+			$Inputs.get_child(j).position = $Pins2.get_child(j).position
+			$Inputs.get_child(j).vert = true # Align wires vertically
+		for k in range(5, 8):
+			$Inputs.get_child(k).hide()
 	else:
 		$Pins2.hide()
 

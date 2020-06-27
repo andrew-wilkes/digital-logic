@@ -70,15 +70,15 @@ func pin_enter(pin: Pin):
 		# Try to attach end of wire to unconnected input pin
 		if g.wire && !pin.is_output && pin.wires.size() < 1:
 			var source_part = g.wire.start_pin.parent_part
-			var state = source_part.outputs[g.wire.start_pin.id]
+			var pin_state = source_part.outputs[g.wire.start_pin.id]
 			pin.wires.append(g.wire)
 			pin.parent_part = self
 			g.wire.end_pin = pin
 			g.wire.points[-1] = position + pin.position
-			g.wire.set_color(state)
+			g.wire.set_color(pin_state)
 			g.wire = null
 			emit_signal("new_event")
-			emit_signal("wire_attached", self, pin, state)
+			emit_signal("wire_attached", self, pin, pin_state)
 
 
 func pin_exit(pin: Pin):

@@ -52,10 +52,10 @@ func test_circuit(c):
 
 
 func clear_grid_colors():
-	for i in range(data.inputs.size(), table.g1.get_child_count()):
-		table.g1.get_child(i).modulate = Color.white
-	for i in range(data.outputs.size(), table.g2.get_child_count()):
-		table.g2.get_child(i).modulate = Color.white
+	for j in range(data.inputs.size(), table.g1.get_child_count()):
+		table.g1.get_child(j).modulate = Color.white
+	for j in range(data.outputs.size(), table.g2.get_child_count()):
+		table.g2.get_child(j).modulate = Color.white
 
 
 func _on_Timer_timeout():
