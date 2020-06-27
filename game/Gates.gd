@@ -36,7 +36,7 @@ func _ready():
 func clicked(part: Part):
 	part.state = !part.state
 	part.parent.inputs[part.id] = part.state
-	part.parent.set_output(part.state)
+	part.parent.update_output(0, part.state)
 	var q = part.parent.get_node("Output")
 	q.state = part.parent.outputs[0]
 	q.get_node("Symbol").modulate = g.get_state_color(q.state)

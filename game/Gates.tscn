@@ -12,9 +12,6 @@
 [ext_resource path="res://panels/TextPanel.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Gates.gd" type="Script" id=11]
 
-
-
-
 [node name="Gates" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -53,6 +50,7 @@ text = "Logic Gates"
 align = 1
 
 [node name="TextPanel" parent="VBox" instance=ExtResource( 10 )]
+visible = true
 margin_right = 460.0
 text = "The basic logic gates perform boolean operations on their inputs to produce an output. These operations are: AND, NAND, OR, NOR, XOR, and NOT.
 
