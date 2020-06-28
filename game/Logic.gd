@@ -85,8 +85,7 @@ func process_buttons(action):
 
 
 func save_circuit():
-	if circuit.request_to_save_scene():
-		np.notify("Saved")
+	circuit.request_to_save_scene()
 
 
 func load_circuit():
@@ -102,7 +101,7 @@ func show_help():
 	$c/Help.popup_centered()
 
 
-func _on_Circuit_details_changed(c):
+func _on_Circuit_details_changed(c, saved):
 	cid = c.id
 	if tt.data.keys().has(cid):
 		c.title = tt.data[cid].title
@@ -114,6 +113,8 @@ func _on_Circuit_details_changed(c):
 		truth_button.visible = false
 	find_node("Subtitle").text = c.title
 	find_node("Description").text = c.desc
+	if saved:
+		np.notify("Saved")
 
 
 func _on_Access_button_down():

@@ -21,6 +21,7 @@ func _ready():
 				[1,1,0,0,0,0,0,0,0,1,0],
 				[1,1,1,0,0,0,0,0,0,0,1]
 			])
+		print(ok)
 
 
 func check_truth(values, map):

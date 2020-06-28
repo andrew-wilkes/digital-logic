@@ -2,7 +2,7 @@ extends Control
 
 const CELL_MARGIN = 4
 
-signal details_changed(circuit)
+signal details_changed(circuit, saved)
 
 var part
 var part_to_delete
@@ -536,23 +536,20 @@ func choose_circuit(_idx):
 		"new":
 			idx = ""
 			delete_circuit()
-			emit_signal("details_changed", { "title": "Untitled", "desc": "", "id": "" } )
+			emit_signal("details_changed", { "title": "Untitled", "desc": "", "id": "" }, false )
 		"rename":
 			idx = ""
-			request_to_save_scene(last_details.title, last_details.desc)
+			request_to_save_scene()
 		_:
 			idx = _idx
 			load_scene()
 
 
-func request_to_save_scene(title = "", desc = ""):
-	var saved = false
+func request_to_save_scene():
 	if idx.empty():
-		$c/DetailsDialog.open(title, desc)
+		$c/DetailsDialog.open()
 	else:
 		save_scene()
-		saved = true
-	return saved
 
 
 func request_to_load_scene():
@@ -565,24 +562,25 @@ func request_to_load_scene():
 	return reloaded
 
 
-func save_scene(title = "", description = "", cid = "-", cstatus = 0):
-	if idx.empty():
-		idx = get_circuit_id()
-	else:
-		title = g.circuits[idx].title
-		description = g.circuits[idx].desc
-		cid = g.circuits[idx].id
-		cstatus = g.circuits[idx].status
+func save_scene(title = "", description = ""):
 	var off = $Parts.position
 	var circuit = {
-		"id": cid,
+		"id": "-",
 		"title": title,
 		"desc": description,
 		"parts": [],
 		"offset": { "x": off.x, "y": off.y },
-		"status": cstatus
+		"status": 0
 	}
-	emit_signal("details_changed", circuit)
+	if idx.empty():
+		idx = get_circuit_id()
+	else:
+		if title == "":
+			circuit.title = g.circuits[idx].title
+			circuit.description = g.circuits[idx].desc
+		circuit.cid = g.circuits[idx].id
+		circuit.cstatus = g.circuits[idx].status
+	emit_signal("details_changed", circuit, true)
 	var scene = PackedScene.new()
 	var node = $Parts.duplicate()
 	for ch in node.get_children():
@@ -662,7 +660,7 @@ func load_scene():
 	route_all_wires()
 	$Wires.show()
 	init_gate_states()
-	emit_signal("details_changed", circuit)
+	emit_signal("details_changed", circuit, false)
 
 
 func init_input_states():
