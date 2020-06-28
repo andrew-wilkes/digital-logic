@@ -537,9 +537,6 @@ func choose_circuit(_idx):
 			idx = ""
 			delete_circuit()
 			emit_signal("details_changed", { "title": "Untitled", "desc": "", "id": "" }, false )
-		"rename":
-			idx = ""
-			request_to_save_scene()
 		_:
 			idx = _idx
 			load_scene()
