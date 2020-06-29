@@ -6,7 +6,7 @@ const V_MARGIN = 28
 
 func _ready():
 	var pos = Vector2(64, -V_MARGIN)
-	var files = g.get_files("parts", "tscn")
+	var files = g.get_files("res://parts", "tscn")
 	files.sort()
 	for file in files:
 		var node = load("res://parts/" + file).instance()

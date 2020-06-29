@@ -31,8 +31,7 @@ func _ready():
 	truth_button.visible = false
 	get_accessories()
 	get_blocks()
-	# This is done here rather than in cicuits scene because details changed signal from save_scene() affects hint_button
-	g.load_circuits()
+	# Details changed signal from save_scene() affects hint_button
 	if g.param: # It's a tutorial scene
 		circuit.idx = g.param
 		if g.circuits.keys().has(circuit.idx):
@@ -50,7 +49,7 @@ func _ready():
 
 
 func get_accessories():
-	var files = g.get_files("parts/accessories", "tscn")
+	var files = g.get_files("res://parts/accessories", "tscn")
 	for file in files:
 		var node = load("res://parts/accessories/" + file).instance()
 		accessories.append(node)
@@ -58,7 +57,7 @@ func get_accessories():
 
 
 func get_blocks():
-	var files = g.get_files("parts/blocks", "tscn")
+	var files = g.get_files("res://parts/blocks", "tscn")
 	for file in files:
 		var node = load("res://parts/blocks/" + file).instance()
 		blocks.append(node)
