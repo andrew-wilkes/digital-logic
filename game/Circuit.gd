@@ -528,7 +528,7 @@ func request_to_choose_circuit():
 				title = g.circuits[c_key].title,
 				cat = "unc"
 			}
-	$c/FileDialog.open(cats, circuits, 1)
+	$c/FileDialog.open(cats, circuits, 0)
 
 
 func choose_circuit(_idx):
