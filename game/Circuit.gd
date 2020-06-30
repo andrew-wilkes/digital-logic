@@ -574,7 +574,6 @@ func save_scene(title = "", description = ""):
 		if title == "":
 			circuit.title = g.circuits[idx].title
 			circuit.desc = g.circuits[idx].desc
-		circuit.offset = g.circuits[idx].offset
 		circuit.status = g.circuits[idx].status
 	emit_signal("details_changed", circuit, true)
 	var scene = PackedScene.new()
@@ -702,3 +701,4 @@ func request_delete_circuit():
 func confirm_delete_circuit():
 	idx = ""
 	delete_circuit()
+	emit_signal("details_changed", { "title": "Untitled", "desc": "" }, false)
