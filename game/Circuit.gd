@@ -522,7 +522,12 @@ func request_to_choose_circuit():
 	for cat in tt.categories.keys():
 		cats[cat] = tt.categories[cat]
 	var data_keys = tt.data.keys()
-	var circuits = {}
+	var circuits = {
+		"new": {
+			"title": "New circuit",
+			"cat": "unc"
+		}
+	}
 	for c_key in g.circuits.keys():
 		if data_keys.has(c_key):
 			circuits[c_key] = tt.data[c_key]
