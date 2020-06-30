@@ -5,7 +5,7 @@ const COLOR_LOW = Color.blue
 const COLOR_ACTIVE = Color.green
 const COLOR_UNDEFINED = Color.white
 const GRID_SIZE = 10
-const PART_FILE_PATH = "res://parts/lib/"
+const PART_FILE_PATH = "user://circuits/"
 const STATE_FILE_PATH = "user://state.json"
 const UNSTABLE_THRESHOLD = 4
 const STATUS_COLORS = [Color.white, Color.orange, Color.red, Color.green]
@@ -28,8 +28,11 @@ var state = {
 
 
 func _ready():
-	#load_state()
-	pass
+	load_state()
+	var dir = Directory.new()
+	var path = PART_FILE_PATH.rstrip("/")
+	if dir.open(path) != OK:
+		dir.make_dir(path)
 
 
 func get_debug_id():

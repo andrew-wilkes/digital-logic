@@ -45,7 +45,7 @@ func _ready():
 				"id": circuit.idx,
 				"status": 0
 			}
-			circuit.save_scene()
+			circuit.call_deferred("save_scene")
 
 
 func get_accessories():
