@@ -42,7 +42,7 @@ func _ready():
 			g.circuits[circuit.idx] = {
 				"title": d.title,
 				"desc": d.desc,
-				"id": circuit.idx,
+				"offset": { "x": 0, "y": 0 },
 				"status": 0
 			}
 			circuit.call_deferred("save_scene")
@@ -101,7 +101,7 @@ func show_help():
 
 
 func _on_Circuit_details_changed(c, saved):
-	cid = c.id
+	cid = circuit.idx
 	if tt.data.keys().has(cid):
 		c.title = tt.data[cid].title
 		c.desc = tt.data[cid].desc

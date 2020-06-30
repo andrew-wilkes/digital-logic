@@ -391,7 +391,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 
 func part_picked(_part):
 	# Should receive a duplicate of the node that was clicked
-	$Parts.add_child(_part)
+	$Parts.add_child(_part, true) # Use a readable name
 	part = _part
 	connect_part(_part)
 
@@ -562,7 +562,6 @@ func request_to_load_scene():
 func save_scene(title = "", description = ""):
 	var off = $Parts.position
 	var circuit = {
-		"id": "-",
 		"title": title,
 		"desc": description,
 		"parts": [],
@@ -574,35 +573,30 @@ func save_scene(title = "", description = ""):
 	else:
 		if title == "":
 			circuit.title = g.circuits[idx].title
-			circuit.description = g.circuits[idx].desc
-		circuit.cid = g.circuits[idx].id
-		circuit.cstatus = g.circuits[idx].status
+			circuit.desc = g.circuits[idx].desc
+		circuit.offset = g.circuits[idx].offset
+		circuit.status = g.circuits[idx].status
 	emit_signal("details_changed", circuit, true)
 	var scene = PackedScene.new()
-	var node = $Parts.duplicate()
-	for ch in node.get_children():
-		ch.owner = node
-	var result = scene.pack(node)
-	if result == OK:
-		ResourceSaver.save(g.PART_FILE_PATH + idx + ".tscn", scene)
-	# Assign ids to parts
+	# Assign ids to parts for use with wires
 	var id = 0
 	for p in $Parts.get_children():
+		p.owner = $Parts
 		p.id = id
 		id += 1
+	var result = scene.pack($Parts)
+	if result == OK:
+		ResourceSaver.save(g.PART_FILE_PATH + idx + ".tscn", scene)
 	# Save part and wire data
-	id = 0
-	for p in node.get_children():
-		p.owner = node
-		var _part = { "id": id, "wires": [], "labels": [] }
-		for wires in $Parts.get_child(id).get_output_wires():
+	for p in $Parts.get_children():
+		var _part = { "id": p.id, "wires": [], "labels": [] }
+		for wires in $Parts.get_child(p.id).get_output_wires():
 			var pin_wires = []
 			for w in wires:
 				pin_wires.append([w.end_pin.parent_part.id, w.end_pin.id])
 			_part.wires.append(pin_wires)
 		_part.labels = p.labels
 		circuit.parts.append(_part)
-		id += 1
 	g.circuits[idx] = circuit
 	g.save_file(g.PART_FILE_PATH + "data.json", g.circuits)
 
