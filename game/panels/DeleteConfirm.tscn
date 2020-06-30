@@ -7,6 +7,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -1080.0
 margin_bottom = -700.0
-dialog_text = "Delete saved data? "
+dialog_text = "Delete circuit? "
 script = ExtResource( 1 )
 [connection signal="confirmed" from="." to="." method="_on_DeleteConfirm_confirmed"]

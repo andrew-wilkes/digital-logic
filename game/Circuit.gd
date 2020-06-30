@@ -518,12 +518,15 @@ func set_shape_position():
 
 
 func request_to_choose_circuit():
-	var cats = tt.categories.duplicate(true)
-	cats["Custom"] = { "Uncategorized": "unc" }
+	var cats = { "Custom": { "Uncategorized": "unc" } }
+	for cat in tt.categories.keys():
+		cats[cat] = tt.categories[cat]
 	var data_keys = tt.data.keys()
-	var circuits = tt.data.duplicate()
+	var circuits = {}
 	for c_key in g.circuits.keys():
-		if !data_keys.has(c_key):
+		if data_keys.has(c_key):
+			circuits[c_key] = tt.data[c_key]
+		else:
 			circuits[c_key] = {
 				title = g.circuits[c_key].title,
 				cat = "unc"
