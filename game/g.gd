@@ -8,7 +8,7 @@ const GRID_SIZE = 10
 const PART_FILE_PATH = "user://circuits/"
 const STATE_FILE_PATH = "user://state.json"
 const UNSTABLE_THRESHOLD = 4
-const STATUS_COLORS = [Color.white, Color.orange, Color.red, Color.green]
+const STATUS_COLORS = [Color.white, Color.orange, Color.red, Color.green, Color.yellow]
 const DEBUG = false
 
 var wire = null

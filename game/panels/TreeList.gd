@@ -31,7 +31,7 @@ func populate(cats, data, _cid):
 				if item.cat == cats[cat][sub_cat]:
 					var leaf: TreeItem = tree.create_item(b2)
 					leaf.set_text(0, item.title)
-					var status = 0
+					var status = 4 if key == "new" else 0
 					if g.circuits.keys().has(key):
 						status = g.circuits[key].status
 					leaf.set_custom_color(0, g.STATUS_COLORS[status])
