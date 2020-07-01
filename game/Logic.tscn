@@ -55,7 +55,7 @@ size_flags_horizontal = 3
 custom_constants/separation = 20
 
 [node name="VBox" type="VBoxContainer" parent="VBox/HBox"]
-margin_right = 360.0
+margin_right = 286.0
 margin_bottom = 232.0
 custom_constants/separation = 20
 
@@ -64,7 +64,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 360.0
+margin_right = 286.0
 margin_bottom = 64.0
 page_id = -1
 
@@ -73,12 +73,12 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 84.0
-margin_right = 360.0
+margin_right = 286.0
 margin_bottom = 148.0
 
 [node name="Misc" type="HBoxContainer" parent="VBox/HBox/VBox"]
 margin_top = 168.0
-margin_right = 360.0
+margin_right = 286.0
 margin_bottom = 232.0
 custom_constants/separation = 10
 
@@ -97,15 +97,9 @@ texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 20 )
 texture_hover = ExtResource( 19 )
 
-[node name="Control" type="Control" parent="VBox/HBox/VBox/Misc"]
+[node name="Hint" type="TextureButton" parent="VBox/HBox/VBox/Misc"]
 margin_left = 148.0
 margin_right = 212.0
-margin_bottom = 64.0
-size_flags_horizontal = 3
-
-[node name="Hint" type="TextureButton" parent="VBox/HBox/VBox/Misc"]
-margin_left = 222.0
-margin_right = 286.0
 margin_bottom = 64.0
 hint_tooltip = "Get hints"
 texture_normal = ExtResource( 14 )
@@ -113,8 +107,8 @@ texture_pressed = ExtResource( 14 )
 texture_hover = ExtResource( 12 )
 
 [node name="Truth" type="TextureButton" parent="VBox/HBox/VBox/Misc"]
-margin_left = 296.0
-margin_right = 360.0
+margin_left = 222.0
+margin_right = 286.0
 margin_bottom = 64.0
 hint_tooltip = "Display truth table"
 shortcut_in_tooltip = false
@@ -123,7 +117,7 @@ texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 16 )
 
 [node name="VBox2" type="VBoxContainer" parent="VBox/HBox"]
-margin_left = 380.0
+margin_left = 306.0
 margin_right = 1260.0
 margin_bottom = 232.0
 size_flags_horizontal = 3
@@ -133,7 +127,7 @@ __meta__ = {
 }
 
 [node name="HBox" type="HBoxContainer" parent="VBox/HBox/VBox2"]
-margin_right = 880.0
+margin_right = 954.0
 margin_bottom = 64.0
 
 [node name="Title" type="Label" parent="VBox/HBox/VBox2/HBox"]
@@ -145,14 +139,14 @@ text = "Logic Circuit"
 
 [node name="Spacer" type="Control" parent="VBox/HBox/VBox2/HBox"]
 margin_left = 325.0
-margin_right = 776.0
+margin_right = 850.0
 margin_bottom = 64.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="Edit" type="TextureButton" parent="VBox/HBox/VBox2/HBox"]
-margin_left = 780.0
-margin_right = 828.0
+margin_left = 854.0
+margin_right = 902.0
 margin_bottom = 64.0
 hint_tooltip = "Edit circuit details"
 texture_normal = ExtResource( 23 )
@@ -160,8 +154,8 @@ texture_pressed = ExtResource( 23 )
 texture_hover = ExtResource( 21 )
 
 [node name="Delete" type="TextureButton" parent="VBox/HBox/VBox2/HBox"]
-margin_left = 832.0
-margin_right = 880.0
+margin_left = 906.0
+margin_right = 954.0
 margin_bottom = 64.0
 hint_tooltip = "Delete circuit"
 texture_normal = ExtResource( 24 )
@@ -170,7 +164,7 @@ texture_hover = ExtResource( 22 )
 
 [node name="Subtitle" type="Label" parent="VBox/HBox/VBox2"]
 margin_top = 84.0
-margin_right = 880.0
+margin_right = 954.0
 margin_bottom = 137.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0.172549, 0.580392, 1 )
@@ -179,7 +173,7 @@ text = "Untitled"
 [node name="Description" parent="VBox/HBox/VBox2" instance=ExtResource( 4 )]
 visible = true
 margin_top = 157.0
-margin_right = 880.0
+margin_right = 954.0
 margin_bottom = 232.0
 
 [node name="HBox2" type="HBoxContainer" parent="VBox"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/title_font.tres" type="DynamicFont" id=2]
@@ -8,8 +8,6 @@
 [ext_resource path="res://assets/numbers-m-l.png" type="Texture" id=6]
 [ext_resource path="res://assets/gates-m.png" type="Texture" id=7]
 [ext_resource path="res://assets/circuits-m-l.png" type="Texture" id=8]
-[ext_resource path="res://assets/systems-m.png" type="Texture" id=9]
-[ext_resource path="res://assets/systems-m-l.png" type="Texture" id=10]
 
 [node name="Main" type="CenterContainer"]
 anchor_right = 1.0
@@ -66,18 +64,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture_normal = ExtResource( 4 )
 texture_hover = ExtResource( 8 )
-
-[node name="Systems" type="TextureButton" parent="VBox"]
-margin_left = 139.0
-margin_top = 450.0
-margin_right = 336.0
-margin_bottom = 512.0
-hint_tooltip = "Systems"
-size_flags_horizontal = 4
-size_flags_vertical = 0
-texture_normal = ExtResource( 9 )
-texture_hover = ExtResource( 10 )
 [connection signal="button_down" from="VBox/Numbers" to="." method="_on_Numbers_button_down"]
 [connection signal="button_down" from="VBox/Gates" to="." method="_on_Gates_button_down"]
 [connection signal="button_down" from="VBox/Circuits" to="." method="_on_Circuits_button_down"]
-[connection signal="button_down" from="VBox/Systems" to="." method="_on_Projects_button_down"]

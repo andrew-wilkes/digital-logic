@@ -10,10 +10,6 @@ func _on_Save_button_down():
 	emit_signal("button_pressed", "save")
 
 
-func _on_Play_button_down():
-	emit_signal("button_pressed", "play")
-
-
 func _on_Library_button_down():
 	emit_signal("button_pressed", "library")
 
