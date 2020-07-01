@@ -47,6 +47,8 @@ func test_circuit(c):
 	clear_grid_colors()
 	i = 0
 	passed = false
+	ipmap = []
+	opmap = []
 	state = CHECKING_INPUTS
 	$Timer.start()
 
