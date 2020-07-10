@@ -62,9 +62,11 @@ position = Vector2( 70, -80 )
 
 [node name="Pin3" parent="Outputs" instance=ExtResource( 1 )]
 position = Vector2( 70, -60 )
+is_bus = true
 
 [node name="Pin4" parent="Outputs" instance=ExtResource( 1 )]
 position = Vector2( 70, -40 )
+is_bus = true
 
 [node name="Pin5" parent="Outputs" instance=ExtResource( 1 )]
 position = Vector2( 70, -20 )

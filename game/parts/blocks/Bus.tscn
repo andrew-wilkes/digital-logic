@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/psqr-3.png" type="Texture" id=1]
+[ext_resource path="res://assets/psqr-1.png" type="Texture" id=2]
+[ext_resource path="res://assets/psqr-2.png" type="Texture" id=3]
+[ext_resource path="res://parts/misc/Pin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://parts/blocks/Bus.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 18 )
+
+[node name="Bus" type="Node2D"]
+script = ExtResource( 5 )
+is_input_block = true
+is_output_block = true
+
+[node name="Symbol" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 0, 300 )
+width = 8.0
+default_color = Color( 0.4, 0.501961, 1, 1 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_left = -4.0
+margin_right = 4.0
+margin_bottom = 300.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopHandle" type="TextureButton" parent="VBox"]
+margin_right = 8.0
+margin_bottom = 8.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer" type="Control" parent="VBox"]
+margin_top = 12.0
+margin_right = 8.0
+margin_bottom = 288.0
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="BottomHandle" type="TextureButton" parent="VBox"]
+margin_top = 292.0
+margin_right = 8.0
+margin_bottom = 300.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0, 150 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -1.90735e-06 )
+shape = SubResource( 1 )
+
+[node name="Inputs" type="Node2D" parent="."]
+position = Vector2( 20, 90 )
+
+[node name="Pin1" parent="Inputs" instance=ExtResource( 4 )]
+position = Vector2( 0, -20 )
+is_bus = true
+
+[node name="Pin2" parent="Inputs" instance=ExtResource( 4 )]
+position = Vector2( 0, -40 )
+is_bus = true
+
+[node name="Outputs" type="Node2D" parent="."]
+position = Vector2( -20, 150 )
+
+[node name="Pin1" parent="Outputs" instance=ExtResource( 4 )]
+position = Vector2( 0, 20 )
+is_bus = true
+
+[node name="Pin2" parent="Outputs" instance=ExtResource( 4 )]
+position = Vector2( 0, 40 )
+is_bus = true
+[connection signal="button_down" from="VBox/TopHandle" to="." method="_on_TopHandle_button_down"]
+[connection signal="button_up" from="VBox/TopHandle" to="." method="_on_TopHandle_button_up"]
+[connection signal="gui_input" from="VBox/TopHandle" to="." method="_on_TopHandle_gui_input"]
+[connection signal="button_down" from="VBox/BottomHandle" to="." method="_on_BottomHandle_button_down"]
+[connection signal="button_up" from="VBox/BottomHandle" to="." method="_on_BottomHandle_button_up"]
+[connection signal="gui_input" from="VBox/BottomHandle" to="." method="_on_BottomHandle_gui_input"]

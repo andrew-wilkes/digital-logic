@@ -16,7 +16,8 @@ func delete():
 
 func set_color(state):
 	if is_bus:
-		modulate = g.COLOR_ACTIVE
+		modulate = g.COLOR_BUS
+		width = 4
 	else:
 		if state:
 			modulate = g.COLOR_HIGH
