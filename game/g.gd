@@ -2,6 +2,7 @@ extends Node
 
 const COLOR_HIGH = Color.red
 const COLOR_LOW = Color.blue
+const COLOR_BUS = Color(0.0, 0.3, 1.0)
 const COLOR_ACTIVE = Color.green
 const COLOR_UNDEFINED = Color.white
 const GRID_SIZE = 10

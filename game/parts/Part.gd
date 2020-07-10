@@ -68,7 +68,7 @@ func pin_enter(pin: Pin):
 	if highlight_pin:
 		pin.show_it()
 		# Try to attach end of wire to unconnected input pin
-		if g.wire && !pin.is_output && pin.wires.size() < 1:
+		if g.wire && !pin.is_output && pin.wires.size() < 1 && g.wire.is_bus == pin.is_bus:
 			var source_part = g.wire.start_pin.parent_part
 			var pin_state = source_part.outputs[g.wire.start_pin.id]
 			pin.wires.append(g.wire)

@@ -8,8 +8,6 @@
 [node name="Pin" type="Area2D"]
 modulate = Color( 0, 1, 0.0156863, 1 )
 script = ExtResource( 2 )
-color = Color( 0, 1, 0, 1 )
-color_a = Color( 0, 1, 0, 0.466667 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

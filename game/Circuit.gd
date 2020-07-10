@@ -474,6 +474,7 @@ func part_delete():
 func pinclick(gate, pin):
 	if pin.is_output:
 		var wire = wire_scene.instance()
+		wire.is_bus = pin.is_bus
 		wire.start_pin = pin
 		pin.hide_it()
 		pin.wires.append(wire)

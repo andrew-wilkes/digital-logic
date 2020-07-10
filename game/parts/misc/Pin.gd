@@ -8,13 +8,13 @@ var wires = []
 var id = 0
 var updated = 0
 var debug_id = 0
-
-export(Color, RGB) var color
-export(Color, RGBA) var color_a
+var color
+var color_a
 export(bool) var vert = false
+export(bool) var is_bus = false
 
 func _ready():
-	modulate = color_a
+	set_color()
 	if g.DEBUG:
 		debug_id = g.get_debug_id()
 		$Label.show()
@@ -45,4 +45,14 @@ func _on_Pin_mouse_entered():
 
 
 func _on_Pin_mouse_exited():
+	modulate = color_a
+
+
+func set_color():
+	if is_bus:
+		color = g.COLOR_BUS
+	else:
+		color = g.COLOR_ACTIVE
+	color_a = color
+	color_a.a = 0.5
 	modulate = color_a
