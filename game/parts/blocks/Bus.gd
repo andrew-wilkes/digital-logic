@@ -5,6 +5,7 @@ var resizing = false
 var resize_factor = 2
 var line_length
 var start_pos
+export var length = 120
 
 func _ready():
 	z_index = 1 # Display above wires
@@ -30,25 +31,19 @@ func _ready():
 		i += 1
 
 
-func set_size(length):
-	$Symbol.points[1].y = length
+func set_size(l):
+	$Symbol.points[1].y = l
 	var l2 = length / 2
 	$Symbol.position.y = -l2
 	$TopHandle.rect_position.y = -l2
 	$BottomHandle.rect_position.y = l2 - 8
+	length = l
 
 
-func update_output(pin, state):
-	# Only update on change of state
-	if inputs[pin.id] == state:
-		return
-	if pin.state_changed():
-		pinclick(pin)
-		unstable()
-		return
-	inputs[pin.id] = state
-	if !pin.was_connected_to:
-		pin.was_connected_to = true
+func update_output(_pin, _state, force = false):
+	if _pin != 0 and (outputs[_pin.id] != _state or force):
+		outputs[_pin.id] = _state
+		emit_signal("state_changed", self, 0, _state)
 
 
 func _on_TopHandle_button_down():
@@ -112,6 +107,7 @@ func add_input_pin(_id):
 	pin.wires.clear()
 	pin.position.y = _id * 20 + 20
 	pin.id = _id
+	pin.show_it()
 	connect_pin(pin)
 	inputs.append(false)
 	$Inputs.add_child(pin)
@@ -122,6 +118,7 @@ func add_output_pin(_id):
 	pin.wires.clear()
 	pin.position.y = -_id * 20 - 20
 	pin.id = _id
+	pin.show_it()
 	connect_pin(pin)
 	outputs.append(false)
 	$Outputs.add_child(pin)

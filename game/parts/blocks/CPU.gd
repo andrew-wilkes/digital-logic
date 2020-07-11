@@ -21,14 +21,5 @@ func _ready():
 		i += 1
 
 
-func update_output(pin, state):
-	# Only update on change of state
-	if inputs[pin.id] == state:
-		return
-	if pin.state_changed():
-		pinclick(pin)
-		unstable()
-		return
-	inputs[pin.id] = state
-	if !pin.was_connected_to:
-		pin.was_connected_to = true
+func update_output(_pin, _state, _force = false):
+	pass

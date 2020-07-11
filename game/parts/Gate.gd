@@ -26,7 +26,6 @@ func _ready():
 
 
 func update_output(_pin, _state, force = false):
-	# Only update on change of state
 	var new_state = evaluate()
 	if outputs[0] != new_state or force:
 		outputs[0] = new_state
