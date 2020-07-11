@@ -19,18 +19,11 @@ points = PoolVector2Array( 0, 0, 0, 300 )
 width = 8.0
 default_color = Color( 0.4, 0.501961, 1, 1 )
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="TopHandle" type="TextureButton" parent="."]
 margin_left = -4.0
 margin_right = 4.0
-margin_bottom = 300.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TopHandle" type="TextureButton" parent="VBox"]
-margin_right = 8.0
 margin_bottom = 8.0
+mouse_default_cursor_shape = 9
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
@@ -38,17 +31,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Spacer" type="Control" parent="VBox"]
-margin_top = 12.0
-margin_right = 8.0
-margin_bottom = 288.0
-mouse_filter = 2
-size_flags_vertical = 3
-
-[node name="BottomHandle" type="TextureButton" parent="VBox"]
+[node name="BottomHandle" type="TextureButton" parent="."]
+margin_left = -4.0
 margin_top = 292.0
-margin_right = 8.0
+margin_right = 4.0
 margin_bottom = 300.0
+mouse_default_cursor_shape = 9
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
@@ -84,9 +72,9 @@ is_bus = true
 [node name="Pin2" parent="Outputs" instance=ExtResource( 4 )]
 position = Vector2( 0, 40 )
 is_bus = true
-[connection signal="button_down" from="VBox/TopHandle" to="." method="_on_TopHandle_button_down"]
-[connection signal="button_up" from="VBox/TopHandle" to="." method="_on_TopHandle_button_up"]
-[connection signal="gui_input" from="VBox/TopHandle" to="." method="_on_TopHandle_gui_input"]
-[connection signal="button_down" from="VBox/BottomHandle" to="." method="_on_BottomHandle_button_down"]
-[connection signal="button_up" from="VBox/BottomHandle" to="." method="_on_BottomHandle_button_up"]
-[connection signal="gui_input" from="VBox/BottomHandle" to="." method="_on_BottomHandle_gui_input"]
+[connection signal="button_down" from="TopHandle" to="." method="_on_TopHandle_button_down"]
+[connection signal="button_up" from="TopHandle" to="." method="_on_TopHandle_button_up"]
+[connection signal="gui_input" from="TopHandle" to="." method="_on_TopHandle_gui_input"]
+[connection signal="button_down" from="BottomHandle" to="." method="_on_BottomHandle_button_down"]
+[connection signal="button_up" from="BottomHandle" to="." method="_on_BottomHandle_button_up"]
+[connection signal="gui_input" from="BottomHandle" to="." method="_on_BottomHandle_gui_input"]
