@@ -32,9 +32,9 @@ func _ready():
 
 
 func set_size(l):
-	$Symbol.points[1].y = l
 	var l2 = length / 2
-	$Symbol.position.y = -l2
+	$Symbol.points[0].y = -l2
+	$Symbol.points[1].y = l2
 	$TopHandle.rect_position.y = -l2
 	$BottomHandle.rect_position.y = l2 - 8
 	length = l
