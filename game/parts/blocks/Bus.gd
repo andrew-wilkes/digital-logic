@@ -32,7 +32,9 @@ func _ready():
 
 
 func set_size(l):
-	var l2 = length / 2
+	if l < 100:
+		return
+	var l2 = l / 2
 	$Symbol.points[0].y = -l2
 	$Symbol.points[1].y = l2
 	$TopHandle.rect_position.y = -l2
@@ -79,17 +81,19 @@ func init_resize(factor):
 
 func resize(event):
 	if resizing and event is InputEventMouseMotion:
-		var y = 40 * floor((resize_factor * (get_viewport().get_mouse_position().y - start_pos) + line_length) / 40)
+		var m_pos = get_viewport().get_mouse_position().y
+		var y = 40 * floor((resize_factor * (m_pos - start_pos) + line_length) / 40)
 		if y > 110:
 			set_size(y)
+			print(length)
 			var child_count = $Inputs.get_child_count()
 			var num_pins = y / 40 - 1
 			var pin_diff = num_pins - child_count
 			if pin_diff > 0:
 				for n in pin_diff:
-					var id = child_count + n
-					add_input_pin(id)
-					add_output_pin(id)
+					var _id = child_count + n
+					add_input_pin(_id)
+					add_output_pin(_id)
 			elif pin_diff < 0:
 				var last_i = child_count
 				for i in range(child_count - 1, num_pins - 1, -1):
@@ -105,7 +109,7 @@ func resize(event):
 func add_input_pin(_id):
 	var pin = $Inputs.get_child(0).duplicate()
 	pin.wires.clear()
-	pin.position.y = _id * 20 + 20
+	pin.position.y = -_id * 20 - 20
 	pin.id = _id
 	pin.show_it()
 	connect_pin(pin)
@@ -116,7 +120,8 @@ func add_input_pin(_id):
 func add_output_pin(_id):
 	var pin = $Outputs.get_child(0).duplicate()
 	pin.wires.clear()
-	pin.position.y = -_id * 20 - 20
+	pin.position.y = _id * 20 + 20
+	print(pin.position.y)
 	pin.id = _id
 	pin.show_it()
 	connect_pin(pin)
