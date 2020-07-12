@@ -335,8 +335,8 @@
      showgrid="true"
      inkscape:current-layer="layer3"
      inkscape:document-units="px"
-     inkscape:cy="1067.2125"
-     inkscape:cx="-347.99064"
+     inkscape:cy="1028.4135"
+     inkscape:cx="-497.37884"
      inkscape:zoom="0.6824445"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -366,11 +366,11 @@
     </rdf:RDF>
   </metadata>
   <g
-     style="display:none;opacity:1"
+     sodipodi:insensitive="true"
+     style="display:inline;opacity:1"
      inkscape:label="artwork"
      id="layer2"
-     inkscape:groupmode="layer"
-     sodipodi:insensitive="true">
+     inkscape:groupmode="layer">
     <rect
        y="352.51962"
        x="-600"
@@ -387,12 +387,12 @@
        y="474"
        rx="1.1189733e-05" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.81031"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:4.87725"
        id="rect1265"
-       width="430"
-       height="990"
+       width="550"
+       height="1268.1484"
        x="-310"
-       y="450" />
+       y="411.85159" />
   </g>
   <g
      style="display:inline"
@@ -3444,7 +3444,7 @@
     <text
        id="text2295-4-4-2-31-7-67-5-0-4-7"
        y="1124.5791"
-       x="109.43965"
+       x="110.16969"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        xml:space="preserve"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
@@ -3452,37 +3452,37 @@
        inkscape:export-ydpi="96"><tspan
          id="tspan2252-3-0-6"
          y="1124.5791"
-         x="109.43965"
+         x="110.16969"
          sodipodi:role="line"
-         style="text-align:center;text-anchor:middle;stroke-width:0.404083">REGISTER</tspan></text>
+         style="text-align:center;text-anchor:middle;stroke-width:0.404083">ADDER</tspan></text>
     <text
        id="text2295-4-4-2-31-7-67-26-1-6-7"
-       y="1155.7305"
-       x="64.287354"
+       y="1145.4128"
+       x="47.317596"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        xml:space="preserve"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
-         y="1155.7305"
-         x="64.287354"
+         y="1145.4128"
+         x="47.317596"
          id="tspan2293-91-2-0-94-6-5-10-0-8-3"
          sodipodi:role="line"
-         style="stroke-width:0.404083">CLK</tspan></text>
+         style="stroke-width:0.404083">A</tspan></text>
     <text
        inkscape:export-ydpi="96"
        inkscape:export-xdpi="96"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
-       x="150.64975"
-       y="1155.5374"
+       x="46.536266"
+       y="1186.1678"
        id="text2295-4-4-2-31-7-67-1-9-3-9-6"><tspan
          style="stroke-width:0.404083"
          sodipodi:role="line"
          id="tspan2293-91-2-0-94-6-5-8-7-7-2-5"
-         x="150.64975"
-         y="1155.5374">OE</tspan></text>
+         x="46.536266"
+         y="1186.1678">CIN</tspan></text>
     <rect
        ry="0"
        style="display:inline;fill:none;stroke:#000000;stroke-width:1.82574;stroke-miterlimit:4;stroke-dasharray:none"
@@ -3491,14 +3491,6 @@
        height="140"
        x="40"
        y="1100"
-       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96" />
-    <path
-       sodipodi:nodetypes="ccc"
-       id="path2384-2-3"
-       d="m 40,1140 20,10 -20,10"
-       style="display:inline;fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
@@ -3537,12 +3529,12 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        x="109.43965"
-       y="1284.5791"
+       y="1274.5791"
        id="text2295-4-4-2-31-7-67-5-0-4-7-2"><tspan
          style="text-align:center;text-anchor:middle;stroke-width:0.404083"
          sodipodi:role="line"
          x="109.43965"
-         y="1284.5791"
+         y="1274.5791"
          id="tspan2252-3-0-6-9">REGISTER</tspan></text>
     <text
        inkscape:export-ydpi="96"
@@ -3551,24 +3543,24 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        x="64.287354"
-       y="1315.7305"
+       y="1305.7305"
        id="text2295-4-4-2-31-7-67-26-1-6-7-3"><tspan
          style="stroke-width:0.404083"
          sodipodi:role="line"
          id="tspan2293-91-2-0-94-6-5-10-0-8-3-9"
          x="64.287354"
-         y="1315.7305">CLK</tspan></text>
+         y="1305.7305">CLK</tspan></text>
     <text
        id="text2295-4-4-2-31-7-67-1-9-3-9-6-0"
-       y="1315.5374"
-       x="150.64975"
+       y="1345.2056"
+       x="46.561207"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        xml:space="preserve"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
-         y="1315.5374"
-         x="150.64975"
+         y="1345.2056"
+         x="46.561207"
          id="tspan2293-91-2-0-94-6-5-8-7-7-2-5-8"
          sodipodi:role="line"
          style="stroke-width:0.404083">OE</tspan></text>
@@ -3576,9 +3568,9 @@
        inkscape:export-ydpi="96"
        inkscape:export-xdpi="96"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
-       y="1260"
+       y="1250"
        x="40"
-       height="200"
+       height="190"
        width="140"
        id="rect2285-1-0-0-3-3-36-6-8"
        style="display:inline;fill:none;stroke:#000000;stroke-width:1.82574;stroke-miterlimit:4;stroke-dasharray:none"
@@ -3588,7 +3580,7 @@
        inkscape:export-xdpi="96"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
        style="display:inline;fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 40,1300 20,10 -20,10"
+       d="m 40,1290 20,10 -20,10"
        id="path2384-2-3-5"
        sodipodi:nodetypes="ccc" />
     <text
@@ -3597,56 +3589,28 @@
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
-       x="70.730827"
-       y="1445.7305"
+       x="59.172443"
+       y="1425.3251"
        id="text2295-4-4-2-31-7-67-26-1-64-9-0"><tspan
          style="text-align:center;text-anchor:middle;stroke-width:0.404083"
          sodipodi:role="line"
          id="tspan2293-91-2-0-94-6-5-10-0-9-4-9"
-         x="70.730827"
-         y="1445.7305">DO</tspan></text>
+         x="59.172443"
+         y="1425.3251">MO</tspan></text>
     <text
        id="text2295-4-4-2-31-7-67-26-1-64-9-0-6"
-       y="1445.4054"
-       x="149.41861"
+       y="1425.7251"
+       x="127.39494"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        xml:space="preserve"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
-         y="1445.4054"
-         x="149.41861"
+         y="1425.7251"
+         x="127.39494"
          id="tspan2293-91-2-0-94-6-5-10-0-9-4-9-3"
          sodipodi:role="line"
-         style="text-align:center;text-anchor:middle;stroke-width:0.404083">DI</tspan></text>
-    <text
-       id="text2295-4-4-2-31-7-67-26-1-64-8"
-       y="1225.3456"
-       x="45.911259"
-       style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
-       xml:space="preserve"
-       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96"><tspan
-         y="1225.3456"
-         x="45.911259"
-         id="tspan2293-91-2-0-94-6-5-10-0-9-5"
-         sodipodi:role="line"
-         style="stroke-width:0.404083">DI 0-7</tspan></text>
-    <text
-       inkscape:export-ydpi="96"
-       inkscape:export-xdpi="96"
-       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
-       x="117.79603"
-       y="1225.1525"
-       id="text2295-4-4-2-31-7-67-1-9-3-6-6"><tspan
-         style="stroke-width:0.404083"
-         sodipodi:role="line"
-         id="tspan2293-91-2-0-94-6-5-8-7-7-1-11"
-         x="117.79603"
-         y="1225.1525">DO 0-7</tspan></text>
+         style="text-align:center;text-anchor:middle;stroke-width:0.404083">SI</tspan></text>
     <text
        inkscape:export-ydpi="96"
        inkscape:export-xdpi="96"
@@ -3654,30 +3618,30 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        x="45.597965"
-       y="1624.8246"
+       y="1594.8246"
        id="text2295-4-4-2-31-7-67-26-1-64-9-8"><tspan
          style="stroke-width:0.404083"
          sodipodi:role="line"
          id="tspan2293-91-2-0-94-6-5-10-0-9-4-4"
          x="45.597965"
-         y="1624.8246">DI 0-7</tspan></text>
+         y="1594.8246">DI 0-7</tspan></text>
     <text
        id="text2295-4-4-2-31-7-67-1-9-3-6-8-8"
-       y="1624.6315"
+       y="1594.6315"
        x="117.48273"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        xml:space="preserve"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
-         y="1624.6315"
+         y="1594.6315"
          x="117.48273"
          id="tspan2293-91-2-0-94-6-5-8-7-7-1-1-1"
          sodipodi:role="line"
          style="stroke-width:0.404083">DO 0-7</tspan></text>
     <text
        id="text2295-4-4-2-31-7-67-5-0-4-7-2-0"
-       y="1504.5791"
+       y="1474.5791"
        x="109.43965"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        xml:space="preserve"
@@ -3685,20 +3649,20 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          id="tspan2252-3-0-6-9-3"
-         y="1504.5791"
+         y="1474.5791"
          x="109.43965"
          sodipodi:role="line"
          style="text-align:center;text-anchor:middle;stroke-width:0.404083">MEMORY</tspan></text>
     <text
        id="text2295-4-4-2-31-7-67-26-1-6-7-3-0"
-       y="1526.454"
+       y="1496.454"
        x="45.335335"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        xml:space="preserve"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
-         y="1526.454"
+         y="1496.454"
          x="45.335335"
          id="tspan2293-91-2-0-94-6-5-10-0-8-3-9-4"
          sodipodi:role="line"
@@ -3710,7 +3674,7 @@
        width="140"
        height="160"
        x="40"
-       y="1480"
+       y="1450"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
@@ -3721,13 +3685,13 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        x="45.522522"
-       y="1546.3195"
+       y="1516.3195"
        id="text2295-4-4-2-31-7-67-26-1-6-7-3-0-2"><tspan
          style="stroke-width:0.404083"
          sodipodi:role="line"
          id="tspan2293-91-2-0-94-6-5-10-0-8-3-9-4-1"
          x="45.522522"
-         y="1546.3195">W</tspan></text>
+         y="1516.3195">W</tspan></text>
     <text
        inkscape:export-ydpi="96"
        inkscape:export-xdpi="96"
@@ -3735,13 +3699,13 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        x="46.711113"
-       y="1586.0824"
+       y="1556.0824"
        id="text2295-4-4-2-31-7-67-26-1-64-9-8-9-7"><tspan
          style="stroke-width:0.404083"
          sodipodi:role="line"
          id="tspan2293-91-2-0-94-6-5-10-0-9-4-4-6-8"
          x="46.711113"
-         y="1586.0824">A 0-7</tspan></text>
+         y="1556.0824">A 0-7</tspan></text>
     <text
        inkscape:export-ydpi="96"
        inkscape:export-xdpi="96"
@@ -3749,12 +3713,12 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        x="110.2486"
-       y="1525.0883"
+       y="1495.0883"
        id="text2295-4-4-2-31-7-67-5-0-4-7-2-0-5"><tspan
          style="text-align:center;text-anchor:middle;stroke-width:0.404083"
          sodipodi:role="line"
          x="110.2486"
-         y="1525.0883"
+         y="1495.0883"
          id="tspan2252-3-0-6-9-3-7">(256B)</tspan></text>
     <text
        inkscape:export-ydpi="96"
@@ -3763,13 +3727,104 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
        x="139.65166"
-       y="1585.7584"
+       y="1555.7584"
        id="text2295-4-4-2-31-7-67-1-9-3-6-8-8-4"><tspan
          style="text-align:center;text-anchor:middle;stroke-width:0.404083"
          sodipodi:role="line"
          id="tspan2293-91-2-0-94-6-5-8-7-7-1-1-1-1"
          x="139.65166"
-         y="1585.7584">DATA</tspan></text>
+         y="1555.7584">DATA</tspan></text>
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
+       id="path2358"
+       d="M 40,1400 H 180"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
+       x="45.857533"
+       y="1165.7943"
+       id="text2295-4-4-2-31-7-67-26-1-6-7-8"><tspan
+         style="stroke-width:0.404083"
+         sodipodi:role="line"
+         id="tspan2293-91-2-0-94-6-5-10-0-8-3-5"
+         x="45.857533"
+         y="1165.7943">B</tspan></text>
+    <text
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
+       x="174.91081"
+       y="1165.6915"
+       id="text2629-6-5-3-0-9"><tspan
+         style="text-align:end;text-anchor:end;stroke-width:0.404083"
+         sodipodi:role="line"
+         id="tspan2627-7-3-5-9-7"
+         x="174.91081"
+         y="1165.6915">SUM</tspan></text>
+    <text
+       id="text2629-6-5-3-0-9-5"
+       y="1205.9396"
+       x="174.9187"
+       style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
+       xml:space="preserve"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         y="1205.9396"
+         x="174.9187"
+         id="tspan2627-7-3-5-9-7-3"
+         sodipodi:role="line"
+         style="text-align:end;text-anchor:end;stroke-width:0.404083">N</tspan></text>
+    <text
+       id="text2629-6-5-3-0-9-8"
+       y="1226.9922"
+       x="174.05846"
+       style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
+       xml:space="preserve"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         y="1226.9922"
+         x="174.05846"
+         id="tspan2627-7-3-5-9-7-8"
+         sodipodi:role="line"
+         style="text-align:end;text-anchor:end;stroke-width:0.404083">Z</tspan></text>
+    <text
+       id="text2295-4-4-2-31-7-67-1-9-3-9-6-3"
+       y="1206.5571"
+       x="45.857533"
+       style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
+       xml:space="preserve"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         y="1206.5571"
+         x="45.857533"
+         id="tspan2293-91-2-0-94-6-5-8-7-7-2-5-1"
+         sodipodi:role="line"
+         style="stroke-width:0.404083">NIN</tspan></text>
+    <text
+       id="text2295-4-4-2-31-7-67-1-9-3-9-6-8"
+       y="1226.9386"
+       x="46.717785"
+       style="font-style:normal;font-weight:normal;font-size:16.1633px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.404083"
+       xml:space="preserve"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         y="1226.9386"
+         x="46.717785"
+         id="tspan2293-91-2-0-94-6-5-8-7-7-2-5-9"
+         sodipodi:role="line"
+         style="stroke-width:0.404083">ZIN</tspan></text>
   </g>
   <g
      style="display:inline"

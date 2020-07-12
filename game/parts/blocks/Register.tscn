@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://parts/misc/Pin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://parts/blocks/Register.gd" type="Script" id=2]
+[ext_resource path="res://assets/blocks.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 60, 90 )
+
+[node name="Register" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Symbol" type="Sprite" parent="."]
+position = Vector2( 0, 5 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 280, 790, 142, 192 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Inputs" type="Node2D" parent="."]
+
+[node name="CLK" parent="Inputs" instance=ExtResource( 1 )]
+position = Vector2( -70, -40 )
+
+[node name="OE" parent="Inputs" instance=ExtResource( 1 )]
+position = Vector2( -70, 0 )
+
+[node name="DI" parent="Inputs" instance=ExtResource( 1 )]
+position = Vector2( -70, 40 )
+is_bus = true
+
+[node name="SI" parent="Inputs" instance=ExtResource( 1 )]
+position = Vector2( 20, 100 )
+is_bus = true
+
+[node name="Outputs" type="Node2D" parent="."]
+
+[node name="DO" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 70, 40 )
+is_bus = true
+
+[node name="MO" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( -50, 100 )
+is_bus = true
+
+[node name="V1" type="Label" parent="."]
+margin_left = -41.0
+margin_top = 17.0
+margin_right = -21.0
+margin_bottom = 31.0
+custom_colors/font_color = Color( 0.160784, 0.113725, 1, 1 )
+text = "00"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="V2" type="Label" parent="."]
+margin_left = -30.0
+margin_top = 73.0
+margin_right = -10.0
+margin_bottom = 87.0
+custom_colors/font_color = Color( 0.160784, 0.113725, 1, 1 )
+text = "00"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="V3" type="Label" parent="."]
+margin_left = 9.0
+margin_top = 17.0
+margin_right = 29.0
+margin_bottom = 31.0
+custom_colors/font_color = Color( 0.160784, 0.113725, 1, 1 )
+text = "00"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="V4" type="Label" parent="."]
+margin_left = 34.0
+margin_top = 73.0
+margin_right = 54.0
+margin_bottom = 87.0
+custom_colors/font_color = Color( 0.160784, 0.113725, 1, 1 )
+text = "00"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
