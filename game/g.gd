@@ -113,3 +113,7 @@ func decode_inputs(inputs):
 		if inputs[i]:
 			x += 1
 	return x
+
+
+func set_hex_text(label: Label, value: int):
+	label.text = "%02X" % value
