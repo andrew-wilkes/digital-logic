@@ -42,8 +42,8 @@ func set_size(l):
 	length = l
 
 
-func update_output(_pin, _state, force = false):
-	if _pin != 0 and (outputs[_pin.id] != _state or force):
+func update_output(_pin, _state):
+	if _pin != 0 and (outputs[_pin.id] != _state):
 		outputs[_pin.id] = _state
 		emit_signal("state_changed", self, 0, _state)
 

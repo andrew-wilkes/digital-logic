@@ -33,10 +33,10 @@ func _ready():
 	set_hex()
 
 
-func update_output(_pin, _state, _force = false):
+func update_output(_pin, _state):
 	if inputs[R]:
 		var v = mem[inputs[A]]
-		if outputs[DO] != v or _force:
+		if outputs[DO] != v:
 			outputs[DO] = v
 			emit_signal("state_changed", self, DO, v)
 	if inputs[W]:

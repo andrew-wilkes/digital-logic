@@ -69,7 +69,7 @@ func get_map(n):
 	return map[n & 0xf] + (n & 0x10) * 0x8
 
 
-func update_output(pin, state, _force = false):
+func update_output(pin, state):
 	if decode:
 		var id = pin.id
 		if id == 7:

@@ -172,3 +172,8 @@ func set_input(pin, _state):
 		unstable()
 		return
 	inputs[pin.id] = _state
+
+
+func signal_output_states():
+	for i in outputs.size():
+		emit_signal("state_changed", self, i, outputs[i])

@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://parts/misc/Pin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://parts/blocks/DecadeCounter.gd" type="Script" id=2]
+[ext_resource path="res://assets/blocks.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 60, 140 )
+
+[node name="DecadeCounter" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Symbol" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 259, 240, 144, 283 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Inputs" type="Node2D" parent="."]
+
+[node name="CLK" parent="Inputs" instance=ExtResource( 1 )]
+position = Vector2( -70, 100 )
+
+[node name="RST" parent="Inputs" instance=ExtResource( 1 )]
+position = Vector2( -70, 120 )
+
+[node name="Outputs" type="Node2D" parent="."]
+
+[node name="Q0" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 70, -80 )
+
+[node name="Q1" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 70, -60 )
+
+[node name="Q2" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 70, -40 )
+
+[node name="Q3" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 70, -20 )
+
+[node name="Q4" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 70, 0 )
+
+[node name="Q5" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 70, 20 )
+
+[node name="Q6" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 70, 40 )
+
+[node name="Q7" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 70, 60 )
+
+[node name="Q8" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 70, 80 )
+
+[node name="Q9" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 70, 100 )
+
+[node name="CO" parent="Outputs" instance=ExtResource( 1 )]
+position = Vector2( 70, 120 )

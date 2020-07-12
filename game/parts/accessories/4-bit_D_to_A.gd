@@ -14,6 +14,6 @@ func _ready():
 		i += 1
 
 
-func update_output(pin, state, _force = false):
+func update_output(pin, state):
 	$Pins.get_child(pin.id).modulate = g.get_state_color(state)
 	$ProgressBar.value = g.decode_inputs(inputs)

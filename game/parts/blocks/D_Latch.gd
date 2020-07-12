@@ -24,16 +24,12 @@ func _ready():
 	outputs = [false, true]
 
 
-func update_output(_pin, _state, _force = false):
+func update_output(_pin, _state):
 	# Return if not enabled
-	if inputs[E] == false or !_force:
+	if inputs[E] == false:
 		return
 	if inputs[D] == outputs[Q2]:
 		outputs[Q1] = inputs[D]
 		outputs[Q2] = !inputs[D]
-		emit_signals()
-
-
-func emit_signals():
-	for n in 2:
-		emit_signal("state_changed", self, n, outputs[n])
+		for n in 2:
+			emit_signal("state_changed", self, n, outputs[n])

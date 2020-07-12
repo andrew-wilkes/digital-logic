@@ -25,9 +25,9 @@ func _ready():
 	outputs = [false]
 
 
-func update_output(_pin, _state, force = false):
+func update_output(_pin, _state):
 	var new_state = evaluate()
-	if outputs[0] != new_state or force:
+	if outputs[0] != new_state:
 		outputs[0] = new_state
 		emit_signal("state_changed", self, 0, new_state)
 

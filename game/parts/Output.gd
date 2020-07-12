@@ -46,7 +46,7 @@ func set_input(pin, value):
 	state = value
 
 
-func update_output(_pin, _state, _force = false):
+func update_output(_pin, _state):
 	outputs[0] = state
 	color = g.get_state_color(state)
 	$Symbol.modulate = color

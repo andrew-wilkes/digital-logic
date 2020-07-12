@@ -24,10 +24,7 @@ func _ready():
 	outputs = [false, true]
 
 
-func update_output(pin, state, _force = false):
-	if _force:
-		emit_signals()
-		return
+func update_output(pin, state):
 	if outputs[QP]:
 		if pin.id == S and state == false and inputs[R]:
 			set_outputs(false)
@@ -43,10 +40,7 @@ func update_output(pin, state, _force = false):
 
 
 func set_outputs(v):
-		outputs[QP] = v
-		outputs[QN] = !v
-		emit_signals()
-
-func emit_signals():
+	outputs[QP] = v
+	outputs[QN] = !v
 	for n in 2:
 		emit_signal("state_changed", self, n, outputs[n])

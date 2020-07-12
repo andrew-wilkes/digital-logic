@@ -81,7 +81,7 @@ func set_input(pin, state):
 		call_deferred("capture")
 
 
-func update_output(_pin, _state, _force = false):
+func update_output(_pin, _state):
 	pass
 
 

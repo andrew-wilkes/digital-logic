@@ -673,7 +673,7 @@ func init_input_states():
 func init_gate_states():
 	for p in $Parts.get_children():
 		if !p.is_ext_input and !p.is_input_block and !p.is_ext_output and !p.is_output_block:
-			p.update_output(0, 0, true)
+			p.signal_output_states()
 
 
 func delete_circuit():

@@ -24,13 +24,9 @@ func _ready():
 	outputs = [false, true]
 
 
-func update_output(_pin, _state, _force = false):
+func update_output(_pin, _state):
 	var sum = int(inputs[A]) + int(inputs[B]) + int(inputs[Cin])
 	outputs[Sum] = bool(sum % 2)
 	outputs[Cout] = sum > 1
-	emit_signals()
-
-
-func emit_signals():
 	for n in 2:
 		emit_signal("state_changed", self, n, outputs[n])

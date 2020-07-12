@@ -21,5 +21,5 @@ func _ready():
 		i += 1
 
 
-func update_output(_pin, _state, _force = false):
+func update_output(_pin, _state):
 	pass
