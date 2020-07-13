@@ -1,17 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://parts/misc/Pin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://parts/blocks/Adder.gd" type="Script" id=2]
 [ext_resource path="res://assets/blocks.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 60, 70 )
+extents = Vector2( 60, 80 )
 
 [node name="Adder" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="Symbol" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 280, 640, 142, 142 )
+region_rect = Rect2( 0, 910, 142, 162 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -21,27 +23,67 @@ shape = SubResource( 1 )
 [node name="Inputs" type="Node2D" parent="."]
 
 [node name="A" parent="Inputs" instance=ExtResource( 1 )]
-position = Vector2( -70, -30 )
+position = Vector2( -70, -40 )
+is_bus = true
 
 [node name="B" parent="Inputs" instance=ExtResource( 1 )]
-position = Vector2( -70, -10 )
+position = Vector2( -70, -20 )
+is_bus = true
 
 [node name="CIN" parent="Inputs" instance=ExtResource( 1 )]
-position = Vector2( -70, 10 )
+position = Vector2( -70, 0 )
 
 [node name="NIN" parent="Inputs" instance=ExtResource( 1 )]
-position = Vector2( -70, 30 )
+position = Vector2( -70, 20 )
 
 [node name="ZIN" parent="Inputs" instance=ExtResource( 1 )]
-position = Vector2( -70, 50 )
+position = Vector2( -70, 40 )
+
+[node name="COMP" parent="Inputs" instance=ExtResource( 1 )]
+position = Vector2( -70, 60 )
 
 [node name="Outputs" type="Node2D" parent="."]
 
 [node name="SUM" parent="Outputs" instance=ExtResource( 1 )]
-position = Vector2( 70, -10 )
+position = Vector2( 70, -20 )
+is_bus = true
 
 [node name="N" parent="Outputs" instance=ExtResource( 1 )]
-position = Vector2( 70, 30 )
+position = Vector2( 70, 20 )
 
 [node name="Z" parent="Outputs" instance=ExtResource( 1 )]
-position = Vector2( 70, 50 )
+position = Vector2( 70, 40 )
+
+[node name="AV" type="Label" parent="."]
+margin_left = -50.0
+margin_top = -47.0
+margin_right = -30.0
+margin_bottom = -33.0
+custom_colors/font_color = Color( 0, 0.0862745, 1, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BV" type="Label" parent="."]
+margin_left = -50.0
+margin_top = -27.0
+margin_right = -30.0
+margin_bottom = -13.0
+custom_colors/font_color = Color( 0, 0.0862745, 1, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SUM" type="Label" parent="."]
+margin_left = 40.0
+margin_top = -40.0
+margin_right = 60.0
+margin_bottom = -26.0
+custom_colors/font_color = Color( 0, 0.0862745, 1, 1 )
+text = "00"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

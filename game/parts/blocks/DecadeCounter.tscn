@@ -11,9 +11,11 @@ extents = Vector2( 60, 140 )
 script = ExtResource( 2 )
 
 [node name="Symbol" type="Sprite" parent="."]
+position = Vector2( 0, 0.75 )
+scale = Vector2( 1, 0.9947 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 259, 240, 144, 283 )
+region_rect = Rect2( 260, 240, 142, 282 )
 
 [node name="Area2D" type="Area2D" parent="."]
 

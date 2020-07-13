@@ -14,7 +14,7 @@ script = ExtResource( 2 )
 position = Vector2( 0, 5 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 280, 790, 142, 192 )
+region_rect = Rect2( 270, 640, 142, 192 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
