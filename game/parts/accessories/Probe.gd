@@ -5,7 +5,6 @@ const TRACE_SIZE = 20
 const MIN_TICKS = 3
 const MAX_TICKS = 63
 
-var labels =  []
 var data = []
 var num_ch = 0
 var clock : Node2D
@@ -24,16 +23,10 @@ var ticks = 0
 var clock_pin = 0
 
 func _ready():
-	allow_testing()
-	z_index = 1 # Display above wires
-	connect_signals()
 	var i = 0
 	for node in $Inputs.get_children():
-		node.id = i
-		connect_pin(node)
 		i += 1
 		data.append([])
-		inputs.append(false)
 	num_ch = i
 	traces = $Traces.get_children()
 	slider = $Slider

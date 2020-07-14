@@ -1,7 +1,5 @@
 extends Part
 
-var labels = []
-
 enum { CLK, OE, DI, SI }
 enum { DO, MO }
 
@@ -11,23 +9,6 @@ enum { DO, MO }
 # SI is the slave FF value in
 
 func _ready():
-	allow_testing()
-	v_spacing = 72
-	z_index = 1 # Display above wires
-	connect_signals()
-	var i = 0
-	for pin in $Inputs.get_children():
-		inputs.append(false)
-		pin.id = i
-		connect_pin(pin)
-		i += 1
-	i = 0
-	for node in $Outputs.get_children():
-		node.id = i
-		node.is_output = true
-		connect_pin(node)
-		outputs.append(0)
-		i += 1
 	set_hex()
 
 

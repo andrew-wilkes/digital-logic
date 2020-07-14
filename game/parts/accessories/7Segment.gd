@@ -11,7 +11,6 @@ var map = [
 ]
 
 var count = 0
-var labels = ["a","b","c","d","e","f","g"]
 
 func _ready():
 	if allow_testing():
@@ -20,15 +19,6 @@ func _ready():
 		position.y += 50
 	else:
 		set_segments(0)
-	z_index = 1 # Display above wires
-	connect_signals()
-	var i = 0
-	for node in $Inputs.get_children():
-		#node.hide_it()
-		inputs.append(false)
-		node.id = i
-		connect_pin(node)
-		i += 1
 	if decode:
 		$Pins1.hide()
 		$Pins2.show()

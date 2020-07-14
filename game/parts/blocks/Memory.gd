@@ -1,6 +1,5 @@
 extends Part
 
-var labels =  []
 var mem = []
 export var memory_size = 256
 
@@ -8,25 +7,6 @@ enum { R, W, A, DI }
 enum { DO }
 
 func _ready():
-	allow_testing()
-	z_index = 1 # Display above wires
-	connect_signals()
-	var i = 0
-	for pin in $Inputs.get_children():
-		if i < 2:
-			inputs.append(false)
-		else:
-			inputs.append(0)
-		pin.id = i
-		connect_pin(pin)
-		i += 1
-	i = 0
-	for node in $Outputs.get_children():
-		node.id = i
-		node.is_output = true
-		connect_pin(node)
-		outputs.append(0)
-		i += 1
 	mem.resize(memory_size)
 	for a in memory_size:
 		mem[a] = false

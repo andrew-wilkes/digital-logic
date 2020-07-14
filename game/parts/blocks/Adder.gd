@@ -4,23 +4,6 @@ enum { A, B, CIN, NIN, ZIN, COMP }
 enum { SUM, N, Z }
 
 func _ready():
-	allow_testing()
-	v_spacing = 72
-	z_index = 1 # Display above wires
-	connect_signals()
-	inputs = [0, 0, false, false, false]
-	outputs = [0, false, false]
-	var i = 0
-	for pin in $Inputs.get_children():
-		pin.id = i
-		connect_pin(pin)
-		i += 1
-	i = 0
-	for node in $Outputs.get_children():
-		node.id = i
-		node.is_output = true
-		connect_pin(node)
-		i += 1
 	set_hex()
 
 

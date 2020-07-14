@@ -1,6 +1,5 @@
 extends Part
 
-var labels =  []
 var resizing = false
 var resize_factor = 2
 var line_length
@@ -8,27 +7,11 @@ var start_pos
 export var length = 120
 
 func _ready():
-	z_index = 1 # Display above wires
 	line_length = get_length()
 	set_size(line_length)
 	$Inputs.position = Vector2(0, 0)
 	$Outputs.position = Vector2(0, 0)
 	$Area2D.position = Vector2(0, 0)
-	allow_testing()
-	connect_signals()
-	var i = 0
-	for pin in $Inputs.get_children():
-		inputs.append(false)
-		pin.id = i
-		connect_pin(pin)
-		i += 1
-	i = 0
-	for node in $Outputs.get_children():
-		node.id = i
-		node.is_output = true
-		connect_pin(node)
-		outputs.append(false)
-		i += 1
 
 
 func set_size(l):
@@ -43,7 +26,7 @@ func set_size(l):
 
 
 func update_output(_pin, _state):
-	if _pin != 0 and (outputs[_pin.id] != _state):
+	if outputs[_pin.id] != _state:
 		outputs[_pin.id] = _state
 		emit_signal("state_changed", self, 0, _state)
 

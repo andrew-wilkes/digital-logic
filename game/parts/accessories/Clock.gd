@@ -4,7 +4,6 @@ signal clock
 
 enum { STOPPED, PULSING, OSCILLATING, RESETTING }
 
-var labels =  []
 var count = 0
 var delay = 0
 var clk_state = STOPPED
@@ -16,15 +15,6 @@ var rate
 var num_ticks
 
 func _ready():
-	allow_testing()
-	z_index = 1 # Display above wires
-	connect_signals()
-	var i = 0
-	for node in $Outputs.get_children():
-		node.id = i
-		node.is_output = true
-		connect_pin(node)
-		i += 1
 	outputs = [true, false, false] # cause outputs to flip
 	call_deferred("reset_output")
 	set_rate()

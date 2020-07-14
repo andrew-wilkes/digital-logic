@@ -5,19 +5,9 @@ const DELAY = 0.5
 
 var delta = 0
 var x = 1
-var labels =  ["I0","I1","I2","I3"]
 
 func _ready():
-	allow_testing()
-	z_index = 1 # Display above wires
-	connect_signals()
-	var i = 0
-	for node in $Outputs.get_children():
-		node.id = i
-		node.is_output = true
-		connect_pin(node)
-		outputs.append(false)
-		i += 1
+	labels =  ["I0","I1","I2","I3"]
 	call_deferred("set_value", -1)
 
 

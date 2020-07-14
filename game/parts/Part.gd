@@ -23,12 +23,51 @@ export(bool) var is_output_block = false
 
 var inputs = []
 var outputs = []
+var _labels = []
+var labels = [] setget set_labels, get_labels
 var state = false setget change_input_state
 var dropped = false
 var id = 0
 var parent
-var v_spacing
+var v_spacing = 72
 var color = g.COLOR_UNDEFINED
+
+func _ready():
+	allow_testing()
+	z_index = 1 # Display above wires
+	connect_signals()
+	var i = 0
+	for pin in $Inputs.get_children():
+		if pin.is_bus:
+			inputs.append(0)
+		else:
+			inputs.append(false)
+		pin.id = i
+		connect_pin(pin)
+		i += 1
+	i = 0
+	for pin in $Outputs.get_children():
+		if pin.is_bus:
+			outputs.append(0)
+		else:
+			outputs.append(false)
+		pin.id = i
+		pin.is_output = true
+		connect_pin(pin)
+		i += 1
+
+
+func set_labels(value: Array):
+	_labels = value
+
+
+func get_labels():
+	return _labels
+
+
+func update_output(_pin, _state):
+	pass
+
 
 func allow_testing():
 	var ok = false

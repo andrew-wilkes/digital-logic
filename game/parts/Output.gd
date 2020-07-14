@@ -1,22 +1,16 @@
 extends Part
 
-var labels = [] setget set_labels, get_label
-
 func _ready():
-	allow_testing()
 	v_spacing = 56
 	color = g.COLOR_UNDEFINED
 	modulate = color
-	connect_signals()
-	var pin = $Inputs/A
-	connect_pin(pin)
-	pin.hide_it()
+	$Inputs/A.hide_it()
 	$Label.hide()
 	outputs = [false]
 	connect("dropped", self, "show_label")
 
 
-func get_label():
+func get_labels():
 	return [$Label.text]
 
 
