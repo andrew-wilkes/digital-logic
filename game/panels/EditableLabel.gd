@@ -1,4 +1,7 @@
 extends ToolButton
+tool
+
+export var default_text = "?" setget _on_LabelDialog_updated
 
 func _on_Label_button_down():
 	$c/LabelDialog.window_title = "Enter label text"
@@ -8,7 +11,7 @@ func _on_Label_button_down():
 
 func _on_LabelDialog_updated(txt):
 	if txt.empty():
-		txt = "?"
+		txt = default_text
 	text = txt
 
 
