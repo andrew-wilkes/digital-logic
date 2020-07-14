@@ -26,7 +26,7 @@ func update_output(_pin, _state):
 			set_slave(_state)
 		OE:
 			if _state:
-				set_output(DO, outputs[SI])
+				set_output(DO, inputs[SI])
 	set_hex()
 
 

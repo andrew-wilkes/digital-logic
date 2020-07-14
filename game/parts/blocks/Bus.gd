@@ -68,7 +68,6 @@ func resize(event):
 		var y = 40 * floor((resize_factor * (m_pos - start_pos) + line_length) / 40)
 		if y > 110:
 			set_size(y)
-			print(length)
 			var child_count = $Inputs.get_child_count()
 			var num_pins = y / 40 - 1
 			var pin_diff = num_pins - child_count
