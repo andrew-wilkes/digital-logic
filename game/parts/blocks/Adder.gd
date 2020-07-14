@@ -8,7 +8,9 @@ func _ready():
 
 
 func update_output(_pin, _state):
-	var sum = inputs[A] + inputs[CIN]
+	var sum = inputs[A]
+	if inputs[CIN]:
+		sum += 1
 	if inputs[COMP]:
 		sum -= inputs[B]
 	if inputs[ZIN]:
