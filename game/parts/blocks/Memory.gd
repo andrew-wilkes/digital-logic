@@ -9,7 +9,7 @@ enum { DO }
 func _ready():
 	mem.resize(memory_size)
 	for a in memory_size:
-		mem[a] = false
+		mem[a] = 0
 	set_hex()
 
 

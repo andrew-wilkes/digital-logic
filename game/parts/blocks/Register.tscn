@@ -6,7 +6,7 @@
 [ext_resource path="res://panels/EditableLabel.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 60, 90 )
+extents = Vector2( 60, 80 )
 
 [node name="Register" type="Node2D"]
 script = ExtResource( 2 )
@@ -20,6 +20,7 @@ region_rect = Rect2( 270, 640, 142, 192 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 10 )
 shape = SubResource( 1 )
 
 [node name="Inputs" type="Node2D" parent="."]
@@ -35,7 +36,7 @@ position = Vector2( -70, 40 )
 is_bus = true
 
 [node name="SI" parent="Inputs" instance=ExtResource( 1 )]
-position = Vector2( 20, 100 )
+position = Vector2( 50, -90 )
 vert = true
 is_bus = true
 
@@ -63,10 +64,10 @@ __meta__ = {
 }
 
 [node name="V2" type="Label" parent="."]
-margin_left = -30.0
-margin_top = 73.0
-margin_right = -10.0
-margin_bottom = 87.0
+margin_left = -60.0
+margin_top = 60.0
+margin_right = -40.0
+margin_bottom = 74.0
 custom_colors/font_color = Color( 0.160784, 0.113725, 1, 1 )
 text = "00"
 valign = 1
@@ -87,10 +88,10 @@ __meta__ = {
 }
 
 [node name="V4" type="Label" parent="."]
-margin_left = 34.0
-margin_top = 73.0
-margin_right = 54.0
-margin_bottom = 87.0
+margin_left = 40.0
+margin_top = -60.0
+margin_right = 60.0
+margin_bottom = -46.0
 custom_colors/font_color = Color( 0.160784, 0.113725, 1, 1 )
 text = "00"
 valign = 1
