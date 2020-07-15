@@ -122,7 +122,6 @@ func _on_Access_button_down():
 
 func accessory_picked(index):
 	var item = accessories[index].duplicate()
-	item.position = rect_position
 	add_item_to_circuit(item)
 
 
@@ -132,11 +131,11 @@ func _on_Block_button_down():
 
 func block_picked(index):
 	var item = blocks[index].duplicate()
-	item.position = rect_position
 	add_item_to_circuit(item)
 
 
 func add_item_to_circuit(item):
+	item.position = get_viewport().get_mouse_position() - circuit.get_global_rect().position
 	circuit.part_picked(item)
 
 

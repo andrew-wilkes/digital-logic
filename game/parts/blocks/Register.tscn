@@ -104,3 +104,4 @@ margin_top = -80.0
 margin_right = 50.0
 margin_bottom = -58.0
 text = "REGISTER"
+default_text = "REGISTER"
