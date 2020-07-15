@@ -2,6 +2,8 @@ extends Control
 
 const CELL_MARGIN = 4
 
+enum { DONE, START, BEND, VSTART, SSTART, SSTARTVEND, SSTARTSEND, SSTARTVENDFOR, SSTARTVENDBACK, VSTARTVEND, VSTARTSEND, VSTARTSENDDOWN, VSTARTSENDUP, VSTARTSENDUPBACK, VSTARTSENDUPFOR, VSTARTSENDEND }
+
 signal details_changed(circuit, saved)
 
 var part
@@ -142,7 +144,6 @@ func route_all_wires():
 		route_wire(w)
 	add_dots_to_all_wires()
 
-enum { DONE, START, BEND, VSTART, SSTART, SSTARTVEND, SSTARTSEND, SSTARTVENDFOR, SSTARTVENDBACK, VSTARTVEND, VSTARTSEND, VSTARTSENDDOWN, VSTARTSENDUP, VSTARTSENDUPBACK, VSTARTSENDUPFOR, VSTARTSENDEND }
 
 func route_wire(w):
 	var v1 = w.start_pin.vert
@@ -153,6 +154,7 @@ func route_wire(w):
 	var y
 	var s = START # State
 	var routing = true
+	w.is_bus = w.start_pin.is_bus
 	w.clear_points()
 	w.add_point(a)
 	while routing:
