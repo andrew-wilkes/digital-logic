@@ -3,13 +3,21 @@ extends Part
 enum { CLK, OE, DI, SI }
 enum { DO, MO }
 
+export var title = ""
+
 # DI is the input bus value
 # DO is the output bus value
 # MO is the master FF value out
 # SI is the slave FF value in
 
 func _ready():
+	$Title.update_title(title)
+	$Title.connect("updated", self, "update_title")
 	set_hex()
+
+
+func update_title(txt):
+	title = txt
 
 
 func update_output(_pin, _state):

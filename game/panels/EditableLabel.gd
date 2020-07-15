@@ -1,6 +1,8 @@
 extends ToolButton
 tool
 
+signal updated(txt)
+
 export var default_text = "?"
 
 func _on_Label_button_down():
@@ -10,6 +12,11 @@ func _on_Label_button_down():
 
 
 func _on_LabelDialog_updated(txt):
+	update_title(txt)
+	emit_signal("updated", txt)
+
+
+func update_title(txt):
 	if txt.empty():
 		txt = default_text
 	text = txt
