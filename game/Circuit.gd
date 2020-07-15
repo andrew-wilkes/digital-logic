@@ -142,6 +142,7 @@ func route_all_wires():
 		route_wire(w)
 	add_dots_to_all_wires()
 
+enum { DONE, START, BEND, VSTART, SSTART, SSTARTVEND, SSTARTSEND, SSTARTVENDFOR, SSTARTVENDBACK, VSTARTVEND, VSTARTSEND, VSTARTSENDDOWN, VSTARTSENDUP, VSTARTSENDUPBACK, VSTARTSENDUPFOR, VSTARTSENDEND }
 
 func route_wire(w):
 	var v1 = w.start_pin.vert
@@ -150,54 +151,54 @@ func route_wire(w):
 	var b = w.points[-1]
 	var x
 	var y
-	var s = 1 # State
+	var s = START # State
 	var routing = true
 	w.clear_points()
 	w.add_point(a)
 	while routing:
 		match s:
-			1:
+			START:
 				if a.x == b.x and b.y > a.y or a.y == b.y and b.x > a.x:
-					s = 0
+					s = DONE # Straight line a to b
 				else:
-					s = 10
-			10:
+					s = BEND 
+			BEND:
 				if v1:
 					x = a.x
-					s = 20
+					s = VSTART
 				else:
 					x = align_to_grid(a.x)
-					s = 30
-			30:
+					s = SSTART
+			SSTART: # Straight start
 				x = get_next_pos(vx, x)
 				y = a.y
 				add_point(w, x, y)
 				if v2:
-					s = 32
+					s = SSTARTVEND
 				else:
-					s = 200
-			32:
+					s = SSTARTSEND
+			SSTARTVEND:
 				if x < b.x:
-					s = 34
+					s = SSTARTVENDFOR
 				else:
-					s = 36
-			34:
+					s = SSTARTVENDBACK
+			SSTARTVENDFOR:
 				y = get_next_pos(vy, b.y, -2)
 				add_point(w, x, y)
 				x = b.x
 				add_point(w, x, y)
-				s = 0
-			36:
+				s = DONE
+			SSTARTVENDBACK:
 				y = get_next_pos(vy, b.y, -2)
 				add_point(w, x, y)
 				x = b.x
 				add_point(w, x, y)
-				s = 0
-			200:
-				if a.x < b.x:
+				s = DONE
+			SSTARTSEND:
+				if a.x < b.x: # SSTARTSENDFOR
 					y = b.y
 					add_point(w, x, y)
-				else:
+				else: # SSTARTSENDBACK
 					var p = w.start_pin.parent_part
 					if p == w.end_pin.parent_part: # If feedback wire
 						y = get_next_pos(vy, a.y - p.get_extents().y - w.start_pin.position.y - 20, -1)
@@ -208,15 +209,15 @@ func route_wire(w):
 					x = get_next_pos(vx, x, -2)
 					add_point(w, x, y)
 					add_point(w, x, b.y)
-				s = 0
-			20:
+				s = DONE
+			VSTART:
 				if v2:
 					y = get_next_pos(vy, a.y)
 					add_point(w, x, y)
-					s = 40
+					s = VSTARTVEND
 				else:
-					s = 50
-			40:
+					s = VSTARTSEND
+			VSTARTVEND:
 				if a.y < b.y:
 					x = b.x
 					add_point(w, x, y)
@@ -231,13 +232,13 @@ func route_wire(w):
 					add_point(w, x, y)
 					x = b.x
 					add_point(w, x, y)
-				s = 0
-			50:
+				s = DONE
+			VSTARTSEND:
 				if a.y < b.y:
-					s = 60
+					s = VSTARTSENDDOWN
 				else:
-					s = 70
-			60:
+					s = VSTARTSENDUP
+			VSTARTSENDDOWN:
 				if a.x < b.x:
 					y = b.y
 					add_point(w, x, y)
@@ -249,28 +250,28 @@ func route_wire(w):
 					add_point(w, x, y)
 					y = b.y
 					add_point(w, x, y)
-				s = 0
-			70:
+				s = DONE
+			VSTARTSENDUP:
 				y = get_next_pos(vy, a.y)
 				add_point(w, x, y)
 				if a.x > b.x:
-					s = 80
+					s = VSTARTSENDUPBACK
 				else:
-					s = 90
-			80:
+					s = VSTARTSENDUPFOR
+			VSTARTSENDUPBACK:
 				x = align_to_grid(b.x)
 				x = get_next_pos(vx, x, -2)
 				add_point(w, x, y)
-				s = 100
-			90:
+				s = VSTARTSENDEND
+			VSTARTSENDUPFOR:
 				x = get_mid_point(vx, a.x, b.x)
 				add_point(w, x, y)
-				s = 100
-			100:
+				s = VSTARTSENDEND
+			VSTARTSENDEND:
 				y = b.y
 				add_point(w, x, y)
-				s = 0
-			0:
+				s = DONE
+			DONE:
 				routing = false
 	w.add_point(b)
 
