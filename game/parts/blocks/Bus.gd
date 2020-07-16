@@ -4,14 +4,23 @@ var resizing = false
 var resize_factor = 2
 var line_length
 var start_pos
-export var length = 120
+export var child_count = 2
+
 
 func _ready():
-	line_length = get_length()
+	line_length = get_length(child_count)
 	set_size(line_length)
 	$Inputs.position = Vector2(0, 0)
 	$Outputs.position = Vector2(0, 0)
 	$Area2D.position = Vector2(0, 0)
+	add_pins()
+
+
+func add_pins():
+	if child_count > 2:
+		for _id in range(2, child_count):
+			add_input_pin(_id)
+			add_output_pin(_id)
 
 
 func set_size(l):
@@ -22,7 +31,6 @@ func set_size(l):
 	$Symbol.points[1].y = l2
 	$TopHandle.rect_position.y = -l2
 	$BottomHandle.rect_position.y = l2 - 8
-	length = l
 
 
 func update_output(_pin, _state):
@@ -58,34 +66,33 @@ func _on_BottomHandle_gui_input(event):
 func init_resize(factor):
 	resize_factor = factor
 	resizing = true
-	line_length = $Symbol.points[1].y
+	line_length = $Symbol.points[1].y * 2
 	start_pos = get_viewport().get_mouse_position().y
 
 
 func resize(event):
 	if resizing and event is InputEventMouseMotion:
 		var m_pos = get_viewport().get_mouse_position().y
-		var y = 40 * floor((resize_factor * (m_pos - start_pos) + line_length) / 40)
+		var y = 20 * floor((resize_factor * (m_pos - start_pos) + line_length) / 20)
 		if y > 110:
-			set_size(y)
-			var child_count = $Inputs.get_child_count()
-			var num_pins = y / 40 - 1
+			var num_pins = int(y / 40 - 1)
 			var pin_diff = num_pins - child_count
 			if pin_diff > 0:
 				for n in pin_diff:
-					var _id = child_count + n
+					var _id = child_count
+					child_count += 1
 					add_input_pin(_id)
 					add_output_pin(_id)
 			elif pin_diff < 0:
-				var last_i = child_count
+				var new_count = child_count
 				for i in range(child_count - 1, num_pins - 1, -1):
 					if i > 1 and $Inputs.get_child(i).wires.size() == 0 and $Outputs.get_child(i).wires.size() == 0:
 						$Inputs.get_child(i).queue_free()
 						$Outputs.get_child(i).queue_free()
 						outputs.remove(i)
-						last_i = i
-				if last_i < child_count:
-					set_size(last_i)
+						new_count = i
+				child_count = new_count
+			set_size(get_length(child_count))
 
 
 func add_input_pin(_id):
@@ -103,13 +110,13 @@ func add_output_pin(_id):
 	var pin = $Outputs.get_child(0).duplicate()
 	pin.wires.clear()
 	pin.position.y = _id * 20 + 20
-	print(pin.position.y)
 	pin.id = _id
+	pin.is_output = true
 	pin.show_it()
 	connect_pin(pin)
 	outputs.append(false)
 	$Outputs.add_child(pin)
 
 
-func get_length():
-	return 40 * ($Inputs.get_child_count() + 1)
+func get_length(n):
+	return 40 * (n + 1)
