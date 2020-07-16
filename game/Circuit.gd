@@ -12,11 +12,13 @@ var wire_scene = preload("res://parts/misc/Wire.tscn")
 var picker_scene = preload("res://panels/PartsPicker.tscn")
 var in_node = preload("res://parts/zInput.tscn")
 var out_node = preload("res://parts/zOutput.tscn")
-
 var ref
 var min_point: Vector2
 var max_point: Vector2
 var panning = false
+var banding = false
+var band_start
+var band_end
 var pan_pos
 var idx = ""
 var vx = []
@@ -378,6 +380,14 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 				pan_pos = pos
 				$Wires.position += delta
 				$Parts.position += delta
+		elif banding:
+			band_end = get_viewport().get_mouse_position() - get_global_rect().position
+			$Band.set_point_position(0, band_start)
+			$Band.set_point_position(1, Vector2(band_end.x, band_start.y))
+			$Band.set_point_position(2, band_end)
+			$Band.set_point_position(3, Vector2(band_start.x, band_end.y))
+			$Band.set_point_position(4, band_start)
+			$Band.show()
 	# Delete wire on release of mouse button
 	if event is InputEventMouseButton:
 		if g.wire &&  !event.pressed:
@@ -390,6 +400,21 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 		if !event.pressed && event.button_index == 2:
 			panning = false
 			pan_pos = null
+		if event.pressed && event.button_index == 1:
+			call_deferred("start_banding")
+		if !event.pressed && event.button_index == 1:
+			if banding:
+				banding = false
+				$Band.hide()
+
+
+func start_banding():
+	if g.clicked_item:
+		g.clicked_item = false
+	else:
+		band_start = get_viewport().get_mouse_position() - get_global_rect().position
+		band_end = band_start
+		banding = true
 
 
 func part_picked(_part):
@@ -500,6 +525,10 @@ func pinclick(gate, pin):
 
 
 func _draw():
+	draw_grid()
+
+
+func draw_grid():
 	# Get a rect_size aligning to grid cells so that we have solid edges
 	var r = (rect_size / g.GRID_SIZE).ceil() 
 	var rect = (r - Vector2(1, 1)) * g.GRID_SIZE

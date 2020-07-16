@@ -146,6 +146,7 @@ func pin_click(_viewport, event, _shape_idx, node):
 	if event is InputEventMouseButton && event.pressed && wireable:
 		# Click on output pin to create a new wire
 		# Click on input pin to delete a wire
+		g.clicked_item = "Pin"
 		pinclick(node)
 
 
@@ -166,8 +167,10 @@ func change_input_state(value):
 func input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.doubleclick:
+			g.clicked_item = "Part"
 			emit_signal("doubleclick", self)
 		elif event.pressed:
+			g.clicked_item = "Part"
 			emit_signal("picked", self)
 		else:
 			emit_signal("dropped")

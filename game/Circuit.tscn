@@ -64,5 +64,12 @@ visible = false
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 125, 80, 20, 20 )
+
+[node name="Band" type="Line2D" parent="."]
+visible = false
+z_index = 1
+points = PoolVector2Array( 85.1312, 0.626038, 85.1312, 98.7088, 5.55463, 100.559, 0, 0, 0, 0 )
+width = 2.0
+default_color = Color( 0.623529, 0.623529, 0.623529, 1 )
 [connection signal="resized" from="." to="." method="set_shape_position"]
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

@@ -12,6 +12,7 @@ const UNSTABLE_THRESHOLD = 4
 const STATUS_COLORS = [Color.white, Color.orange, Color.red, Color.green, Color.yellow]
 const DEBUG = false
 
+var clicked_item = false
 var wire = null
 var circuits = {}
 var param
