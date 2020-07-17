@@ -6,6 +6,7 @@ var start_pin
 var end_pin
 var index = 0
 var is_bus = false
+var color
 
 func delete():
 	start_pin.wires.erase(self)
@@ -14,12 +15,20 @@ func delete():
 	queue_free()
 
 
+func highlight(do = true):
+	if do:
+		modulate = Color.black
+	else:
+		modulate = color
+
+
 func set_color(state):
 	if is_bus:
-		modulate = g.COLOR_BUS
+		color = g.COLOR_BUS
 		width = 4
 	else:
 		if state:
-			modulate = g.COLOR_HIGH
+			color = g.COLOR_HIGH
 		else:
-			modulate = g.COLOR_LOW
+			color = g.COLOR_LOW
+	modulate = color

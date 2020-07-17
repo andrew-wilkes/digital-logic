@@ -133,6 +133,7 @@ func new_event():
 func mouse_entered():
 	if highlight_part:
 		$Symbol.modulate = g.COLOR_ACTIVE
+		hightlight_wires(true)
 
 
 func mouse_exited():
@@ -140,6 +141,16 @@ func mouse_exited():
 		$Symbol.modulate = color
 	elif highlight_part:
 		$Symbol.modulate = g.COLOR_UNDEFINED
+		hightlight_wires(false)
+
+
+func hightlight_wires(_do):
+	for _out in $Outputs.get_children():
+		for w in _out.wires:
+			w.highlight(_do)
+	for _in in $Inputs.get_children():
+		for w in _in.wires:
+			w.highlight(_do)
 
 
 func pin_click(_viewport, event, _shape_idx, node):
