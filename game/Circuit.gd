@@ -6,7 +6,8 @@ enum { DONE, START, BEND, VSTART, SSTART, SSTARTVEND, SSTARTSEND, SSTARTVENDFOR,
 
 signal details_changed(circuit, saved)
 
-var part
+var selected_parts = []
+var selected_part
 var part_to_delete
 var wire_scene = preload("res://parts/misc/Wire.tscn")
 var picker_scene = preload("res://panels/PartsPicker.tscn")
@@ -361,9 +362,11 @@ func get_furthest_index(wires: Array):
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	# Note that this area defines where the part may be dropped so may define a margin around the viewport edge
 	if event is InputEventMouseMotion:
-		if part:
-			part.position = ((event.position - $Parts.global_position) / g.GRID_SIZE).round() * g.GRID_SIZE
-			part.update_wire_positions()
+		if selected_part:
+			var move_offset = ((event.position - $Parts.global_position) / g.GRID_SIZE).round() * g.GRID_SIZE - selected_part.position
+			for _part in selected_parts:
+				_part.position += move_offset
+				_part.update_wire_positions()
 		elif g.wire:
 			# Move end of wire
 			g.wire.points[-1] = event.position - $Wires.global_position
@@ -403,9 +406,32 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 		if event.pressed && event.button_index == 1:
 			call_deferred("start_banding")
 		if !event.pressed && event.button_index == 1:
+			selected_part = false
 			if banding:
+				select_parts()
 				banding = false
 				$Band.hide()
+			else:
+				for _part in selected_parts:
+					_part.mouse_exited()
+
+
+func select_parts():
+	# Get bounding area points
+	band_start -= $Parts.position
+	band_end -= $Parts.position
+	var a = band_start
+	var b = band_end
+	if a.x > b.x:
+		b.x = a.x
+		a.x = band_end.x
+	if a.y > b.y:
+		b.y = a.y
+		a.y = band_end.y
+	for _part in $Parts.get_children():
+		if _part.position.x > a.x and _part.position.x < b.x and _part.position.y > a.y and _part.position.y < b.y:
+			selected_parts.append(_part)
+			_part.mouse_entered() # Highlight the part
 
 
 func start_banding():
@@ -415,12 +441,16 @@ func start_banding():
 		band_start = get_viewport().get_mouse_position() - get_global_rect().position
 		band_end = band_start
 		banding = true
+		for _part in selected_parts:
+			_part.mouse_exited()
+		selected_parts.clear()
 
 
 func part_picked(_part):
 	# Should receive a duplicate of the node that was clicked
 	$Parts.add_child(_part, true) # Use a readable name
-	part = _part
+	selected_parts = [_part]
+	selected_part = _part
 	connect_part(_part)
 
 
@@ -468,22 +498,28 @@ func wire_attached(_part, _pin, _status):
 
 
 func part_dropped():
-	if part:
-		part.highlight_pin = true
-		part.highlight_part = true
-		if !part.dropped:
-			part.highlight_pins() # On first drop
-			part.dropped = true
-			if part.is_ext_input:
-				part.change_input_state(false) # Set level to trigger updates of states
-		part = null
+	var actioned = false
+	for _part in selected_parts:
+		actioned = true
+		_part.highlight_pin = true
+		_part.highlight_part = true
+		if !_part.dropped:
+			_part.highlight_pins() # On first drop
+			_part.dropped = true
+			if _part.is_ext_input:
+				_part.change_input_state(false) # Set level to trigger updates of states
+	if actioned:
+		selected_parts.clear()
 		call_deferred("route_all_wires")
 
 
-func select_part(node):
-	part = node
-	if part.is_ext_input:
-		part.state = !part.state
+func select_part(_part):
+	selected_part = _part
+	if selected_parts.size() == 0:
+		selected_parts.append(_part)
+		if _part.is_ext_input:
+			_part.state = !_part.state
+	# Otherwise we are going to drag selected parts
 
 
 func confirm_part_delete(_part):
