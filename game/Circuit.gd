@@ -411,17 +411,21 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 		if !event.pressed && event.button_index == 1:
 			if selection_mode == BANDING:
 				select_parts()
-				selection_mode = ANCHORING
 				$Band.hide()
 			else:
-				for _part in selected_parts:
-					_part.ungrouped = true
-					if _part.get_instance_id() != selected_part.get_instance_id():
-						_part.mouse_exited()
-			selected_part = false
+				remove_group_selection()
+
+
+func remove_group_selection():
+	for _part in selected_parts:
+		_part.ungrouped = true
+		if selected_part and _part.get_instance_id() != selected_part.get_instance_id():
+			_part.mouse_exited()
+	selected_part = false
 
 
 func select_parts():
+	selection_mode = NORMAL
 	# Get bounding area points
 	band_start -= $Parts.position
 	band_end -= $Parts.position
@@ -438,12 +442,14 @@ func select_parts():
 			selected_parts.append(_part)
 			_part.mouse_entered() # Highlight the part
 			_part.ungrouped = false
+			selection_mode = ANCHORING
 
 
 func start_banding():
 	if g.clicked_item:
 		g.clicked_item = false
 	else: # Clicked on background
+		remove_group_selection()
 		band_start = get_viewport().get_mouse_position() - get_global_rect().position
 		band_end = band_start
 		selection_mode = BANDING
@@ -530,6 +536,8 @@ func select_part(_part):
 			_part.state = !_part.state
 	else:
 		# Was anchoring the drag point for band-selected parts
+		if _part.ungrouped: # Clicked on a part outside of the group
+			remove_group_selection()
 		selection_mode = NORMAL
 
 
