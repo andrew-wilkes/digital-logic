@@ -4,6 +4,9 @@ const CELL_MARGIN = 4
 
 enum { DONE, START, BEND, VSTART, SSTART, SSTARTVEND, SSTARTSEND, SSTARTVENDFOR, SSTARTVENDBACK, VSTARTVEND, VSTARTSEND, VSTARTSENDDOWN, VSTARTSENDUP, VSTARTSENDUPBACK, VSTARTSENDUPFOR, VSTARTSENDEND }
 
+# Selection modes
+enum { NORMAL, BANDING, ANCHORING }
+
 signal details_changed(circuit, saved)
 
 var selected_parts = []
@@ -17,7 +20,7 @@ var ref
 var min_point: Vector2
 var max_point: Vector2
 var panning = false
-var banding = false
+var selection_mode = NORMAL
 var band_start
 var band_end
 var pan_pos
@@ -383,7 +386,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 				pan_pos = pos
 				$Wires.position += delta
 				$Parts.position += delta
-		elif banding:
+		elif selection_mode == BANDING:
 			band_end = get_viewport().get_mouse_position() - get_global_rect().position
 			$Band.set_point_position(0, band_start)
 			$Band.set_point_position(1, Vector2(band_end.x, band_start.y))
@@ -406,14 +409,16 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 		if event.pressed && event.button_index == 1:
 			call_deferred("start_banding")
 		if !event.pressed && event.button_index == 1:
-			selected_part = false
-			if banding:
+			if selection_mode == BANDING:
 				select_parts()
-				banding = false
+				selection_mode = ANCHORING
 				$Band.hide()
 			else:
 				for _part in selected_parts:
-					_part.mouse_exited()
+					_part.ungrouped = true
+					if _part.get_instance_id() != selected_part.get_instance_id():
+						_part.mouse_exited()
+			selected_part = false
 
 
 func select_parts():
@@ -432,15 +437,16 @@ func select_parts():
 		if _part.position.x > a.x and _part.position.x < b.x and _part.position.y > a.y and _part.position.y < b.y:
 			selected_parts.append(_part)
 			_part.mouse_entered() # Highlight the part
+			_part.ungrouped = false
 
 
 func start_banding():
 	if g.clicked_item:
 		g.clicked_item = false
-	else:
+	else: # Clicked on background
 		band_start = get_viewport().get_mouse_position() - get_global_rect().position
 		band_end = band_start
-		banding = true
+		selection_mode = BANDING
 		for _part in selected_parts:
 			_part.mouse_exited()
 		selected_parts.clear()
@@ -514,12 +520,17 @@ func part_dropped():
 
 
 func select_part(_part):
+	if selected_part:
+		selected_part.call_deferred("mouse_exited") # Unhighlight overlapped parts
 	selected_part = _part
-	if selected_parts.size() == 0:
-		selected_parts.append(_part)
+	selected_part.mouse_entered()
+	if selection_mode == NORMAL:
+		selected_parts = [_part]
 		if _part.is_ext_input:
 			_part.state = !_part.state
-	# Otherwise we are going to drag selected parts
+	else:
+		# Was anchoring the drag point for band-selected parts
+		selection_mode = NORMAL
 
 
 func confirm_part_delete(_part):

@@ -31,6 +31,7 @@ var id = 0
 var parent
 var v_spacing = 72
 var color = g.COLOR_UNDEFINED
+var ungrouped = true
 
 func _ready():
 	allow_testing()
@@ -137,11 +138,12 @@ func mouse_entered():
 
 
 func mouse_exited():
-	if show_state:
-		$Symbol.modulate = color
-	elif highlight_part:
-		$Symbol.modulate = g.COLOR_UNDEFINED
-		hightlight_wires(false)
+	if ungrouped:
+		if show_state:
+			$Symbol.modulate = color
+		elif highlight_part:
+			$Symbol.modulate = g.COLOR_UNDEFINED
+			hightlight_wires(false)
 
 
 func hightlight_wires(_do):
