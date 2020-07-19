@@ -143,7 +143,7 @@ func mouse_exited():
 			$Symbol.modulate = color
 		elif highlight_part:
 			$Symbol.modulate = g.COLOR_UNDEFINED
-			hightlight_wires(false)
+		hightlight_wires(false)
 
 
 func hightlight_wires(_do):
