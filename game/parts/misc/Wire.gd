@@ -6,7 +6,7 @@ var start_pin
 var end_pin
 var index = 0
 var is_bus = false
-var color
+var color = g.COLOR_UNDEFINED
 
 func delete():
 	start_pin.wires.erase(self)
