@@ -2,6 +2,7 @@ extends Part
 
 var mem = []
 export var memory_size = 256
+export var title = ""
 
 enum { R, W, A, DI }
 enum { DO }
@@ -11,6 +12,12 @@ func _ready():
 	for a in memory_size:
 		mem[a] = 0
 	set_hex()
+	$Title.update_title(title)
+	$Title.connect("updated", self, "update_title")
+
+
+func update_title(txt):
+	title = txt
 
 
 func update_output(_pin, _state):
