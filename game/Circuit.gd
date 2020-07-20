@@ -443,7 +443,6 @@ func select_parts():
 			_part.mouse_entered() # Highlight the part
 			_part.ungrouped = false
 			selection_mode = ANCHORING
-			print("ANCHORING")
 
 
 func start_banding():
@@ -532,14 +531,12 @@ func select_part(_part):
 	selected_part = _part
 	selected_part.mouse_entered()
 	if selection_mode == NORMAL:
-		print("NORMAL")
 		set_single_selected_part(_part)
 	else:
 		# Was anchoring the drag point for band-selected parts
 		if _part.ungrouped: # Clicked on a part outside of the group
 			remove_group_selection()
 			selection_mode = NORMAL
-			print("SET NORMAL")
 			set_single_selected_part(_part)
 
 
