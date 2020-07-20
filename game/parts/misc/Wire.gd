@@ -18,8 +18,10 @@ func delete():
 func highlight(do = true):
 	if do:
 		modulate = Color.black
+		z_index = 2
 	else:
 		modulate = color
+		z_index = 0
 
 
 func set_color(state):
