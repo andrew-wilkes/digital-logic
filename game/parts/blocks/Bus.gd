@@ -5,7 +5,7 @@ var resize_factor = 2
 var line_length
 var start_pos
 export var child_count = 2
-
+var val: int = 0
 
 func _ready():
 	line_length = get_length(child_count)
@@ -34,9 +34,12 @@ func set_size(l):
 
 
 func update_output(_pin, _state):
-	if outputs[_pin.id] != _state:
-		outputs[_pin.id] = _state
-		emit_signal("state_changed", self, 0, _state)
+	# All bus I/Os will have the same integer value
+	if val != _state:
+		val = _state
+		for n in outputs:
+			outputs[n] = val
+		signal_output_states()
 
 
 func _on_TopHandle_button_down():
@@ -89,8 +92,9 @@ func resize(event):
 					if i > 1 and $Inputs.get_child(i).wires.size() == 0 and $Outputs.get_child(i).wires.size() == 0:
 						$Inputs.get_child(i).queue_free()
 						$Outputs.get_child(i).queue_free()
-						outputs.remove(i)
 						new_count = i
+						inputs.remove(i)
+						outputs.remove(i)
 				child_count = new_count
 			set_size(get_length(child_count))
 
@@ -102,8 +106,8 @@ func add_input_pin(_id):
 	pin.id = _id
 	pin.show_it()
 	connect_pin(pin)
-	inputs.append(false)
 	$Inputs.add_child(pin)
+	inputs.append(0)
 
 
 func add_output_pin(_id):
@@ -114,9 +118,14 @@ func add_output_pin(_id):
 	pin.is_output = true
 	pin.show_it()
 	connect_pin(pin)
-	outputs.append(false)
 	$Outputs.add_child(pin)
+	outputs.append(0)
 
 
 func get_length(n):
 	return 40 * (n + 1)
+
+
+func signal_output_states():
+	for i in child_count:
+		emit_signal("state_changed", self, i, val)

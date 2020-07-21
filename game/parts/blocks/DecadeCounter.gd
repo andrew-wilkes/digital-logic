@@ -7,10 +7,11 @@ const CO = 10
 
 func _ready():
 	outputs[CO] = true
+	outputs[0] = true
 
 
 func update_output(_pin, _state):
-	if _pin.id == CLK and _state:
+	if _pin.id == CLK and _state and !inputs[RST]:
 		set_output(count, false)
 		count += 1
 		if count > 9:
