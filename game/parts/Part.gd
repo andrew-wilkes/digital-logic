@@ -231,4 +231,16 @@ func set_input(pin, _state):
 
 func signal_output_states():
 	for i in outputs.size():
-		emit_signal("state_changed", self, i, outputs[i])
+		emit_state_changed(i, outputs[i])
+
+
+func bus_state_changed(_bus_id, _data_value):
+	call_deferred("defer_state_changed", _bus_id, _data_value)
+
+
+func defer_state_changed(_bus_id, _data_value):
+	emit_state_changed(_bus_id, _data_value)
+
+
+func emit_state_changed(_id, _val):
+	emit_signal("state_changed", self, _id, _val)

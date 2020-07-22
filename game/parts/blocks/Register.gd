@@ -32,7 +32,7 @@ func update_output(_pin, _state):
 		OE:
 			if _state:
 				outputs[DO] = sv
-				emit_signal("state_changed", self, DO, sv)
+				bus_state_changed(DO, sv)
 	if inputs[CLK] and inputs[IE]:
 		set_output(MO, inputs[DI])
 	set_hex()
@@ -47,7 +47,7 @@ func set_slave(v):
 func set_output(_id, v):
 	if outputs[_id] != v:
 		outputs[_id] = v
-		emit_signal("state_changed", self, _id, v)
+		bus_state_changed(_id, v)
 
 
 func set_hex():

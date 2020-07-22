@@ -128,4 +128,4 @@ func get_length(n):
 
 func signal_output_states():
 	for i in child_count:
-		emit_signal("state_changed", self, i, val)
+		bus_state_changed(i, val)
