@@ -37,7 +37,7 @@ func update_output(_pin, _state):
 	# All bus I/Os will have the same integer value
 	if val != _state:
 		val = _state
-		for n in outputs:
+		for n in child_count:
 			outputs[n] = val
 		signal_output_states()
 

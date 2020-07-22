@@ -14,9 +14,9 @@ func _ready():
 	set_hex()
 	$Title.update_title(title)
 	$Title.connect("updated", self, "update_title")
-	var prog = [12,12,4,11,10,7,10,12,10,3,6,7]
+	var prog = [12,12,4,11,10,7,10,12,10,3,6,7,8]
 	for n in prog.size():
-		mem[n + 1] = prog[n]
+		mem[n] = prog[n]
 
 
 func update_title(txt):

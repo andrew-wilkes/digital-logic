@@ -1,14 +1,16 @@
 extends Part
 
-enum { CLK, OE, DI, SI }
+enum { CLK, IE, OE, DI, MI }
 enum { DO, MO }
+
+var sv = 0
 
 export var title = ""
 
 # DI is the input bus value
 # DO is the output bus value
 # MO is the master FF value out
-# SI is the slave FF value in
+# MI is the master FF value in
 
 func _ready():
 	$Title.update_title(title)
@@ -23,23 +25,21 @@ func update_title(txt):
 func update_output(_pin, _state):
 	match _pin.id:
 		CLK:
-			if _state:
-				set_output(MO, inputs[DI])
-			else:
+			if !_state: # Capture the state of the Master flip flop
 				set_slave(outputs[MO])
-		DI:
-			if inputs[CLK]:
-				set_output(MO, inputs[DI])
-		SI:
-			set_slave(_state)
+		MI:
+			outputs[MO] = _state
 		OE:
 			if _state:
-				set_output(DO, inputs[SI])
+				outputs[DO] = sv
+				emit_signal("state_changed", self, DO, sv)
+	if inputs[CLK] and inputs[IE]:
+		set_output(MO, inputs[DI])
 	set_hex()
 
 
 func set_slave(v):
-	inputs[SI] = v
+	sv = v
 	if inputs[OE]:
 		set_output(DO, v)
 
@@ -54,4 +54,4 @@ func set_hex():
 	g.set_hex_text($V1, inputs[DI])
 	g.set_hex_text($V2, outputs[MO])
 	g.set_hex_text($V3, outputs[DO])
-	g.set_hex_text($V4, inputs[SI])
+	g.set_hex_text($V4, sv)
