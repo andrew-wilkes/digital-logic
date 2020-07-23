@@ -183,10 +183,14 @@ func input_event(_viewport, event, _shape_idx):
 			g.clicked_item = "Part"
 			emit_signal("doubleclick", self)
 		elif event.pressed:
-			g.clicked_item = "Part"
-			emit_signal("picked", self)
+			emit_picked()
 		else:
 			emit_signal("dropped")
+
+
+func emit_picked():
+	g.clicked_item = "Part"
+	emit_signal("picked", self)
 
 
 func highlight_pins():
