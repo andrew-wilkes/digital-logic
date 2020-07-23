@@ -4,6 +4,7 @@ enum { CLK, IE, OE, DI, MI }
 enum { DO, MO }
 
 var sv = 0
+var triggered = false
 
 export var title = ""
 
@@ -33,9 +34,10 @@ func update_output(_pin, _state):
 			if _state:
 				outputs[DO] = sv
 				bus_state_changed(DO, sv)
-	if inputs[CLK] and inputs[IE]:
-		set_output(MO, inputs[DI])
-	set_hex()
+	# Allow for glitches
+	if !triggered:
+		triggered = true
+		$Timer.start()
 
 
 func set_slave(v):
@@ -55,3 +57,10 @@ func set_hex():
 	g.set_hex_text($V2, outputs[MO])
 	g.set_hex_text($V3, outputs[DO])
 	g.set_hex_text($V4, sv)
+
+
+func _on_Timer_timeout():
+	triggered = false
+	if inputs[CLK] and inputs[IE]:
+		set_output(MO, inputs[DI])
+	set_hex()

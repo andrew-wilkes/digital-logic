@@ -1,6 +1,7 @@
 extends Part
 
 var count = 0
+var triggered = false
 
 enum { CLK, RST }
 const CO = 10
@@ -21,13 +22,10 @@ func update_output(_pin, _state):
 		if count == 5:
 			set_output(CO, false)
 	if _pin.id == RST:
-		if _state:
-			if count > 0:
-				set_output(count, false)
-				count = 0
-				set_output(count, true)
-			if outputs[CO] == false:
-				set_output(CO, true)
+		# Delay reset detection
+		if !triggered:
+			triggered = true
+			$Timer.start()
 
 
 func set_output(_idx, _v):
@@ -37,3 +35,14 @@ func set_output(_idx, _v):
 func set_output_state(_pin, _state):
 	outputs[_pin.id] = _state
 	emit_signal("state_changed", self, _pin.id, _state)
+
+
+func _on_Timer_timeout():
+	triggered = false
+	if inputs[RST]:
+		if count > 0:
+			set_output(count, false)
+			count = 0
+			set_output(count, true)
+		if outputs[CO] == false:
+			set_output(CO, true)
