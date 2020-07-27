@@ -27,6 +27,7 @@ var state = {
 		[]
 	]
 }
+var mem = []
 
 
 func _ready():
