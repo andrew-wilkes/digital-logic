@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://parts/misc/Pin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://parts/blocks/Memory.gd" type="Script" id=2]
 [ext_resource path="res://assets/blocks.png" type="Texture" id=3]
 [ext_resource path="res://panels/EditableLabel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://panels/MemoryViewer.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 60, 80 )
+extents = Vector2( 50, 40 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 50, 20 )
 
 [node name="Memory" type="Node2D"]
 script = ExtResource( 2 )
@@ -19,8 +23,13 @@ region_rect = Rect2( 270, 840, 142, 162 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="Col1" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -40 )
 shape = SubResource( 1 )
+
+[node name="Col2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 60 )
+shape = SubResource( 2 )
 
 [node name="Inputs" type="Node2D" parent="."]
 
@@ -92,3 +101,9 @@ margin_top = -70.0
 margin_right = 50.0
 margin_bottom = -48.0
 text = "MEMORY"
+
+[node name="Viewer" parent="." instance=ExtResource( 5 )]
+margin_left = 110.0
+margin_top = 30.0
+margin_right = 951.0
+margin_bottom = 442.0

@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/mono-font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://panels/MemoryViewer.gd" type="Script" id=2]
+
+[node name="MemoryViewer" type="WindowDialog"]
+visible = true
+margin_right = 780.0
+margin_bottom = 412.0
+script = ExtResource( 2 )
+
+[node name="HBox" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 20.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox1" type="VBoxContainer" parent="HBox"]
+margin_right = 80.0
+margin_bottom = 388.0
+rect_min_size = Vector2( 80, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header1" type="Label" parent="HBox/VBox1"]
+margin_right = 80.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 1 )
+text = "Address"
+align = 2
+autowrap = true
+
+[node name="Sidebar" type="Label" parent="HBox/VBox1"]
+margin_top = 23.0
+margin_right = 80.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+align = 2
+autowrap = true
+
+[node name="VBox2" type="VBoxContainer" parent="HBox"]
+margin_left = 100.0
+margin_right = 580.0
+margin_bottom = 388.0
+rect_min_size = Vector2( 480, 0 )
+
+[node name="Header2" type="Label" parent="HBox/VBox2"]
+margin_right = 480.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+autowrap = true
+
+[node name="Hex" type="Label" parent="HBox/VBox2"]
+margin_top = 23.0
+margin_right = 480.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.160784, 0.74902, 0.0588235, 1 )
+autowrap = true
+
+[node name="VBox3" type="VBoxContainer" parent="HBox"]
+margin_left = 600.0
+margin_right = 760.0
+margin_bottom = 388.0
+rect_min_size = Vector2( 160, 0 )
+
+[node name="Header3" type="Label" parent="HBox/VBox3"]
+margin_right = 160.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+autowrap = true
+
+[node name="Chr" type="Label" parent="HBox/VBox3"]
+margin_top = 23.0
+margin_right = 160.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+autowrap = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
