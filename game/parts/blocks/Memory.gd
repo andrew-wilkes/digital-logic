@@ -42,4 +42,4 @@ func set_hex():
 
 
 func _on_ViewData_button_down():
-	$Viewer.open(mem, title)
+	$c/Viewer.open(mem, title)

@@ -103,12 +103,6 @@ margin_right = 50.0
 margin_bottom = -48.0
 text = "MEMORY"
 
-[node name="Viewer" parent="." instance=ExtResource( 5 )]
-margin_left = 110.0
-margin_top = 30.0
-margin_right = 951.0
-margin_bottom = 442.0
-
 [node name="ViewData" type="Button" parent="."]
 margin_top = 10.0
 margin_right = 47.0
@@ -117,4 +111,12 @@ text = "DATA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="c" type="CanvasLayer" parent="."]
+
+[node name="Viewer" parent="c" instance=ExtResource( 5 )]
+margin_left = 110.0
+margin_top = 30.0
+margin_right = 890.0
+margin_bottom = 442.0
 [connection signal="button_down" from="ViewData" to="." method="_on_ViewData_button_down"]
