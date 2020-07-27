@@ -24,6 +24,7 @@ func open(data, title = "Memory Viewer"):
 	draw_chrs = true
 	update_data()
 	call_deferred("popup_centered")
+	$Timer.start()
 
 
 func update_data():

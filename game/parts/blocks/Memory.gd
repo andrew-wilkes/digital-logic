@@ -39,3 +39,7 @@ func set_hex():
 	g.set_hex_text($Data, mem[inputs[A]])
 	g.set_hex_text($DI, inputs[DI])
 	g.set_hex_text($DO, outputs[DO])
+
+
+func _on_ViewData_button_down():
+	$Viewer.open(mem, title)
