@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://panels/Assembler.gd" type="Script" id=1]
+[ext_resource path="res://panels/DataSrcLabel.tscn" type="PackedScene" id=2]
+
+[node name="Assembler" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 800.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.152941, 0.152941, 0.152941, 1 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 800.0
+
+[node name="Header" type="HBoxContainer" parent="VBox"]
+margin_right = 1280.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="VBox/Header"]
+margin_right = 150.0
+margin_bottom = 14.0
+text = "Addr  Data/source code"
+
+[node name="SC" type="ScrollContainer" parent="VBox"]
+margin_top = 18.0
+margin_right = 1280.0
+margin_bottom = 218.0
+rect_min_size = Vector2( 0, 200 )
+scroll_horizontal_enabled = false
+
+[node name="V" type="VBoxContainer" parent="VBox/SC"]
+margin_right = 1280.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="H" type="HBoxContainer" parent="VBox/SC/V"]
+margin_right = 1280.0
+margin_bottom = 14.0
+
+[node name="A" type="Label" parent="VBox/SC/V/H"]
+margin_right = 32.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 32, 0 )
+text = "01"
+align = 2
+
+[node name="S" parent="VBox/SC/V/H" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 36.0
+margin_right = 52.0
+margin_bottom = 14.0
