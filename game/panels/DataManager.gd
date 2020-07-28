@@ -13,4 +13,4 @@ func open(data: Array, title = ""):
 	if title != "":
 		window_title += " - " + title
 	call_deferred("popup_centered")
-	$Tabs/MV.start(testing)
+	$Tabs/MemoryViewer.start(testing)

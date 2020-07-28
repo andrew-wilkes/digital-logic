@@ -8,6 +8,11 @@ var id = 0
 var value = 0
 var editable = true
 
+func _ready():
+	if get_parent().name == "root":
+		modulate = Color.black
+
+
 func set_as_number_field(num = true):
 	editable = num
 
