@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://panels/Assembler.gd" type="Script" id=1]
+[ext_resource path="res://panels/Disassembler.gd" type="Script" id=1]
 [ext_resource path="res://panels/DataSrcLabel.tscn" type="PackedScene" id=2]
 
-[node name="Assembler" type="MarginContainer"]
+[node name="Disassembler" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -39,25 +39,25 @@ margin_bottom = 218.0
 rect_min_size = Vector2( 0, 200 )
 scroll_horizontal_enabled = false
 
-[node name="V" type="VBoxContainer" parent="VBox/SC"]
+[node name="LOCS" type="VBoxContainer" parent="VBox/SC"]
 margin_right = 1280.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
 
-[node name="H" type="HBoxContainer" parent="VBox/SC/V"]
+[node name="H" type="HBoxContainer" parent="VBox/SC/LOCS"]
 margin_right = 1280.0
 margin_bottom = 14.0
 
-[node name="A" type="Label" parent="VBox/SC/V/H"]
+[node name="ADDR" type="Label" parent="VBox/SC/LOCS/H"]
 margin_right = 32.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 32, 0 )
 text = "01"
 align = 2
 
-[node name="S" parent="VBox/SC/V/H" instance=ExtResource( 2 )]
+[node name="SRC" parent="VBox/SC/LOCS/H" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 36.0

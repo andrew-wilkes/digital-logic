@@ -1,9 +1,10 @@
 extends Label
 
 signal clicked(line_number)
-signal value_changed(line_number, value)
+signal value_changed(id, value)
 
 var line_number = 0
+var id = 0
 var value = 0
 var editable = true
 
@@ -21,6 +22,7 @@ func _on_LabelDialog_updated(new_text):
 		if value < 0:
 			value = 256 - value 
 		text = "%02X" % value
+		emit_signal("value_changed", id, value)
 	else:
 		$InvalidNumber.popup_centered()
 

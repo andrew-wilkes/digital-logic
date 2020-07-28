@@ -2,7 +2,7 @@
 
 [ext_resource path="res://panels/DataManager.gd" type="Script" id=1]
 [ext_resource path="res://panels/MemoryViewer.tscn" type="PackedScene" id=2]
-[ext_resource path="res://panels/Assembler.tscn" type="PackedScene" id=3]
+[ext_resource path="res://panels/Disassembler.tscn" type="PackedScene" id=3]
 
 [node name="DataManager" type="WindowDialog"]
 anchor_right = 1.0
@@ -30,7 +30,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Assembler" parent="Tabs" instance=ExtResource( 3 )]
+[node name="Disassembler" parent="Tabs" instance=ExtResource( 3 )]
 visible = false
 margin_left = 4.0
 margin_top = 32.0

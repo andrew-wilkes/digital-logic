@@ -1,21 +1,21 @@
 extends Control
 
 var testing = false
-var lines
+var locs
 var src = ""
 
 func _ready():
-	lines = $VBox/SC/V
-	var line = lines.get_child(0)
+	locs = $VBox/SC/LOCS # Memory location info (hex value + if there is: line of code)
+	var loc_line = locs.get_child(0)
 	var new_line
 	for n in 256:
 		if n == 0:
-			new_line = line 
+			new_line = loc_line 
 		else:
-			new_line = line.duplicate()
-			lines.add_child(new_line)
-		new_line.get_child(0).text = "%02X" % n
-		new_line.get_child(1).set_meta("id", n)
+			new_line = loc_line.duplicate()
+			locs.add_child(new_line)
+		new_line.get_node("ADDR").text = "%02X" % n
+		new_line.get_node("SRC").id = n
 	if get_parent().name == "root":
 		start(true)
 	else:
