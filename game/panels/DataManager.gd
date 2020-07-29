@@ -8,10 +8,26 @@ func _ready():
 		testing = true
 		open([])
 
-func open(data: Array, src = "", title = ""):
-	g.mem = data
-	g.src = src
+
+func open(title = ""):
 	if title != "":
 		window_title += " - " + title
 	call_deferred("popup_centered")
 	$Tabs/MemoryViewer.start(testing)
+	$Tabs/Disassembler.load_memory()
+	$Tabs/Assembler.load_src()
+
+
+func _on_Assembler_compile():
+	$Tabs.set_current_tab(1)
+	$Tabs/Disassembler.compile()
+
+
+func _on_Disassembler_code_error(msg, line_num):
+	$Tabs.set_current_tab(2)
+	$Tabs/Assembler.show_msg(msg, line_num)
+
+
+func _on_Disassembler_edit_source(line_num):
+	$Tabs.set_current_tab(2)
+	$Tabs/Assembler.highlight_line(line_num - 1)

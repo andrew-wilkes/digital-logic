@@ -3,8 +3,8 @@ extends Label
 signal clicked(line_number)
 signal value_changed(id, value)
 
-var line_number = 0
 var id = 0
+var line_number = 0
 var value = 0
 var editable = true
 var text_color
@@ -28,7 +28,7 @@ func _on_LabelDialog_updated(new_text):
 		if value < -128:
 			value = -128
 		if value < 0:
-			value = 256 - value 
+			value = 256 + value 
 		if testing:
 			set_value(value)
 		emit_signal("value_changed", id, value)
@@ -38,6 +38,7 @@ func _on_LabelDialog_updated(new_text):
 
 func set_value(v, txt = ""):
 	text = "%02X %s" % [v, txt]
+	value = v
 
 
 func _on_DataSrcLabel_gui_input(event):
@@ -46,6 +47,7 @@ func _on_DataSrcLabel_gui_input(event):
 			$Edit.set_text(String(value))
 			$Edit.popup_centered()
 		else:
+			modulate = text_color
 			emit_signal("clicked", line_number)
 
 

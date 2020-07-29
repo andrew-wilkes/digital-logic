@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://panels/Assembler.gd" type="Script" id=1]
+
+[node name="Assembler" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 800.0
+custom_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="VBox"]
+margin_right = 1280.0
+margin_bottom = 20.0
+
+[node name="Control" type="Control" parent="VBox/Header"]
+margin_right = 1211.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="CompileButton" type="Button" parent="VBox/Header"]
+margin_left = 1215.0
+margin_right = 1280.0
+margin_bottom = 20.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+text = "Compile"
+
+[node name="SRC" type="TextEdit" parent="VBox"]
+margin_top = 30.0
+margin_right = 1280.0
+margin_bottom = 800.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+highlight_current_line = true
+show_line_numbers = true
+
+[node name="Alert" type="AcceptDialog" parent="."]
+margin_right = 83.0
+margin_bottom = 58.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+[connection signal="button_down" from="VBox/Header/CompileButton" to="." method="_on_CompileButton_button_down"]

@@ -116,3 +116,4 @@ __meta__ = {
 
 [node name="DataManager" parent="c" instance=ExtResource( 5 )]
 [connection signal="button_down" from="ViewData" to="." method="_on_ViewData_button_down"]
+[connection signal="popup_hide" from="c/DataManager" to="." method="_on_DataManager_popup_hide"]

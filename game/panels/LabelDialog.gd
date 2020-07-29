@@ -6,7 +6,6 @@ func _ready():
 	if get_parent().name == "root":
 		call_deferred("popup_centered")
 
-
 func set_text(txt):
 	if txt == "?":
 		txt = ""

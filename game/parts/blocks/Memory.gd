@@ -9,15 +9,13 @@ enum { R, W, A, DI }
 enum { DO }
 
 func _ready():
-	mem.resize(memory_size)
-	for a in memory_size:
-		mem[a] = 0
+	if mem.size() < memory_size:
+		mem.resize(memory_size)
+		for a in memory_size:
+			mem[a] = 0
 	set_hex()
 	$Title.update_title(title)
 	$Title.connect("updated", self, "update_title")
-	var prog = [12,12,3,11,10,6,10,12,9,3,6,7,8]
-	for n in prog.size():
-		mem[n] = prog[n]
 
 
 func update_title(txt):
@@ -43,4 +41,12 @@ func set_hex():
 
 
 func _on_ViewData_button_down():
-	$c/DataManager.open(mem, src, title)
+	g.mem = mem
+	g.src = src
+	$c/DataManager.open(title)
+
+
+func _on_DataManager_popup_hide():
+	mem = g.mem
+	src = g.src
+	set_hex()
