@@ -7,6 +7,7 @@ var line_number = 0
 var id = 0
 var value = 0
 var editable = true
+var text_color
 
 func _ready():
 	if get_parent().name == "root":
@@ -39,3 +40,12 @@ func _on_DataSrcLabel_gui_input(event):
 			$Edit.popup_centered()
 		else:
 			emit_signal("clicked", line_number)
+
+
+func _on_DataSrcLabel_mouse_entered():
+	text_color = modulate
+	modulate = g.COLOR_ACTIVE
+
+
+func _on_DataSrcLabel_mouse_exited():
+	modulate = text_color
