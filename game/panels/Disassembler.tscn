@@ -30,9 +30,9 @@ margin_right = 600.0
 margin_bottom = 14.0
 
 [node name="Label" type="Label" parent="VBox/Header"]
-margin_right = 150.0
+margin_right = 181.0
 margin_bottom = 14.0
-text = "Addr  Data/source code"
+text = "Address  Data / Source Code"
 
 [node name="SC" type="ScrollContainer" parent="VBox"]
 margin_top = 18.0
@@ -47,22 +47,23 @@ margin_right = 600.0
 margin_bottom = 392.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 0
+custom_constants/separation = 5
 
 [node name="H" type="HBoxContainer" parent="VBox/SC/LOCS"]
 margin_right = 600.0
 margin_bottom = 14.0
+custom_constants/separation = 8
 
 [node name="ADDR" type="Label" parent="VBox/SC/LOCS/H"]
-margin_right = 32.0
+margin_right = 52.0
 margin_bottom = 14.0
-rect_min_size = Vector2( 32, 0 )
+rect_min_size = Vector2( 52, 0 )
 text = "01"
 align = 2
 
 [node name="SRC" parent="VBox/SC/LOCS/H" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 36.0
-margin_right = 52.0
+margin_left = 60.0
+margin_right = 76.0
 margin_bottom = 14.0

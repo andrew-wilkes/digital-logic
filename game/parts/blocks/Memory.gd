@@ -3,7 +3,7 @@ extends Part
 export var memory_size = 256
 export var title = ""
 export var mem = []
-export var src = []
+export var src = ""
 
 enum { R, W, A, DI }
 enum { DO }
