@@ -8,10 +8,12 @@ var id = 0
 var value = 0
 var editable = true
 var text_color
+var testing = false
 
 func _ready():
 	if get_parent().name == "root":
 		modulate = Color.black
+		testing = true
 
 
 func set_as_number_field(num = true):
@@ -27,10 +29,15 @@ func _on_LabelDialog_updated(new_text):
 			value = -128
 		if value < 0:
 			value = 256 - value 
-		text = "%02X" % value
+		if testing:
+			set_value(value)
 		emit_signal("value_changed", id, value)
 	else:
 		$InvalidNumber.popup_centered()
+
+
+func set_value(v, txt = ""):
+	text = "%02X %s" % [v, txt]
 
 
 func _on_DataSrcLabel_gui_input(event):

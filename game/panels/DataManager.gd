@@ -8,8 +8,9 @@ func _ready():
 		testing = true
 		open([])
 
-func open(data: Array, title = ""):
+func open(data: Array, src = "", title = ""):
 	g.mem = data
+	g.src = src
 	if title != "":
 		window_title += " - " + title
 	call_deferred("popup_centered")

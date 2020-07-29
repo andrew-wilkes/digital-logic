@@ -28,7 +28,7 @@ var state = {
 	]
 }
 var mem = []
-
+var src = ""
 
 func _ready():
 	load_state()

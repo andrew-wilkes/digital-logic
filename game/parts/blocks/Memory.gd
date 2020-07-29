@@ -3,6 +3,7 @@ extends Part
 export var memory_size = 256
 export var title = ""
 export var mem = []
+export var src = []
 
 enum { R, W, A, DI }
 enum { DO }
@@ -42,4 +43,4 @@ func set_hex():
 
 
 func _on_ViewData_button_down():
-	$c/DataManager.open(mem, title)
+	$c/DataManager.open(mem, src, title)
