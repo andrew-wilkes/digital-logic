@@ -8,6 +8,7 @@ const COLOR_UNDEFINED = Color.white
 const GRID_SIZE = 10
 const PART_FILE_PATH = "user://circuits/"
 const STATE_FILE_PATH = "user://state.json"
+const SRC_FILE_PATH = "user://src/"
 const UNSTABLE_THRESHOLD = 4
 const STATUS_COLORS = [Color.white, Color.orange, Color.red, Color.green, Color.yellow]
 const DEBUG = false
@@ -29,12 +30,19 @@ var state = {
 }
 var mem = []
 var src = ""
+var popup_size: Vector2
 
 func _ready():
+	popup_size = OS.get_screen_size() / 2
 	load_state()
 	var dir = Directory.new()
-	var path = PART_FILE_PATH.rstrip("/")
-	if dir.open(path) != OK:
+	check_dir(dir, PART_FILE_PATH)
+	check_dir(dir, SRC_FILE_PATH)
+
+
+func check_dir(dir, path):
+	path = path.rstrip("/")
+	if !dir.dir_exists(path):
 		dir.make_dir(path)
 
 
@@ -81,18 +89,23 @@ func get_files(path, ext):
 	return files
 
 
-func save_file(fn, data):
+func save_file(fn, data, encode = true):
+	if encode:
+		data = to_json(data)
 	var file = File.new()
 	file.open(fn, File.WRITE)
-	file.store_string(to_json(data))
+	file.store_string(data)
 	file.close()
 
 
-func load_file(fn):
+func load_file(fn, decode = true):
 	var file = File.new()
 	if file.file_exists(fn):
 		file.open(fn, File.READ)
-		return parse_json(file.get_as_text())
+		var data = file.get_as_text()
+		if decode:
+			data = parse_json(data)
+		return data
 
 
 func get_state_color(_state):

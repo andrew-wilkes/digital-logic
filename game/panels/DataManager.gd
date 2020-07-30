@@ -6,7 +6,7 @@ func _ready():
 	$Tabs.set_tab_title(0, "Memory Viewer")
 	if get_parent().name == "root":
 		testing = true
-		open([])
+		open()
 
 
 func open(title = ""):
@@ -15,7 +15,7 @@ func open(title = ""):
 	call_deferred("popup_centered")
 	$Tabs/MemoryViewer.start(testing)
 	$Tabs/Disassembler.load_memory()
-	$Tabs/Assembler.load_src()
+	$Tabs/Assembler.set_src(title)
 
 
 func _on_Assembler_compile():
