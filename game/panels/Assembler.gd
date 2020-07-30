@@ -56,14 +56,16 @@ func _on_FileDialog_confirmed():
 			if fn.get_extension().empty():
 				path += ".asq"
 			update_src()
-			g.save_file(path, g.src, false)
-			print("Saved ", path)
-			#g.call_deferred("save_file", [path, g.src, false])
+			call_deferred("def_save", path) # Needed to avoid "already exists" popup
 			emit_signal("saved")
-			$FileDialog.invalidate()
 		else:
 			$Alert.dialog_text = "Invalid file name"
 			$Alert.popup_centered()
 	else:
 		g.src = g.load_file(path, false)
 		set_src(fn)
+
+
+func def_save(path):
+	g.save_file(path, g.src, false)
+	$FileDialog.invalidate()
