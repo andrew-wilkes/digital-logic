@@ -57,7 +57,10 @@ func _on_FileDialog_confirmed():
 				path += ".asq"
 			update_src()
 			g.save_file(path, g.src, false)
+			print("Saved ", path)
+			#g.call_deferred("save_file", [path, g.src, false])
 			emit_signal("saved")
+			$FileDialog.invalidate()
 		else:
 			$Alert.dialog_text = "Invalid file name"
 			$Alert.popup_centered()
