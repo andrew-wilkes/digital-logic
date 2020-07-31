@@ -12,7 +12,7 @@ func _ready():
 func open(title = ""):
 	if title != "":
 		window_title += " - " + title
-	call_deferred("popup_centered")
+	call_deferred("popup_centered", Vector2(790, 430))
 	$Tabs/MemoryViewer.start(testing)
 	$Tabs/Disassembler.load_memory()
 	$Tabs/Assembler.set_src(title)

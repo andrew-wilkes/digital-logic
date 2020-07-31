@@ -15,7 +15,6 @@ func set_src(title: String):
 	if title.empty():
 		title = "Program"
 	src_file_name = title
-	$FileDialog.set_current_file(src_file_name)
 	$VBox/SRC.text = g.src
 
 
@@ -63,7 +62,8 @@ func _on_FileDialog_confirmed():
 			$Alert.popup_centered()
 	else:
 		g.src = g.load_file(path, false)
-		set_src(fn)
+		if g.src:
+			set_src(fn)
 
 
 func def_save(path):

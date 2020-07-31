@@ -29,6 +29,7 @@ func _ready():
 		q.wireable = false
 		q.show_state = true
 		q.z_index = -1
+		q.accept_dropped = false
 		q.position = part.get_node("Outputs").get_child(0).position - q.get_node("Symbol").position
 		part.add_child(q)
 

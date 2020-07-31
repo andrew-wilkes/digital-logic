@@ -1,5 +1,7 @@
 extends Part
 
+var accept_dropped = true
+
 func _ready():
 	v_spacing = 56
 	color = g.COLOR_UNDEFINED
@@ -7,7 +9,8 @@ func _ready():
 	$Inputs/A.hide_it()
 	$Label.hide()
 	outputs = [false]
-	connect("dropped", self, "show_label")
+	if accept_dropped:
+		connect("dropped", self, "show_label")
 
 
 func get_labels():
