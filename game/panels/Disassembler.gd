@@ -75,27 +75,20 @@ func compile():
 					return
 				line = line.substr(i + 1, end - 1)
 				lines.append({"code": line, "number": line_num})
-				if line[0] == "n":
+				line_text = line
+				var x = get_next_token()
+				if x.is_valid_integer():
 					addr += 1
-				elif line[0] == " ":
-					addr += 3
 				else:
-					show_msg("Error on line %d: %s (no space after colon)" % [line_num, line], line_num)
-					return
+					addr += 3
 	addr = 0
 	for line in lines:
 		line_text = line.code
-		if line_text[0] == "n":
-			line_text[0] = " "
-			var x = get_next_token()
-			if x.is_valid_integer():
-				set_value(addr, int(x), line.number, code.pop_front())
-				addr += 1
-			else:
-				show_msg("Invalid integer: %s" % x, line.number)
-				return
+		var a = get_next_token()
+		if a.is_valid_integer():
+			set_value(addr, int(a), line.number, code.pop_front())
+			addr += 1
 		else:
-			var a = get_next_token()
 			if labels.keys().has(a):
 				set_value(addr, labels[a], line.number, code.pop_front())
 			else:
@@ -133,7 +126,7 @@ func set_value(addr, v, line_number = 0, txt = ""):
 
 
 func get_next_token():
-	var txt = line_text.dedent().replace(",", "")
+	var txt = line_text.dedent().replace(",", " ")
 	var t = txt
 	var i = txt.find(" ")
 	if i > 0:

@@ -30,4 +30,4 @@ func _on_Disassembler_code_error(msg, line_num):
 
 func _on_Disassembler_edit_source(line_num):
 	$Tabs.set_current_tab(2)
-	$Tabs/Assembler.highlight_line(line_num - 1)
+	$Tabs/Assembler.highlight_line(line_num)
