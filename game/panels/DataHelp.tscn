@@ -1,0 +1,109 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/fonts/m_bold.tres" type="DynamicFont" id=1]
+
+[node name="DataHelp" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 10.0
+margin_bottom = 10.0
+
+[node name="Notes" type="RichTextLabel" parent="."]
+margin_right = 1280.0
+margin_bottom = 800.0
+custom_fonts/bold_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[b]Memory Viewer[/b]
+
+This displays the content of the memory in a grid. Each value is in hexadecimal code.
+
+Address zero is in the top left, and each row of data is comprised of 16 bytes.
+
+The top row shows the least significant byte of the address, and the left column shows the most significant byte of the address.
+
+On the right side is a display of printable characters that the data represents.
+
+[b]Disassembler[/b]
+
+The left column shows each memory address.
+
+The next column is the data value stored at that address. And, if it is part of the compiled code, then the corresponding line of code or label is shown. Clicking on the value either takes us to the Assembler panel, or we get a popup to edit the value as a decimal integer.
+
+[b]Assembler[/b]
+
+Here we may load, save, edit, and compile programs in the SLEQ language.
+
+Comment lines start with a # character.
+
+The formats of lines of code are:
+ # COMMENT
+[LABEL]:nINTEGER [# COMMENT]
+[LABEL] :nINTEGER [# COMMENT]
+[LABEL] : A, B [# COMMENT]
+[LABEL] : A B [# COMMENT]
+[LABEL] : A, B, C [# COMMENT]
+[LABEL] : A B C [# COMMENT]
+
+where optional items are in brackets.
+n is for specifying an integer byte value (-128 - 0 - 255).
+A, B, C, LABEL are labels that reference memory locations.
+
+Example:
+# Add a to b
+start: a b sum
+a :n -4 # Use a negative number
+b :n 6
+sum :n 0
+
+Each line of code compiles to 3 bytes of machine code.
+The single operation is: [B] = [B] - [A] where [A] means the value stored at A
+If the result is less than or equal to zero then the program counter moves to location C or else to the next line of code.
+If no C value is specified, then [B] is used for the jump value."
+text = "Memory Viewer
+
+This displays the content of the memory in a grid. Each value is in hexadecimal code.
+
+Address zero is in the top left, and each row of data is comprised of 16 bytes.
+
+The top row shows the least significant byte of the address, and the left column shows the most significant byte of the address.
+
+On the right side is a display of printable characters that the data represents.
+
+Disassembler
+
+The left column shows each memory address.
+
+The next column is the data value stored at that address. And, if it is part of the compiled code, then the corresponding line of code or label is shown. Clicking on the value either takes us to the Assembler panel, or we get a popup to edit the value as a decimal integer.
+
+Assembler
+
+Here we may load, save, edit, and compile programs in the SLEQ language.
+
+Comment lines start with a # character.
+
+The formats of lines of code are:
+ # COMMENT
+[LABEL]:nINTEGER [# COMMENT]
+[LABEL] :nINTEGER [# COMMENT]
+[LABEL] : A, B [# COMMENT]
+[LABEL] : A B [# COMMENT]
+[LABEL] : A, B, C [# COMMENT]
+[LABEL] : A B C [# COMMENT]
+
+where optional items are in brackets.
+n is for specifying an integer byte value (-128 - 0 - 255).
+A, B, C, LABEL are labels that reference memory locations.
+
+Example:
+# Add a to b
+start: a b sum
+a :n -4 # Use a negative number
+b :n 6
+sum :n 0
+
+Each line of code compiles to 3 bytes of machine code.
+The single operation is: [B] = [B] - [A] where [A] means the value stored at A
+If the result is less than or equal to zero then the program counter moves to location C or else to the next line of code.
+If no C value is specified, then [B] is used for the jump value."

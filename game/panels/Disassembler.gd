@@ -75,7 +75,7 @@ func compile():
 					return
 				line = line.substr(i + 1, end - 1)
 				lines.append({"code": line, "number": line_num})
-				if line[0] == "w":
+				if line[0] == "n":
 					addr += 1
 				elif line[0] == " ":
 					addr += 3
@@ -85,7 +85,7 @@ func compile():
 	addr = 0
 	for line in lines:
 		line_text = line.code
-		if line_text[0] == "w":
+		if line_text[0] == "n":
 			line_text[0] = " "
 			var x = get_next_token()
 			if x.is_valid_integer():
