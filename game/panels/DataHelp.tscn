@@ -49,6 +49,7 @@ The formats of lines of code are:
 [LABEL] : A B [# COMMENT]
 [LABEL] : A,B,C [# COMMENT]
 [LABEL] : A B C [# COMMENT][/code]
+[LABEL] : \"string\"
 
 where optional items are in brackets.
 Integers may range from -128 through zero to 255.
@@ -94,6 +95,7 @@ The formats of lines of code are:
 [LABEL] : A B [# COMMENT]
 [LABEL] : A,B,C [# COMMENT]
 [LABEL] : A B C [# COMMENT]
+[LABEL] : \"string\"
 
 where optional items are in brackets.
 Integers may range from -128 through zero to 255.

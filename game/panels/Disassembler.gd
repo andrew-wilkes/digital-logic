@@ -70,7 +70,7 @@ func compile():
 				var end = line.find("#") # Look for end comment
 				if end < 1:
 					end = line.length()
-				if end - i < 3:
+				if end - i < 2:
 					show_msg("Error on line %d: %s (too short)" % [line_num, line], line_num)
 					return
 				line = line.substr(i + 1, end - 1)
@@ -89,31 +89,38 @@ func compile():
 			set_value(addr, int(a), line.number, code.pop_front())
 			addr += 1
 		else:
-			if labels.keys().has(a):
-				set_value(addr, labels[a], line.number, code.pop_front())
+			if a[0] == "\"":
+				for ch in a:
+					if ch != "\"":
+						set_value(addr, ord(ch), line.number, ch)
+						addr += 1
+				code.pop_front()
 			else:
-				show_msg("Unknown label: %s" % a, line.number)
-				return
-			addr += 1
-			var b = get_next_token()
-			if b == "":
-				show_msg("Missing second parameter!", line.number)
-				return
-			if labels.keys().has(b):
-				set_value(addr, labels[b], line.number, b)
-			else:
-				show_msg("Unknown label: %s" % b, line.number)
-				return
-			addr += 1
-			var c = get_next_token()
-			if c == "":
-				set_value(addr, labels[b], line.number, b)
-			elif labels.keys().has(c):
-				set_value(addr, labels[c], line.number, c)
-			else:
-				show_msg("Unknown label: %s" % c, line.number)
-				return
-			addr += 1
+				if labels.keys().has(a):
+					set_value(addr, labels[a], line.number, code.pop_front())
+				else:
+					show_msg("Unknown label: %s" % a, line.number)
+					return
+				addr += 1
+				var b = get_next_token()
+				if b == "":
+					show_msg("Missing second parameter!", line.number)
+					return
+				if labels.keys().has(b):
+					set_value(addr, labels[b], line.number, b)
+				else:
+					show_msg("Unknown label: %s" % b, line.number)
+					return
+				addr += 1
+				var c = get_next_token()
+				if c == "":
+					set_value(addr, labels[b], line.number, b)
+				elif labels.keys().has(c):
+					set_value(addr, labels[c], line.number, c)
+				else:
+					show_msg("Unknown label: %s" % c, line.number)
+					return
+				addr += 1
 
 
 func set_value(addr, v, line_number = 0, txt = ""):
