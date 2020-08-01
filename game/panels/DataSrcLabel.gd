@@ -1,4 +1,4 @@
-extends Label
+extends Control
 
 signal clicked(line_number)
 signal value_changed(id, value)
@@ -7,7 +7,7 @@ var id = 0
 var line_number = 0
 var value = 0
 var editable = true
-var text_color
+var text_color = [0, 0, 0]
 var testing = false
 
 func _ready():
@@ -36,8 +36,10 @@ func _on_LabelDialog_updated(new_text):
 		$InvalidNumber.popup_centered()
 
 
-func set_value(v, txt = ""):
-	text = "%02X  %s" % [v, txt]
+func set_value(v, label = "", src = ""):
+	$Labels/Value.text = "%02X" % v
+	$Labels/Label.text = label
+	$Labels/SRC.text = src
 	value = v
 
 
@@ -47,14 +49,21 @@ func _on_DataSrcLabel_gui_input(event):
 			$Edit.set_text(String(value))
 			$Edit.popup_centered()
 		else:
-			modulate = text_color
+			restore_colors()
 			emit_signal("clicked", line_number)
 
 
 func _on_DataSrcLabel_mouse_entered():
-	text_color = modulate
-	modulate = g.COLOR_ACTIVE
+	text_color = [$Labels/Value.modulate, $Labels/Label.modulate, $Labels/SRC.modulate]
+	for n in $Labels.get_children():
+		n.modulate = g.COLOR_ACTIVE
 
 
 func _on_DataSrcLabel_mouse_exited():
-	modulate = text_color
+	restore_colors()
+
+
+func restore_colors():
+	$Labels/Value.modulate = text_color[0]
+	$Labels/Label.modulate = text_color[1]
+	$Labels/SRC.modulate = text_color[2]

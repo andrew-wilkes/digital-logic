@@ -86,7 +86,7 @@ func compile():
 		line_text = line.code
 		var a = get_next_token()
 		if a.is_valid_integer():
-			set_value(addr, int(a), line.number, code.pop_front())
+			set_value(addr, int(a), line.number, a, code.pop_front())
 			addr = inc_addr(addr)
 		else:
 			if a[0] == "\"":
@@ -108,7 +108,7 @@ func compile():
 				addr = inc_addr(addr)
 				var c = get_next_token()
 				if c == "": # Set jump address to next line
-					set_value(addr, addr + 1, line.number, c)
+					set_value(addr, addr + 1, line.number, "", c)
 				elif set_int_or_get_value(labels, c, addr, line.number, c):
 					return
 				addr = inc_addr(addr)
@@ -123,16 +123,16 @@ func set_int_or_get_value(labels, token, addr, line_number, txt):
 		var stripped_token = token.rstrip("+")
 		if labels.keys().has(stripped_token):
 			offset -= stripped_token.length()
-			set_value(addr, labels[stripped_token] + offset, line_number, txt)
+			set_value(addr, labels[stripped_token] + offset, line_number, token, txt)
 		else:
 			error = true
 			show_msg("Unknown label: %s" % stripped_token, line_number)
 	return error
 
 
-func set_value(addr, v, line_number = 0, txt = ""):
+func set_value(addr, v, line_number = 0, token = "", txt = ""):
 	var label = locs.get_child(addr).get_node("SRC")
-	label.set_value(v, txt)
+	label.set_value(v, token, txt)
 	label.editable = txt.empty()
 	label.line_number = line_number
 	if addr < g.mem.size():

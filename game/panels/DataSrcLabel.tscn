@@ -3,14 +3,48 @@
 [ext_resource path="res://panels/DataSrcLabel.gd" type="Script" id=1]
 [ext_resource path="res://panels/LabelDialog.tscn" type="PackedScene" id=2]
 
-[node name="DataSrcLabel" type="Label"]
+[node name="DataSrcLabel" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -1180.0
 margin_bottom = -784.0
-mouse_filter = 1
-text = "00"
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Labels" type="HBoxContainer" parent="."]
+margin_right = 107.0
+margin_bottom = 14.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Labels"]
+modulate = Color( 0.988235, 1, 0, 1 )
+margin_right = 27.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 27, 0 )
+text = "00"
+
+[node name="Label" type="Label" parent="Labels"]
+modulate = Color( 1, 0.611765, 0, 1 )
+margin_left = 37.0
+margin_right = 76.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 32, 0 )
+text = "LABEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SRC" type="Label" parent="Labels"]
+modulate = Color( 0, 0.52549, 0.839216, 1 )
+margin_left = 86.0
+margin_right = 118.0
+margin_bottom = 14.0
+text = "Code"
 __meta__ = {
 "_edit_use_anchors_": false
 }

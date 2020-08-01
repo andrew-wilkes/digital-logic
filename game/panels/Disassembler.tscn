@@ -30,9 +30,9 @@ margin_right = 600.0
 margin_bottom = 14.0
 
 [node name="Label" type="Label" parent="VBox/Header"]
-margin_right = 181.0
+margin_right = 219.0
 margin_bottom = 14.0
-text = "Address  Data / Source Code"
+text = "Address  Data  Value  Source Code"
 
 [node name="SC" type="ScrollContainer" parent="VBox"]
 margin_top = 18.0
@@ -65,5 +65,5 @@ align = 2
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 60.0
-margin_right = 76.0
+margin_right = 60.0
 margin_bottom = 14.0
