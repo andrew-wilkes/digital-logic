@@ -37,7 +37,7 @@ func _on_LabelDialog_updated(new_text):
 
 
 func set_value(v, txt = ""):
-	text = "%02X %s" % [v, txt]
+	text = "%02X  %s" % [v, txt]
 	value = v
 
 

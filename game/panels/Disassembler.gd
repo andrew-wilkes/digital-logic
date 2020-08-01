@@ -78,49 +78,56 @@ func compile():
 				line_text = line
 				var x = get_next_token()
 				if x.is_valid_integer():
-					addr += 1
+					addr = inc_addr(addr)
 				else:
-					addr += 3
+					addr = inc_addr(addr, 3)
 	addr = 0
 	for line in lines:
 		line_text = line.code
 		var a = get_next_token()
 		if a.is_valid_integer():
 			set_value(addr, int(a), line.number, code.pop_front())
-			addr += 1
+			addr = inc_addr(addr)
 		else:
 			if a[0] == "\"":
 				for ch in a:
 					if ch != "\"":
 						set_value(addr, ord(ch), line.number, ch)
-						addr += 1
+						addr = inc_addr(addr)
 				code.pop_front()
 			else:
-				if labels.keys().has(a):
-					set_value(addr, labels[a], line.number, code.pop_front())
-				else:
-					show_msg("Unknown label: %s" % a, line.number)
+				if set_int_or_get_value(labels, a, addr, line.number, code.pop_front()):
 					return
-				addr += 1
+				addr = inc_addr(addr)
 				var b = get_next_token()
 				if b == "":
 					show_msg("Missing second parameter!", line.number)
 					return
-				if labels.keys().has(b):
-					set_value(addr, labels[b], line.number, b)
-				else:
-					show_msg("Unknown label: %s" % b, line.number)
+				if set_int_or_get_value(labels, b, addr, line.number, b):
 					return
-				addr += 1
+				addr = inc_addr(addr)
 				var c = get_next_token()
-				if c == "":
-					set_value(addr, labels[b], line.number, b)
-				elif labels.keys().has(c):
-					set_value(addr, labels[c], line.number, c)
-				else:
-					show_msg("Unknown label: %s" % c, line.number)
+				if c == "": # Set jump address to next line
+					set_value(addr, addr + 1, line.number, c)
+				elif set_int_or_get_value(labels, c, addr, line.number, c):
 					return
-				addr += 1
+				addr = inc_addr(addr)
+
+
+func set_int_or_get_value(labels, token, addr, line_number, txt):
+	var error = false
+	if token.is_valid_integer():
+		set_value(addr, int(token), line_number, token)
+	else:
+		var offset = token.length()
+		var stripped_token = token.rstrip("+")
+		if labels.keys().has(stripped_token):
+			offset -= stripped_token.length()
+			set_value(addr, labels[stripped_token] + offset, line_number, txt)
+		else:
+			error = true
+			show_msg("Unknown label: %s" % stripped_token, line_number)
+	return error
 
 
 func set_value(addr, v, line_number = 0, txt = ""):
@@ -143,6 +150,13 @@ func get_next_token():
 		txt = ""
 	line_text = txt
 	return t
+
+
+func inc_addr(addr, n = 1):
+	addr += n
+	if addr > 255:
+		addr = 256 - addr
+	return addr
 
 
 func show_msg(m, line_num = 0):

@@ -38,7 +38,12 @@ The next column is the data value stored at that address. And, if it is part of 
 
 [b]Assembler[/b]
 
-Here we may load, save, edit, and compile programs in the SLEQ language.
+Here we may load, save, edit, and compile programs in the SUBLEQ language.
+
+Each line of code compiles to 3 bytes of machine code.
+The single operation is: [B] = [B] - [A] where [A] means the value stored at A
+If the result is less than or equal to zero then the program counter jumps to location C or else to the next line of code.
+If no C value is specified, then the program counter jumps to the next line of code.
 
 Comment lines start with a # character.
 
@@ -54,18 +59,15 @@ The formats of lines of code are:
 where optional items are in brackets.
 Integers may range from -128 through zero to 255.
 A, B, C, and LABEL are labels that reference memory locations.
+Add + characters to reference the bytes ahead of the label position e.g. label++ for the address 2 bytes ahead.
 
 Example: [code]
 # Add a to b
-start: a b sum
-a :n -4 # Use a negative number
-b :n 6
-sum :n 0 [/code]
-
-Each line of code compiles to 3 bytes of machine code.
-The single operation is: [B] = [B] - [A] where [A] means the value stored at A
-If the result is less than or equal to zero then the program counter moves to location [C] or else to the next line of code.
-If no C value is specified, then [B] is used for the jump value."
+start: a b cont
+a : -4 # Use a negative number
+b : 6
+cont : 0 [/code]
+"
 text = "Memory Viewer
 
 This displays the content of the memory in a grid. Each value is in hexadecimal code.
@@ -84,7 +86,12 @@ The next column is the data value stored at that address. And, if it is part of 
 
 Assembler
 
-Here we may load, save, edit, and compile programs in the SLEQ language.
+Here we may load, save, edit, and compile programs in the SUBLEQ language.
+
+Each line of code compiles to 3 bytes of machine code.
+The single operation is: [B] = [B] - [A] where [A] means the value stored at A
+If the result is less than or equal to zero then the program counter jumps to location C or else to the next line of code.
+If no C value is specified, then the program counter jumps to the next line of code.
 
 Comment lines start with a # character.
 
@@ -100,15 +107,12 @@ The formats of lines of code are:
 where optional items are in brackets.
 Integers may range from -128 through zero to 255.
 A, B, C, and LABEL are labels that reference memory locations.
+Add + characters to reference the bytes ahead of the label position e.g. label++ for the address 2 bytes ahead.
 
 Example: 
 # Add a to b
-start: a b sum
-a :n -4 # Use a negative number
-b :n 6
-sum :n 0 
-
-Each line of code compiles to 3 bytes of machine code.
-The single operation is: [B] = [B] - [A] where [A] means the value stored at A
-If the result is less than or equal to zero then the program counter moves to location [C] or else to the next line of code.
-If no C value is specified, then [B] is used for the jump value."
+start: a b cont
+a : -4 # Use a negative number
+b : 6
+cont : 0 
+"
