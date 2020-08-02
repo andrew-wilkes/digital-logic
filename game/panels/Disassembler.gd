@@ -24,6 +24,7 @@ func _ready():
 	if get_parent().name == "root":
 		$BG.show()
 		g.src = "START: DEST, DEST, ADD\nADD: SRC, TEMP, NEXT\nNEXT: TEMP, DEST, CONT\nCONT:w12\nTEMP:w1\nSRC:w2\nDEST:w3"
+		g.mem.resize(256 * 4)
 		compile()
 	else:
 		$BG.hide()
@@ -154,10 +155,22 @@ func get_next_token():
 
 func inc_addr(addr, n = 1):
 	addr += n
-	if addr > 255:
-		addr = 256 - addr
+	if addr >= g.mem.size():
+		addr = g.mem.size() - addr
 	return addr
 
 
 func show_msg(m, line_num = 0):
 	emit_signal("code_error", m, line_num)
+
+
+func _on_Run_button_down():
+	pass # Replace with function body.
+
+
+func _on_Step_button_down():
+	pass # Replace with function body.
+
+
+func _on_Reset_button_down():
+	pass # Replace with function body.

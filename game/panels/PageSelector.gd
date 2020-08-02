@@ -2,7 +2,7 @@ extends HBoxContainer
 
 signal page_changed
 
-func set_max():
+func _ready():
 	$Page.max_value = g.max_page
 
 

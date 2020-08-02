@@ -13,7 +13,6 @@ func _ready():
 
 
 func start(_test = false):
-	$VBox/PageSelector.set_max()
 	testing = _test
 	if testing:
 		set_rand_data()
