@@ -12,6 +12,7 @@ func _ready():
 func open(title = ""):
 	if title != "":
 		window_title += " - " + title
+	g.max_page = int(g.mem.size() / 256) - 1
 	call_deferred("popup_centered", Vector2(790, 430))
 	$Tabs/MemoryViewer.start(testing)
 	$Tabs/Disassembler.load_memory()

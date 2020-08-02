@@ -38,7 +38,7 @@ The next column is the data value stored at that address. And, if it is part of 
 
 [b]Assembler[/b]
 
-Here we may load, save, edit, and compile programs in the SUBLEQ language.
+Here we may load, save, edit, and compile programs in the SUBLEQ language or similar..
 
 Each line of code compiles to 3 bytes of machine code.
 The single operation is: [B] = [B] - [A] where [A] means the value stored at A
@@ -86,7 +86,7 @@ The next column is the data value stored at that address. And, if it is part of 
 
 Assembler
 
-Here we may load, save, edit, and compile programs in the SUBLEQ language.
+Here we may load, save, edit, and compile programs in the SUBLEQ language or similar..
 
 Each line of code compiles to 3 bytes of machine code.
 The single operation is: [B] = [B] - [A] where [A] means the value stored at A

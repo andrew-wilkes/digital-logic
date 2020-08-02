@@ -13,10 +13,11 @@ func _ready():
 
 
 func start(_test = false):
+	$VBox/PageSelector.set_max()
 	testing = _test
 	if testing:
 		set_rand_data()
-	font_col = $HBox/VBox2/Hex.get("custom_colors/font_color")
+	font_col = $VBox/HBox/VBox2/Hex.get("custom_colors/font_color")
 	find_node("Sidebar").text = get_str_range("\n")
 	find_node("Header2").text = get_str_range()
 	find_node("Header3").text = get_str_range("", "%X")
@@ -42,7 +43,7 @@ func set_rand_data():
 func _draw():
 	if draw_chrs:
 		var c_pos
-		var c_origin = $HBox/VBox3.rect_position + Vector2(0, 38)
+		var c_origin = $VBox/HBox/VBox3.rect_position + Vector2(0, 38)
 		var x = 0
 		var y = 0
 		for n in g.mem:
@@ -61,7 +62,7 @@ func get_str_range(_chr = " ", _fmt = "%02X", n = 16, from_mem = false):
 	for i in n:
 		var v = i
 		if from_mem:
-			v = g.mem[i]
+			v = g.mem[i + g.page * 256]
 		sr.append(_fmt % v)
 	return sr.join(_chr)
 
