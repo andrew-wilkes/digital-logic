@@ -6,12 +6,31 @@ signal edit_source(line_num)
 var testing = false
 var locs
 var line_text
+var pc = 0
+var lang = 0
+var running = false
 
 func _ready():
 	locs = $VBox/SC/LOCS # Memory location info (hex value + if there is: line of code)
-	var loc_line = locs.get_child(0)
+	if get_parent().name == "root":
+		$BG.show()
+		g.src = "START: DEST, DEST, ADD\nADD: SRC, TEMP, NEXT\nNEXT: TEMP, DEST, CONT\nCONT:0, 0, CONT\nTEMP:0\nSRC:2\nDEST:3\n:\" abcdefg\""
+		g.mem.resize(256)
+		for a in g.mem.size():
+			g.mem[a] = 0
+		init_lines(g.mem.size())
+		load_memory()
+		compile()
+	else:
+		$BG.hide()
+		init_lines(g.mem.size())
+	set_pc(0)
+
+
+func init_lines(num_lines):
 	var new_line
-	for n in 256:
+	var loc_line = locs.get_child(0)
+	for n in num_lines:
 		if n == 0:
 			new_line = loc_line 
 		else:
@@ -21,13 +40,6 @@ func _ready():
 		new_line.get_node("SRC").id = n
 		new_line.get_node("SRC").connect("value_changed", self, "set_value")
 		new_line.get_node("SRC").connect("clicked", self, "edit_source")
-	if get_parent().name == "root":
-		$BG.show()
-		g.src = "START: DEST, DEST, ADD\nADD: SRC, TEMP, NEXT\nNEXT: TEMP, DEST, CONT\nCONT:w12\nTEMP:w1\nSRC:w2\nDEST:w3"
-		g.mem.resize(256 * 4)
-		compile()
-	else:
-		$BG.hide()
 
 
 func edit_source(line_number):
@@ -38,7 +50,7 @@ func load_memory():
 	var addr = 0
 	for loc in locs.get_children():
 		var label = loc.get_node("SRC")
-		label.set_value(g.mem[addr], "")
+		label.set_values(g.mem[addr], "")
 		label.editable = true
 		label.line_number = 0
 		addr += 1
@@ -77,8 +89,7 @@ func compile():
 				line = line.substr(i + 1, end - 1)
 				lines.append({"code": line, "number": line_num})
 				line_text = line
-				var x = get_next_token()
-				if x.is_valid_integer():
+				if line_text.empty(): # Single value line
 					addr = inc_addr(addr)
 				else:
 					addr = inc_addr(addr, 3)
@@ -86,15 +97,15 @@ func compile():
 	for line in lines:
 		line_text = line.code
 		var a = get_next_token()
-		if a.is_valid_integer():
-			set_value(addr, int(a), line.number, a, code.pop_front())
+		if a.is_valid_integer() and line_text.empty():
+			set_values(addr, int(a), line.number, a, code.pop_front())
 			addr = inc_addr(addr)
 		else:
-			if a[0] == "\"":
+			if a[0] == '"':
+				a = a.replace('"', "")
 				for ch in a:
-					if ch != "\"":
-						set_value(addr, ord(ch), line.number, ch)
-						addr = inc_addr(addr)
+					set_values(addr, ord(ch), line.number, ch)
+					addr = inc_addr(addr)
 				code.pop_front()
 			else:
 				if set_int_or_get_value(labels, a, addr, line.number, code.pop_front()):
@@ -104,36 +115,36 @@ func compile():
 				if b == "":
 					show_msg("Missing second parameter!", line.number)
 					return
-				if set_int_or_get_value(labels, b, addr, line.number, b):
+				if set_int_or_get_value(labels, b, addr, line.number):
 					return
 				addr = inc_addr(addr)
 				var c = get_next_token()
 				if c == "": # Set jump address to next line
-					set_value(addr, addr + 1, line.number, "", c)
-				elif set_int_or_get_value(labels, c, addr, line.number, c):
+					set_values(addr, addr + 1, line.number, "", c)
+				elif set_int_or_get_value(labels, c, addr, line.number):
 					return
 				addr = inc_addr(addr)
 
 
-func set_int_or_get_value(labels, token, addr, line_number, txt):
+func set_int_or_get_value(labels, token, addr, line_number, txt = ""):
 	var error = false
 	if token.is_valid_integer():
-		set_value(addr, int(token), line_number, token)
+		set_values(addr, int(token), line_number, token, txt)
 	else:
 		var offset = token.length()
 		var stripped_token = token.rstrip("+")
 		if labels.keys().has(stripped_token):
 			offset -= stripped_token.length()
-			set_value(addr, labels[stripped_token] + offset, line_number, token, txt)
+			set_values(addr, labels[stripped_token] + offset, line_number, token, txt)
 		else:
 			error = true
 			show_msg("Unknown label: %s" % stripped_token, line_number)
 	return error
 
 
-func set_value(addr, v, line_number = 0, token = "", txt = ""):
+func set_values(addr, v, line_number = 0, token = "", txt = ""):
 	var label = locs.get_child(addr).get_node("SRC")
-	label.set_value(v, token, txt)
+	label.set_values(v, token, txt)
 	label.editable = txt.empty()
 	label.line_number = line_number
 	if addr < g.mem.size():
@@ -143,7 +154,10 @@ func set_value(addr, v, line_number = 0, token = "", txt = ""):
 func get_next_token():
 	var txt = line_text.dedent().replace(",", " ")
 	var t = txt
-	var i = txt.find(" ")
+	var delim = " "
+	if t[0] == '"':
+		delim = "\r" # Cause the whole line to be returned
+	var i = txt.find(delim)
 	if i > 0:
 		t = txt.substr(0, i)
 		txt = txt.right(i)
@@ -152,6 +166,26 @@ func get_next_token():
 	line_text = txt
 	return t
 
+
+func set_pc(v):
+	set_addr_color(pc, false)
+	pc = v
+	$VBox/HBox/PCV.text = "%02X" % v
+	set_addr_color(pc)
+
+
+func set_addr_color(n, red = true):
+	var addr = locs.get_child(n).get_node("ADDR")
+	if red:
+		addr.modulate = g.COLOR_HIGH
+	else:
+		addr.modulate = g.COLOR_UNDEFINED
+
+
+func set_value(a, v):
+	locs.get_child(a).get_node("SRC").set_value(v)
+	g.mem[a] = v
+	
 
 func inc_addr(addr, n = 1):
 	addr += n
@@ -165,12 +199,89 @@ func show_msg(m, line_num = 0):
 
 
 func _on_Run_button_down():
-	pass # Replace with function body.
+	if running:
+		stop_running()
+	else:
+		$VBox/HBox/Run.text = "Stop"
+		running = true
+
+
+func stop_running():
+	$VBox/HBox/Run.text = "Run"
+	running = false
 
 
 func _on_Step_button_down():
-	pass # Replace with function body.
+	execute_instruction()
 
 
 func _on_Reset_button_down():
-	pass # Replace with function body.
+	stop_running()
+	set_pc(0)
+
+
+func _process(_delta):
+	if running:
+		execute_instruction()
+
+
+func execute_instruction():
+	match lang:
+		0: # SUBLEQ 1-byte address width
+			var a = g.mem[pc]
+			var b = g.mem[pc + 1]
+			var c = g.mem[pc + 2]
+			var r = g.mem[b] - g.mem[a]
+			set_value(b, r)
+			if r <= 0:
+				set_pc(c)
+			else:
+				set_pc(pc + 3)
+		
+		1: # ByteByteJump 3-byte address width
+			var add = pc
+			var a = get_byte_addr(add)
+			add += 3
+			var b = get_byte_addr(add)
+			add += 3
+			g.mem[b] = g.mem[a]
+			set_pc(get_byte_addr(add))
+		
+		2: # ByteByte/Jump 3-byte address width
+			var hb = 0x800000
+			var add = pc
+			var a = get_byte_addr(add)
+			if a >= hb:
+				set_pc(a - hb)
+			else:
+				add += 3
+				var b = get_byte_addr(add)
+				add += 3
+				if b >= hb:
+					g.mem[b - hb] = g.mem[a]
+					g.mem[get_byte_addr(add)] = g.mem[a]
+					add += 3
+				else:
+					g.mem[b] = g.mem[a]
+				set_pc(add)
+
+
+func test_get_byte_addr():
+	for n in 4:
+		pc = n
+		var a = g.mem[pc] * 256
+		a += g.mem[pc + 1]
+		a *= 256
+		a += g.mem[pc + 2]
+		var b = get_byte_addr(pc)
+		print(a, " ", b)
+
+
+func get_byte_addr(add: int, n: int = 3, a: int = 0):
+	if n > 0:
+		a *= 256
+		a += g.mem[add]
+		add += 1
+		a = get_byte_addr(add, n - 1, a)
+	return a
+	

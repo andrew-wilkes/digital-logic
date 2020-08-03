@@ -36,11 +36,15 @@ func _on_LabelDialog_updated(new_text):
 		$InvalidNumber.popup_centered()
 
 
-func set_value(v, label = "", src = ""):
+func set_value(v):
 	$Labels/Value.text = "%02X" % v
+	value = v
+
+
+func set_values(v, label = "", src = ""):
+	set_value(v)
 	$Labels/Label.text = label
 	$Labels/SRC.text = src
-	value = v
 
 
 func _on_DataSrcLabel_gui_input(event):
