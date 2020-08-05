@@ -9,6 +9,7 @@ var line_text
 var pc = 0
 var lang = 0
 var running = false
+var data = []
 
 func _ready():
 	locs = $VBox/SC/LOCS # Memory location info (hex value + if there is: line of code)
@@ -51,9 +52,12 @@ func load_memory():
 		label.line_number = 0
 		addr += 1
 	compile()
+	for a in data.size():
+		set_label_values(a)
 
 
 func compile():
+	data.clear()
 	var src = g.src.replace("\t", " ")
 	var code = []
 	# Remove comments and blank lines
@@ -142,15 +146,20 @@ func set_int_or_get_value(labels, token, addr, line_number, txt = ""):
 	return error
 
 
-func set_values(addr, v, line_number = 0, token = "", txt = ""):
+func set_values(_addr, v, line_number = 0, token = "", txt = ""):
 	if txt == null:
 		txt = ""
+	data.append({"v": v, "ln": line_number, "token": token, "txt": txt})
+
+
+func set_label_values(addr):
+	var d = data[addr]
 	var label = locs.get_child(addr).get_node("SRC")
-	label.set_values(v, token, txt)
-	label.editable = txt.empty()
-	label.line_number = line_number
+	label.set_values(d.v, d.token, d.txt)
+	label.editable = d.txt.empty()
+	label.line_number = d.ln
 	if addr < g.mem.size():
-		g.mem[addr] = v
+		g.mem[addr] = d.v
 
 
 func get_next_token():
