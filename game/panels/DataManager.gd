@@ -6,6 +6,7 @@ func _ready():
 	$Tabs.set_tab_title(0, "Memory Viewer")
 	if get_parent().name == "root":
 		testing = true
+		g.clear_memory()
 		open()
 
 

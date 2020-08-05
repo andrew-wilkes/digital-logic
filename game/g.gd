@@ -136,3 +136,9 @@ func decode_inputs(inputs):
 
 func set_hex_text(label: Label, value: int):
 	label.text = "%02X" % value
+
+
+func clear_memory(mem_size = 256):
+	mem.resize(mem_size)
+	for a in mem_size:
+		mem[a] = 0

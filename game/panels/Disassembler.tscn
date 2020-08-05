@@ -7,7 +7,7 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -680.0
-margin_bottom = -390.0
+margin_bottom = -270.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
@@ -22,7 +22,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 590.0
-margin_bottom = 400.0
+margin_bottom = 520.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.152941, 0.152941, 0.152941, 1 )
@@ -31,7 +31,7 @@ color = Color( 0.152941, 0.152941, 0.152941, 1 )
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 590.0
-margin_bottom = 400.0
+margin_bottom = 520.0
 
 [node name="HBox" type="HBoxContainer" parent="VBox"]
 margin_right = 580.0
@@ -94,14 +94,14 @@ text = "Address  Data  Value  Source Code"
 [node name="SC" type="ScrollContainer" parent="VBox"]
 margin_top = 56.0
 margin_right = 580.0
-margin_bottom = 390.0
+margin_bottom = 510.0
 rect_min_size = Vector2( 0, 200 )
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="LOCS" type="VBoxContainer" parent="VBox/SC"]
 margin_right = 580.0
-margin_bottom = 334.0
+margin_bottom = 454.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 5

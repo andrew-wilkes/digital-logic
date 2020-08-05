@@ -59,6 +59,7 @@ The formats of lines of code are:
 where optional items are in brackets.
 Integers may range from -128 through zero to 255.
 A, B, C, and LABEL are labels that reference memory locations.
+A, B, and C may be replaced by integers.
 Add + characters to reference the bytes ahead of the label position e.g. label++ for the address 2 bytes ahead.
 
 Example: [code]
@@ -66,7 +67,7 @@ Example: [code]
 start: a b cont
 a : -4 # Use a negative number
 b : 6
-cont : 0 [/code]
+cont : cont cont cont [/code]
 "
 text = "Memory Viewer
 
@@ -107,6 +108,7 @@ The formats of lines of code are:
 where optional items are in brackets.
 Integers may range from -128 through zero to 255.
 A, B, C, and LABEL are labels that reference memory locations.
+A, B, and C may be replaced by integers.
 Add + characters to reference the bytes ahead of the label position e.g. label++ for the address 2 bytes ahead.
 
 Example: 
@@ -114,5 +116,5 @@ Example:
 start: a b cont
 a : -4 # Use a negative number
 b : 6
-cont : 0 
+cont : cont cont cont 
 "

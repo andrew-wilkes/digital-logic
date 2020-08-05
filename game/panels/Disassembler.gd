@@ -12,18 +12,14 @@ var running = false
 
 func _ready():
 	locs = $VBox/SC/LOCS # Memory location info (hex value + if there is: line of code)
+	init_lines(256)
 	if get_parent().name == "root":
 		$BG.show()
-		g.src = "START: DEST, DEST, ADD\nADD: SRC, TEMP, NEXT\nNEXT: TEMP, DEST, CONT\nCONT:0, 0, CONT\nTEMP:0\nSRC:2\nDEST:3\n:\" abcdefg\""
-		g.mem.resize(256)
-		for a in g.mem.size():
-			g.mem[a] = 0
-		init_lines(g.mem.size())
+		g.src = "START: DEST, DEST, ADD\nADD: SRC, TEMP, NEXT\nNEXT: TEMP, DEST, CONT\nCONT: CONT, CONT, CONT\nTEMP:0\nSRC:2\nDEST:3\n:\" abcdefg\"\nX:0 0 X"
+		g.clear_memory()
 		load_memory()
-		compile()
 	else:
 		$BG.hide()
-		init_lines(g.mem.size())
 	set_pc(0)
 
 
@@ -89,8 +85,12 @@ func compile():
 				line = line.substr(i + 1, end - 1)
 				lines.append({"code": line, "number": line_num})
 				line_text = line
-				if line_text.empty(): # Single value line
+				var a = get_next_token()
+				if a.is_valid_integer() and line_text.empty(): # Single value line
 					addr = inc_addr(addr)
+				elif a[0] == '"':
+					a = a.replace('"', "")
+					addr = inc_addr(addr, a.length())
 				else:
 					addr = inc_addr(addr, 3)
 	addr = 0
@@ -100,30 +100,30 @@ func compile():
 		if a.is_valid_integer() and line_text.empty():
 			set_values(addr, int(a), line.number, a, code.pop_front())
 			addr = inc_addr(addr)
-		else:
-			if a[0] == '"':
+		elif a[0] == '"':
 				a = a.replace('"', "")
+				var txt = code.pop_front()
 				for ch in a:
-					set_values(addr, ord(ch), line.number, ch)
+					set_values(addr, ord(ch), line.number, ch, txt)
+					txt = ""
 					addr = inc_addr(addr)
-				code.pop_front()
-			else:
-				if set_int_or_get_value(labels, a, addr, line.number, code.pop_front()):
-					return
-				addr = inc_addr(addr)
-				var b = get_next_token()
-				if b == "":
-					show_msg("Missing second parameter!", line.number)
-					return
-				if set_int_or_get_value(labels, b, addr, line.number):
-					return
-				addr = inc_addr(addr)
-				var c = get_next_token()
-				if c == "": # Set jump address to next line
-					set_values(addr, addr + 1, line.number, "", c)
-				elif set_int_or_get_value(labels, c, addr, line.number):
-					return
-				addr = inc_addr(addr)
+		else:
+			if set_int_or_get_value(labels, a, addr, line.number, code.pop_front()):
+				return
+			addr = inc_addr(addr)
+			var b = get_next_token()
+			if b == "":
+				show_msg("Missing second parameter!", line.number)
+				return
+			if set_int_or_get_value(labels, b, addr, line.number):
+				return
+			addr = inc_addr(addr)
+			var c = get_next_token()
+			if c == "": # Set jump address to next line
+				set_values(addr, addr + 1, line.number, "", c)
+			elif set_int_or_get_value(labels, c, addr, line.number):
+				return
+			addr = inc_addr(addr)
 
 
 func set_int_or_get_value(labels, token, addr, line_number, txt = ""):
@@ -143,6 +143,8 @@ func set_int_or_get_value(labels, token, addr, line_number, txt = ""):
 
 
 func set_values(addr, v, line_number = 0, token = "", txt = ""):
+	if txt == null:
+		txt = ""
 	var label = locs.get_child(addr).get_node("SRC")
 	label.set_values(v, token, txt)
 	label.editable = txt.empty()
@@ -231,7 +233,7 @@ func execute_instruction():
 			var a = g.mem[pc]
 			var b = g.mem[pc + 1]
 			var c = g.mem[pc + 2]
-			var r = g.mem[b] - g.mem[a]
+			var r = g.mem[b] - g.mem[a] # Negative indexes count from the back
 			set_value(b, r)
 			if r <= 0:
 				set_pc(c)
