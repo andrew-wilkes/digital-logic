@@ -55,12 +55,14 @@ The formats of lines of code are:
 [LABEL] : A,B,C [# COMMENT]
 [LABEL] : A B C [# COMMENT][/code]
 [LABEL] : \"string\"
+> address
 
 where optional items are in brackets.
 Integers may range from -128 through zero to 255.
 A, B, C, and LABEL are labels that reference memory locations.
 A, B, and C may be replaced by integers.
 Add + characters to reference the bytes ahead of the label position e.g. label++ for the address 2 bytes ahead.
+> address relocates the compiler to an address ahead of the current address
 
 Example: [code]
 # Add a to b
@@ -104,12 +106,14 @@ The formats of lines of code are:
 [LABEL] : A,B,C [# COMMENT]
 [LABEL] : A B C [# COMMENT]
 [LABEL] : \"string\"
+> address
 
 where optional items are in brackets.
 Integers may range from -128 through zero to 255.
 A, B, C, and LABEL are labels that reference memory locations.
 A, B, and C may be replaced by integers.
 Add + characters to reference the bytes ahead of the label position e.g. label++ for the address 2 bytes ahead.
+> address relocates the compiler to an address ahead of the current address
 
 Example: 
 # Add a to b

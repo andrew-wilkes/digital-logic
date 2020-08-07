@@ -57,6 +57,7 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+[connection signal="tab_changed" from="Tabs" to="." method="_on_Tabs_tab_changed"]
 [connection signal="code_error" from="Tabs/Disassembler" to="." method="_on_Disassembler_code_error"]
 [connection signal="edit_source" from="Tabs/Disassembler" to="." method="_on_Disassembler_edit_source"]
 [connection signal="compile" from="Tabs/Assembler" to="." method="_on_Assembler_compile"]

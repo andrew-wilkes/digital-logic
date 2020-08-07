@@ -16,12 +16,20 @@ func _ready():
 	init_lines(256)
 	if get_parent().name == "root":
 		$BG.show()
-		g.src = "START: DEST, DEST, ADD\nADD: SRC, TEMP, NEXT\nNEXT: TEMP, DEST, CONT\nCONT: CONT, CONT, CONT\nTEMP:0\nSRC:2\nDEST:3\n:\" abcdefg\"\nX:0 0 X"
+		load_test_src()
 		g.clear_memory()
 		load_memory()
 	else:
 		$BG.hide()
 	set_pc(0)
+
+
+func load_test_src():
+	g.src = "START: DEST, DEST, ADD\nADD: SRC, TEMP, NEXT\nNEXT: TEMP, DEST, CONT\nCONT: CONT, CONT, CONT\nTEMP:0\nSRC:2\nDEST:3\n>524\n:\" abcdefg\"\nX:0 0 X"
+
+
+func update_state():
+	$VBox/HBox/PageSelector/Page.value = g.page
 
 
 func init_lines(num_lines):
@@ -44,6 +52,7 @@ func edit_source(line_number):
 
 
 func load_memory():
+	g.clear_memory()
 	var addr = 0
 	for loc in locs.get_children():
 		var label = loc.get_node("SRC")
@@ -51,9 +60,13 @@ func load_memory():
 		label.editable = true
 		label.line_number = 0
 		addr += 1
+	compile_and_update()
+
+
+func compile_and_update():
 	compile()
-	for a in data.size():
-		set_label_values(a)
+	data_to_memory()
+	update_page_of_values()
 
 
 func compile():
@@ -69,7 +82,15 @@ func compile():
 	for line in src.split("\n"):
 		line_num += 1
 		line.lstrip(" ")
-		if line.length() > 0 and line[0] != "#":
+		if line.length() > 1 and line[0] == '>':
+			var n = line.right(1).dedent()
+			if n.is_valid_integer() and int(n) > addr:
+				addr = int(n)
+				check_mem_size(addr)
+				lines.append({"code": line, "number": line_num})
+			else:
+				show_msg("Error on line %d: %s (invalid jump)" % [line_num, line], line_num)
+		elif line.length() > 0 and line[0] != "#":
 			var i = line.find(":")
 			if i < 0:
 				show_msg("Error on line %d: %s" % [line_num, line], line_num)
@@ -84,7 +105,7 @@ func compile():
 				if end < 1:
 					end = line.length()
 				if end - i < 2:
-					show_msg("Error on line %d: %s (too short)" % [line_num, line], line_num)
+					show_msg("Error on line %d: %s (too short)" % [line_num, line])
 					return
 				line = line.substr(i + 1, end - 1)
 				lines.append({"code": line, "number": line_num})
@@ -111,6 +132,9 @@ func compile():
 					set_values(addr, ord(ch), line.number, ch, txt)
 					txt = ""
 					addr = inc_addr(addr)
+		elif a[0] == '>':
+			var n = a.right(1).dedent()
+			addr = int(n)
 		else:
 			if set_int_or_get_value(labels, a, addr, line.number, code.pop_front()):
 				return
@@ -130,6 +154,12 @@ func compile():
 			addr = inc_addr(addr)
 
 
+func data_to_memory():
+	check_mem_size(data.size())
+	for a in data.size():
+		g.mem[a] = data[a].v
+
+
 func set_int_or_get_value(labels, token, addr, line_number, txt = ""):
 	var error = false
 	if token.is_valid_integer():
@@ -146,24 +176,46 @@ func set_int_or_get_value(labels, token, addr, line_number, txt = ""):
 	return error
 
 
-func set_values(_addr, v, line_number = 0, token = "", txt = ""):
+func set_values(addr, v, line_number = 0, token = "", txt = ""):
+	var size_diff = addr - data.size()
+	if size_diff > 0:
+		for n in size_diff:
+			data.append({"v": 0, "ln": 0, "token": "", "txt": ""})
 	if txt == null:
 		txt = ""
 	data.append({"v": v, "ln": line_number, "token": token, "txt": txt})
 
 
-func set_label_values(addr):
+func update_page_of_values():
+	var offset = g.page * 256
+	for n in 256:
+		set_label_values(n + offset, offset)
+
+
+func set_label_values(addr, offset):
+	var size_diff = addr - data.size() + 1
+	if  size_diff > 0 :
+		for n in size_diff:
+			set_values(0, 0, "0", "")
 	var d = data[addr]
-	var label = locs.get_child(addr).get_node("SRC")
+	var label = locs.get_child(addr - offset).get_node("SRC")
 	label.set_values(d.v, d.token, d.txt)
 	label.editable = d.txt.empty()
 	label.line_number = d.ln
-	if addr < g.mem.size():
-		g.mem[addr] = d.v
+
+
+func check_mem_size(addr):
+	var msize = g.mem.size()
+	if addr >= msize:
+		var new_mem_size = int(addr / 256) * 256 + 256
+		g.clear_memory(new_mem_size, msize)
+		g.max_page = int(new_mem_size / 256) - 1
+		$VBox/HBox/PageSelector.set_max_page()
 
 
 func get_next_token():
 	var txt = line_text.dedent().replace(",", " ")
+	txt = txt.replace("> ", ">")
 	var t = txt
 	var delim = " "
 	if t[0] == '"':
@@ -296,3 +348,7 @@ func get_byte_addr(add: int, n: int = 3, a: int = 0):
 		a = get_byte_addr(add, n - 1, a)
 	return a
 	
+
+
+func _on_PageSelector_page_changed():
+	update_page_of_values()
