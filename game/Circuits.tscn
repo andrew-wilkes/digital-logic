@@ -39,13 +39,13 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 360.0
+margin_right = 286.0
 margin_bottom = 64.0
 page_id = 3
 
 [node name="Label" type="Label" parent="VBox/HBox"]
-margin_left = 380.0
-margin_right = 725.0
+margin_left = 306.0
+margin_right = 651.0
 margin_bottom = 64.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )

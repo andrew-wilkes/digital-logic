@@ -1,6 +1,6 @@
 extends MarginContainer
 
-onready var circuit = $VBox/HBox2/Circuit
+onready var circuit = $VBoxContent/HBoxActivityArea/Circuit
 
 var cid
 var hint_button
@@ -20,7 +20,7 @@ func _ready():
 	button.connect("mouse_entered", self, "button_change_state", [false])
 	button.connect("mouse_exited", self, "button_change_state", [true])
 	menu.connect("button_pressed", self, "process_buttons")
-	$VBox/HBox2/PartsPicker.connect("picked", circuit, "part_picked")
+	$VBoxContent/HBoxActivityArea/PartsPicker.connect("picked", circuit, "part_picked")
 	$c/AccessoryPicker.connect("item_selected", self, "accessory_picked")
 	$c/BlockPicker.connect("item_selected", self, "block_picked")
 	hint_button = find_node("Hint")

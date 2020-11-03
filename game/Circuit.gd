@@ -593,7 +593,7 @@ func draw_grid():
 	# Get a rect_size aligning to grid cells so that we have solid edges
 	var r = (rect_size / g.GRID_SIZE).ceil() 
 	var rect = (r - Vector2(1, 1)) * g.GRID_SIZE
-	var c: Color = ProjectSettings.get_setting("rendering/environment/default_clear_color").darkened(0.1)
+	var c: Color = ProjectSettings.get_setting("rendering/environment/default_clear_color").lightened(0.1)
 	var x = 0
 	for i in r.x:
 		draw_line(Vector2(x, 0), Vector2(x, rect.y), c, 1.0)

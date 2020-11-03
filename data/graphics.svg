@@ -13,10 +13,46 @@
    viewBox="0 0 793.70079 1122.5197"
    version="1.1"
    id="svg3735"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="graphics.svg">
   <defs
      id="defs3729">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3106">
+      <stop
+         style="stop-color:#009de0;stop-opacity:1"
+         offset="0"
+         id="stop3102" />
+      <stop
+         style="stop-color:#e7e7e7;stop-opacity:1"
+         offset="1"
+         id="stop3104" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2978">
+      <stop
+         style="stop-color:#009de0;stop-opacity:1"
+         offset="0"
+         id="stop2974" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop2976" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2972">
+      <stop
+         style="stop-color:#009de0;stop-opacity:1"
+         offset="0"
+         id="stop2968" />
+      <stop
+         style="stop-color:#e6e6e6;stop-opacity:1"
+         offset="1"
+         id="stop2970" />
+    </linearGradient>
     <linearGradient
        inkscape:collect="always"
        id="linearGradient1234">
@@ -30,18 +66,6 @@
          id="stop1232" />
     </linearGradient>
     <linearGradient
-       id="linearGradient1688"
-       inkscape:collect="always">
-      <stop
-         id="stop1684"
-         offset="0"
-         style="stop-color:#4ecaff;stop-opacity:1" />
-      <stop
-         id="stop1686"
-         offset="1"
-         style="stop-color:#fcfeff;stop-opacity:0" />
-    </linearGradient>
-    <linearGradient
        inkscape:collect="always"
        id="linearGradient1306">
       <stop
@@ -49,7 +73,7 @@
          offset="0"
          id="stop1302" />
       <stop
-         style="stop-color:#ffffff;stop-opacity:0"
+         style="stop-color:#ffffff;stop-opacity:1"
          offset="1"
          id="stop1304" />
     </linearGradient>
@@ -173,18 +197,8 @@
        y2="532.51965"
        gradientUnits="userSpaceOnUse" />
     <linearGradient
-       gradientTransform="matrix(0.30769231,0,0,1.0000003,-903.07705,529.9998)"
        inkscape:collect="always"
-       xlink:href="#linearGradient1306"
-       id="linearGradient1549-3-3-8-3-2-8"
-       x1="-865"
-       y1="472.51965"
-       x2="-865"
-       y2="532.51965"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient987"
+       xlink:href="#linearGradient3106"
        id="linearGradient1300"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.30769231,0,0,1.0000003,-903.07706,770.00003)"
@@ -195,7 +209,7 @@
     <linearGradient
        gradientTransform="translate(-595.00009,530.00001)"
        inkscape:collect="always"
-       xlink:href="#linearGradient1688"
+       xlink:href="#linearGradient2978"
        id="linearGradient1549-88-9"
        x1="-865"
        y1="472.51965"
@@ -205,7 +219,7 @@
     <linearGradient
        gradientTransform="translate(-895.00019,529.9999)"
        inkscape:collect="always"
-       xlink:href="#linearGradient1547"
+       xlink:href="#linearGradient2972"
        id="linearGradient1549-88-9-0"
        x1="-865"
        y1="472.51965"
@@ -214,7 +228,7 @@
        gradientUnits="userSpaceOnUse" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient1547"
+       xlink:href="#linearGradient2972"
        id="linearGradient1693"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-895.00023,649.99978)"
@@ -224,7 +238,7 @@
        y2="532.51965" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient1547"
+       xlink:href="#linearGradient2972"
        id="linearGradient1697"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-895.00027,769.99978)"
@@ -234,7 +248,7 @@
        y2="532.51965" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient1547"
+       xlink:href="#linearGradient2972"
        id="linearGradient1701"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-895.00031,889.99979)"
@@ -244,7 +258,7 @@
        y2="532.51965" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient1688"
+       xlink:href="#linearGradient2978"
        id="linearGradient1705"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-595.00012,649.99989)"
@@ -254,7 +268,7 @@
        y2="532.51965" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient1688"
+       xlink:href="#linearGradient2978"
        id="linearGradient1709"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-595.00015,769.99989)"
@@ -264,7 +278,7 @@
        y2="532.51965" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient1688"
+       xlink:href="#linearGradient2978"
        id="linearGradient1713"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-595.00018,889.9999)"
@@ -322,6 +336,286 @@
        id="linearGradient1549-3"
        xlink:href="#linearGradient1234"
        inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient2980"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.30769231,0,0,1.0000003,-903.07705,529.9998)"
+       x1="-865"
+       y1="472.51965"
+       x2="-865"
+       y2="532.51965" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient2988"
+       x1="-1200.649"
+       y1="1032.5197"
+       x2="-1139.351"
+       y2="1032.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient2996"
+       x1="-1080.649"
+       y1="1032.5197"
+       x2="-1019.351"
+       y2="1032.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient3004"
+       x1="-960.64905"
+       y1="1032.5197"
+       x2="-899.35101"
+       y2="1032.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient3012"
+       x1="-840.64905"
+       y1="1032.5197"
+       x2="-779.35101"
+       y2="1032.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient3020"
+       x1="-840.64905"
+       y1="1032.5197"
+       x2="-779.35101"
+       y2="1032.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient3028"
+       x1="-840.64905"
+       y1="1032.5197"
+       x2="-779.35101"
+       y2="1032.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient3036"
+       x1="-840.64899"
+       y1="1152.5197"
+       x2="-779.35101"
+       y2="1152.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient3044"
+       x1="-960.64905"
+       y1="1152.5197"
+       x2="-899.35101"
+       y2="1152.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient3052"
+       x1="-1080.649"
+       y1="1152.5197"
+       x2="-1019.351"
+       y2="1152.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient3060"
+       x1="-1200.649"
+       y1="1152.5197"
+       x2="-1139.351"
+       y2="1152.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient3068"
+       x1="-1200.649"
+       y1="1032.5197"
+       x2="-1139.351"
+       y2="1032.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient3076"
+       x1="-1200.649"
+       y1="1032.5197"
+       x2="-1139.351"
+       y2="1032.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1306"
+       id="linearGradient3084"
+       x1="-1200.599"
+       y1="1272.5199"
+       x2="-1139.401"
+       y2="1272.5199"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3092"
+       x1="-1200.599"
+       y1="1272.5199"
+       x2="-1139.401"
+       y2="1272.5199"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3110"
+       gradientUnits="userSpaceOnUse"
+       x1="-1200.649"
+       y1="1032.5197"
+       x2="-1139.351"
+       y2="1032.5197" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3118"
+       x1="-840.59906"
+       y1="1272.5197"
+       x2="-779.40112"
+       y2="1272.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3126"
+       x1="-840.59906"
+       y1="1272.5197"
+       x2="-779.40112"
+       y2="1272.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3134"
+       x1="-840.59906"
+       y1="1272.5197"
+       x2="-779.40112"
+       y2="1272.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3150"
+       x1="-960.59906"
+       y1="1272.5197"
+       x2="-899.40106"
+       y2="1272.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3158"
+       x1="-960.59906"
+       y1="1392.5198"
+       x2="-899.40112"
+       y2="1392.5198"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3162"
+       x1="-840.59912"
+       y1="1392.5197"
+       x2="-779.40112"
+       y2="1392.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3170"
+       x1="-960.599"
+       y1="1476"
+       x2="-899.401"
+       y2="1476"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3178"
+       x1="-1080.5991"
+       y1="1392.5197"
+       x2="-1019.4011"
+       y2="1392.5197"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3186"
+       x1="-1080.599"
+       y1="1476"
+       x2="-1019.401"
+       y2="1476"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3194"
+       x1="-1200.599"
+       y1="1392.5198"
+       x2="-1139.401"
+       y2="1392.5198"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3202"
+       x1="-1200.599"
+       y1="1476"
+       x2="-1139.401"
+       y2="1476"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3210"
+       x1="-1200.599"
+       y1="1272.5199"
+       x2="-1139.401"
+       y2="1272.5199"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3218"
+       x1="-1080.599"
+       y1="1272.5198"
+       x2="-1019.401"
+       y2="1272.5198"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3226"
+       x1="-1200.599"
+       y1="1272.5199"
+       x2="-1139.401"
+       y2="1272.5199"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3106"
+       id="linearGradient3234"
+       x1="-1200.599"
+       y1="1272.5199"
+       x2="-1139.401"
+       y2="1272.5199"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      inkscape:guide-bbox="true"
@@ -332,11 +626,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.6824445"
-     inkscape:cx="-360.92541"
-     inkscape:cy="1010.8728"
+     inkscape:zoom="3.8604891"
+     inkscape:cx="-1350.3362"
+     inkscape:cy="890.91138"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer1"
      showgrid="true"
      showborder="false"
      inkscape:window-width="1920"
@@ -350,8 +644,8 @@
        type="xygrid"
        id="grid3737"
        empspacing="12"
-       spacingx="10"
-       spacingy="10" />
+       spacingx="5.0000001"
+       spacingy="5.0000001" />
   </sodipodi:namedview>
   <metadata
      id="metadata3732">
@@ -361,7 +655,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -444,7 +738,7 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <rect
-       style="display:inline;fill:url(#linearGradient1549-3-3-8-3-2-8);fill-opacity:1;stroke:#32afef;stroke-width:1.298;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;fill:url(#linearGradient2980);fill-opacity:1;stroke:#32afef;stroke-width:1.298;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1541-5-2-2-5-9-1"
        width="59.999992"
        height="60.000031"
@@ -470,7 +764,8 @@
        height="100%"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/load-l.png"
        inkscape:export-xdpi="100.23165"
-       inkscape:export-ydpi="100.23165" />
+       inkscape:export-ydpi="100.23165"
+       style="fill:url(#linearGradient2988);fill-opacity:1" />
     <use
        x="0"
        y="0"
@@ -481,7 +776,8 @@
        height="100%"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/play-l.png"
        inkscape:export-xdpi="100.23165"
-       inkscape:export-ydpi="100.23165" />
+       inkscape:export-ydpi="100.23165"
+       style="fill:url(#linearGradient2996);fill-opacity:1" />
     <use
        x="0"
        y="0"
@@ -492,7 +788,8 @@
        height="100%"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/library-l.png"
        inkscape:export-xdpi="100.39539"
-       inkscape:export-ydpi="100.39539" />
+       inkscape:export-ydpi="100.39539"
+       style="fill:url(#linearGradient3004);fill-opacity:1" />
     <use
        x="0"
        y="0"
@@ -503,7 +800,8 @@
        height="100%"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/help-l.png"
        inkscape:export-xdpi="100.39539"
-       inkscape:export-ydpi="100.39539" />
+       inkscape:export-ydpi="100.39539"
+       style="fill:url(#linearGradient3012);fill-opacity:1" />
     <use
        x="0"
        y="0"
@@ -514,7 +812,8 @@
        height="100%"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/home-l.png"
        inkscape:export-xdpi="100.39536"
-       inkscape:export-ydpi="100.39536" />
+       inkscape:export-ydpi="100.39536"
+       style="fill:url(#linearGradient3068);fill-opacity:1" />
     <use
        x="0"
        y="0"
@@ -525,7 +824,8 @@
        height="100%"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/numbers-l.png"
        inkscape:export-xdpi="100.23161"
-       inkscape:export-ydpi="100.23161" />
+       inkscape:export-ydpi="100.23161"
+       style="fill:url(#linearGradient3060);fill-opacity:1" />
     <use
        x="0"
        y="0"
@@ -536,7 +836,8 @@
        height="100%"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/gates-l.png"
        inkscape:export-xdpi="100.23161"
-       inkscape:export-ydpi="100.23161" />
+       inkscape:export-ydpi="100.23161"
+       style="fill:url(#linearGradient3052);fill-opacity:1" />
     <use
        x="0"
        y="0"
@@ -547,7 +848,8 @@
        height="100%"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/circuits-l.png"
        inkscape:export-xdpi="100.39539"
-       inkscape:export-ydpi="100.39539" />
+       inkscape:export-ydpi="100.39539"
+       style="fill:url(#linearGradient3044);fill-opacity:1" />
     <use
        x="0"
        y="0"
@@ -558,17 +860,18 @@
        height="100%"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/systems-l.png"
        inkscape:export-xdpi="100.39539"
-       inkscape:export-ydpi="100.39539" />
+       inkscape:export-ydpi="100.39539"
+       style="fill:url(#linearGradient3036);fill-opacity:1" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="-1202.0172"
-       y="983.53186"
+       x="-1164.7051"
+       y="950.33649"
        id="text1029"><tspan
          sodipodi:role="line"
          id="tspan1027"
-         x="-1202.0172"
-         y="983.53186">These button backgrounds are clones</tspan></text>
+         x="-1164.7051"
+         y="950.33649">These button backgrounds are clones</tspan></text>
     <rect
        style="display:inline;fill:url(#linearGradient1300);fill-opacity:1;stroke:#32afef;stroke-width:1.198;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1541-5-2-2-5-9-1-3"
@@ -587,7 +890,7 @@
        inkscape:tile-x0="-1200.649"
        inkscape:tile-y0="1001.8707" />
     <use
-       style="display:inline"
+       style="display:inline;fill:url(#linearGradient3210);fill-opacity:1"
        x="0"
        y="0"
        xlink:href="#rect1541-5-2-2-5-9-1-3"
@@ -599,7 +902,7 @@
        inkscape:export-xdpi="100.23165"
        inkscape:export-ydpi="100.23165" />
     <use
-       style="display:inline"
+       style="display:inline;fill:url(#linearGradient3218);fill-opacity:1"
        x="0"
        y="0"
        xlink:href="#use1009-3"
@@ -611,7 +914,7 @@
        inkscape:export-xdpi="100.23165"
        inkscape:export-ydpi="100.23165" />
     <use
-       style="display:inline"
+       style="display:inline;fill:url(#linearGradient3150);fill-opacity:1"
        x="0"
        y="0"
        xlink:href="#use1011-3"
@@ -623,7 +926,7 @@
        inkscape:export-xdpi="100.39539"
        inkscape:export-ydpi="100.39539" />
     <use
-       style="display:inline"
+       style="display:inline;fill:url(#linearGradient3134);fill-opacity:1"
        x="0"
        y="0"
        xlink:href="#use1013-8"
@@ -635,7 +938,7 @@
        inkscape:export-xdpi="100.39539"
        inkscape:export-ydpi="100.39539" />
     <use
-       style="display:inline"
+       style="display:inline;fill:url(#linearGradient3226);fill-opacity:1"
        x="0"
        y="0"
        xlink:href="#rect1541-5-2-2-5-9-1-3"
@@ -647,7 +950,7 @@
        inkscape:export-xdpi="100.39536"
        inkscape:export-ydpi="100.39536" />
     <use
-       style="display:inline"
+       style="display:inline;fill:url(#linearGradient3194);fill-opacity:1"
        x="0"
        y="0"
        xlink:href="#use1017-0"
@@ -659,7 +962,7 @@
        inkscape:export-xdpi="100.39539"
        inkscape:export-ydpi="100.39539" />
     <use
-       style="display:inline"
+       style="display:inline;fill:url(#linearGradient3178);fill-opacity:1"
        x="0"
        y="0"
        xlink:href="#use1019-4"
@@ -671,7 +974,7 @@
        inkscape:export-xdpi="100.39539"
        inkscape:export-ydpi="100.39539" />
     <use
-       style="display:inline"
+       style="display:inline;fill:url(#linearGradient3158);fill-opacity:1"
        x="0"
        y="0"
        xlink:href="#use1021-8"
@@ -683,7 +986,7 @@
        inkscape:export-xdpi="100.39539"
        inkscape:export-ydpi="100.39539" />
     <use
-       style="display:inline"
+       style="display:inline;fill:url(#linearGradient3162);fill-opacity:1"
        x="0"
        y="0"
        xlink:href="#use1023-8"
@@ -930,7 +1233,8 @@
        height="100%"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/access.png"
        inkscape:export-xdpi="100.23165"
-       inkscape:export-ydpi="100.23165" />
+       inkscape:export-ydpi="100.23165"
+       style="fill:url(#linearGradient3110);fill-opacity:1" />
     <g
        id="g1330"
        transform="translate(391.47871,-482.02281)"
@@ -994,7 +1298,8 @@
        height="100%"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/access-l.png"
        inkscape:export-xdpi="100.23165"
-       inkscape:export-ydpi="100.23165" />
+       inkscape:export-ydpi="100.23165"
+       style="fill:url(#linearGradient3084);fill-opacity:1" />
     <g
        transform="translate(391.47871,-242.02274)"
        id="g1330-0"
@@ -1060,7 +1365,7 @@
        xlink:href="#rect1541-5-2-2-5-9-1-3"
        y="0"
        x="0"
-       style="display:inline" />
+       style="display:inline;fill:url(#linearGradient3234);fill-opacity:1" />
     <use
        inkscape:export-ydpi="100.39539"
        inkscape:export-xdpi="100.39539"
@@ -1072,7 +1377,7 @@
        xlink:href="#use1017-0-7"
        y="0"
        x="0"
-       style="display:inline" />
+       style="display:inline;fill:url(#linearGradient3202);fill-opacity:1" />
     <use
        inkscape:export-ydpi="100.39539"
        inkscape:export-xdpi="100.39539"
@@ -1084,7 +1389,7 @@
        xlink:href="#use1019-4-4"
        y="0"
        x="0"
-       style="display:inline" />
+       style="display:inline;fill:url(#linearGradient3186);fill-opacity:1" />
     <use
        inkscape:export-ydpi="100.39539"
        inkscape:export-xdpi="100.39539"
@@ -1096,7 +1401,7 @@
        xlink:href="#use1021-8-5"
        y="0"
        x="0"
-       style="display:inline" />
+       style="display:inline;fill:url(#linearGradient3170);fill-opacity:1" />
     <use
        inkscape:export-ydpi="100.39539"
        inkscape:export-xdpi="100.39539"
@@ -1120,7 +1425,7 @@
        xlink:href="#use1013"
        y="0"
        x="0"
-       style="display:inline" />
+       style="display:inline;fill:url(#linearGradient3020);fill-opacity:1" />
     <use
        inkscape:export-ydpi="100.39539"
        inkscape:export-xdpi="100.39539"
@@ -1132,9 +1437,9 @@
        xlink:href="#use1013-8"
        y="0"
        x="0"
-       style="display:inline" />
+       style="display:inline;fill:url(#linearGradient3118);fill-opacity:1" />
     <use
-       style="display:inline"
+       style="display:inline;fill:url(#linearGradient3126);fill-opacity:1"
        x="0"
        y="0"
        xlink:href="#use1013-8"
@@ -1146,7 +1451,7 @@
        inkscape:export-xdpi="100.39539"
        inkscape:export-ydpi="100.39539" />
     <use
-       style="display:inline"
+       style="display:inline;fill:url(#linearGradient3028);fill-opacity:1"
        x="0"
        y="0"
        xlink:href="#use1013"
@@ -1234,10 +1539,10 @@
          sodipodi:role="line"
          style="stroke-width:0.404083">S</tspan></text>
     <use
-       style="display:inline"
+       style="display:inline;fill:url(#linearGradient3076);fill-opacity:1"
        inkscape:export-ydpi="100.23165"
        inkscape:export-xdpi="100.23165"
-       inkscape:export-filename="/home/andrew/Dev/godot/github/andrew-wilkes/digital-logic/game/assets/block-l.png"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/block-l.png"
        height="100%"
        width="100%"
        transform="translate(780,-2.5197754)"
@@ -1246,10 +1551,10 @@
        y="0"
        x="0" />
     <use
-       style="display:inline"
+       style="display:inline;fill:url(#linearGradient3092);fill-opacity:1"
        inkscape:export-ydpi="100.39544"
        inkscape:export-xdpi="100.39544"
-       inkscape:export-filename="/home/andrew/Dev/godot/github/andrew-wilkes/digital-logic/game/assets/block.png"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/block.png"
        height="100%"
        width="100%"
        transform="translate(780,-2.5198975)"
@@ -2535,7 +2840,7 @@
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/blocks.png"
        id="path2631"
        d="M 20,820 H 0"
-       style="fill:none;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" />
+       style="fill:none;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <text
        id="text2295-4-4-2-31-7-67-10-8-8"
        y="826.48956"
@@ -2752,7 +3057,7 @@
          style="text-align:end;text-anchor:end;stroke-width:0.404083"
          sodipodi:role="line"
          id="tspan2627-7-2-1-9"
-         x="-55.342316"
+         x="-55.342319"
          y="1141.813">LOGIC PROBE</tspan></text>
     <text
        id="text2629-6-6-1"
@@ -2819,9 +3124,9 @@
        height="8"
        width="8"
        id="rect1473"
-       style="fill:#2f53ff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1" />
+       style="fill:#2f53ff;fill-opacity:1;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" />
     <rect
-       style="display:inline;fill:#c6d0ff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
+       style="display:inline;fill:#c6d0ff;fill-opacity:1;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
        id="rect1473-3"
        width="8"
        height="8"
@@ -2831,7 +3136,7 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <rect
-       style="display:inline;fill:#8fa3ff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
+       style="display:inline;fill:#8fa3ff;fill-opacity:1;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
        id="rect1473-6"
        width="8"
        height="8"
@@ -2909,7 +3214,7 @@
          y="1011.813">RIPPLE</tspan><tspan
          style="text-align:center;text-anchor:middle;stroke-width:0.404083"
          sodipodi:role="line"
-         x="19.779016"
+         x="19.779018"
          y="1032.0171"
          id="tspan1557">COUNTER</tspan></text>
     <text
@@ -4517,7 +4822,10 @@
     </g>
     <g
        id="g1442"
-       transform="translate(-302.122,-227.54482)">
+       transform="translate(-302.122,-227.54482)"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/circuits-l.png"
+       inkscape:export-xdpi="100.39539"
+       inkscape:export-ydpi="100.39539">
       <g
          inkscape:export-ydpi="96"
          inkscape:export-xdpi="96"
@@ -4576,15 +4884,15 @@
        height="30.000002"
        x="-705"
        y="1137.5197"
-       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96" />
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/systems-l.png"
+       inkscape:export-xdpi="100.39539"
+       inkscape:export-ydpi="100.39539" />
     <path
        style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m -1180,1012.5197 h 20 v 25 h 10 l -20,15 -20,-15 h 10 z"
        id="path5463"
        inkscape:connector-curvature="0"
-       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/save.png"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/save-l.png"
        inkscape:export-xdpi="100.23165"
        inkscape:export-ydpi="100.23165" />
     <path
@@ -4592,7 +4900,7 @@
        d="m -1060,1052.5197 h 20 v -25 h 10 l -20,-15.0001 -20,15.0001 h 10 z"
        id="path5463-1"
        inkscape:connector-curvature="0"
-       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/load.png"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/load-l.png"
        inkscape:export-xdpi="100.23165"
        inkscape:export-ydpi="100.23165" />
     <path
@@ -4600,12 +4908,15 @@
        d="m -950.00002,1042.5197 v -20 h 25 v -10.0001 l 15,20.0001 -15,20 v -10 z"
        id="path5463-3"
        inkscape:connector-curvature="0"
-       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/play.png"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/play-l.png"
        inkscape:export-xdpi="100.23165"
        inkscape:export-ydpi="100.23165" />
     <g
        id="g1312"
-       transform="translate(-125.00001,180)">
+       transform="translate(-125.00001,180)"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/library-l.png"
+       inkscape:export-xdpi="100.39539"
+       inkscape:export-ydpi="100.39539">
       <path
          inkscape:export-ydpi="100.23165"
          inkscape:export-xdpi="100.23165"
@@ -4645,9 +4956,9 @@
        id="path5604"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cssc"
-       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/help.png"
-       inkscape:export-xdpi="100.23165"
-       inkscape:export-ydpi="100.23165" />
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/help-l.png"
+       inkscape:export-xdpi="100.39539"
+       inkscape:export-ydpi="100.39539" />
     <path
        style="display:inline;fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m -1180,1252.5197 h 20 v 25 h 10 l -20,15 -20,-15 h 10 z"
@@ -4675,7 +4986,10 @@
     <g
        style="display:inline"
        id="g1312-8"
-       transform="translate(-125.00005,419.99992)">
+       transform="translate(-125.00005,419.99992)"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/library.png"
+       inkscape:export-xdpi="100.39539"
+       inkscape:export-ydpi="100.39539">
       <path
          inkscape:export-ydpi="100.23165"
          inkscape:export-xdpi="100.23165"
@@ -4716,8 +5030,8 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cssc"
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/help.png"
-       inkscape:export-xdpi="100.23165"
-       inkscape:export-ydpi="100.23165" />
+       inkscape:export-xdpi="100.39539"
+       inkscape:export-ydpi="100.39539" />
     <path
        style="display:inline;fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m -1185,1412.6029 v -25 h -10 l 25,-15 25,15 h -10 v 25 h -10 v -10 h -10 v 10 z"
@@ -4770,7 +5084,10 @@
     <g
        style="display:inline"
        id="g1442-6"
-       transform="translate(-302.12208,12.455274)">
+       transform="translate(-302.12208,12.455274)"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/circuits.png"
+       inkscape:export-xdpi="100.39539"
+       inkscape:export-ydpi="100.39539">
       <g
          inkscape:export-ydpi="96"
          inkscape:export-xdpi="96"
@@ -4829,9 +5146,9 @@
        height="30.000002"
        x="-705.00018"
        y="1377.5197"
-       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/buttons.png"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96" />
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/systems.png"
+       inkscape:export-xdpi="100.39539"
+       inkscape:export-ydpi="100.39539" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:37.2258px;line-height:1.25;font-family:'Droid Sans Mono';-inkscape-font-specification:'Droid Sans Mono';letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.930645"
@@ -5583,7 +5900,7 @@
     <g
        inkscape:export-ydpi="100.23165"
        inkscape:export-xdpi="100.23165"
-       inkscape:export-filename="/home/andrew/Dev/godot/github/andrew-wilkes/digital-logic/game/assets/block-l.png"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/block-l.png"
        transform="matrix(0.37500004,0,0,0.37500004,-281.24999,647.49991)"
        id="g1319"
        style="display:inline">
@@ -5763,5 +6080,94 @@
        inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/arrow-down.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
+    <image
+       sodipodi:absref="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/delete.png"
+       xlink:href="../game/assets/delete.png"
+       y="912"
+       x="-1248"
+       id="image1725"
+       preserveAspectRatio="none"
+       height="48"
+       width="48" />
+    <g
+       id="g1799"
+       transform="matrix(0.25670505,0,0,0.25670505,-972.01138,708.56317)"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/bin.png"
+       inkscape:export-xdpi="100.23165"
+       inkscape:export-ydpi="100.23165"
+       style="fill:#666666;fill-opacity:1">
+      <path
+         style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m -1420,960 c 10,0 40,0 60,0 10,0 20,-10 20,-20 V 840 h -100 v 100 c 0,0 0,20 20,20 z"
+         id="path1729"
+         sodipodi:nodetypes="ccccccc" />
+      <path
+         style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m -1440,835.00002 h 100 v -10 h -30 l -10,-10 h -20 l -10,10 h -30 z"
+         id="path1731" />
+    </g>
+    <g
+       id="g1799-3"
+       transform="matrix(0.25670505,0,0,0.25670505,-1026.0153,709.36778)"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/bin-h.png"
+       inkscape:export-xdpi="100.23165"
+       inkscape:export-ydpi="100.23165"
+       style="display:inline;fill:#808080;fill-opacity:1">
+      <path
+         style="fill:#808080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m -1420,960 c 10,0 40,0 60,0 10,0 20,-10 20,-20 V 840 h -100 v 100 c 0,0 0,20 20,20 z"
+         id="path1729-6"
+         sodipodi:nodetypes="ccccccc" />
+      <path
+         style="fill:#808080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m -1440,835.00002 h 100 v -10 h -30 l -10,-10 h -20 l -10,10 h -30 z"
+         id="path1731-7" />
+    </g>
+    <path
+       style="fill:#808080;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       d="m -2820.0001,1140 v 60 h 60 l 180,-180 -60,-59.99998 z"
+       id="path1826"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:#808080;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       d="m -2630.0001,950.00002 60,59.99998 15,-14.99998 c 0,0 -3.8196,-33.81966 -15,-45 -11.1803,-11.18034 -45,-15 -45,-15 z"
+       id="path1828"
+       sodipodi:nodetypes="cccscc" />
+    <g
+       id="g1850"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/pencil-h.png"
+       inkscape:export-xdpi="100.23165"
+       inkscape:export-ydpi="100.23165"
+       style="fill:#808080;fill-opacity:1"
+       transform="translate(56.438173,-47.703822)">
+      <path
+         style="display:inline;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.134567px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m -1450.6603,946.92598 v 8.07404 h 8.0739 l 24.2222,-24.22213 -8.074,-8.07405 z"
+         id="path1826-5"
+         sodipodi:nodetypes="cccccc" />
+      <path
+         style="display:inline;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.134567px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m -1425.0926,921.35816 8.0741,8.07404 2.0185,-2.0185 c 0,0 -0.5139,-4.55102 -2.0185,-6.05554 -1.5044,-1.5045 -6.0555,-2.01851 -6.0555,-2.01851 z"
+         id="path1828-3"
+         sodipodi:nodetypes="cccscc" />
+    </g>
+    <g
+       id="g1850-5"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/pencil.png"
+       inkscape:export-xdpi="100.23165"
+       inkscape:export-ydpi="100.23165"
+       style="display:inline;fill:#666666;fill-opacity:1"
+       transform="translate(111.43817,-47.703822)">
+      <path
+         style="display:inline;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.134567px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m -1450.6603,946.92598 v 8.07404 h 8.0739 l 24.2222,-24.22213 -8.074,-8.07405 z"
+         id="path1826-5-6"
+         sodipodi:nodetypes="cccccc" />
+      <path
+         style="display:inline;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.134567px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m -1425.0926,921.35816 8.0741,8.07404 2.0185,-2.0185 c 0,0 -0.5139,-4.55102 -2.0185,-6.05554 -1.5044,-1.5045 -6.0555,-2.01851 -6.0555,-2.01851 z"
+         id="path1828-3-2"
+         sodipodi:nodetypes="cccscc" />
+    </g>
   </g>
 </svg>
