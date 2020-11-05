@@ -18,10 +18,10 @@ __meta__ = {
 }
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 480.0
-margin_top = 200.0
-margin_right = 800.0
-margin_bottom = 600.0
+margin_left = 800.0
+margin_top = 258.0
+margin_right = 1120.0
+margin_bottom = 822.0
 custom_constants/separation = 50
 
 [node name="Label" type="Label" parent="VBox"]
@@ -64,6 +64,19 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture_normal = ExtResource( 4 )
 texture_hover = ExtResource( 8 )
+
+[node name="Info" type="Label" parent="VBox"]
+margin_top = 450.0
+margin_right = 320.0
+margin_bottom = 464.0
+
+[node name="Button" type="Button" parent="VBox"]
+margin_top = 514.0
+margin_right = 320.0
+margin_bottom = 564.0
+rect_min_size = Vector2( 0, 50 )
+text = "Change Size"
 [connection signal="button_down" from="VBox/Numbers" to="." method="_on_Numbers_button_down"]
 [connection signal="button_down" from="VBox/Gates" to="." method="_on_Gates_button_down"]
 [connection signal="button_down" from="VBox/Circuits" to="." method="_on_Circuits_button_down"]
+[connection signal="button_down" from="VBox/Button" to="." method="_on_Button_button_down"]
