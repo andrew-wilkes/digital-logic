@@ -1,4 +1,4 @@
-extends CenterContainer
+extends Control
 
 var wsize
 
@@ -25,11 +25,11 @@ func _on_Projects_button_down():
 
 func size_changed():
 	wsize = get_viewport_rect().size
-	$VBox/Info.text = "Panel size: %d %d" % [wsize.x, wsize.y]
-	
+	#var font_size = 50
+	#if wsize.x < 720 or wsize.y < 900:
+	#font_size *= 2
+	#	$VBox.rect_scale = Vector2(0.5, 0.5)
+	#$VBox/Title.get_font("font").size = font_size
+	$VBox/Info.text = "%d x %d" % [wsize.x, wsize.y]
 	# iPhone 5 320 x 568
 	# iPhone 6/6S iPhone 6/6S
-
-
-func _on_Button_button_down():
-	OS.set_window_size(wsize * 0.8)

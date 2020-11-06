@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/title_font.tres" type="DynamicFont" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://assets/numbers-m-l.png" type="Texture" id=6]
 [ext_resource path="res://assets/gates-m.png" type="Texture" id=7]
 [ext_resource path="res://assets/circuits-m-l.png" type="Texture" id=8]
+[ext_resource path="res://assets/fonts/m_font_regular.tres" type="DynamicFont" id=9]
 
-[node name="Main" type="CenterContainer"]
+[node name="Main" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -17,26 +18,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Spacer1" type="Control" parent="."]
+margin_right = 647.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 800.0
-margin_top = 258.0
-margin_right = 1120.0
-margin_bottom = 822.0
+margin_left = 651.0
+margin_right = 1268.0
+margin_bottom = 1080.0
 custom_constants/separation = 50
 
-[node name="Label" type="Label" parent="VBox"]
-margin_right = 320.0
-margin_bottom = 64.0
+[node name="Title" type="Label" parent="VBox"]
+margin_right = 617.0
+margin_bottom = 121.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Digital Logic"
 align = 1
 
 [node name="Numbers" type="TextureButton" parent="VBox"]
-margin_left = 61.0
-margin_top = 114.0
-margin_right = 258.0
-margin_bottom = 176.0
+margin_left = 8.0
+margin_top = 171.0
+margin_right = 609.0
+margin_bottom = 361.0
 hint_tooltip = "Numbers"
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -44,10 +49,10 @@ texture_normal = ExtResource( 3 )
 texture_hover = ExtResource( 6 )
 
 [node name="Gates" type="TextureButton" parent="VBox"]
-margin_left = 61.0
-margin_top = 226.0
-margin_right = 258.0
-margin_bottom = 288.0
+margin_left = 8.0
+margin_top = 411.0
+margin_right = 609.0
+margin_bottom = 601.0
 hint_tooltip = "Gates"
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -55,10 +60,10 @@ texture_normal = ExtResource( 7 )
 texture_hover = ExtResource( 5 )
 
 [node name="Circuits" type="TextureButton" parent="VBox"]
-margin_left = 61.0
-margin_top = 338.0
-margin_right = 258.0
-margin_bottom = 400.0
+margin_left = 8.0
+margin_top = 651.0
+margin_right = 608.0
+margin_bottom = 841.0
 hint_tooltip = "Circuits"
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -66,17 +71,19 @@ texture_normal = ExtResource( 4 )
 texture_hover = ExtResource( 8 )
 
 [node name="Info" type="Label" parent="VBox"]
-margin_top = 450.0
-margin_right = 320.0
-margin_bottom = 464.0
+margin_top = 891.0
+margin_right = 617.0
+margin_bottom = 931.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "asdadf"
+align = 1
 
-[node name="Button" type="Button" parent="VBox"]
-margin_top = 514.0
-margin_right = 320.0
-margin_bottom = 564.0
-rect_min_size = Vector2( 0, 50 )
-text = "Change Size"
+[node name="Spacer2" type="Control" parent="."]
+margin_left = 1272.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
 [connection signal="button_down" from="VBox/Numbers" to="." method="_on_Numbers_button_down"]
 [connection signal="button_down" from="VBox/Gates" to="." method="_on_Gates_button_down"]
 [connection signal="button_down" from="VBox/Circuits" to="." method="_on_Circuits_button_down"]
-[connection signal="button_down" from="VBox/Button" to="." method="_on_Button_button_down"]
