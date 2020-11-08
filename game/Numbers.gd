@@ -1,93 +1,97 @@
 extends Control
 
-var number = 0
-var delta = 0
-var alert
-var counter
+var target
+var number
+var numbers
+var num_type
+var num_digits
+var dec
+var hbin
+var vtext
+var idx = 0
 var warning = false
+var alert
+
+enum { HEX, BIN }
 
 func _ready():
+	dec = find_node("dec")
+	hbin = find_node("hbin")
+	vtext = find_node("vtext")
 	alert = find_node("Alert")
-	alert.text = ""
-	counter = find_node("Counter")
-	set_number(0)
+	var data = g.load_file("res://numbers.tsv", false)
+	numbers = data.split("\n")
+	set_target()
+
+
+func set_target():
+	var data = numbers[idx].split("\t")
+	target = data[0]
+	dec.text = String(target)
+	if data[1] == "":
+		num_type = BIN
+		var b = data[2].replace(" ", "")
+		num_digits = len(b)
+		number = bin2dec(b)
+	else:
+		var h = data[1]
+		num_type = HEX
+		num_digits = len(h)
+		number = ("0x" + h).hex_to_int()
+	set_number(number)
 
 
 func set_number(n):
-	n %= 256
-	if n < 0:
-		n = 256 + n
-	set_binary(n)
-	set_hex(n)
-	set_unsigned_decimal(n)
-	set_signed_decimal(n)
+	if num_type == BIN:
+		hbin.text = dec2bin(n)
+		vtext.text = "Binary value:"
+	else:
+		var fmt = "%0*X"
+		hbin.text = fmt % [num_digits, n]
+		vtext.text = "Hexadecimal value:"
 	number = n
 
 
-func set_binary(n):
-	set_text(0, dec2bin(n))
-
-
-func set_hex(n):
-	set_text(1, "%02X" % n)
-
-
-func set_unsigned_decimal(n):
-	set_text(2, "%3d" % n)
-
-
-func set_signed_decimal(n):
-	if n > 127:
-		n = n - 256
-	set_text(3, "%4d" % n)
-
-
-func set_text(i, txt):
-	counter.get_child(i).get_child(1).text = txt
-
-
-func dec2bin(var decimal_value):
+func dec2bin(decimal_value):
 	var binary_string = "" 
 	var temp 
-	var count = 7 # Checking up to 8 bits 
+	var count = num_digits - 1 # Checking up to num_digits bits
+	var n = 0 # Space counter
 	while(count >= 0):
+		if n == 4:
+			n = 0
+			binary_string = binary_string + " "
 		temp = decimal_value >> count 
 		if(temp & 1):
 			binary_string = binary_string + "1"
 		else:
 			binary_string = binary_string + "0"
 		count -= 1
+		n += 1
 	return binary_string
 
 
+func bin2dec(binary_value):
+	var decimal_value = 0
+	var count = 0
+	var temp
+	while(binary_value != 0):
+		temp = binary_value % 10
+		binary_value /= 10
+		decimal_value += temp * pow(2, count)
+		count += 1
+	return decimal_value
+
+
 func _on_Up_button_down():
-	delta = 1
-	change_number()
-	$Timer.start(0.5)
-
-
-func _on_Up_button_up():
-	$Timer.stop()
-	delta = 0
+	change_number(1)
 
 
 func _on_Down_button_down():
-	delta = -1
-	change_number()
-	$Timer.start(0.5)
+	change_number(-1)
 
 
-func _on_Down_button_up():
-	$Timer.stop()
-	delta = 0
-
-
-func _on_Timer_timeout():
-	change_number()
-	$Timer.start(0.05)
-
-
-func change_number():
+func change_number(delta):
 	if warning:
 		return
 	if delta == 1:
@@ -111,11 +115,6 @@ func change_number():
 	set_number(number + delta)
 
 
-func _on_AlertTimer_timeout():
-	alert.text = ""
-	warning = false
-
-
 func _on_ShiftLeft_button_down():
 	set_number(number << 1)
 
@@ -126,3 +125,8 @@ func _on_ShiftRight_button_down():
 
 func _on_Invert_button_down():
 	set_number(~number)
+
+
+func _on_Timer_timeout():
+	alert.text = ""
+	warning = false

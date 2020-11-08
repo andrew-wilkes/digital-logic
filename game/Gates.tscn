@@ -12,27 +12,22 @@
 [ext_resource path="res://panels/TextPanel.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Gates.gd" type="Script" id=11]
 
-[node name="Gates" type="Control"]
+[node name="Gates" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Buttons" parent="." instance=ExtResource( 1 )]
-page_id = 2
+[node name="Sp1" type="Control" parent="."]
+margin_right = 416.0
+margin_bottom = 1920.0
+size_flags_horizontal = 3
 
 [node name="VBox" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -774.0
-margin_top = -332.0
-margin_right = -314.0
-margin_bottom = 305.0
+margin_left = 420.0
+margin_right = 1500.0
+margin_bottom = 1920.0
+rect_min_size = Vector2( 1080, 0 )
 mouse_filter = 2
 custom_constants/separation = 20
 script = ExtResource( 2 )
@@ -40,9 +35,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="VBox"]
-margin_right = 460.0
-margin_bottom = 64.0
+[node name="Title" type="Label" parent="VBox"]
+margin_right = 1080.0
+margin_bottom = 121.0
 rect_min_size = Vector2( 460, 0 )
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -51,15 +46,17 @@ align = 1
 
 [node name="TextPanel" parent="VBox" instance=ExtResource( 10 )]
 visible = true
-margin_right = 460.0
+margin_top = 141.0
+margin_right = 1080.0
+margin_bottom = 1340.0
 text = "The basic logic gates perform boolean operations on their inputs to produce an output. These operations are: AND, NAND, OR, NOR, XOR, and NOT.
 
 Click on the inputs to toggle the input values between 0 (blue) and 1 (red) to see the effect on the outputs."
 
 [node name="Parts" type="ColorRect" parent="VBox"]
-margin_top = 337.0
-margin_right = 460.0
-margin_bottom = 637.0
+margin_top = 1360.0
+margin_right = 1080.0
+margin_bottom = 1660.0
 rect_min_size = Vector2( 0, 300 )
 mouse_filter = 2
 color = Color( 0.105882, 0.698039, 0.698039, 1 )
@@ -106,3 +103,24 @@ highlight_pin = false
 highlight_part = false
 moveable = false
 wireable = false
+
+[node name="Buttons" parent="VBox" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 1680.0
+margin_right = 1080.0
+margin_bottom = 1880.0
+page_id = 2
+
+[node name="Sp2" type="Control" parent="VBox"]
+margin_top = 1900.0
+margin_right = 1080.0
+margin_bottom = 1920.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="Sp2" type="Control" parent="."]
+margin_left = 1504.0
+margin_right = 1920.0
+margin_bottom = 1920.0
+size_flags_horizontal = 3

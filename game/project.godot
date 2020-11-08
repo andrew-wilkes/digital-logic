@@ -46,6 +46,7 @@ _global_script_class_icons={
 
 config/name="Digital Logic"
 run/main_scene="res://Main.tscn"
+boot_splash/image="res://assets/circuits-l.png"
 
 [autoload]
 
@@ -60,8 +61,10 @@ gdscript/warnings/return_value_discarded=false
 [display]
 
 window/size/width=1920
-window/size/height=1080
+window/size/height=1920
+window/size/resizable=false
 window/handheld/orientation="sensor"
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [rendering]

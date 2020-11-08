@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends Control
 
 export(int) var page_id
 
@@ -8,7 +8,7 @@ func _ready():
 
 func disable_button(idx):
 	if idx >= 0:
-		get_child(idx).disabled = true
+		get_child(1 + 2 * idx).disabled = true
 
 
 func _on_Home_button_down():
