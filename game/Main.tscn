@@ -20,15 +20,15 @@ size_flags_horizontal = 3
 
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_left = 420.0
-margin_right = 1500.0
+margin_right = 1460.0
 margin_bottom = 1920.0
-rect_min_size = Vector2( 1080, 0 )
+rect_min_size = Vector2( 1040, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 3
 custom_constants/separation = 20
 
 [node name="Title" type="Label" parent="VBox"]
-margin_right = 1080.0
+margin_right = 1040.0
 margin_bottom = 121.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -37,13 +37,13 @@ align = 1
 
 [node name="Spacer" type="Control" parent="VBox"]
 margin_top = 141.0
-margin_right = 1080.0
+margin_right = 1040.0
 margin_bottom = 634.0
 size_flags_vertical = 3
 
 [node name="Info" type="Label" parent="VBox"]
 margin_top = 861.0
-margin_right = 1080.0
+margin_right = 1040.0
 margin_bottom = 939.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -53,7 +53,7 @@ align = 1
 
 [node name="Spacer2" type="Control" parent="VBox"]
 margin_top = 1167.0
-margin_right = 1080.0
+margin_right = 1040.0
 margin_bottom = 1660.0
 size_flags_vertical = 3
 
@@ -62,12 +62,12 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 1680.0
-margin_right = 1080.0
+margin_right = 1040.0
 margin_bottom = 1880.0
 
 [node name="Spacer3" type="Control" parent="VBox"]
 margin_top = 1900.0
-margin_right = 1080.0
+margin_right = 1040.0
 margin_bottom = 1920.0
 rect_min_size = Vector2( 0, 20 )
 

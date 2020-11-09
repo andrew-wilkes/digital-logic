@@ -42,7 +42,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 1910.0
-margin_bottom = 1070.0
+margin_bottom = 1910.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -180,14 +180,14 @@ margin_bottom = 368.0
 [node name="HBoxActivityArea" type="HBoxContainer" parent="VBoxContent"]
 margin_top = 372.0
 margin_right = 1900.0
-margin_bottom = 1060.0
+margin_bottom = 1900.0
 mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="PartsPicker" parent="VBoxContent/HBoxActivityArea" instance=ExtResource( 8 )]
 anchor_bottom = 0.0
 margin_right = 100.0
-margin_bottom = 688.0
+margin_bottom = 1528.0
 rect_min_size = Vector2( 100, 300 )
 
 [node name="Circuit" parent="VBoxContent/HBoxActivityArea" instance=ExtResource( 5 )]
@@ -195,7 +195,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 104.0
 margin_right = 1900.0
-margin_bottom = 688.0
+margin_bottom = 1528.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
