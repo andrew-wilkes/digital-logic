@@ -3,51 +3,169 @@ extends Control
 var target: int
 var number: int
 var numbers
+var num_digits = 1 # Number of bits
 var num_type
-var num_digits
-var dec
-var num
-var hbin
-var vtext
+var labels
+var values
+var desc
 var idx = 0
 var warning = false
 var alert
 var state
 var max_num: int
+var mode = 0
+var level = 0
+var dec = "Base 10 value"
 
-enum { HEX, BIN, PLAYING, CORRECT, NEXT, DONE }
+var mode_text = [
+	"Play with the buttons",
+	"Match the number",
+	"Match binary to hex"
+]
+
+# Number (target), hex, bin, base10 (number entered), not used
+enum { NUM, HEX, BIN, DEC, NULL }
+var op_maps = [[3, 1, 2, 0], [0, 1, 3, 0], [1, 2, 4, 0]]
+var label_text = ["Number:", "Hex:", "Binary:", "Base10:", ""]
+
+enum { PLAY, TRAIN, CHALLENGE } # Modes
+enum { PLAYING, CORRECT, NEXT, DONE } # States
+enum { PLUS, MINUS, LEFT, RIGHT, INVERT, ATIMEOUT, MODE, LEVEL, RESET, SAVE } # Events
 
 func _ready():
+	dec = ""
 	state = PLAYING
-	num = find_node("num")
-	dec = find_node("dec")
-	hbin = find_node("hbin")
-	vtext = find_node("vtext")
+	mode = PLAY
+	desc = find_node("Desc")
+	labels = find_node("Labels")
+	values = find_node("Values")
 	alert = find_node("Alert")
 	var data = g.load_file("res://numbers.tsv", false).strip_edges()
 	numbers = data.split("\n")
-	set_target()
+	set_mode()
 
 
-func set_target():
-	var data = numbers[idx].split("\t")
+func sm(event):
+	match event:
+		MODE:
+			mode += 1
+			mode %= 3
+			set_mode()
+		LEVEL:
+			level += 1
+			level %= 4
+			if level < 3:
+				set_level(level)
+			else:
+				set_level(4 - level)
+	match mode:
+		PLAY:
+			play_sm(event)
+		TRAIN:
+			train_sm(event)
+		CHALLENGE:
+			challenge_sm(event)
+
+
+func play_sm(event):
+	match state:
+		PLAYING:
+			match event:
+				INVERT:
+					set_number(~number)
+				LEFT:
+					set_number(number << 1)
+				RIGHT:
+					set_number(number >> 1)
+				PLUS:
+					set_number(number + 1)
+				MINUS:
+					set_number(number - 1)
+
+
+func train_sm(event):
+	match state:
+		PLAYING:
+			match event:
+				INVERT:
+					set_number(~number)
+					check_number()
+				LEFT:
+					set_number(number << 1)
+					check_number()
+				RIGHT:
+					set_number(number >> 1)
+					check_number()
+				PLUS:
+					change_number(1)
+					check_number()
+				MINUS:
+					change_number(-1)
+					check_number()
+				ATIMEOUT:
+					alert.text = ""
+					warning = false
+		CORRECT:
+			match event:
+				ATIMEOUT:
+					state = PLAYING
+					alert_correct()
+					if idx == numbers.size():
+						alert.text = "Completed!"
+						state = DONE
+						disable_control_buttons()
+		NEXT:
+			set_nums(numbers[idx])
+			state = PLAYING
+		DONE:
+			match event:
+				RESET:
+					idx = 0
+					set_nums(numbers[idx])
+					disable_control_buttons(false)
+					state = PLAYING
+
+
+func challenge_sm(_event):
+	pass
+
+
+func set_mode():
+	desc.text = mode_text[mode]
+	# Set the label text
+	for i in 3:
+		labels.get_child(i).text = label_text[op_maps[mode][i]]
+	match mode:
+		PLAY:
+			set_nums("8		1000")
+		TRAIN:
+			set_nums(numbers[idx])
+		CHALLENGE:
+			pass
+
+
+# Set the target, start value, and deduce BIN/HEX and number of digits
+func set_nums(nums):
+	var data = nums.split("\t")
 	target = int(data[0])
-	num.text = data[0]
 	if data[1] == "":
-		num_type = BIN
+		# Start based off a binary number
+		num_type = BIN # Used when checking for overflow
+		if mode == TRAIN:
+			op_maps[mode][1] = BIN
 		var b = data[2].replace(" ", "")
-		num_digits = len(b)
-		max_num = int(pow(2, num_digits))
 		number = bin2dec(int(b))
+		set_level(int(len(b) / 4.0) - 1)
 		disable_shift_buttons(false)
 	else:
-		var h = data[1]
+		# Start based off a hex number
 		num_type = HEX
-		num_digits = len(h)
-		max_num = int(pow(16, num_digits))
+		var h = data[1]
+		if mode == TRAIN:
+			op_maps[mode][1] = HEX
 		number = ("0x" + h).hex_to_int()
+		set_level(len(h) - 1)
 		disable_shift_buttons()
-	set_number(number)
 	idx += 1
 
 
@@ -56,21 +174,29 @@ func set_number(n):
 		n = n - max_num
 	if n < 0:
 		n = max_num + n
-	if num_type == BIN:
-		hbin.text = dec2bin(n)
-		vtext.text = "Binary:"
-		if num_digits > 1 and n > int(max_num / 4.0):
-			var neg = n - max_num
-			dec.text = "%d (%d)" % [n, neg]
-		else:
-			dec.text = String(n)
-	else:
-		var fmt = "%0*X"
-		hbin.text = fmt % [num_digits, n]
-		vtext.text = "Hexadecimal:"
-		dec.text = String(n)
+	# Set the number labels
+	var v = "Number"
+	for i in 3:
+		match op_maps[mode][i]:
+			NUM:
+				v = String(n)
+			BIN:
+				labels.get_child(i).text = label_text[BIN]
+				v = dec2bin(n)
+			HEX:
+				labels.get_child(i).text = label_text[HEX]
+				var fmt = "%0*X"
+				v = fmt % [int(num_digits / 4) - 1, n]
+			DEC:
+				if num_digits > 1 and n >= int(max_num / 2.0):
+					var neg = n - max_num
+					v = "%d (%d)" % [n, neg]
+				else:
+					v = String(n)
+			NULL:
+				v = ""
+		values.get_child(i).text = v
 	number = n
-	check_number()
 
 
 func check_number():
@@ -90,10 +216,10 @@ func alert_correct():
 		$AlertTimer.start()
 
 
-func dec2bin(decimal_value: int):
+func dec2bin(decimal_value: int) -> String:
 	var binary_string = "" 
 	var temp 
-	var count = num_digits - 1 # Checking up to num_digits bits
+	var count: int = num_digits - 1 # Checking up to num_digits bits
 	var n = 0 # Space counter
 	while(count >= 0):
 		if n == 4:
@@ -109,7 +235,7 @@ func dec2bin(decimal_value: int):
 	return binary_string
 
 
-func bin2dec(binary_value):
+func bin2dec(binary_value: int) -> int:
 	var decimal_value = 0
 	var count = 0
 	var temp
@@ -121,20 +247,39 @@ func bin2dec(binary_value):
 	return decimal_value
 
 
-func _on_Up_button_down():
-	change_number(1)
-
-
-func _on_Down_button_down():
-	change_number(-1)
-
-
 func change_number(delta):
 	if warning:
 		return
 	if num_digits > 1 or num_type == HEX:
 		check_overflows(delta)
 	set_number(number + delta)
+
+
+func disable_control_buttons(disabled = true):
+	for node in get_tree().get_nodes_in_group("control buttons"):
+		disable_button(node, disabled)
+
+
+func disable_shift_buttons(disabled = true):
+	for node in get_tree().get_nodes_in_group("shift buttons"):
+		disable_button(node, disabled)
+
+
+func set_level(n: int):
+	var lbs = get_tree().get_nodes_in_group("level buttons")
+	for i in 3:
+		lbs[i].visible = i == n
+	num_digits = 4 * pow(2, n)
+	max_num = int(pow(2, num_digits))
+	set_number(int(number) & max_num - 1)
+
+
+func disable_button(node, disabled):
+	node.disabled = disabled
+	if disabled:
+		node.modulate.a = 0.5
+	else:
+		node.modulate.a = 1.0
 
 
 func check_overflows(delta):
@@ -166,38 +311,41 @@ func check_overflows(delta):
 				warning = true
 
 
+func _on_Up_button_down():
+	sm(PLUS)
+
+
+func _on_Down_button_down():
+	sm(MINUS)
+
+
 func _on_ShiftLeft_button_down():
-	set_number(number << 1)
+	sm(LEFT)
 
 
 func _on_ShiftRight_button_down():
-	set_number(number >> 1)
+	sm(RIGHT)
 
 
 func _on_Invert_button_down():
-	set_number(~number)
+	sm(INVERT)
+
+
+func _on_Mode_button_down():
+	sm(MODE)
+
+
+func _on_Level_button_down():
+	sm(LEVEL)
+
+
+func _on_Reset_button_down():
+	sm(RESET)
+
+
+func _on_Save_button_down():
+	sm(SAVE)
 
 
 func _on_Timer_timeout():
-	alert.text = ""
-	warning = false
-	if state == CORRECT:
-		state = PLAYING
-		alert_correct()
-	if idx == numbers.size():
-		alert.text = "Completed!"
-		state = DONE
-		disable_buttons()
-	if state == NEXT:
-		state = PLAYING
-		set_target()
-
-
-func disable_buttons(disabled = true):
-	for node in get_tree().get_nodes_in_group("control buttons"):
-		node.disabled = disabled
-
-
-func disable_shift_buttons(disabled = true):
-	for node in get_tree().get_nodes_in_group("shift buttons"):
-		node.disabled = disabled
+	sm(ATIMEOUT)

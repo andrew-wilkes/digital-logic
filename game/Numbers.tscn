@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Numbers.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/m_font_regular.tres" type="DynamicFont" id=2]
@@ -11,6 +11,12 @@
 [ext_resource path="res://assets/minus.png" type="Texture" id=9]
 [ext_resource path="res://assets/tilde.png" type="Texture" id=10]
 [ext_resource path="res://assets/fonts/mono-font.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/mode.png" type="Texture" id=12]
+[ext_resource path="res://assets/save2.png" type="Texture" id=13]
+[ext_resource path="res://assets/level3.png" type="Texture" id=14]
+[ext_resource path="res://assets/reset.png" type="Texture" id=15]
+[ext_resource path="res://assets/level1.png" type="Texture" id=16]
+[ext_resource path="res://assets/level2.png" type="Texture" id=17]
 
 [node name="Numbers" type="HBoxContainer"]
 anchor_right = 1.0
@@ -22,13 +28,13 @@ __meta__ = {
 
 [node name="Sp" type="Control" parent="."]
 margin_right = 436.0
-margin_bottom = 1920.0
+margin_bottom = 1933.0
 size_flags_horizontal = 3
 
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_left = 440.0
 margin_right = 1480.0
-margin_bottom = 1920.0
+margin_bottom = 1933.0
 rect_min_size = Vector2( 1040, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -46,13 +52,13 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Numbers"
 align = 1
 
-[node name="Label" type="Label" parent="VBox"]
+[node name="Desc" type="Label" parent="VBox"]
 margin_top = 141.0
 margin_right = 1040.0
 margin_bottom = 219.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.54902, 0.54902, 0.54902, 1 )
-text = "Match the number"
+text = "Training (match the number)"
 autowrap = true
 
 [node name="Gap" type="Control" parent="VBox"]
@@ -61,19 +67,19 @@ margin_right = 1040.0
 margin_bottom = 259.0
 rect_min_size = Vector2( 0, 20 )
 
-[node name="Values" type="HBoxContainer" parent="VBox"]
+[node name="OP" type="HBoxContainer" parent="VBox"]
 margin_top = 279.0
 margin_right = 1040.0
 margin_bottom = 515.0
 custom_constants/separation = 20
 
-[node name="Labels" type="VBoxContainer" parent="VBox/Values"]
+[node name="Labels" type="VBoxContainer" parent="VBox/OP"]
 margin_right = 273.0
 margin_bottom = 236.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="VBox/Values/Labels"]
+[node name="Num" type="Label" parent="VBox/OP/Labels"]
 margin_right = 273.0
 margin_bottom = 76.0
 size_flags_horizontal = 0
@@ -83,7 +89,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="vtext" type="Label" parent="VBox/Values/Labels"]
+[node name="V1" type="Label" parent="VBox/OP/Labels"]
 margin_top = 80.0
 margin_right = 273.0
 margin_bottom = 156.0
@@ -94,7 +100,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="dlabel" type="Label" parent="VBox/Values/Labels"]
+[node name="V2" type="Label" parent="VBox/OP/Labels"]
 margin_top = 160.0
 margin_right = 273.0
 margin_bottom = 236.0
@@ -105,20 +111,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Vals" type="VBoxContainer" parent="VBox/Values"]
+[node name="Values" type="VBoxContainer" parent="VBox/OP"]
 margin_left = 293.0
 margin_right = 1040.0
 margin_bottom = 236.0
 size_flags_horizontal = 3
 
-[node name="num" type="Label" parent="VBox/Values/Vals"]
+[node name="Num" type="Label" parent="VBox/OP/Values"]
 margin_right = 747.0
 margin_bottom = 76.0
 custom_fonts/font = ExtResource( 11 )
 text = "34"
 align = 1
 
-[node name="hbin" type="Label" parent="VBox/Values/Vals"]
+[node name="V1" type="Label" parent="VBox/OP/Values"]
 margin_top = 80.0
 margin_right = 747.0
 margin_bottom = 156.0
@@ -126,7 +132,7 @@ custom_fonts/font = ExtResource( 11 )
 text = "0000 0000 0000 0000"
 align = 1
 
-[node name="dec" type="Label" parent="VBox/Values/Vals"]
+[node name="V2" type="Label" parent="VBox/OP/Values"]
 margin_top = 160.0
 margin_right = 747.0
 margin_bottom = 236.0
@@ -196,17 +202,16 @@ margin_bottom = 450.0
 hint_tooltip = "Bit shift left"
 texture_normal = ExtResource( 8 )
 
-[node name="Invert" type="TextureButton" parent="VBox/Control" groups=[
+[node name="Down" type="TextureButton" parent="VBox/Control" groups=[
 "control buttons",
-"shift buttons",
 ]]
 margin_left = 250.0
 margin_top = 250.0
 margin_right = 450.0
 margin_bottom = 450.0
 rect_min_size = Vector2( 44, 0 )
-hint_tooltip = "Invert"
-texture_normal = ExtResource( 10 )
+hint_tooltip = "Decrement"
+texture_normal = ExtResource( 9 )
 
 [node name="ShiftRight" type="TextureButton" parent="VBox/Control" groups=[
 "control buttons",
@@ -225,49 +230,161 @@ margin_top = 500.0
 margin_right = 200.0
 margin_bottom = 700.0
 
-[node name="Down" type="TextureButton" parent="VBox/Control" groups=[
+[node name="Invert" type="TextureButton" parent="VBox/Control" groups=[
 "control buttons",
+"shift buttons",
 ]]
 margin_left = 250.0
 margin_top = 500.0
 margin_right = 450.0
 margin_bottom = 700.0
 rect_min_size = Vector2( 44, 0 )
-hint_tooltip = "Decrement"
-texture_normal = ExtResource( 9 )
+hint_tooltip = "Invert"
+texture_normal = ExtResource( 10 )
 
-[node name="Sp2" type="Control" parent="VBox"]
+[node name="Sp" type="Control" parent="VBox"]
 margin_top = 1433.0
 margin_right = 1040.0
-margin_bottom = 1660.0
+margin_bottom = 1433.0
+size_flags_vertical = 3
+
+[node name="Control2" type="HBoxContainer" parent="VBox"]
+margin_top = 1453.0
+margin_right = 1040.0
+margin_bottom = 1653.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sp" type="Control" parent="VBox/Control2"]
+margin_right = 41.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+
+[node name="Mode" type="TextureButton" parent="VBox/Control2"]
+margin_left = 45.0
+margin_right = 245.0
+margin_bottom = 200.0
+hint_tooltip = "Bit shift left"
+texture_normal = ExtResource( 12 )
+
+[node name="Sp2" type="Control" parent="VBox/Control2"]
+margin_left = 249.0
+margin_right = 291.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+
+[node name="L1" type="TextureButton" parent="VBox/Control2" groups=[
+"level buttons",
+]]
+margin_left = 295.0
+margin_right = 495.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 44, 0 )
+hint_tooltip = "Increment"
+texture_normal = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="L2" type="TextureButton" parent="VBox/Control2" groups=[
+"level buttons",
+]]
+visible = false
+margin_left = 583.0
+margin_right = 783.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 44, 0 )
+hint_tooltip = "Increment"
+texture_normal = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="L3" type="TextureButton" parent="VBox/Control2" groups=[
+"level buttons",
+]]
+visible = false
+margin_left = 787.0
+margin_right = 987.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 44, 0 )
+hint_tooltip = "Increment"
+texture_normal = ExtResource( 14 )
+
+[node name="Sp3" type="Control" parent="VBox/Control2"]
+margin_left = 499.0
+margin_right = 540.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+
+[node name="Reset" type="TextureButton" parent="VBox/Control2"]
+margin_left = 544.0
+margin_right = 744.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 44, 0 )
+hint_tooltip = "Increment"
+texture_normal = ExtResource( 15 )
+
+[node name="Sp4" type="Control" parent="VBox/Control2"]
+margin_left = 748.0
+margin_right = 790.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+
+[node name="Save" type="TextureButton" parent="VBox/Control2"]
+margin_left = 794.0
+margin_right = 994.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 44, 0 )
+hint_tooltip = "Increment"
+texture_normal = ExtResource( 13 )
+
+[node name="Sp5" type="Control" parent="VBox/Control2"]
+margin_left = 998.0
+margin_right = 1040.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+
+[node name="Sp2" type="Control" parent="VBox"]
+margin_top = 1673.0
+margin_right = 1040.0
+margin_bottom = 1673.0
 size_flags_vertical = 3
 
 [node name="Buttons" parent="VBox" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
-margin_top = 1680.0
+margin_top = 1693.0
 margin_right = 1040.0
-margin_bottom = 1880.0
+margin_bottom = 1893.0
 page_id = 1
 
 [node name="Sp3" type="Control" parent="VBox"]
-margin_top = 1900.0
+margin_top = 1913.0
 margin_right = 1040.0
-margin_bottom = 1920.0
+margin_bottom = 1933.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Sp3" type="Control" parent="."]
 margin_left = 1484.0
 margin_right = 1920.0
-margin_bottom = 1920.0
+margin_bottom = 1933.0
 size_flags_horizontal = 3
 
 [node name="AlertTimer" type="Timer" parent="."]
 one_shot = true
 [connection signal="button_down" from="VBox/Control/Up" to="." method="_on_Up_button_down"]
 [connection signal="button_down" from="VBox/Control/ShiftLeft" to="." method="_on_ShiftLeft_button_down"]
-[connection signal="button_down" from="VBox/Control/Invert" to="." method="_on_Invert_button_down"]
-[connection signal="button_down" from="VBox/Control/ShiftRight" to="." method="_on_ShiftRight_button_down"]
 [connection signal="button_down" from="VBox/Control/Down" to="." method="_on_Down_button_down"]
+[connection signal="button_down" from="VBox/Control/ShiftRight" to="." method="_on_ShiftRight_button_down"]
+[connection signal="button_down" from="VBox/Control/Invert" to="." method="_on_Invert_button_down"]
+[connection signal="button_down" from="VBox/Control2/Mode" to="." method="_on_Mode_button_down"]
+[connection signal="button_down" from="VBox/Control2/L1" to="." method="_on_Level_button_down"]
+[connection signal="button_down" from="VBox/Control2/L2" to="." method="_on_Level_button_down"]
+[connection signal="button_down" from="VBox/Control2/L3" to="." method="_on_Level_button_down"]
+[connection signal="button_down" from="VBox/Control2/Reset" to="." method="_on_Reset_button_down"]
+[connection signal="button_down" from="VBox/Control2/Save" to="." method="_on_Save_button_down"]
 [connection signal="timeout" from="AlertTimer" to="." method="_on_Timer_timeout"]

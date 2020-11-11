@@ -635,9 +635,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.9302445"
-     inkscape:cx="-1396.4081"
-     inkscape:cy="1544.0306"
+     inkscape:zoom="1.364889"
+     inkscape:cx="-1464.6626"
+     inkscape:cy="1653.0855"
      inkscape:document-units="px"
      inkscape:current-layer="layer3"
      showgrid="true"
@@ -653,8 +653,8 @@
        type="xygrid"
        id="grid3737"
        empspacing="12"
-       spacingx="5.0000001"
-       spacingy="5.0000001" />
+       spacingx="2.5"
+       spacingy="2.5" />
   </sodipodi:namedview>
   <metadata
      id="metadata3732">
@@ -664,7 +664,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -4475,6 +4475,99 @@
          id="tspan1705-7-2"
          x="1577.1562"
          y="1700.3516">&lt;</tspan></text>
+    <rect
+       style="display:inline;fill:#32afef;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3149-4-3-0-3"
+       width="60"
+       height="60"
+       x="-1560"
+       y="1640"
+       ry="5.00003"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/mode.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <rect
+       style="display:inline;fill:#32afef;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3149-4-3-0-6"
+       width="60"
+       height="60"
+       x="-1485"
+       y="1640"
+       ry="5.00003"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/level3.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <rect
+       style="display:inline;fill:#32afef;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3149-4-3-0-7"
+       width="60"
+       height="60"
+       x="-1485"
+       y="1570"
+       ry="5.00003"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/level2.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <rect
+       style="display:inline;fill:#32afef;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3149-4-3-0-5"
+       width="60"
+       height="60"
+       x="-1485"
+       y="1500"
+       ry="5.00003"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/level1.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <rect
+       style="display:inline;fill:#32afef;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3149-4-3-0-3-2"
+       width="60"
+       height="60"
+       x="-1635"
+       y="1710"
+       ry="5.00003"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/reset.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <rect
+       style="display:inline;fill:#32afef;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3149-4-3-0-3-7"
+       width="60"
+       height="60"
+       x="-1560"
+       y="1710"
+       ry="5.00003"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/save2.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <rect
+       style="display:inline;fill:#32afef;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3149-4-3-0-3-7-6"
+       width="60"
+       height="60"
+       x="-1560"
+       y="1780"
+       ry="5.00003"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/load2.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <path
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -1517.5,1805 h -20 v -10 l -15,15 15,15 v -10 h 20"
+       id="path1830-0-1"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/load2.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -1550,1787.5 h 32.604 c 7.396,0 7.396,7.5 7.396,7.5 v 30 c 0,0 0,7.5 -7.5,7.5 h -32.5"
+       id="path1880-8"
+       sodipodi:nodetypes="csccsc"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/load2.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
   </g>
   <g
      inkscape:label="Layer 1"
@@ -6439,12 +6532,12 @@
     <image
        sodipodi:absref="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/delete.png"
        xlink:href="../game/assets/delete.png"
-       width="48"
-       height="48"
-       preserveAspectRatio="none"
-       id="image1725"
+       y="912"
        x="-1248"
-       y="912" />
+       id="image1725"
+       preserveAspectRatio="none"
+       height="48"
+       width="48" />
     <g
        id="g1799"
        transform="matrix(0.25670505,0,0,0.25670505,-972.01138,708.56317)"
@@ -6525,5 +6618,121 @@
          id="path1828-3-2"
          sodipodi:nodetypes="cccscc" />
     </g>
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0"
+       id="rect1738"
+       width="49.999954"
+       height="9.9999332"
+       x="-1480"
+       y="1685"
+       ry="3.3333206"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/level3.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <rect
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0"
+       id="rect1738-3"
+       width="49.999954"
+       height="9.9999332"
+       x="-1480"
+       y="1665.0001"
+       ry="3.3333206"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/level3.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <rect
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0"
+       id="rect1738-5"
+       width="49.999954"
+       height="9.9999332"
+       x="-1480"
+       y="1645.0001"
+       ry="3.3333206"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/level3.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <rect
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0"
+       id="rect1738-6"
+       width="49.999954"
+       height="9.9999332"
+       x="-1480"
+       y="1614.9999"
+       ry="3.3333206"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/level2.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <rect
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0"
+       id="rect1738-3-2"
+       width="49.999954"
+       height="9.9999332"
+       x="-1480"
+       y="1595"
+       ry="3.3333206"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/level2.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <rect
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0"
+       id="rect1738-3-2-9"
+       width="49.999954"
+       height="9.9999332"
+       x="-1480"
+       y="1545.0001"
+       ry="3.3333206"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/level1.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -1600,1720 v 20 h 10 l -15,15 -15,-15 h 10 v -20"
+       id="path1830"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/reset.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0"
+       id="rect1832"
+       width="39.999969"
+       height="5.0000353"
+       x="-1625"
+       y="1755"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/reset.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <path
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -1552.5,1735 h 20 v -10 l 15,15 -15,15 v -10 h -20"
+       id="path1830-0"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/save2.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -1550,1717.5 h 32.604 c 7.396,0 7.396,7.5 7.396,7.5 v 30 c 0,0 0,7.5 -7.5,7.5 h -32.5"
+       id="path1880"
+       sodipodi:nodetypes="csccsc"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/save2.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <path
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -1545,1652.5 h 20 v -10 l 15,15 -15,15 v -10 h -20"
+       id="path1830-0-0"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/mode.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
+    <path
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -1515,1677.5 h -20 v -10 l -15,15 15,15 v -10 h 20"
+       id="path1830-0-6"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/mode.png"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
   </g>
 </svg>
