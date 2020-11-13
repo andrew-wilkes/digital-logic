@@ -18,7 +18,7 @@ var max_num: int
 var mode = 0
 var level = 0
 var dec = "Base 10 value"
-var n1
+var n1 # Number data
 var n2
 var mode_text = [
 	"Play with the buttons",
