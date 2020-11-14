@@ -10,27 +10,27 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 2, 224, 201, 201 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 21, 900, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 22, 900, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 268, 224, 234, 202 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 449, 235, 201 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 267, 449, 268, 201 )
@@ -79,7 +79,7 @@ margin_left = 100.0
 margin_top = -30.0
 margin_right = 164.0
 margin_bottom = 34.0
-texture = SubResource( 9 )
+texture = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -96,7 +96,7 @@ margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
 margin_bottom = 132.0
-texture = SubResource( 10 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -113,7 +113,7 @@ margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
 margin_bottom = 132.0
-texture = SubResource( 10 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -124,7 +124,7 @@ margin_left = 271.0
 margin_top = 83.0
 margin_right = 505.0
 margin_bottom = 285.0
-texture = SubResource( 11 )
+texture = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -141,7 +141,7 @@ margin_left = 100.0
 margin_top = -30.0
 margin_right = 164.0
 margin_bottom = 34.0
-texture = SubResource( 9 )
+texture = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -158,7 +158,7 @@ margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
 margin_bottom = 132.0
-texture = SubResource( 10 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -175,7 +175,7 @@ margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
 margin_bottom = 132.0
-texture = SubResource( 10 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -186,7 +186,7 @@ margin_left = 271.0
 margin_top = 81.0
 margin_right = 506.0
 margin_bottom = 282.0
-texture = SubResource( 12 )
+texture = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -203,7 +203,7 @@ margin_left = 100.0
 margin_top = -30.0
 margin_right = 164.0
 margin_bottom = 34.0
-texture = SubResource( 9 )
+texture = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -220,7 +220,7 @@ margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
 margin_bottom = 132.0
-texture = SubResource( 10 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -237,7 +237,7 @@ margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
 margin_bottom = 132.0
-texture = SubResource( 10 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -248,7 +248,7 @@ margin_left = 271.0
 margin_top = 82.0
 margin_right = 539.0
 margin_bottom = 283.0
-texture = SubResource( 13 )
+texture = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -265,7 +265,7 @@ margin_left = 100.0
 margin_top = -30.0
 margin_right = 164.0
 margin_bottom = 34.0
-texture = SubResource( 9 )
+texture = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -282,7 +282,7 @@ margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
 margin_bottom = 132.0
-texture = SubResource( 10 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -299,7 +299,7 @@ margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
 margin_bottom = 132.0
-texture = SubResource( 10 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -316,7 +316,7 @@ __meta__ = {
 
 [node name="OUT" type="Line2D" parent="XOR"]
 show_behind_parent = true
-position = Vector2( 240, 100 )
+position = Vector2( 240, 101 )
 points = PoolVector2Array( -100, 0, 100, 0 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
@@ -326,7 +326,7 @@ margin_left = 100.0
 margin_top = -30.0
 margin_right = 164.0
 margin_bottom = 34.0
-texture = SubResource( 9 )
+texture = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -343,41 +343,7 @@ margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
 margin_bottom = 132.0
-texture = SubResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="IN4" type="Line2D" parent="XOR"]
-show_behind_parent = true
-position = Vector2( 33, -64 )
-points = PoolVector2Array( -100, 100, 1, 100 )
-width = 8.0
-default_color = Color( 1, 1, 1, 1 )
-
-[node name="IN" type="TextureRect" parent="XOR/IN4"]
-margin_left = -152.0
-margin_top = 68.0
-margin_right = -88.0
-margin_bottom = 132.0
-texture = SubResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="IN5" type="Line2D" parent="XOR"]
-show_behind_parent = true
-position = Vector2( 33, -64 )
-points = PoolVector2Array( -100, 100, 1, 100 )
-width = 8.0
-default_color = Color( 1, 1, 1, 1 )
-
-[node name="IN" type="TextureRect" parent="XOR/IN5"]
-margin_left = -152.0
-margin_top = 68.0
-margin_right = -88.0
-margin_bottom = 132.0
-texture = SubResource( 10 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -394,7 +360,7 @@ margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
 margin_bottom = 132.0
-texture = SubResource( 10 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -422,7 +388,7 @@ margin_left = 100.0
 margin_top = -30.0
 margin_right = 164.0
 margin_bottom = 34.0
-texture = SubResource( 9 )
+texture = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -439,7 +405,7 @@ margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
 margin_bottom = 132.0
-texture = SubResource( 10 )
+texture = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

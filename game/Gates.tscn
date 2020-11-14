@@ -67,22 +67,19 @@ margin_right = 1040.0
 margin_bottom = 638.0
 
 [node name="Accuracy" type="Label" parent="VBox/Score"]
-modulate = Color( 1, 0, 0, 1 )
-margin_right = 518.0
+margin_right = 1012.0
 margin_bottom = 78.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 7 )
-text = "ACCURACY"
+text = "Check your accuracy and speed"
 align = 1
 
 [node name="Speed" type="Label" parent="VBox/Score"]
-modulate = Color( 0.568627, 1, 0, 1 )
-margin_left = 522.0
+margin_left = 1016.0
 margin_right = 1040.0
 margin_bottom = 78.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 7 )
-text = "SPEED"
 align = 1
 
 [node name="Gate" parent="VBox" instance=ExtResource( 4 )]
@@ -90,7 +87,6 @@ anchor_right = 0.0
 margin_top = 658.0
 margin_right = 1040.0
 margin_bottom = 1122.0
-color = Color( 0.172549, 0.172549, 0.172549, 1 )
 
 [node name="sp2" type="Control" parent="VBox"]
 margin_top = 1142.0
@@ -108,12 +104,12 @@ margin_right = 104.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
-[node name="ZeroButton" type="TextureButton" parent="VBox/HBox"]
+[node name="OneButton" type="TextureButton" parent="VBox/HBox"]
 modulate = Color( 1, 0, 0, 1 )
 margin_left = 108.0
 margin_right = 308.0
 margin_bottom = 200.0
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
 
 [node name="sp2" type="Control" parent="VBox/HBox"]
 margin_left = 312.0
@@ -143,12 +139,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OneButton" type="TextureButton" parent="VBox/HBox"]
+[node name="ZeroButton" type="TextureButton" parent="VBox/HBox"]
 modulate = Color( 0, 0, 1, 1 )
 margin_left = 732.0
 margin_right = 932.0
 margin_bottom = 200.0
-texture_normal = ExtResource( 6 )
+texture_normal = ExtResource( 5 )
 
 [node name="sp4" type="Control" parent="VBox/HBox"]
 margin_left = 936.0
@@ -182,5 +178,11 @@ margin_left = 1484.0
 margin_right = 1920.0
 margin_bottom = 1920.0
 size_flags_horizontal = 3
-[connection signal="button_down" from="VBox/HBox/ZeroButton" to="." method="_on_ZeroButton_button_down"]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 [connection signal="button_down" from="VBox/HBox/OneButton" to="." method="_on_OneButton_button_down"]
+[connection signal="button_down" from="VBox/HBox/Start" to="." method="_on_Start_button_down"]
+[connection signal="button_down" from="VBox/HBox/Stop" to="." method="_on_Stop_button_down"]
+[connection signal="button_down" from="VBox/HBox/ZeroButton" to="." method="_on_ZeroButton_button_down"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

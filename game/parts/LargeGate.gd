@@ -9,13 +9,21 @@ var names = [
 	"XOR",
 	"NOT"
 ]
-
-enum { CROSS, TICK, Q }
+var colors = [Color.blue, Color.red, Color.white]
 
 func _ready():
 	if get_parent().name == "root":
 		set_gate(5)
 		$Timer.start()
+	else:
+		reset()
+
+
+func reset():
+	for i in 3:
+		set_gate(4) # XOR gate
+		get_node("C/Result").get_child(i).show() # Show all
+		get_child(gate).get_child(i).modulate = Color.white
 
 
 func set_gate(idx: int):
@@ -23,11 +31,27 @@ func set_gate(idx: int):
 	for i in 6:
 		get_child(i).visible = i == idx
 	get_node("C/Label").text = "%s Gate" % names[idx]
+	set_result(2)
 
 
-func set_inputs(vals: Array):
+func set_inputs():
+	var vals: Array
+	if gate == 5:
+		vals = [randi() % 2]
+	else:
+		vals = [randi() % 2, randi() % 2]
 	for i in vals.size():
-		get_child(gate).get_child(i + 1).modulate = Color.red if vals[i] == 1 else Color.blue
+		get_child(gate).get_child(i + 1).modulate = color_from_val(vals[i])
+	return vals
+
+
+func set_output(v):
+	get_child(gate).get_child(0).modulate = color_from_val(v)
+
+
+func color_from_val(v):
+	return colors[v]
+
 
 func set_result(r: int):
 	for i in 3:
@@ -36,10 +60,6 @@ func set_result(r: int):
 
 func _on_Timer_timeout():
 	set_gate(gate)
-	if gate == 5:
-		set_inputs([randi() % 2])
-	else:
-		set_inputs([randi() % 2, randi() % 2])
 	gate += 1
 	gate %= 6
 	set_result(randi() % 3)
