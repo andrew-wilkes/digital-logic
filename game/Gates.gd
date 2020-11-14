@@ -8,7 +8,7 @@ var state = IDLE
 var output = 0
 var start_time
 
-enum { IDLE, PLAYING } # States
+enum { IDLE, PLAYING, PAUSED } # States
 enum { START, STOP, ONE, ZERO, TIMEOUT } # Events
 enum { AND, NAND, OR, NOR, XOR, NOT }
 enum { CROSS, TICK, Q }
@@ -56,6 +56,7 @@ func sm(event):
 						wrong()
 					update_score()
 					$Timer.start()
+					state = PAUSED # Wait for TIMEOUT
 				ZERO:
 					$VBox/Gate.set_output(int(output))
 					idx += 1
@@ -66,9 +67,12 @@ func sm(event):
 						wrong()
 					update_score()
 					$Timer.start()
-				TIMEOUT:
-					$VBox/Gate.set_output(2) # Revert to white
-					set_next_gate()
+					state = PAUSED
+		PAUSED:
+			if event == TIMEOUT:
+				$VBox/Gate.set_output(2) # Revert to white
+				set_next_gate()
+				state = PLAYING
 
 
 func correct():

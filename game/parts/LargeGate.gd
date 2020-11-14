@@ -20,9 +20,8 @@ func _ready():
 
 
 func reset():
+	set_gate(4) # XOR gate
 	for i in 3:
-		set_gate(4) # XOR gate
-		get_node("C/Result").get_child(i).show() # Show all
 		get_child(gate).get_child(i).modulate = Color.white
 
 
