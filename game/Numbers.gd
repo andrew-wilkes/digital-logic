@@ -92,25 +92,32 @@ func challenge_sm(event):
 	match event:
 		RESET:
 			idx = 0
+			step = 0
 			set_nums(numbers[idx])
+			set_number(number)
 			state = PLAYING
 	match state:
 		PLAYING:
 			match event:
 				INVERT:
+					step += 1
 					set_number(~number)
 					check_number()
 				LEFT:
+					step += 1
 					set_number(number << 1)
 					check_number()
 				RIGHT:
+					step += 1
 					set_number(number >> 1)
 					check_number()
 				PLUS:
+					step += 1
 					# Change the number and check for overflows
 					change_number(1)
 					check_number()
 				MINUS:
+					step += 1
 					change_number(-1)
 					check_number()
 				ATIMEOUT:
@@ -123,6 +130,7 @@ func challenge_sm(event):
 					alert_correct()
 		NEXT:
 			idx += 1
+			step = 0
 			if idx == numbers.size():
 				alert.text = "Completed!"
 				state = DONE
@@ -153,7 +161,6 @@ func set_mode():
 func set_nums(nums):
 	var data = nums.split("\t")
 	target = int(data[0])
-	step = -1
 	var v = data[1]
 	if v == "":
 		# Start based off a binary number
@@ -204,7 +211,6 @@ func set_number(n):
 			NULL:
 				v = ""
 			STEP:
-				step += 1
 				if step > target_step * 2:
 					node.modulate = Color.red
 				elif step > target_step:
