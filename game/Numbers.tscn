@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Numbers.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/m_font_regular.tres" type="DynamicFont" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://assets/tilde.png" type="Texture" id=10]
 [ext_resource path="res://assets/fonts/mono-font.tres" type="DynamicFont" id=11]
 [ext_resource path="res://assets/mode.png" type="Texture" id=12]
-[ext_resource path="res://assets/save2.png" type="Texture" id=13]
 [ext_resource path="res://assets/level3.png" type="Texture" id=14]
 [ext_resource path="res://assets/reset.png" type="Texture" id=15]
 [ext_resource path="res://assets/level1.png" type="Texture" id=16]
@@ -315,19 +314,17 @@ rect_min_size = Vector2( 44, 0 )
 hint_tooltip = "Increment"
 texture_normal = ExtResource( 14 )
 
-[node name="Sp3" type="Control" parent="VBox/Control2"]
+[node name="Sp6" type="Control" parent="VBox/Control2"]
 margin_left = 499.0
 margin_right = 540.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
-[node name="Reset" type="TextureButton" parent="VBox/Control2"]
+[node name="Sp200" type="Control" parent="VBox/Control2"]
 margin_left = 544.0
 margin_right = 744.0
 margin_bottom = 200.0
-rect_min_size = Vector2( 44, 0 )
-hint_tooltip = "Increment"
-texture_normal = ExtResource( 15 )
+rect_min_size = Vector2( 200, 0 )
 
 [node name="Sp4" type="Control" parent="VBox/Control2"]
 margin_left = 748.0
@@ -335,13 +332,13 @@ margin_right = 790.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
-[node name="Save" type="TextureButton" parent="VBox/Control2"]
+[node name="Reset" type="TextureButton" parent="VBox/Control2"]
 margin_left = 794.0
 margin_right = 994.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 44, 0 )
 hint_tooltip = "Increment"
-texture_normal = ExtResource( 13 )
+texture_normal = ExtResource( 15 )
 
 [node name="Sp5" type="Control" parent="VBox/Control2"]
 margin_left = 998.0
@@ -388,5 +385,4 @@ one_shot = true
 [connection signal="button_down" from="VBox/Control2/L2" to="." method="_on_Level_button_down"]
 [connection signal="button_down" from="VBox/Control2/L3" to="." method="_on_Level_button_down"]
 [connection signal="button_down" from="VBox/Control2/Reset" to="." method="_on_Reset_button_down"]
-[connection signal="button_down" from="VBox/Control2/Save" to="." method="_on_Save_button_down"]
 [connection signal="timeout" from="AlertTimer" to="." method="_on_Timer_timeout"]
