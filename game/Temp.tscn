@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://parts/grid/GridInput.tscn" type="PackedScene" id=1]
+[ext_resource path="res://parts/grid/GridGate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://parts/grid/GridOutput.tscn" type="PackedScene" id=3]
+
+[node name="Temp" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridGate" parent="." instance=ExtResource( 2 )]
+
+[node name="IN2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -128, -64 )
+
+[node name="IN3" parent="." instance=ExtResource( 1 )]
+position = Vector2( -128, 64 )
+
+[node name="OUT2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 128, 0 )

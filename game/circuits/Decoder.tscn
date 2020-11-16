@@ -1,0 +1,203 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://parts/grid/GridInput.tscn" type="PackedScene" id=1]
+[ext_resource path="res://parts/grid/GridGate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://parts/grid/GridOutput.tscn" type="PackedScene" id=3]
+[ext_resource path="res://parts/grid/Con.tscn" type="PackedScene" id=4]
+[ext_resource path="res://parts/grid/Wire.tscn" type="PackedScene" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+"
+
+[node name="Decoder" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_right = -860.0
+margin_bottom = 0.00012207
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="w1" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 520, 88, 752, 88 )
+
+[node name="w6" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 168, 88, 392, 88 )
+
+[node name="w11" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 816, 128, 912, 128 )
+
+[node name="w12" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 816, 320, 904, 320 )
+
+[node name="w13" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 816, 512, 904, 512 )
+
+[node name="w14" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 816, 704, 904, 704 )
+
+[node name="w7" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 160, 360, 392, 360 )
+
+[node name="w8" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 256, 360, 256, 552, 744, 552 )
+
+[node name="w9" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 256, 552, 256, 744, 744, 744 )
+
+[node name="w10" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 320, 280, 320, 664, 744, 664 )
+
+[node name="w5" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 640, 360, 744, 360 )
+
+[node name="w3" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 568, 88, 568, 472, 752, 472 )
+
+[node name="w2" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 320, 88, 320, 280, 752, 280 )
+
+[node name="w4" parent="." instance=ExtResource( 5 )]
+points = PoolVector2Array( 520, 360, 640, 360, 640, 168, 744, 168 )
+
+[node name="Gates" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="GridGate" parent="Gates" instance=ExtResource( 2 )]
+margin_left = 448.0
+margin_top = 88.0
+margin_right = 408.0
+margin_bottom = 88.0
+id = 5
+
+[node name="GridGate2" parent="Gates" instance=ExtResource( 2 )]
+margin_left = 448.0
+margin_top = 360.0
+margin_right = 408.0
+margin_bottom = 360.0
+id = 5
+
+[node name="GridGate3" parent="Gates" instance=ExtResource( 2 )]
+margin_left = 768.0
+margin_top = 128.0
+margin_right = 728.0
+margin_bottom = 128.0
+id = 0
+
+[node name="GridGate4" parent="Gates" instance=ExtResource( 2 )]
+margin_left = 768.0
+margin_top = 320.0
+margin_right = 728.0
+margin_bottom = 320.0
+id = 0
+
+[node name="GridGate5" parent="Gates" instance=ExtResource( 2 )]
+margin_left = 768.0
+margin_top = 512.0
+margin_right = 728.0
+margin_bottom = 512.0
+id = 0
+
+[node name="GridGate6" parent="Gates" instance=ExtResource( 2 )]
+margin_left = 768.0
+margin_top = 704.0
+margin_right = 728.0
+margin_bottom = 704.0
+id = 0
+
+[node name="In" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridInput" parent="In" instance=ExtResource( 1 )]
+margin_left = 152.0
+margin_top = 88.0
+margin_right = 152.0
+margin_bottom = 88.0
+
+[node name="GridInput2" parent="In" instance=ExtResource( 1 )]
+margin_left = 152.0
+margin_top = 360.0
+margin_right = 152.0
+margin_bottom = 360.0
+txt = "A1"
+text = "A1"
+
+[node name="Out" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridOutput" parent="Out" instance=ExtResource( 3 )]
+margin_left = 896.0
+margin_top = 128.0
+margin_right = 896.0
+margin_bottom = 128.0
+txt = "Y0"
+text = "Y0"
+
+[node name="GridOutput2" parent="Out" instance=ExtResource( 3 )]
+margin_left = 896.0
+margin_top = 320.0
+margin_right = 896.0
+margin_bottom = 320.0
+txt = "Y1"
+text = "Y1"
+
+[node name="GridOutput3" parent="Out" instance=ExtResource( 3 )]
+margin_left = 896.0
+margin_top = 512.0
+margin_right = 896.0
+margin_bottom = 512.0
+txt = "Y2"
+text = "Y2"
+
+[node name="GridOutput4" parent="Out" instance=ExtResource( 3 )]
+margin_left = 896.0
+margin_top = 704.0
+margin_right = 896.0
+margin_bottom = 704.0
+txt = "Y3"
+text = "Y3"
+
+[node name="Wires" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Con" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="c1" parent="Con" instance=ExtResource( 4 )]
+position = Vector2( 568, 88 )
+
+[node name="c3" parent="Con" instance=ExtResource( 4 )]
+position = Vector2( 256, 360 )
+
+[node name="c5" parent="Con" instance=ExtResource( 4 )]
+position = Vector2( 256, 552 )
+
+[node name="c4" parent="Con" instance=ExtResource( 4 )]
+position = Vector2( 320, 88 )
+
+[node name="c6" parent="Con" instance=ExtResource( 4 )]
+position = Vector2( 320, 280 )
+
+[node name="c2" parent="Con" instance=ExtResource( 4 )]
+position = Vector2( 640, 360 )

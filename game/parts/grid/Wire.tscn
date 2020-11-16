@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="w1" type="Line2D"]
+show_behind_parent = true
+points = PoolVector2Array( 128, 128, 512, 128 )
+width = 8.0
+default_color = Color( 1, 1, 1, 1 )
