@@ -1,6 +1,8 @@
 tool
 extends Control
 
+class_name GridInput
+
 export var txt = "A0" setget set_text, get_text
 
 export var text: String

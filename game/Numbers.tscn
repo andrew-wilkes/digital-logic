@@ -20,19 +20,20 @@
 [node name="Numbers" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = 13.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Sp" type="Control" parent="."]
-margin_right = 436.0
+margin_right = 16.0
 margin_bottom = 1933.0
 size_flags_horizontal = 3
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 440.0
-margin_right = 1480.0
+margin_left = 20.0
+margin_right = 1060.0
 margin_bottom = 1933.0
 rect_min_size = Vector2( 1040, 0 )
 size_flags_horizontal = 4
@@ -368,8 +369,8 @@ margin_bottom = 1933.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Sp3" type="Control" parent="."]
-margin_left = 1484.0
-margin_right = 1920.0
+margin_left = 1064.0
+margin_right = 1080.0
 margin_bottom = 1933.0
 size_flags_horizontal = 3
 

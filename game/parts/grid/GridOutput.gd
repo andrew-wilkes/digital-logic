@@ -1,6 +1,8 @@
 tool
 extends Control
 
+class_name Grid_Output
+
 export var txt = "Y0" setget set_text, get_text
 
 export var text: String
@@ -25,3 +27,10 @@ func set_level(v: bool):
 		$OUT.self_modulate = g.COLOR_HIGH
 	else:
 		$OUT.self_modulate = g.COLOR_LOW
+
+
+func set_result(v: bool):
+	if v:
+		$Label.self_modulate = g.COLOR_HIGH
+	else:
+		$Label.self_modulate = g.COLOR_LOW

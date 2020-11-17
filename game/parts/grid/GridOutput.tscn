@@ -10,7 +10,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-txt = ""
+txt = "X"
+text = "X"
 
 [node name="OUT" type="TextureRect" parent="."]
 margin_top = -24.0
@@ -23,10 +24,11 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 margin_left = 64.0
-margin_top = -36.0
+margin_top = -38.0
 margin_right = 142.0
-margin_bottom = 40.0
+margin_bottom = 38.0
 custom_fonts/font = ExtResource( 3 )
+text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }

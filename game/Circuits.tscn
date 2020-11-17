@@ -9,25 +9,25 @@
 [ext_resource path="res://assets/fonts/m_font_regular.tres" type="DynamicFont" id=7]
 [ext_resource path="res://assets/stop.png" type="Texture" id=8]
 [ext_resource path="res://assets/play-dot.png" type="Texture" id=9]
-[ext_resource path="res://Gates.gd" type="Script" id=11]
+[ext_resource path="res://Circuits.gd" type="Script" id=10]
 
 [node name="Circuits" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-script = ExtResource( 11 )
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Sp1" type="Control" parent="."]
-margin_right = 436.0
+margin_right = 414.0
 margin_bottom = 1920.0
 size_flags_horizontal = 3
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 440.0
-margin_right = 1480.0
+margin_left = 418.0
+margin_right = 1502.0
 margin_bottom = 1920.0
 rect_min_size = Vector2( 1040, 0 )
 mouse_filter = 2
@@ -38,7 +38,7 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="VBox"]
-margin_right = 1040.0
+margin_right = 1084.0
 margin_bottom = 121.0
 rect_min_size = Vector2( 460, 0 )
 custom_fonts/font = ExtResource( 3 )
@@ -48,7 +48,7 @@ align = 1
 
 [node name="Desc" type="Label" parent="VBox"]
 margin_top = 141.0
-margin_right = 1040.0
+margin_right = 1084.0
 margin_bottom = 219.0
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.54902, 0.54902, 0.54902, 1 )
@@ -57,26 +57,26 @@ autowrap = true
 
 [node name="sp" type="Control" parent="VBox"]
 margin_top = 239.0
-margin_right = 1040.0
+margin_right = 1084.0
 margin_bottom = 320.0
 size_flags_vertical = 3
 
 [node name="Score" type="HBoxContainer" parent="VBox"]
 margin_top = 340.0
-margin_right = 1040.0
+margin_right = 1084.0
 margin_bottom = 418.0
 
 [node name="Accuracy" type="Label" parent="VBox/Score"]
-margin_right = 1012.0
+margin_right = 1080.0
 margin_bottom = 78.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 7 )
-text = "Check your accuracy and speed"
+text = "Change the gates to make it work"
 align = 1
 
 [node name="Speed" type="Label" parent="VBox/Score"]
-margin_left = 1016.0
-margin_right = 1040.0
+margin_left = 1084.0
+margin_right = 1084.0
 margin_bottom = 78.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 7 )
@@ -84,7 +84,7 @@ align = 1
 
 [node name="Circuit" type="ColorRect" parent="VBox"]
 margin_top = 438.0
-margin_right = 1040.0
+margin_right = 1084.0
 margin_bottom = 1238.0
 rect_min_size = Vector2( 0, 800 )
 color = Color( 0.176471, 0.176471, 0.176471, 1 )
@@ -98,36 +98,36 @@ rect_min_size = Vector2( 0, 800 )
 
 [node name="sp2" type="Control" parent="VBox"]
 margin_top = 1258.0
-margin_right = 1040.0
+margin_right = 1084.0
 margin_bottom = 1339.0
 size_flags_vertical = 3
 
 [node name="HBox" type="HBoxContainer" parent="VBox"]
 margin_top = 1359.0
-margin_right = 1040.0
+margin_right = 1084.0
 margin_bottom = 1559.0
 
 [node name="sp" type="Control" parent="VBox/HBox"]
-margin_right = 104.0
+margin_right = 115.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="OneButton" type="TextureButton" parent="VBox/HBox"]
 modulate = Color( 1, 0, 0, 1 )
-margin_left = 108.0
-margin_right = 308.0
+margin_left = 119.0
+margin_right = 319.0
 margin_bottom = 200.0
 texture_normal = ExtResource( 6 )
 
 [node name="sp2" type="Control" parent="VBox/HBox"]
-margin_left = 312.0
-margin_right = 416.0
+margin_left = 323.0
+margin_right = 438.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="Start" type="TextureButton" parent="VBox/HBox"]
-margin_left = 420.0
-margin_right = 620.0
+margin_left = 442.0
+margin_right = 642.0
 margin_bottom = 200.0
 texture_normal = ExtResource( 9 )
 
@@ -139,8 +139,8 @@ margin_bottom = 200.0
 texture_normal = ExtResource( 8 )
 
 [node name="sp3" type="Control" parent="VBox/HBox"]
-margin_left = 624.0
-margin_right = 728.0
+margin_left = 646.0
+margin_right = 761.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -149,20 +149,20 @@ __meta__ = {
 
 [node name="ZeroButton" type="TextureButton" parent="VBox/HBox"]
 modulate = Color( 0, 0, 1, 1 )
-margin_left = 732.0
-margin_right = 932.0
+margin_left = 765.0
+margin_right = 965.0
 margin_bottom = 200.0
 texture_normal = ExtResource( 5 )
 
 [node name="sp4" type="Control" parent="VBox/HBox"]
-margin_left = 936.0
-margin_right = 1040.0
+margin_left = 969.0
+margin_right = 1084.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="sp3" type="Control" parent="VBox"]
 margin_top = 1579.0
-margin_right = 1040.0
+margin_right = 1084.0
 margin_bottom = 1660.0
 size_flags_vertical = 3
 
@@ -171,18 +171,18 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 1680.0
-margin_right = 1040.0
+margin_right = 1084.0
 margin_bottom = 1880.0
 page_id = 3
 
 [node name="Sp2" type="Control" parent="VBox"]
 margin_top = 1900.0
-margin_right = 1040.0
+margin_right = 1084.0
 margin_bottom = 1920.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Sp2" type="Control" parent="."]
-margin_left = 1484.0
+margin_left = 1506.0
 margin_right = 1920.0
 margin_bottom = 1920.0
 size_flags_horizontal = 3

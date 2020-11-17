@@ -1,12 +1,17 @@
 tool
 extends Control
 
+class_name GridGate
+
 signal changed
 
 enum { AND, NAND, OR, NOR, XOR, NOT }
 
 var gates = []
 export var id = 4 setget set_gate
+
+var inputs = [] # Object references that connect to the inputs
+var output = [] # Object references that the output connects to
 
 func _ready():
 	# Connect signals

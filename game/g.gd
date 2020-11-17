@@ -142,3 +142,7 @@ func clear_memory(mem_size = 256, offset = 0):
 	mem.resize(mem_size)
 	for a in range(offset, mem_size):
 		mem[a] = 0
+
+
+func set_display_mode():
+	OS.set_screen_orientation(OS.SCREEN_ORIENTATION_PORTRAIT)

@@ -14,10 +14,7 @@ __meta__ = {
 [node name="GridGate" parent="." instance=ExtResource( 2 )]
 
 [node name="IN2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -128, -64 )
 
 [node name="IN3" parent="." instance=ExtResource( 1 )]
-position = Vector2( -128, 64 )
 
 [node name="OUT2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 128, 0 )
