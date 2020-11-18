@@ -11,7 +11,7 @@ var gates = []
 export var id = 4 setget set_gate
 
 var inputs = [] # Object references that connect to the inputs
-var output = [] # Object references that the output connects to
+var output # Ref to Grid Wire that the output connects to
 
 func _ready():
 	# Connect signals
@@ -35,6 +35,20 @@ func set_gate(_id):
 		idx += 1
 	id = _id
 	property_list_changed_notify()
+
+var count = 0
+
+func eval_inputs():
+	count += 1
+	if id < NOT: # We need to set 2 inputs before evaluating
+		if count == 1:
+			return output.state
+		else:
+			count = 0 # Reset the counter
+	var v = []
+	for w in inputs:
+		v.append(int(w.state))
+	return bool(get_output(v))
 
 
 func get_output(v):

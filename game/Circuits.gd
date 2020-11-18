@@ -8,6 +8,8 @@ class GridWire:
 	var start_ob
 	var end_obs = []
 	var members = []
+	var state = false
+	var changed = false # Flag to detect unstable state
 
 func _ready():
 	#test_get_connected_wires()
@@ -19,12 +21,58 @@ func scan_circuit():
 	# Connect inputs to gates
 	inputs = get_inputs()
 	outputs = get_outputs()
-	get_wires()
+	wires = get_wire_nets()
+	drive_circuit()
+
+
+func drive_circuit():
 	# Get input wires
+	var iws = []
 	for w in wires:
+		w.changed = false # Reset the wires
 		if w.start_ob is GridInput:
-			print(w.start_ob.name)
-	pass
+			iws.append(w)
+			set_wire_state(w, false)
+	set_outputs(iws)
+
+
+func set_wire_state(w, v):
+	w.state = v
+	# Set input color
+	w.start_ob.set_level(v)
+	# Set color of wires
+	for m in w.members:
+		m.modulate = g.get_state_color(v)
+	# Assign wire to gate inputs unless already assigned
+	for g in w.end_obs:
+		var not_set = true
+		for ip in g.inputs:
+			if ip == w:
+				not_set = false
+				continue
+		if not_set:
+			g.inputs.append(w)
+
+
+func set_outputs(gws):
+	if len(gws) < 1:
+		return
+	var next_wires = []
+	for w in gws:
+		for ob in w.end_obs:
+			if ob is GridGate:
+				# Set the state of the gate's output wire
+				var v = ob.eval_inputs()
+				if ob.output.state != v:
+					set_wire_state(ob.output, v)
+					if ob.output.changed:
+						breakpoint # Unstable condition
+					ob.output.changed = true
+					next_wires.append(ob.output)
+			else:
+				# Set output pin level
+				ob.set_level(w.state)
+	set_outputs(next_wires)
 
 
 func get_inputs():
@@ -35,10 +83,12 @@ func get_outputs():
 	return $VBox/Circuit.get_child(0).get_node("Out").get_children()
 
 
-func get_wires():
+func get_wire_nets():
+	var gws = []
 	var lines = []
 	var cons = get_cons()
 	var stubs = []
+	var stub_con = {}
 	for node in $VBox/Circuit.get_child(0).get_children():
 		if node is Line2D:
 			lines.append(node)
@@ -47,6 +97,7 @@ func get_wires():
 		for line in lines:
 			if (con.position - line.get_points()[0]).length() < 8.0:
 				stubs.append(line)
+				stub_con[line] = con # Map stub to con
 	# Get start wires (wires that are not stubs)
 	for line in lines:
 		if stubs.has(line):
@@ -56,16 +107,22 @@ func get_wires():
 		gw.start_ob = get_connected_part(line.get_points()[0], get_gates())
 		if gw.start_ob == null:
 			gw.start_ob = get_connected_part(line.get_points()[0], inputs)
+		else:
+			gw.start_ob.output = gw # Ref this wire with the gate's output
 		# Find the parts connected to the ends of the wires
 		var cws = get_connected_wires(line, stubs)
-		cws.append(line)
-		gw.members = cws
-		for m in gw.members:
+		for m in cws:
 			var part = get_connected_part(m.get_points()[-1], get_gates())
 			if part == null:
 				part = get_connected_part(m.get_points()[-1], outputs)
 			gw.end_obs.append(part)
-		wires.append(gw)
+				# Append cons
+		for w in cws.duplicate():
+			cws.append(stub_con[w])
+		cws.append(line)
+		gw.members = cws
+		gws.append(gw)
+	return gws
 
 
 func test_get_connected_wires():
@@ -99,17 +156,18 @@ func get_connected_wires(line, stubs: Array):
 			var c = stub.get_points()[0]
 			if vert:
 				if near(a.x, c.x) and on_line(a.y, b.y, c.y):
-					cws.append(stub)
-					var ws = get_connected_wires(stub, stubs)
-					if len(ws) > 0:
-						cws = append_array(cws, ws)
+					append_stubs(cws, stub, stubs)
 			else:
 				if near(a.y, c.y) and on_line(a.x, b.x, c.x):
-					cws.append(stub)
-					var ws = get_connected_wires(stub, stubs)
-					if len(ws) > 0:
-						cws = append_array(cws, ws)
+					append_stubs(cws, stub, stubs)
 	return cws
+
+
+func append_stubs(cws, stub, stubs):
+	cws.append(stub)
+	var ws = get_connected_wires(stub, stubs)
+	if len(ws) > 0:
+		cws = append_array(cws, ws)
 
 
 func append_array(a, b):
@@ -131,13 +189,16 @@ func test_on_line():
 	print(on_line(1.0, 6.0, -8.0))
 
 
+# Like is_equal_approx
 func near(a, b, c = 0.1):
 	return abs(a - b) < c
 
 
+# Like Inverse Lerp
 func on_line(a, b, c):
 	var l = abs(b - a) * 1.1
 	return abs(c - a) < l and abs(b - c) < l
+
 
 func get_cons():
 	return $VBox/Circuit.get_child(0).get_node("Con").get_children()

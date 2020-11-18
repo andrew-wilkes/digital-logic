@@ -23,7 +23,4 @@ func get_text():
 
 
 func set_level(v: bool):
-	if v:
-		$IN.self_modulate = g.COLOR_HIGH
-	else:
-		$IN.self_modulate = g.COLOR_LOW
+	$Pin.self_modulate = g.get_state_color(v)
