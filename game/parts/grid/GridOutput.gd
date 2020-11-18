@@ -7,6 +7,8 @@ export var txt = "Y0" setget set_text, get_text
 
 export var text: String
 
+var inputs = []
+
 func _ready():
 	$Label.text = text
 

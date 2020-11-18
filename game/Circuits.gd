@@ -28,10 +28,14 @@ func scan_circuit():
 func drive_circuit():
 	# Get input wires
 	var iws = []
+	var level = true
 	for w in wires:
 		w.changed = false # Reset the wires
 		if w.start_ob is GridInput:
 			iws.append(w)
+			set_wire_state(w, level)
+			#level = !level
+		else:
 			set_wire_state(w, false)
 	set_outputs(iws)
 
@@ -39,12 +43,15 @@ func drive_circuit():
 func set_wire_state(w, v):
 	w.state = v
 	# Set input color
-	w.start_ob.set_level(v)
+	if w.start_ob.has_method("set_level"):
+		w.start_ob.set_level(v)
 	# Set color of wires
 	for m in w.members:
 		m.modulate = g.get_state_color(v)
 	# Assign wire to gate inputs unless already assigned
 	for g in w.end_obs:
+		if g.has_method("set_level"):
+			g.set_level(v)
 		var not_set = true
 		for ip in g.inputs:
 			if ip == w:
@@ -111,16 +118,17 @@ func get_wire_nets():
 			gw.start_ob.output = gw # Ref this wire with the gate's output
 		# Find the parts connected to the ends of the wires
 		var cws = get_connected_wires(line, stubs)
-		for m in cws:
-			var part = get_connected_part(m.get_points()[-1], get_gates())
+		var members = cws.duplicate()
+		members.append(line)
+		for member in members:
+			var part = get_connected_part(member.get_points()[-1], get_gates())
 			if part == null:
-				part = get_connected_part(m.get_points()[-1], outputs)
+				part = get_connected_part(member.get_points()[-1], outputs)
 			gw.end_obs.append(part)
-				# Append cons
-		for w in cws.duplicate():
-			cws.append(stub_con[w])
-		cws.append(line)
-		gw.members = cws
+			# Append cons
+		for w in cws:
+			members.append(stub_con[w])
+		gw.members = members
 		gws.append(gw)
 	return gws
 
