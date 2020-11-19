@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Numbers.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/m_font_regular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/m_font_regular_small.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/fonts/title_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/greater-than.png" type="Texture" id=4]
 [ext_resource path="res://buttons/Buttons.tscn" type="PackedScene" id=5]

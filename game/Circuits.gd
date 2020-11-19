@@ -19,24 +19,31 @@ class GridWire:
 func _ready():
 	#test_get_connected_wires()
 	values = $VBox/Circuit.get_child(0).values
-	scan_circuit()
+	sm(NEXT)
 
 
-enum { PREV, NEXT, STEP } # Enents
+enum { PREV, NEXT, STEP } # Events
 
 func sm(event):
 	match event:
 		PREV:
-			pass
+			init_circuit()
 		NEXT:
+			init_circuit()
+		STEP:
 			drive_circuit(level)
 			change_level()
-		STEP:
-			pass
+
+
+func init_circuit():
+	scan_circuit()
+	$c/Info/VBox/BG/M/Notes.text = $VBox/Circuit.get_child(0).info
+	$c/Info.popup_centered()
 
 
 func gate_changed():
 	correct_count = 0
+	sm(STEP)
 
 
 func change_level():
@@ -72,7 +79,7 @@ func drive_circuit(_level: int):
 	if check_outputs(_level):
 		correct_count += 1
 		if correct_count >= num_levels:
-			breakpoint
+			show_tick()
 	else:
 		correct_count = 0
 
@@ -274,12 +281,25 @@ func get_connected_part(point: Vector2, items: Array):
 
 
 func _on_Step_button_down():
-	sm(NEXT)
+	sm(STEP)
 
 
 func _on_PreviousButton_button_down():
-	pass # Replace with function body.
+	sm(PREV)
 
 
 func _on_NextButton_button_down():
-	pass # Replace with function body.
+	sm(NEXT)
+
+
+func _on_Tick_Timer_timeout():
+	$c/Tick.hide()
+
+
+func show_tick():
+	$c/Tick.popup_centered()
+	$TickTimer.start()
+
+
+func _on_OKButton_button_down():
+	$c/Info.hide()
