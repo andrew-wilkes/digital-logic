@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Numbers.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/m_font_regular_small.tres" type="DynamicFont" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/tilde.png" type="Texture" id=10]
 [ext_resource path="res://assets/fonts/mono-font.tres" type="DynamicFont" id=11]
 [ext_resource path="res://assets/mode.png" type="Texture" id=12]
+[ext_resource path="res://assets/fonts/m_font_regular.tres" type="DynamicFont" id=13]
 [ext_resource path="res://assets/level3.png" type="Texture" id=14]
 [ext_resource path="res://assets/reset.png" type="Texture" id=15]
 [ext_resource path="res://assets/level1.png" type="Texture" id=16]
@@ -27,13 +28,13 @@ __meta__ = {
 }
 
 [node name="Sp" type="Control" parent="."]
-margin_right = 16.0
+margin_right = 436.0
 margin_bottom = 1933.0
 size_flags_horizontal = 3
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 20.0
-margin_right = 1060.0
+margin_left = 440.0
+margin_right = 1480.0
 margin_bottom = 1933.0
 rect_min_size = Vector2( 1040, 0 )
 size_flags_horizontal = 4
@@ -55,22 +56,22 @@ align = 1
 [node name="Desc" type="Label" parent="VBox"]
 margin_top = 141.0
 margin_right = 1040.0
-margin_bottom = 219.0
-custom_fonts/font = ExtResource( 2 )
+margin_bottom = 181.0
+custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color = Color( 0.54902, 0.54902, 0.54902, 1 )
 text = "Training (match the number)"
 autowrap = true
 
 [node name="Gap" type="Control" parent="VBox"]
-margin_top = 239.0
+margin_top = 201.0
 margin_right = 1040.0
-margin_bottom = 259.0
+margin_bottom = 221.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="OP" type="HBoxContainer" parent="VBox"]
-margin_top = 279.0
+margin_top = 241.0
 margin_right = 1040.0
-margin_bottom = 515.0
+margin_bottom = 477.0
 custom_constants/separation = 20
 
 [node name="Labels" type="VBoxContainer" parent="VBox/OP"]
@@ -142,15 +143,15 @@ text = "34 (-23)"
 align = 1
 
 [node name="Gap2" type="Control" parent="VBox"]
-margin_top = 535.0
+margin_top = 497.0
 margin_right = 1040.0
-margin_bottom = 555.0
+margin_bottom = 517.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Alert" type="Label" parent="VBox"]
-margin_top = 575.0
+margin_top = 537.0
 margin_right = 1040.0
-margin_bottom = 653.0
+margin_bottom = 577.0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
 align = 1
@@ -160,16 +161,16 @@ __meta__ = {
 }
 
 [node name="Gap3" type="Control" parent="VBox"]
-margin_top = 673.0
+margin_top = 597.0
 margin_right = 1040.0
-margin_bottom = 693.0
+margin_bottom = 617.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Control" type="GridContainer" parent="VBox"]
 margin_left = 170.0
-margin_top = 713.0
+margin_top = 637.0
 margin_right = 870.0
-margin_bottom = 1413.0
+margin_bottom = 1337.0
 size_flags_horizontal = 4
 custom_constants/vseparation = 50
 custom_constants/hseparation = 50
@@ -245,15 +246,15 @@ hint_tooltip = "Invert"
 texture_normal = ExtResource( 10 )
 
 [node name="Sp" type="Control" parent="VBox"]
-margin_top = 1433.0
+margin_top = 1357.0
 margin_right = 1040.0
-margin_bottom = 1433.0
+margin_bottom = 1395.0
 size_flags_vertical = 3
 
 [node name="Control2" type="HBoxContainer" parent="VBox"]
-margin_top = 1453.0
+margin_top = 1415.0
 margin_right = 1040.0
-margin_bottom = 1653.0
+margin_bottom = 1615.0
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -348,7 +349,7 @@ margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="Sp2" type="Control" parent="VBox"]
-margin_top = 1673.0
+margin_top = 1635.0
 margin_right = 1040.0
 margin_bottom = 1673.0
 size_flags_vertical = 3
@@ -369,8 +370,8 @@ margin_bottom = 1933.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Sp3" type="Control" parent="."]
-margin_left = 1064.0
-margin_right = 1080.0
+margin_left = 1484.0
+margin_right = 1920.0
 margin_bottom = 1933.0
 size_flags_horizontal = 3
 

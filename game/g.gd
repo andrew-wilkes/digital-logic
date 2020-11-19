@@ -1,11 +1,11 @@
 extends Node
 
-const COLOR_HIGH = Color.red
-const COLOR_LOW = Color.blue
+const COLOR_HIGH = Color(1, 0.164062, 0) # Orangish
+const COLOR_LOW = Color(0.148415, 0.143555, 0.765625)
 const COLOR_BUS = Color(0.0, 0.3, 1.0)
 const COLOR_ACTIVE = Color.green
 const COLOR_UNDEFINED = Color.white
-const COLOR_WRONG = Color.orange
+const COLOR_WRONG = Color.red
 const COLOR_RIGHT = Color.green
 const GRID_SIZE = 10
 const PART_FILE_PATH = "user://circuits/"

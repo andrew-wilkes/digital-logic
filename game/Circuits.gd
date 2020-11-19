@@ -8,6 +8,7 @@ var values = []
 var level = 0
 var num_levels = 0
 var correct_count = 0
+var driven = false
 
 class GridWire:
 	var start_ob
@@ -15,6 +16,7 @@ class GridWire:
 	var members = []
 	var state = false
 	var changed = false # Flag to detect unstable state
+
 
 func _ready():
 	#test_get_connected_wires()
@@ -31,8 +33,9 @@ func sm(event):
 		NEXT:
 			init_circuit()
 		STEP:
+			if driven:
+				change_level()
 			drive_circuit(level)
-			change_level()
 
 
 func init_circuit():
@@ -43,7 +46,7 @@ func init_circuit():
 
 func gate_changed():
 	correct_count = 0
-	sm(STEP)
+	drive_circuit(level)
 
 
 func change_level():
@@ -59,6 +62,7 @@ func scan_circuit():
 	gates = get_gates()
 	wires = get_wire_nets()
 	num_levels = int(pow(2, inputs.size()))
+	driven = false
 
 
 func drive_circuit(_level: int):
@@ -82,6 +86,7 @@ func drive_circuit(_level: int):
 			show_tick()
 	else:
 		correct_count = 0
+	driven = true
 
 
 func set_wire_state(w, v):
@@ -113,7 +118,8 @@ func set_outputs(gws):
 		for ob in w.end_obs:
 			if ob is GridGate:
 				# Set the state of the gate's output wire
-				var v = ob.eval_inputs()
+				var v = ob.eval_inputs() # It returns the unchanged state until
+				# all inputs of the gate have been updated
 				if ob.output.state != v:
 					set_wire_state(ob.output, v)
 					if ob.output.changed:
