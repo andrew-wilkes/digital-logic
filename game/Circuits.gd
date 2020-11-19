@@ -2,8 +2,12 @@ extends Control
 
 var inputs = []
 var outputs = []
+var gates = []
 var wires = []
 var values = []
+var level = 0
+var num_levels = 0
+var correct_count = 0
 
 class GridWire:
 	var start_ob
@@ -25,9 +29,19 @@ func sm(event):
 		PREV:
 			pass
 		NEXT:
-			pass
+			drive_circuit(level)
+			change_level()
 		STEP:
 			pass
+
+
+func gate_changed():
+	correct_count = 0
+
+
+func change_level():
+	level += 1
+	level %= num_levels
 
 
 # Set up the connectivity between all inputs, gates, and outputs
@@ -35,11 +49,12 @@ func scan_circuit():
 	# Connect inputs to gates
 	inputs = get_inputs()
 	outputs = get_outputs()
+	gates = get_gates()
 	wires = get_wire_nets()
-	drive_circuit(0)
+	num_levels = int(pow(2, inputs.size()))
 
 
-func drive_circuit(level: int):
+func drive_circuit(_level: int):
 	# Get input wires
 	var iws = []
 	var bit = 1
@@ -47,13 +62,19 @@ func drive_circuit(level: int):
 		w.changed = false # Reset the wires
 		if w.start_ob is GridInput:
 			iws.append(w)
-			var state = (level & bit) > 0
+			var state = (_level & bit) > 0
 			set_wire_state(w, state)
 			bit = bit << 1
 		else:
 			set_wire_state(w, false)
 	set_outputs(iws)
-	check_outputs(level)
+	# Check correctness
+	if check_outputs(_level):
+		correct_count += 1
+		if correct_count >= num_levels:
+			breakpoint
+	else:
+		correct_count = 0
 
 
 func set_wire_state(w, v):
@@ -137,7 +158,7 @@ func get_wire_nets():
 			continue
 		var gw = GridWire.new()
 		# Find the part connected to the start of the wire
-		gw.start_ob = get_connected_part(line.get_points()[0], get_gates())
+		gw.start_ob = get_connected_part(line.get_points()[0], gates)
 		if gw.start_ob == null:
 			gw.start_ob = get_connected_part(line.get_points()[0], inputs)
 		else:
@@ -147,7 +168,7 @@ func get_wire_nets():
 		var members = cws.duplicate()
 		members.append(line)
 		for member in members:
-			var part = get_connected_part(member.get_points()[-1], get_gates())
+			var part = get_connected_part(member.get_points()[-1], gates)
 			if part == null:
 				part = get_connected_part(member.get_points()[-1], outputs)
 			gw.end_obs.append(part)
@@ -240,7 +261,10 @@ func get_cons():
 
 
 func get_gates():
-	return $VBox/Circuit.get_child(0).get_node("Gates").get_children()
+	gates = $VBox/Circuit.get_child(0).get_node("Gates").get_children()
+	for gate in gates:
+		gate.connect("changed", self, "gate_changed")
+	return gates
 
 
 func get_connected_part(point: Vector2, items: Array):
@@ -250,7 +274,7 @@ func get_connected_part(point: Vector2, items: Array):
 
 
 func _on_Step_button_down():
-	pass # Replace with function body.
+	sm(NEXT)
 
 
 func _on_PreviousButton_button_down():

@@ -176,10 +176,6 @@ margin_left = 1506.0
 margin_right = 1920.0
 margin_bottom = 1920.0
 size_flags_horizontal = 3
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
 [connection signal="button_down" from="VBox/HBox/PreviousButton" to="." method="_on_PreviousButton_button_down"]
 [connection signal="button_down" from="VBox/HBox/Step" to="." method="_on_Step_button_down"]
 [connection signal="button_down" from="VBox/HBox/NextButton" to="." method="_on_NextButton_button_down"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
