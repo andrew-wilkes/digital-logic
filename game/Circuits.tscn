@@ -204,15 +204,15 @@ __meta__ = {
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 924.0
-margin_bottom = 152.0
+margin_bottom = 632.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BG" type="ColorRect" parent="c/Info/VBox"]
 margin_right = 920.0
-margin_bottom = 900.0
-rect_min_size = Vector2( 0, 600 )
+margin_bottom = 550.0
+rect_min_size = Vector2( 0, 550 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0, 0.231373, 0.435294, 1 )
@@ -243,9 +243,9 @@ text = "Notes about the circuit"
 autowrap = true
 
 [node name="OKButton" type="Button" parent="c/Info/VBox"]
-margin_top = 904.0
+margin_top = 554.0
 margin_right = 920.0
-margin_bottom = 988.0
+margin_bottom = 638.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 11 )
 text = "OK"

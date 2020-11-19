@@ -36,6 +36,17 @@ func set_gate(_id):
 	id = _id
 	property_list_changed_notify()
 
+
+func set_to_obscured():
+	if id == NOT:
+		return
+	id = XOR # XOR
+	var idx = 0
+	for gate in get_children():
+		gate.visible = id == idx
+		idx += 1
+
+
 var count = 0
 
 func eval_inputs():

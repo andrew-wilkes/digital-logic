@@ -270,6 +270,7 @@ func get_cons():
 func get_gates():
 	gates = $VBox/Circuit.get_child(0).get_node("Gates").get_children()
 	for gate in gates:
+		gate.set_to_obscured() # Change all the 2-input gates to XOR
 		gate.connect("changed", self, "gate_changed")
 	return gates
 
