@@ -3,6 +3,7 @@ extends Control
 var inputs = []
 var outputs = []
 var wires = []
+var values = []
 
 class GridWire:
 	var start_ob
@@ -13,7 +14,20 @@ class GridWire:
 
 func _ready():
 	#test_get_connected_wires()
+	values = $VBox/Circuit.get_child(0).values
 	scan_circuit()
+
+
+enum { PREV, NEXT, STEP } # Enents
+
+func sm(event):
+	match event:
+		PREV:
+			pass
+		NEXT:
+			pass
+		STEP:
+			pass
 
 
 # Set up the connectivity between all inputs, gates, and outputs
@@ -22,22 +36,24 @@ func scan_circuit():
 	inputs = get_inputs()
 	outputs = get_outputs()
 	wires = get_wire_nets()
-	drive_circuit()
+	drive_circuit(0)
 
 
-func drive_circuit():
+func drive_circuit(level: int):
 	# Get input wires
 	var iws = []
-	var level = true
+	var bit = 1
 	for w in wires:
 		w.changed = false # Reset the wires
 		if w.start_ob is GridInput:
 			iws.append(w)
-			set_wire_state(w, level)
-			#level = !level
+			var state = (level & bit) > 0
+			set_wire_state(w, state)
+			bit = bit << 1
 		else:
 			set_wire_state(w, false)
 	set_outputs(iws)
+	check_outputs(level)
 
 
 func set_wire_state(w, v):
@@ -80,6 +96,16 @@ func set_outputs(gws):
 				# Set output pin level
 				ob.set_level(w.state)
 	set_outputs(next_wires)
+
+
+func check_outputs(n):
+	var passed = true
+	for i in outputs.size():
+		var v = outputs[i].state == bool(values[n][i])
+		if !v:
+			passed = false
+		outputs[i].set_result(v)
+	return passed
 
 
 func get_inputs():
@@ -172,10 +198,11 @@ func get_connected_wires(line, stubs: Array):
 
 
 func append_stubs(cws, stub, stubs):
-	cws.append(stub)
-	var ws = get_connected_wires(stub, stubs)
-	if len(ws) > 0:
-		cws = append_array(cws, ws)
+	if !cws.has(stub): # Stop corner connected stub being added twice
+		cws.append(stub)
+		var ws = get_connected_wires(stub, stubs)
+		if len(ws) > 0:
+			cws = append_array(cws, ws)
 
 
 func append_array(a, b):
@@ -220,3 +247,15 @@ func get_connected_part(point: Vector2, items: Array):
 	for gate in items:
 		if (gate.rect_position - point).length() < 96.0:
 			return gate
+
+
+func _on_Step_button_down():
+	pass # Replace with function body.
+
+
+func _on_PreviousButton_button_down():
+	pass # Replace with function body.
+
+
+func _on_NextButton_button_down():
+	pass # Replace with function body.
