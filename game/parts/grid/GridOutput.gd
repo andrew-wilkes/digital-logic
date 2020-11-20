@@ -7,7 +7,7 @@ export var txt = "Y0" setget set_text, get_text
 
 export var text: String
 
-var inputs = []
+var inputs = {}
 var state = false
 
 func _ready():

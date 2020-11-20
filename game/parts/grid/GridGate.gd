@@ -10,7 +10,7 @@ enum { AND, NAND, OR, NOR, XOR, NOT }
 var gates = []
 export var id = 4 setget set_gate
 
-var inputs = [] # Object references that connect to the inputs
+var inputs = {} # Object references that connect to the inputs
 var output # Ref to Grid Wire that the output connects to
 
 func _ready():
@@ -20,6 +20,7 @@ func _ready():
 		gate.connect("button_down", self, "tapped")
 		#gate.rect_position = Vector2(128, 128)
 	set_gate(id)
+	$XOR/Label.text = String(get_instance_id())
 
 
 func tapped():
@@ -47,17 +48,9 @@ func set_to_obscured():
 		idx += 1
 
 
-var count = 0
-
 func eval_inputs():
-	count += 1
-	if id < NOT: # We need to set 2 inputs before evaluating
-		if count == 1:
-			return output.state
-		else:
-			count = 0 # Reset the counter
 	var v = []
-	for w in inputs:
+	for w in inputs.keys():
 		v.append(int(w.state))
 	return bool(get_output(v))
 

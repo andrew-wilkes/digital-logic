@@ -15,7 +15,7 @@ class GridWire:
 	var end_obs = []
 	var members = []
 	var state = false
-	var changed = false # Flag to detect unstable state
+	var changed = 0 # Counter to detect unstable state
 
 
 func _ready():
@@ -70,7 +70,7 @@ func drive_circuit(_level: int):
 	var iws = []
 	var bit = 1
 	for w in wires:
-		w.changed = false # Reset the wires
+		w.changed = 0 # Reset change counter for all wires
 		if w.start_ob is GridInput:
 			iws.append(w)
 			var state = (_level & bit) > 0
@@ -91,23 +91,20 @@ func drive_circuit(_level: int):
 
 func set_wire_state(w, v):
 	w.state = v
+	if w.changed > 2:
+		breakpoint # Unstable condition
+	w.changed += 1
 	# Set input color
 	if w.start_ob.has_method("set_level"):
 		w.start_ob.set_level(v)
 	# Set color of wires
 	for m in w.members:
 		m.modulate = g.get_state_color(v)
-	# Assign wire to gate inputs unless already assigned
+	# Assign wire to gate inputs
 	for g in w.end_obs:
+		g.inputs[w] = v
 		if g.has_method("set_level"):
 			g.set_level(v)
-		var not_set = true
-		for ip in g.inputs:
-			if ip == w:
-				not_set = false
-				continue
-		if not_set:
-			g.inputs.append(w)
 
 
 func set_outputs(gws):
@@ -118,13 +115,9 @@ func set_outputs(gws):
 		for ob in w.end_obs:
 			if ob is GridGate:
 				# Set the state of the gate's output wire
-				var v = ob.eval_inputs() # It returns the unchanged state until
-				# all inputs of the gate have been updated
+				var v = ob.eval_inputs()
 				if ob.output.state != v:
 					set_wire_state(ob.output, v)
-					if ob.output.changed:
-						breakpoint # Unstable condition
-					ob.output.changed = true
 					next_wires.append(ob.output)
 			else:
 				# Set output pin level

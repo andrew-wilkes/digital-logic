@@ -123,7 +123,6 @@ margin_left = 152.0
 margin_top = 88.0
 margin_right = 152.0
 margin_bottom = 88.0
-txt = "A0"
 
 [node name="GridInput2" parent="In" instance=ExtResource( 1 )]
 margin_left = 152.0
