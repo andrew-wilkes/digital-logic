@@ -44,9 +44,16 @@ func init_circuit():
 	$c/Info.popup_centered()
 
 
-func gate_changed():
-	correct_count = 0
-	drive_circuit(level)
+func gate_changed(gate):
+	if driven: # Re-evaluate from the changed gate
+		correct_count = 0
+		for w in wires:
+			w.changed = 0 # Reset change counter for all wires
+		set_outputs(gate.inputs.keys())
+		check_correctness(level)
+	else:
+		# First time to drive the circuit
+		drive_circuit(level)
 
 
 func change_level():
@@ -79,7 +86,10 @@ func drive_circuit(_level: int):
 		else:
 			set_wire_state(w, false)
 	set_outputs(iws)
-	# Check correctness
+	check_correctness(_level)
+
+
+func check_correctness(_level):
 	if check_outputs(_level):
 		correct_count += 1
 		if correct_count >= num_levels:
@@ -136,11 +146,11 @@ func check_outputs(n):
 
 
 func get_inputs():
-	return $VBox/Circuit.get_child(0).get_node("In").get_children()
+	return check_zero_pos($VBox/Circuit.get_child(0).get_node("In")).get_children()
 
 
 func get_outputs():
-	return $VBox/Circuit.get_child(0).get_node("Out").get_children()
+	return check_zero_pos($VBox/Circuit.get_child(0).get_node("Out")).get_children()
 
 
 func get_wire_nets():
@@ -169,6 +179,8 @@ func get_wire_nets():
 			gw.start_ob = get_connected_part(line.get_points()[0], inputs)
 		else:
 			gw.start_ob.output = gw # Ref this wire with the gate's output
+		if gw.start_ob == null:
+			breakpoint
 		# Find the parts connected to the ends of the wires
 		var cws = get_connected_wires(line, stubs)
 		var members = cws.duplicate()
@@ -178,6 +190,8 @@ func get_wire_nets():
 			if part == null:
 				part = get_connected_part(member.get_points()[-1], outputs)
 			gw.end_obs.append(part)
+			if part == null:
+				breakpoint
 			# Append cons
 		for w in cws:
 			members.append(stub_con[w])
@@ -263,20 +277,30 @@ func on_line(a, b, c):
 
 
 func get_cons():
-	return $VBox/Circuit.get_child(0).get_node("Con").get_children()
+	return check_zero_pos($VBox/Circuit.get_child(0).get_node("Con")).get_children()
 
 
 func get_gates():
-	gates = $VBox/Circuit.get_child(0).get_node("Gates").get_children()
+	gates = check_zero_pos($VBox/Circuit.get_child(0).get_node("Gates")).get_children()
 	for gate in gates:
 		gate.set_to_obscured() # Change all the 2-input gates to XOR
-		gate.connect("changed", self, "gate_changed")
+		gate.connect("changed", self, "gate_changed", [gate])
 	return gates
+
+
+func check_zero_pos(node):
+	if node is Control:
+		if node.rect_position.length() > 0.1:
+			breakpoint;
+	else:
+		if node.position.length() > 0.1:
+			breakpoint;
+	return node
 
 
 func get_connected_part(point: Vector2, items: Array):
 	for gate in items:
-		if (gate.rect_position - point).length() < 96.0:
+		if (gate.rect_position - point).length() < 65.0:
 			return gate
 
 

@@ -171,13 +171,6 @@ margin_bottom = 704.0
 txt = "Y3"
 text = "Y3"
 
-[node name="Wires" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Con" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0

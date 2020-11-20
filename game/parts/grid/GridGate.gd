@@ -20,7 +20,6 @@ func _ready():
 		gate.connect("button_down", self, "tapped")
 		#gate.rect_position = Vector2(128, 128)
 	set_gate(id)
-	$XOR/Label.text = String(get_instance_id())
 
 
 func tapped():
