@@ -27,7 +27,7 @@ points = PoolVector2Array( 168, 88, 472, 88 )
 points = PoolVector2Array( 176, 168, 472, 168 )
 
 [node name="w11" parent="." instance=ExtResource( 5 )]
-points = PoolVector2Array( 560, 136, 640, 136, 640, 224, 384, 224, 384, 280, 488, 280 )
+points = PoolVector2Array( 560, 136, 640, 136, 640, 224, 640, 280, 744, 280 )
 
 [node name="w12" parent="." instance=ExtResource( 5 )]
 points = PoolVector2Array( 384, 360, 384, 664, 472, 664 )
@@ -48,7 +48,7 @@ points = PoolVector2Array( 320, 88, 320, 472, 472, 472 )
 points = PoolVector2Array( 256, 168, 256, 544, 472, 544 )
 
 [node name="w3" parent="." instance=ExtResource( 5 )]
-points = PoolVector2Array( 568, 320, 912, 320 )
+points = PoolVector2Array( 816, 320, 912, 320 )
 
 [node name="w16" parent="." instance=ExtResource( 5 )]
 points = PoolVector2Array( 808, 856, 912, 856 )
@@ -66,7 +66,7 @@ points = PoolVector2Array( 832, 552, 896, 552, 896, 744, 672, 744, 672, 816, 736
 points = PoolVector2Array( 552, 704, 640, 704, 640, 592, 736, 592 )
 
 [node name="w2" parent="." instance=ExtResource( 5 )]
-points = PoolVector2Array( 168, 360, 496, 360 )
+points = PoolVector2Array( 168, 360, 752, 360 )
 
 [node name="Gates" type="Control" parent="."]
 margin_right = 40.0
@@ -82,9 +82,9 @@ margin_right = 456.0
 margin_bottom = 128.0
 
 [node name="GridGate8" parent="Gates" instance=ExtResource( 2 )]
-margin_left = 504.0
+margin_left = 760.0
 margin_top = 320.0
-margin_right = 464.0
+margin_right = 720.0
 margin_bottom = 320.0
 
 [node name="GridGate4" parent="Gates" instance=ExtResource( 2 )]
@@ -116,9 +116,9 @@ margin_bottom = 552.0
 id = 2
 
 [node name="GridGate9" parent="Gates" instance=ExtResource( 2 )]
-margin_left = 760.0
+margin_left = 768.0
 margin_top = 856.0
-margin_right = 720.0
+margin_right = 728.0
 margin_bottom = 856.0
 id = 2
 

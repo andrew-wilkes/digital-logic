@@ -6,14 +6,14 @@
 [ext_resource path="res://circuits/Decoder.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/greater-than.png" type="Texture" id=5]
 [ext_resource path="res://assets/less-than.png" type="Texture" id=6]
-[ext_resource path="res://assets/fonts/m_font_regular_small.tres" type="DynamicFont" id=7]
+[ext_resource path="res://parts/grid/Info.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/cross-tick.png" type="Texture" id=8]
 [ext_resource path="res://assets/play-dot.png" type="Texture" id=9]
 [ext_resource path="res://Circuits.gd" type="Script" id=10]
-[ext_resource path="res://assets/fonts/m_bold.tres" type="DynamicFont" id=11]
 [ext_resource path="res://assets/fonts/m_font_regular.tres" type="DynamicFont" id=12]
 [ext_resource path="res://circuits/Multiplexer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://circuits/Adder.tscn" type="PackedScene" id=14]
+[ext_resource path="res://circuits/SR.tscn" type="PackedScene" id=15]
 
 [node name="Circuits" type="HBoxContainer"]
 anchor_right = 1.0
@@ -87,24 +87,35 @@ margin_bottom = 1337.0
 rect_min_size = Vector2( 0, 1000 )
 color = Color( 0.176471, 0.176471, 0.176471, 1 )
 
-[node name="Multiplexer" parent="VBox/Circuit" instance=ExtResource( 13 )]
-margin_right = -4.0
-margin_bottom = 0.0
-
 [node name="Adder" parent="VBox/Circuit" instance=ExtResource( 14 )]
-visible = false
-margin_left = -31.3082
+margin_left = -25.3082
 margin_top = -16.2161
-margin_right = -27.3081
+margin_right = -21.3081
 margin_bottom = -8.21594
+
+[node name="Multiplexer" parent="VBox/Circuit" instance=ExtResource( 13 )]
+visible = false
+margin_left = 4.76953
+margin_top = 213.647
+margin_right = 0.769531
+margin_bottom = 213.647
 
 [node name="Decoder" parent="VBox/Circuit" instance=ExtResource( 4 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1040.0
-margin_bottom = 800.0
+margin_left = -13.4151
+margin_top = 91.4568
+margin_right = 1042.58
+margin_bottom = 891.457
 rect_min_size = Vector2( 0, 800 )
+
+[node name="SR" parent="VBox/Circuit" instance=ExtResource( 15 )]
+visible = false
+margin_left = -64.0
+margin_top = 258.0
+margin_right = -64.0
+margin_bottom = 266.0
 
 [node name="sp2" type="Control" parent="VBox"]
 margin_top = 1357.0
@@ -200,67 +211,18 @@ texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 233, 1, 189, 199 )
 
-[node name="Info" type="PopupPanel" parent="c"]
-margin_right = 928.0
-margin_bottom = 156.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Info" parent="c" instance=ExtResource( 7 )]
 
-[node name="VBox" type="VBoxContainer" parent="c/Info"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 924.0
-margin_bottom = 642.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Unstable" parent="c" instance=ExtResource( 7 )]
 
-[node name="BG" type="ColorRect" parent="c/Info/VBox"]
-margin_right = 920.0
-margin_bottom = 550.0
-rect_min_size = Vector2( 0, 550 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color( 0, 0.231373, 0.435294, 1 )
-
-[node name="M" type="MarginContainer" parent="c/Info/VBox/BG"]
-margin_top = 4.0
-margin_right = 940.0
-margin_bottom = 64.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_right = 20
-custom_constants/margin_top = 10
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Notes" type="Label" parent="c/Info/VBox/BG/M"]
-margin_left = 20.0
-margin_top = 10.0
-margin_right = 920.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 900, 0 )
-custom_fonts/font = ExtResource( 7 )
-custom_colors/font_color = Color( 0.894118, 0.894118, 0.894118, 1 )
-text = "Notes about the circuit"
-autowrap = true
-
-[node name="OKButton" type="Button" parent="c/Info/VBox"]
-margin_top = 554.0
-margin_right = 920.0
-margin_bottom = 638.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 11 )
-text = "OK"
+[node name="Notes" parent="c/Unstable/VBox/BG/M" index="0"]
+text = "Unstable circuit"
 
 [node name="TickTimer" type="Timer" parent="."]
 one_shot = true
 [connection signal="button_down" from="VBox/HBox/PreviousButton" to="." method="_on_PreviousButton_button_down"]
 [connection signal="button_down" from="VBox/HBox/Step" to="." method="_on_Step_button_down"]
 [connection signal="button_down" from="VBox/HBox/NextButton" to="." method="_on_NextButton_button_down"]
-[connection signal="button_down" from="c/Info/VBox/OKButton" to="." method="_on_OKButton_button_down"]
 [connection signal="timeout" from="TickTimer" to="." method="_on_Tick_Timer_timeout"]
+
+[editable path="c/Unstable"]

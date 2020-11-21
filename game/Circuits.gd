@@ -4,11 +4,12 @@ var inputs = []
 var outputs = []
 var gates = []
 var wires = []
-var values = []
-var level = 0
-var num_levels = 0
+var pattern_index = 0
+var num_patterns = 0
 var correct_count = 0
 var driven = false
+var last_vals = []
+var circuit
 
 class GridWire:
 	var start_ob
@@ -19,12 +20,11 @@ class GridWire:
 
 
 func _ready():
-	#test_get_connected_wires()
-	values = $VBox/Circuit.get_child(0).values
+	circuit = $VBox/Circuit.get_child(0)
 	sm(NEXT)
 
 
-enum { PREV, NEXT, STEP } # Events
+enum { PREV, NEXT, STEP, UNSTABLE } # Events
 
 func sm(event):
 	match event:
@@ -34,13 +34,15 @@ func sm(event):
 			init_circuit()
 		STEP:
 			if driven:
-				change_level()
-			drive_circuit(level)
+				change_pattern_index()
+			drive_circuit(pattern_index)
+		UNSTABLE:
+			$c/Unstable.popup_centered()
 
 
 func init_circuit():
 	scan_circuit()
-	$c/Info/VBox/BG/M/Notes.text = $VBox/Circuit.get_child(0).info
+	$c/Info/VBox/BG/M/Notes.text = circuit.info
 	$c/Info.popup_centered()
 
 
@@ -50,15 +52,15 @@ func gate_changed(gate):
 		for w in wires:
 			w.changed = 0 # Reset change counter for all wires
 		set_outputs(gate.inputs.keys())
-		check_correctness(level)
+		check_correctness(pattern_index)
 	else:
 		# First time to drive the circuit
-		drive_circuit(level)
+		drive_circuit(pattern_index)
 
 
-func change_level():
-	level += 1
-	level %= num_levels
+func change_pattern_index():
+	pattern_index += 1
+	pattern_index %= num_patterns
 
 
 # Set up the connectivity between all inputs, gates, and outputs
@@ -66,33 +68,37 @@ func scan_circuit():
 	# Connect inputs to gates
 	inputs = get_inputs()
 	outputs = get_outputs()
+	last_vals.resize(outputs.size())
 	gates = get_gates()
 	wires = get_wire_nets()
-	num_levels = int(pow(2, inputs.size()))
+	num_patterns = circuit.vin.size()
 	driven = false
 
 
-func drive_circuit(_level: int):
+func drive_circuit(_pattern_index):
 	# Get input wires
 	var iws = []
-	var bit = 1
+	var unstable = false
+	var pattern = circuit.vin[_pattern_index].duplicate()
 	for w in wires:
 		w.changed = 0 # Reset change counter for all wires
 		if w.start_ob is GridInput:
 			iws.append(w)
-			var state = (_level & bit) > 0
-			set_wire_state(w, state)
-			bit = bit << 1
+			var state = pattern.pop_front()
+			unstable = set_wire_state(w, state)
 		else:
-			set_wire_state(w, false)
-	set_outputs(iws)
-	check_correctness(_level)
+			if !driven: # Change color from white
+				unstable = set_wire_state(w, false)
+	unstable = set_outputs(iws)
+	check_correctness(_pattern_index)
+	if unstable:
+		sm(UNSTABLE)
 
 
-func check_correctness(_level):
-	if check_outputs(_level):
+func check_correctness(_pattern_index):
+	if check_outputs(_pattern_index):
 		correct_count += 1
-		if correct_count >= num_levels:
+		if correct_count >= num_patterns:
 			show_tick()
 	else:
 		correct_count = 0
@@ -101,8 +107,8 @@ func check_correctness(_level):
 
 func set_wire_state(w, v):
 	w.state = v
-	if w.changed > 2:
-		breakpoint # Unstable condition
+	if w.changed > 2: # Unstable state
+		return true
 	w.changed += 1
 	# Set input color
 	if w.start_ob.has_method("set_level"):
@@ -115,9 +121,11 @@ func set_wire_state(w, v):
 		g.inputs[w] = v
 		if g.has_method("set_level"):
 			g.set_level(v)
+	return false
 
 
 func set_outputs(gws):
+	var unstable = false
 	if len(gws) < 1:
 		return
 	var next_wires = []
@@ -127,30 +135,44 @@ func set_outputs(gws):
 				# Set the state of the gate's output wire
 				var v = ob.eval_inputs()
 				if ob.output.state != v:
-					set_wire_state(ob.output, v)
+					unstable = set_wire_state(ob.output, v)
+					if unstable:
+						return unstable
 					next_wires.append(ob.output)
 			else:
 				# Set output pin level
 				ob.set_level(w.state)
-	set_outputs(next_wires)
+	unstable = set_outputs(next_wires)
+	return unstable
 
 
 func check_outputs(n):
 	var passed = true
-	for i in outputs.size():
-		var v = outputs[i].state == bool(values[n][i])
+	# Get index of output state from input pattern
+	var i = 0
+	var x = 1
+	for b in circuit.vin[n]:
+		i += b * x
+		x *= 2
+	for j in outputs.size():
+		var val = circuit.vout[i][j]
+		if val == 2: # Use remembered last value
+			val = 0 if last_vals[j] == null else last_vals[j]
+		else:
+			last_vals[j] = val
+		var v = outputs[j].state == bool(val)
 		if !v:
 			passed = false
-		outputs[i].set_result(v)
+		outputs[j].set_result(v)
 	return passed
 
 
 func get_inputs():
-	return check_zero_pos($VBox/Circuit.get_child(0).get_node("In")).get_children()
+	return check_zero_pos(circuit.get_node("In")).get_children()
 
 
 func get_outputs():
-	return check_zero_pos($VBox/Circuit.get_child(0).get_node("Out")).get_children()
+	return check_zero_pos(circuit.get_node("Out")).get_children()
 
 
 func get_wire_nets():
@@ -159,7 +181,7 @@ func get_wire_nets():
 	var cons = get_cons()
 	var stubs = []
 	var stub_con = {}
-	for node in $VBox/Circuit.get_child(0).get_children():
+	for node in circuit.get_children():
 		if node is Line2D:
 			lines.append(node)
 	# Get wire stubs
@@ -277,11 +299,11 @@ func on_line(a, b, c):
 
 
 func get_cons():
-	return check_zero_pos($VBox/Circuit.get_child(0).get_node("Con")).get_children()
+	return check_zero_pos(circuit.get_node("Con")).get_children()
 
 
 func get_gates():
-	gates = check_zero_pos($VBox/Circuit.get_child(0).get_node("Gates")).get_children()
+	gates = check_zero_pos(circuit.get_node("Gates")).get_children()
 	for gate in gates:
 		gate.set_to_obscured() # Change all the 2-input gates to XOR
 		gate.connect("changed", self, "gate_changed", [gate])
@@ -323,7 +345,3 @@ func _on_Tick_Timer_timeout():
 func show_tick():
 	$c/Tick.popup_centered()
 	$TickTimer.start()
-
-
-func _on_OKButton_button_down():
-	$c/Info.hide()
