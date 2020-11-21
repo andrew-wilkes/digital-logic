@@ -37,7 +37,7 @@ func sm(event):
 				change_pattern_index()
 			drive_circuit(pattern_index)
 		UNSTABLE:
-			$c/Unstable.popup_centered()
+			$c/Alert.show()
 
 
 func init_circuit():
