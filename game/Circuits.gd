@@ -10,6 +10,7 @@ var correct_count = 0
 var driven = false
 var last_vals = []
 var circuit
+var circuit_index = 0
 
 class GridWire:
 	var start_ob
@@ -20,8 +21,15 @@ class GridWire:
 
 
 func _ready():
-	circuit = $VBox/Circuit.get_child(0)
-	sm(NEXT)
+	set_circuit(circuit_index)
+	init_circuit()
+
+
+func set_circuit(n):
+	for c in $VBox/Circuit.get_children():
+		c.visible = false
+	circuit = $VBox/Circuit.get_child(n)
+	circuit.visible = true
 
 
 enum { PREV, NEXT, STEP, UNSTABLE } # Events
@@ -29,8 +37,16 @@ enum { PREV, NEXT, STEP, UNSTABLE } # Events
 func sm(event):
 	match event:
 		PREV:
+			circuit_index -= 1
+			if circuit_index < 0:
+				circuit_index = $VBox/Circuit.get_child_count() - 1
+			set_circuit(circuit_index)
 			init_circuit()
 		NEXT:
+			circuit_index += 1
+			if circuit_index >= $VBox/Circuit.get_child_count():
+				circuit_index = 0
+			set_circuit(circuit_index)
 			init_circuit()
 		STEP:
 			if driven:
@@ -306,7 +322,8 @@ func get_gates():
 	gates = check_zero_pos(circuit.get_node("Gates")).get_children()
 	for gate in gates:
 		gate.set_to_obscured() # Change all the 2-input gates to XOR
-		gate.connect("changed", self, "gate_changed", [gate])
+		if !gate.is_connected("changed", self, "gate_changed"):
+			gate.connect("changed", self, "gate_changed", [gate])
 	return gates
 
 
