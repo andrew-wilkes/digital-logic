@@ -12,7 +12,7 @@
 [ext_resource path="res://assets/tilde.png" type="Texture" id=10]
 [ext_resource path="res://assets/fonts/mono-font.tres" type="DynamicFont" id=11]
 [ext_resource path="res://assets/mode.png" type="Texture" id=12]
-[ext_resource path="res://assets/fonts/m_font_regular.tres" type="DynamicFont" id=13]
+[ext_resource path="res://assets/fonts/description-font.tres" type="DynamicFont" id=13]
 [ext_resource path="res://assets/level3.png" type="Texture" id=14]
 [ext_resource path="res://assets/reset.png" type="Texture" id=15]
 [ext_resource path="res://assets/level1.png" type="Texture" id=16]
@@ -59,22 +59,22 @@ align = 1
 [node name="Desc" type="Label" parent="VBox"]
 margin_top = 141.0
 margin_right = 1040.0
-margin_bottom = 200.0
+margin_bottom = 219.0
 custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color = Color( 0.54902, 0.54902, 0.54902, 1 )
 text = "Training (match the number)"
 autowrap = true
 
 [node name="Gap" type="Control" parent="VBox"]
-margin_top = 220.0
+margin_top = 239.0
 margin_right = 1040.0
-margin_bottom = 240.0
+margin_bottom = 259.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="OP" type="HBoxContainer" parent="VBox"]
-margin_top = 260.0
+margin_top = 279.0
 margin_right = 1040.0
-margin_bottom = 496.0
+margin_bottom = 515.0
 custom_constants/separation = 20
 
 [node name="Labels" type="VBoxContainer" parent="VBox/OP"]
@@ -146,14 +146,14 @@ text = "34 (-23)"
 align = 1
 
 [node name="Gap2" type="Control" parent="VBox"]
-margin_top = 516.0
+margin_top = 535.0
 margin_right = 1040.0
-margin_bottom = 516.0
+margin_bottom = 535.0
 
 [node name="Alert" type="Label" parent="VBox"]
-margin_top = 536.0
+margin_top = 555.0
 margin_right = 1040.0
-margin_bottom = 595.0
+margin_bottom = 614.0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
 align = 1
@@ -163,16 +163,16 @@ __meta__ = {
 }
 
 [node name="Gap3" type="Control" parent="VBox"]
-margin_top = 615.0
+margin_top = 634.0
 margin_right = 1040.0
-margin_bottom = 635.0
+margin_bottom = 654.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Control" type="GridContainer" parent="VBox"]
 margin_left = 170.0
-margin_top = 655.0
+margin_top = 674.0
 margin_right = 870.0
-margin_bottom = 1355.0
+margin_bottom = 1374.0
 size_flags_horizontal = 4
 custom_constants/vseparation = 50
 custom_constants/hseparation = 50
@@ -248,15 +248,15 @@ hint_tooltip = "Invert"
 texture_normal = ExtResource( 10 )
 
 [node name="Sp" type="Control" parent="VBox"]
-margin_top = 1375.0
+margin_top = 1394.0
 margin_right = 1040.0
-margin_bottom = 1397.0
+margin_bottom = 1407.0
 size_flags_vertical = 3
 
 [node name="Control2" type="HBoxContainer" parent="VBox"]
-margin_top = 1417.0
+margin_top = 1427.0
 margin_right = 1040.0
-margin_bottom = 1617.0
+margin_bottom = 1627.0
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -351,7 +351,7 @@ margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="Sp2" type="Control" parent="VBox"]
-margin_top = 1637.0
+margin_top = 1647.0
 margin_right = 1040.0
 margin_bottom = 1660.0
 size_flags_vertical = 3
