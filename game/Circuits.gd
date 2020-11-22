@@ -67,7 +67,7 @@ func init_circuit():
 
 func show_info():
 	$c/Info.popup_centered()
-
+	$VBox/HBox/InfoButton.disabled = true
 
 func gate_changed(gate):
 	if driven: # Re-evaluate from the changed gate
@@ -373,3 +373,14 @@ func show_tick():
 
 func _on_InfoButton_button_down():
 	show_info()
+
+
+# Allow for closing the info panel by clicking on the info button
+func _on_Info_popup_hide():
+	# Need to delay one frame tick to avoid actioning the click on the info
+	# button that opens the panel again
+	call_deferred("enable_info_button")
+
+
+func enable_info_button():
+	$VBox/HBox/InfoButton.disabled = false

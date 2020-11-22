@@ -232,10 +232,8 @@ region_enabled = true
 region_rect = Rect2( 233, 1, 189, 199 )
 
 [node name="Alert" parent="c" instance=ExtResource( 11 )]
-visible = false
 
 [node name="Info" parent="c" instance=ExtResource( 7 )]
-visible = false
 
 [node name="TickTimer" type="Timer" parent="."]
 one_shot = true
@@ -243,4 +241,5 @@ one_shot = true
 [connection signal="button_down" from="VBox/HBox/PreviousButton" to="." method="_on_PreviousButton_button_down"]
 [connection signal="button_down" from="VBox/HBox/Step" to="." method="_on_Step_button_down"]
 [connection signal="button_down" from="VBox/HBox/NextButton" to="." method="_on_NextButton_button_down"]
+[connection signal="popup_hide" from="c/Info" to="." method="_on_Info_popup_hide"]
 [connection signal="timeout" from="TickTimer" to="." method="_on_Tick_Timer_timeout"]
