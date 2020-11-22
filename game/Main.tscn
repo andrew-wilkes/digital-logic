@@ -42,9 +42,9 @@ margin_bottom = 634.0
 size_flags_vertical = 3
 
 [node name="Info" type="Label" parent="VBox"]
-margin_top = 861.0
+margin_top = 871.0
 margin_right = 1040.0
-margin_bottom = 939.0
+margin_bottom = 930.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_fonts/font = ExtResource( 4 )

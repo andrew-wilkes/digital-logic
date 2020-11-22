@@ -64,7 +64,7 @@ _global_script_class_icons={
 
 config/name="Digital Logic"
 run/main_scene="res://Main.tscn"
-boot_splash/image="res://assets/circuits-l.png"
+boot_splash/image="res://assets/splash.png"
 boot_splash/fullsize=false
 
 [autoload]

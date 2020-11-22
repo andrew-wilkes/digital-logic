@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://buttons/Buttons.tscn" type="PackedScene" id=1]
 [ext_resource path="res://center.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://circuits/Multiplexer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://circuits/Adder.tscn" type="PackedScene" id=14]
 [ext_resource path="res://circuits/SR.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/info2.png" type="Texture" id=16]
 
 [node name="Circuits" type="HBoxContainer"]
 anchor_right = 1.0
@@ -26,13 +27,13 @@ __meta__ = {
 }
 
 [node name="Sp1" type="Control" parent="."]
-margin_right = 414.0
+margin_right = 436.0
 margin_bottom = 1920.0
 size_flags_horizontal = 3
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 418.0
-margin_right = 1502.0
+margin_left = 440.0
+margin_right = 1480.0
 margin_bottom = 1920.0
 rect_min_size = Vector2( 1040, 0 )
 mouse_filter = 2
@@ -43,7 +44,7 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="VBox"]
-margin_right = 1084.0
+margin_right = 1040.0
 margin_bottom = 121.0
 rect_min_size = Vector2( 460, 0 )
 custom_fonts/font = ExtResource( 3 )
@@ -53,38 +54,44 @@ align = 1
 
 [node name="Desc" type="Label" parent="VBox"]
 margin_top = 141.0
-margin_right = 1084.0
+margin_right = 1040.0
 margin_bottom = 219.0
 custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.54902, 0.54902, 0.54902, 1 )
 text = "Learn how logic circuits work"
 autowrap = true
 
-[node name="Score" type="HBoxContainer" parent="VBox"]
+[node name="sp2" type="Control" parent="VBox"]
 margin_top = 239.0
-margin_right = 1084.0
-margin_bottom = 317.0
+margin_right = 1040.0
+margin_bottom = 253.0
+size_flags_vertical = 3
+
+[node name="Score" type="HBoxContainer" parent="VBox"]
+margin_top = 273.0
+margin_right = 1040.0
+margin_bottom = 351.0
 
 [node name="Accuracy" type="Label" parent="VBox/Score"]
-margin_right = 1080.0
+margin_right = 952.0
 margin_bottom = 78.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 12 )
-text = "Change the gates to make it work"
+text = "Tap the gates to make it work"
 align = 1
 
 [node name="Speed" type="Label" parent="VBox/Score"]
-margin_left = 1084.0
-margin_right = 1084.0
+margin_left = 956.0
+margin_right = 1040.0
 margin_bottom = 78.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 12 )
 align = 1
 
 [node name="Circuit" type="ColorRect" parent="VBox"]
-margin_top = 337.0
-margin_right = 1084.0
-margin_bottom = 1337.0
+margin_top = 371.0
+margin_right = 1040.0
+margin_bottom = 1371.0
 rect_min_size = Vector2( 0, 1000 )
 color = Color( 0.176471, 0.176471, 0.176471, 1 )
 
@@ -118,43 +125,55 @@ margin_right = 1042.58
 margin_bottom = 891.457
 rect_min_size = Vector2( 0, 800 )
 
-[node name="sp2" type="Control" parent="VBox"]
-margin_top = 1357.0
-margin_right = 1084.0
-margin_bottom = 1388.0
+[node name="sp4" type="Control" parent="VBox"]
+margin_top = 1391.0
+margin_right = 1040.0
+margin_bottom = 1405.0
 size_flags_vertical = 3
 
 [node name="HBox" type="HBoxContainer" parent="VBox"]
-margin_top = 1408.0
-margin_right = 1084.0
-margin_bottom = 1608.0
+margin_top = 1425.0
+margin_right = 1040.0
+margin_bottom = 1625.0
+
+[node name="sp5" type="Control" parent="VBox/HBox"]
+margin_right = 41.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+
+[node name="InfoButton" type="TextureButton" parent="VBox/HBox"]
+margin_left = 45.0
+margin_right = 245.0
+margin_bottom = 200.0
+texture_normal = ExtResource( 16 )
 
 [node name="sp" type="Control" parent="VBox/HBox"]
-margin_right = 115.0
+margin_left = 249.0
+margin_right = 291.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="PreviousButton" type="TextureButton" parent="VBox/HBox"]
-margin_left = 119.0
-margin_right = 319.0
+margin_left = 295.0
+margin_right = 495.0
 margin_bottom = 200.0
 texture_normal = ExtResource( 6 )
 
 [node name="sp2" type="Control" parent="VBox/HBox"]
-margin_left = 323.0
-margin_right = 438.0
+margin_left = 499.0
+margin_right = 540.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="Step" type="TextureButton" parent="VBox/HBox"]
-margin_left = 442.0
-margin_right = 642.0
+margin_left = 544.0
+margin_right = 744.0
 margin_bottom = 200.0
 texture_normal = ExtResource( 9 )
 
 [node name="sp3" type="Control" parent="VBox/HBox"]
-margin_left = 646.0
-margin_right = 761.0
+margin_left = 748.0
+margin_right = 790.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -162,40 +181,40 @@ __meta__ = {
 }
 
 [node name="NextButton" type="TextureButton" parent="VBox/HBox"]
-margin_left = 765.0
-margin_right = 965.0
+margin_left = 794.0
+margin_right = 994.0
 margin_bottom = 200.0
 texture_normal = ExtResource( 5 )
 
 [node name="sp4" type="Control" parent="VBox/HBox"]
-margin_left = 969.0
-margin_right = 1084.0
+margin_left = 998.0
+margin_right = 1040.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="sp3" type="Control" parent="VBox"]
-margin_top = 1628.0
-margin_right = 1084.0
-margin_bottom = 1660.0
+margin_top = 1645.0
+margin_right = 1040.0
+margin_bottom = 1659.0
 size_flags_vertical = 3
 
 [node name="Buttons" parent="VBox" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
-margin_top = 1680.0
-margin_right = 1084.0
-margin_bottom = 1880.0
+margin_top = 1679.0
+margin_right = 1040.0
+margin_bottom = 1879.0
 page_id = 3
 
 [node name="Sp2" type="Control" parent="VBox"]
-margin_top = 1900.0
-margin_right = 1084.0
-margin_bottom = 1920.0
+margin_top = 1899.0
+margin_right = 1040.0
+margin_bottom = 1919.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Sp2" type="Control" parent="."]
-margin_left = 1506.0
+margin_left = 1484.0
 margin_right = 1920.0
 margin_bottom = 1920.0
 size_flags_horizontal = 3
@@ -212,13 +231,15 @@ texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 233, 1, 189, 199 )
 
-[node name="Info" parent="c" instance=ExtResource( 7 )]
-
 [node name="Alert" parent="c" instance=ExtResource( 11 )]
+visible = false
+
+[node name="Info" parent="c" instance=ExtResource( 7 )]
 visible = false
 
 [node name="TickTimer" type="Timer" parent="."]
 one_shot = true
+[connection signal="button_down" from="VBox/HBox/InfoButton" to="." method="_on_InfoButton_button_down"]
 [connection signal="button_down" from="VBox/HBox/PreviousButton" to="." method="_on_PreviousButton_button_down"]
 [connection signal="button_down" from="VBox/HBox/Step" to="." method="_on_Step_button_down"]
 [connection signal="button_down" from="VBox/HBox/NextButton" to="." method="_on_NextButton_button_down"]

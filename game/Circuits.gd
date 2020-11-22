@@ -57,8 +57,15 @@ func sm(event):
 
 
 func init_circuit():
+	pattern_index = 0
+	correct_count = 0
+	last_vals = []
 	scan_circuit()
-	$c/Info/VBox/BG/M/Notes.text = circuit.info
+	$c/Info/VBox/M/Notes.text = circuit.info
+	show_info()
+
+
+func show_info():
 	$c/Info.popup_centered()
 
 
@@ -362,3 +369,7 @@ func _on_Tick_Timer_timeout():
 func show_tick():
 	$c/Tick.popup_centered()
 	$TickTimer.start()
+
+
+func _on_InfoButton_button_down():
+	show_info()
