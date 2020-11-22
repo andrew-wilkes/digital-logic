@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/fonts/m_font_regular_small.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/m_font_regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/m_bold.tres" type="DynamicFont" id=2]
 [ext_resource path="res://parts/grid/Info.gd" type="Script" id=3]
 [ext_resource path="res://assets/theme/blue_styleboxflat.tres" type="StyleBox" id=4]
@@ -24,17 +24,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OKButton" type="Button" parent="VBox"]
-margin_right = 928.0
-margin_bottom = 84.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
-text = "OK"
-
 [node name="M" type="MarginContainer" parent="VBox"]
-margin_top = 88.0
 margin_right = 928.0
-margin_bottom = 814.0
+margin_bottom = 726.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource( 1 )
@@ -46,15 +38,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Notes" type="Label" parent="VBox/M"]
+[node name="Notes" type="RichTextLabel" parent="VBox/M"]
 margin_left = 20.0
 margin_top = 10.0
 margin_right = 908.0
 margin_bottom = 716.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0.894118, 0.894118, 0.894118, 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Notes about the circuit"
 text = "Notes about the circuit"
-autowrap = true
+
+[node name="OKButton" type="Button" parent="VBox"]
+margin_top = 730.0
+margin_right = 928.0
+margin_bottom = 814.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "OK"
 [connection signal="button_down" from="VBox/OKButton" to="." method="_on_OKButton_button_down"]
