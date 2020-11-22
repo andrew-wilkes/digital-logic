@@ -46,6 +46,7 @@ func _ready():
 	n1 = get_data("res://numbers.tsv")
 	n2 = get_data("res://numbers2.tsv")
 	set_mode()
+	$c/Info/VBox/M/Notes.text = "Instructions"
 
 
 func get_data(fn):
@@ -386,3 +387,20 @@ func _on_Save_button_down():
 
 func _on_Timer_timeout():
 	sm(ATIMEOUT)
+
+
+func _on_Info_button_down():
+	show_info()
+
+
+func _on_Info_popup_hide():
+	call_deferred("enable_info_button")
+
+
+func enable_info_button():
+	$VBox/Control2/Info.disabled = false
+
+
+func show_info():
+	$c/Info.popup_centered()
+	$VBox/Control2/Info.disabled = true
