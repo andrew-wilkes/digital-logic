@@ -210,7 +210,7 @@ func get_wire_nets():
 	# Get wire stubs
 	for con in cons:
 		for line in lines:
-			if (con.position - line.get_points()[0]).length() < 8.0:
+			if (con.position - get_point(line, 0)).length() < 8.0:
 				stubs.append(line)
 				stub_con[line] = con # Map stub to con
 	# Get start wires (wires that are not stubs)
@@ -219,9 +219,9 @@ func get_wire_nets():
 			continue
 		var gw = GridWire.new()
 		# Find the part connected to the start of the wire
-		gw.start_ob = get_connected_part(line.get_points()[0], gates)
+		gw.start_ob = get_connected_part(get_point(line, 0), gates)
 		if gw.start_ob == null:
-			gw.start_ob = get_connected_part(line.get_points()[0], inputs)
+			gw.start_ob = get_connected_part(get_point(line, 0), inputs)
 		else:
 			gw.start_ob.output = gw # Ref this wire with the gate's output
 		if gw.start_ob == null:
@@ -231,9 +231,9 @@ func get_wire_nets():
 		var members = cws.duplicate()
 		members.append(line)
 		for member in members:
-			var part = get_connected_part(member.get_points()[-1], gates)
+			var part = get_connected_part(get_point(member, -1), gates)
 			if part == null:
-				part = get_connected_part(member.get_points()[-1], outputs)
+				part = get_connected_part(get_point(member, -1), outputs)
 			gw.end_obs.append(part)
 			if part == null:
 				breakpoint
@@ -267,13 +267,13 @@ func test_get_connected_wires():
 func get_connected_wires(line, stubs: Array):
 	var cws = []
 	for n in range(1, line.get_point_count()):
-		var a = line.get_points()[n - 1]
-		var b = line.get_points()[n]
+		var a = get_point(line, n - 1)
+		var b = get_point(line, n)
 		var vert = near(a.x, b.x)
 		for stub in stubs:
 			if stub == line:
 				continue
-			var c = stub.get_points()[0]
+			var c = get_point(stub, 0)
 			if vert:
 				if near(a.x, c.x) and on_line(a.y, b.y, c.y):
 					append_stubs(cws, stub, stubs)
@@ -295,6 +295,10 @@ func append_array(a, b):
 	for item in b:
 		a.append(item)
 	return a
+
+
+func get_point(line: Line2D, idx):
+	return line.position + line.get_points()[idx]
 
 
 func test_on_line():
