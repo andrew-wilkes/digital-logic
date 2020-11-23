@@ -20,8 +20,8 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 1080.0 ]
 }
-vin = [ [ 0, 0 ], [ 1, 0 ], [ 0, 0 ], [ 0, 1 ] ]
-vout = [ [ 2, 2 ], [ 0, 1 ], [ 1, 0 ] ]
+vin = [ [ 0, 0 ], [ 1, 1 ], [ 1, 0 ], [ 0, 0 ], [ 0, 1 ], [ 0, 0 ], [ 1, 0 ] ]
+vout = [ [ 2, 2 ], [ 2, 2 ], [ 0, 1 ], [ 1, 0 ] ]
 info = "D Flip Flop"
 
 [node name="w1" parent="." instance=ExtResource( 5 )]
