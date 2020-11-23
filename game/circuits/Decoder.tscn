@@ -5,7 +5,7 @@
 [ext_resource path="res://parts/grid/GridOutput.tscn" type="PackedScene" id=3]
 [ext_resource path="res://parts/grid/Con.tscn" type="PackedScene" id=4]
 [ext_resource path="res://parts/grid/Wire.tscn" type="PackedScene" id=5]
-[ext_resource path="res://circuits/Decoder.gd" type="Script" id=6]
+[ext_resource path="res://circuits/circuit.gd" type="Script" id=6]
 
 [node name="Decoder" type="Control"]
 anchor_right = 1.0
@@ -17,9 +17,9 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-info = "I'm making a custom node via a plugin and I can't figure out how to materialize a multi-line text input on the property inspector for the node. ... (String, MULTILINE) var text Edit: Also, since Godot 3.1.
-
-in GDScript at least, you no longer need to use a plugin to register a Custom Type. ... since Godot 3.1, in GDScript at least, you no longer"
+vin = [ [ 0, 0 ], [ 1, 0 ], [ 0, 1 ], [ 1, 1 ] ]
+vout = [ [ 1, 0, 0, 0 ], [ 0, 1, 0, 0 ], [ 0, 0, 1, 0 ], [ 0, 0, 0, 1 ] ]
+info = "Decoder"
 
 [node name="w1" parent="." instance=ExtResource( 5 )]
 points = PoolVector2Array( 484, 88, 752, 88 )

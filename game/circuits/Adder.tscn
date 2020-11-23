@@ -5,7 +5,7 @@
 [ext_resource path="res://parts/grid/GridOutput.tscn" type="PackedScene" id=3]
 [ext_resource path="res://parts/grid/Con.tscn" type="PackedScene" id=4]
 [ext_resource path="res://parts/grid/Wire.tscn" type="PackedScene" id=5]
-[ext_resource path="res://circuits/Adder.gd" type="Script" id=6]
+[ext_resource path="res://circuits/circuit.gd" type="Script" id=6]
 
 [node name="Adder" type="Control"]
 anchor_right = 1.0
@@ -19,6 +19,9 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+vin = [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 0, 0, 1 ], [ 1, 1, 0 ], [ 1, 0, 1 ], [ 0, 1, 1 ], [ 1, 1, 1 ] ]
+vout = [ [ 0, 0 ], [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ], [ 1, 1 ] ]
+info = "Full Adder"
 
 [node name="w1" parent="." instance=ExtResource( 5 )]
 points = PoolVector2Array( 168, 88, 472, 88 )
