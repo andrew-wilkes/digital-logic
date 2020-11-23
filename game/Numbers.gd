@@ -18,8 +18,9 @@ var max_num: int
 var mode = 0
 var level = 0
 var dec = "Base 10 value"
-var n1 # Number data
-var n2
+export(String, MULTILINE) var n1 # Number data
+export(String, MULTILINE) var n2
+export(String, MULTILINE) var notes = "Instructions"
 var mode_text = [
 	"Play with the buttons",
 	"Match the number",
@@ -43,14 +44,12 @@ func _ready():
 	labels = find_node("Labels")
 	values = find_node("Values")
 	alert = find_node("Alert")
-	n1 = get_data("res://numbers.tsv")
-	n2 = get_data("res://numbers2.tsv")
 	set_mode()
-	$c/Info/VBox/M/Notes.text = "Instructions"
+	$c/Info/VBox/M/Notes.text = notes
 
 
-func get_data(fn):
-	return g.load_file(fn, false).strip_edges().split("\n")
+func get_data(txt: String):
+	return txt.strip_edges().split("\n")
 
 
 func sm(event):
@@ -151,10 +150,10 @@ func set_mode():
 		PLAY:
 			set_nums("8		1000	0")
 		TRAIN:
-			numbers = n1
+			numbers = get_data(n1)
 			challenge_sm(RESET)
 		CHALLENGE:
-			numbers = n2
+			numbers = get_data(n2)
 			challenge_sm(RESET)
 
 
