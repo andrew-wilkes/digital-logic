@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://buttons/Buttons.tscn" type="PackedScene" id=1]
 [ext_resource path="res://center.gd" type="Script" id=2]
@@ -18,6 +18,49 @@
 [ext_resource path="res://assets/info2.png" type="Texture" id=16]
 [ext_resource path="res://assets/fonts/description-font.tres" type="DynamicFont" id=17]
 [ext_resource path="res://circuits/DFF.tscn" type="PackedScene" id=18]
+[ext_resource path="res://circuits/JKFF.tscn" type="PackedScene" id=19]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ActionButton"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBox/HBox/Step:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.294118 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBox/Score/Accuracy:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.00784314, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "InfoPopup"
+tracks/0/type = "value"
+tracks/0/path = NodePath("c/Info:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Circuits" type="HBoxContainer"]
 anchor_right = 1.0
@@ -97,7 +140,11 @@ margin_bottom = 1358.0
 rect_min_size = Vector2( 0, 1000 )
 color = Color( 0.176471, 0.176471, 0.176471, 1 )
 
+[node name="JKFF" parent="VBox/Circuit" instance=ExtResource( 19 )]
+margin_right = 40.0
+
 [node name="DFF" parent="VBox/Circuit" instance=ExtResource( 18 )]
+visible = false
 margin_left = -19.0703
 margin_top = 146.206
 margin_right = 20.9297
@@ -243,9 +290,15 @@ region_rect = Rect2( 233, 1, 189, 199 )
 [node name="Alert" parent="c" instance=ExtResource( 11 )]
 
 [node name="Info" parent="c" instance=ExtResource( 7 )]
+visible = true
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="TickTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/ActionButton = SubResource( 1 )
+anims/InfoPopup = SubResource( 2 )
 [connection signal="button_down" from="VBox/HBox/InfoButton" to="." method="_on_InfoButton_button_down"]
 [connection signal="button_down" from="VBox/HBox/PreviousButton" to="." method="_on_PreviousButton_button_down"]
 [connection signal="button_down" from="VBox/HBox/Step" to="." method="_on_Step_button_down"]

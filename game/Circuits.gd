@@ -23,6 +23,7 @@ class GridWire:
 func _ready():
 	set_circuit(circuit_index)
 	init_circuit()
+	$Anim.play("InfoPopup")
 
 
 func set_circuit(n):
@@ -384,6 +385,7 @@ func _on_Info_popup_hide():
 	# Need to delay one frame tick to avoid actioning the click on the info
 	# button that opens the panel again
 	call_deferred("enable_info_button")
+	$Anim.play("ActionButton")
 
 
 func enable_info_button():
