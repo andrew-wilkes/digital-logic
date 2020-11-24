@@ -3,6 +3,8 @@ extends Control
 
 class_name GridGate
 
+const DEBUG = true
+
 signal changed
 
 enum { AND, NAND, OR, NOR, XOR, NOT }
@@ -16,10 +18,14 @@ var output # Ref to Grid Wire that the output connects to
 func _ready():
 	# Connect signals
 	for gate in get_children():
-		gates.append(gate)
-		gate.connect("button_down", self, "tapped")
-		#gate.rect_position = Vector2(128, 128)
+		if gate is TextureButton:
+			gates.append(gate)
+			gate.connect("button_down", self, "tapped")
+			#gate.rect_position = Vector2(128, 128)
 	set_gate(id)
+	if DEBUG:
+		$ID.text = String(get_instance_id())
+	$ID.visible = DEBUG
 
 
 func tapped():
@@ -29,10 +35,7 @@ func tapped():
 
 
 func set_gate(_id):
-	var idx = 0
-	for gate in get_children():
-		gate.visible = _id == idx
-		idx += 1
+	set_visibility(_id)
 	id = _id
 	property_list_changed_notify()
 
@@ -41,17 +44,28 @@ func set_to_obscured():
 	if id == NOT:
 		return
 	id = XOR # XOR
+	set_visibility(id)
+
+
+func set_visibility(_id):
 	var idx = 0
 	for gate in get_children():
-		gate.visible = id == idx
-		idx += 1
+		if gate is TextureButton:
+			gate.visible = _id == idx
+			idx += 1
 
 
 func eval_inputs():
 	var v = []
+	var logstr = String(get_instance_id())
 	for w in inputs.keys():
-		v.append(int(w.state))
-	return bool(get_output(v))
+		var _state = 1 if w.state == 1 else 0 # It may be -1 initially
+		v.append(_state)
+		logstr = logstr + " %s" % [w.state]
+	var result = int(get_output(v))
+	if DEBUG:
+		print("%s\t%d" % [logstr, result])
+	return result
 
 
 func get_output(v):

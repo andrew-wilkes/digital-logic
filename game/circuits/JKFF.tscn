@@ -19,8 +19,8 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 1080.0 ]
 }
-vin = [ [ 0, 0, 0 ], [ 1, 1, 0 ], [ 1, 0, 0 ], [ 0, 0, 0 ], [ 0, 1, 0 ], [ 0, 0, 0 ], [ 1, 0, 0 ] ]
-vout = [ [ 2, 2 ], [ 2, 2 ], [ 0, 1 ], [ 1, 0 ] ]
+vin = [ [ 0, 0, 0 ], [ 0, 0, 1 ], [ 0, 0, 0 ], [ 1, 0, 0 ], [ 1, 0, 1 ], [ 1, 0, 0 ], [ 0, 0, 0 ], [ 0, 1, 0 ], [ 0, 1, 1 ], [ 0, 1, 0 ] ]
+vout = [ [ 2, 2 ], [ 2, 2 ], [ 2, 2 ], [ 0, 0 ], [ 2, 2 ], [ 1, 0 ], [ 0, 1 ] ]
 info = "JK Flip Flop"
 
 [node name="w1" parent="." instance=ExtResource( 5 )]
@@ -105,7 +105,7 @@ margin_left = 256.0
 margin_top = 152.0
 margin_right = 216.0
 margin_bottom = 152.0
-id = 1
+id = 0
 
 [node name="GridGate4" parent="Gates" instance=ExtResource( 2 )]
 margin_left = 640.0
@@ -126,7 +126,7 @@ margin_left = 264.0
 margin_top = 568.0
 margin_right = 224.0
 margin_bottom = 568.0
-id = 1
+id = 0
 
 [node name="In" type="Control" parent="."]
 margin_right = 40.0

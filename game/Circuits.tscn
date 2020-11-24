@@ -22,14 +22,15 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "ActionButton"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("VBox/HBox/Step:modulate")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 0.5, 1 ),
+"times": PoolRealArray( 0, 0.5, 1.1, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.294118 ), Color( 1, 1, 1, 1 ) ]
@@ -41,7 +42,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0.00784314, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
@@ -59,7 +60,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.941176 ) ]
 }
 
 [node name="Circuits" type="HBoxContainer"]
@@ -290,8 +291,7 @@ region_rect = Rect2( 233, 1, 189, 199 )
 [node name="Alert" parent="c" instance=ExtResource( 11 )]
 
 [node name="Info" parent="c" instance=ExtResource( 7 )]
-visible = true
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.941176 )
 
 [node name="TickTimer" type="Timer" parent="."]
 one_shot = true

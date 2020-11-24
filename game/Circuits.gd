@@ -16,14 +16,13 @@ class GridWire:
 	var start_ob
 	var end_obs = []
 	var members = []
-	var state = false
+	var state: int = -1 # -1 means the wire state has not been set. Otherwise 0/1
 	var changed = 0 # Counter to detect unstable state
 
 
 func _ready():
 	set_circuit(circuit_index)
 	init_circuit()
-	$Anim.play("InfoPopup")
 
 
 func set_circuit(n):
@@ -64,6 +63,7 @@ func init_circuit():
 	scan_circuit()
 	$c/Info/VBox/M/Notes.text = circuit.info
 	show_info()
+	$Anim.play("InfoPopup")
 
 
 func show_info():
@@ -75,8 +75,10 @@ func gate_changed(gate):
 		correct_count = 0
 		for w in wires:
 			w.changed = 0 # Reset change counter for all wires
-		set_outputs(gate.inputs.keys())
+		var unstable = set_outputs(gate.inputs.keys())
 		check_correctness(pattern_index)
+		if unstable:
+			sm(UNSTABLE)
 	else:
 		# First time to drive the circuit
 		drive_circuit(pattern_index)
@@ -89,12 +91,19 @@ func change_pattern_index():
 
 # Set up the connectivity between all inputs, gates, and outputs
 func scan_circuit():
-	# Connect inputs to gates
 	inputs = get_inputs()
+	for i in inputs:
+		i.set_level(-1) # Make white
 	outputs = get_outputs()
+	for o in outputs:
+		o.set_level(-1) # Make white
 	last_vals.resize(outputs.size())
 	gates = get_gates()
+	var white = g.get_state_color(-1)
 	wires = get_wire_nets()
+	for w in wires:
+		for m in w.members:
+			m.modulate = white # Make wire white
 	num_patterns = circuit.vin.size()
 	driven = false
 
@@ -112,9 +121,11 @@ func drive_circuit(_pattern_index):
 			unstable = set_wire_state(w, state)
 		else:
 			if !driven: # Change color from white
-				unstable = set_wire_state(w, false)
+				unstable = set_wire_state(w, 0)
+				w.state = -1 # Make all the gates evaluate
 	unstable = set_outputs(iws)
 	check_correctness(_pattern_index)
+	driven = true
 	if unstable:
 		sm(UNSTABLE)
 
@@ -126,7 +137,6 @@ func check_correctness(_pattern_index):
 			show_tick()
 	else:
 		correct_count = 0
-	driven = true
 
 
 func set_wire_state(w, v):
@@ -138,8 +148,9 @@ func set_wire_state(w, v):
 	if w.start_ob.has_method("set_level"):
 		w.start_ob.set_level(v)
 	# Set color of wires
+	var col = g.get_state_color(v)
 	for m in w.members:
-		m.modulate = g.get_state_color(v)
+		m.modulate = col
 	# Assign wire to gate inputs
 	for g in w.end_obs:
 		g.inputs[w] = v
@@ -149,6 +160,7 @@ func set_wire_state(w, v):
 
 
 func set_outputs(gws):
+	print("Evaluating")
 	var unstable = false
 	if len(gws) < 1:
 		return
@@ -184,7 +196,7 @@ func check_outputs(n):
 			val = 0 if last_vals[j] == null else last_vals[j]
 		else:
 			last_vals[j] = val
-		var v = outputs[j].state == bool(val)
+		var v = outputs[j].state == val
 		if !v:
 			passed = false
 		outputs[j].set_result(v)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/gates/nand.png" type="Texture" id=1]
 [ext_resource path="res://parts/grid/GridGate.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/gates/xor.png" type="Texture" id=5]
 [ext_resource path="res://assets/gates/nor.png" type="Texture" id=6]
 [ext_resource path="res://assets/gates/and.png" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/m_font_regular.tres" type="DynamicFont" id=8]
 
 [node name="GridGate" type="Control"]
 anchor_right = 1.0
@@ -73,3 +74,12 @@ texture_normal = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ID" type="Label" parent="."]
+visible = false
+margin_left = -72.0
+margin_top = -120.0
+margin_right = -21.0
+margin_bottom = -61.0
+custom_fonts/font = ExtResource( 8 )
+text = "ID"

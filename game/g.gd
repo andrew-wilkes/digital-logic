@@ -115,10 +115,13 @@ func load_file(fn, decode = true):
 
 
 func get_state_color(_state):
-	if _state:
-		return g.COLOR_HIGH
-	else:
-		return g.COLOR_LOW
+	match _state:
+		1:
+			return COLOR_HIGH
+		0:
+			return COLOR_LOW
+		-1:
+			return COLOR_UNDEFINED
 
 
 func format_text(txt):
