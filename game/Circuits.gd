@@ -61,15 +61,16 @@ func init_circuit():
 	correct_count = 0
 	last_vals = []
 	scan_circuit()
-	$c/Info.set_text(circuit.info)
 	show_info()
-	$Anim.play("InfoPopup")
 
 
 func show_info():
-	$c/Info.popup_centered()
+	var info = circuit.get_node("c/Info")
+	info.popup_centered()
+	if !info.is_connected("popup_hide", self, "_on_Info_popup_hide"):
+		info.connect("popup_hide", self, "_on_Info_popup_hide")
 	$VBox/HBox/InfoButton.disabled = true
-	# $Text.bbcode_text = g.format_text(txt)
+
 
 func gate_changed(gate):
 	if driven: # Re-evaluate from the changed gate

@@ -1,14 +1,31 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/m_font_regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/m_bold.tres" type="DynamicFont" id=2]
 [ext_resource path="res://panels/Info.gd" type="Script" id=3]
 [ext_resource path="res://assets/theme/blue_styleboxflat.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/fonts/mono-font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/fonts/symbols_font.tres" type="DynamicFont" id=6]
 
 [sub_resource type="Theme" id=1]
 
+[sub_resource type="Animation" id=2]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.94902 ) ]
+}
+
 [node name="Info" type="PopupPanel"]
+modulate = Color( 1, 1, 1, 0.85098 )
 margin_left = 496.0
 margin_top = 553.0
 margin_right = 1440.0
@@ -18,6 +35,9 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+note = "A @ B C * Dxxx"
+nt = "A @ B C * Dxxx"
+ht = "A @ B C * D"
 
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_right = 944.0
@@ -48,16 +68,50 @@ margin_bottom = 716.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/mono_font = ExtResource( 6 )
+custom_fonts/italics_font = ExtResource( 5 )
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
-bbcode_text = "Notes"
-text = "Notes"
+bbcode_text = "A [code]Å[/code] B C [code]×[/code] Dxxx"
+text = "A Å B C × Dxxx"
 
-[node name="OKButton" type="Button" parent="VBox"]
+[node name="Hint" type="RichTextLabel" parent="VBox/M"]
+visible = false
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 924.0
+margin_bottom = 716.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/mono_font = ExtResource( 6 )
+custom_fonts/italics_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "A [code]Å[/code] B C [code]×[/code] D"
+text = "A Å B C × D"
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
 margin_top = 730.0
 margin_right = 944.0
 margin_bottom = 814.0
+size_flags_vertical = 0
+
+[node name="Solution" type="Button" parent="VBox/HBox"]
+margin_right = 470.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Solution"
+
+[node name="OKButton" type="Button" parent="VBox/HBox"]
+margin_left = 474.0
+margin_right = 944.0
+margin_bottom = 84.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "OK"
-[connection signal="button_down" from="VBox/OKButton" to="." method="_on_OKButton_button_down"]
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/FadeIn = SubResource( 2 )
+[connection signal="popup_hide" from="." to="." method="_on_Info_popup_hide"]
+[connection signal="button_down" from="VBox/HBox/Solution" to="." method="_on_Solution_button_down"]
+[connection signal="button_down" from="VBox/HBox/OKButton" to="." method="_on_OKButton_button_down"]

@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://buttons/Buttons.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/title_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://circuits/Decoder.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/greater-than.png" type="Texture" id=5]
 [ext_resource path="res://assets/less-than.png" type="Texture" id=6]
-[ext_resource path="res://panels/Info.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/cross-tick.png" type="Texture" id=8]
 [ext_resource path="res://assets/play-dot.png" type="Texture" id=9]
 [ext_resource path="res://Circuits.gd" type="Script" id=10]
@@ -45,21 +44,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0.00784314, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "InfoPopup"
-tracks/0/type = "value"
-tracks/0/path = NodePath("c/Info:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.941176 ) ]
 }
 
 [node name="Circuits" type="HBoxContainer"]
@@ -139,7 +123,14 @@ margin_bottom = 1358.0
 rect_min_size = Vector2( 0, 1000 )
 color = Color( 0.176471, 0.176471, 0.176471, 1 )
 
+[node name="Adder" parent="VBox/Circuit" instance=ExtResource( 14 )]
+margin_left = -25.3082
+margin_top = -16.2161
+margin_right = 14.6918
+margin_bottom = -8.21594
+
 [node name="JKFF" parent="VBox/Circuit" instance=ExtResource( 19 )]
+visible = false
 margin_right = 40.0
 
 [node name="DFF" parent="VBox/Circuit" instance=ExtResource( 18 )]
@@ -155,13 +146,6 @@ margin_left = -64.0
 margin_top = 258.0
 margin_right = -64.0
 margin_bottom = 266.0
-
-[node name="Adder" parent="VBox/Circuit" instance=ExtResource( 14 )]
-visible = false
-margin_left = -25.3082
-margin_top = -16.2161
-margin_right = -21.3081
-margin_bottom = -8.21594
 
 [node name="Multiplexer" parent="VBox/Circuit" instance=ExtResource( 13 )]
 visible = false
@@ -221,6 +205,7 @@ margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="Step" type="TextureButton" parent="VBox/HBox"]
+modulate = Color( 1, 1, 1, 0.411765 )
 margin_left = 544.0
 margin_right = 744.0
 margin_bottom = 200.0
@@ -288,18 +273,13 @@ region_rect = Rect2( 233, 1, 189, 199 )
 
 [node name="Alert" parent="c" instance=ExtResource( 11 )]
 
-[node name="Info" parent="c" instance=ExtResource( 7 )]
-modulate = Color( 1, 1, 1, 0.941176 )
-
 [node name="TickTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/ActionButton = SubResource( 1 )
-anims/InfoPopup = SubResource( 2 )
 [connection signal="button_down" from="VBox/HBox/InfoButton" to="." method="_on_InfoButton_button_down"]
 [connection signal="button_down" from="VBox/HBox/PreviousButton" to="." method="_on_PreviousButton_button_down"]
 [connection signal="button_down" from="VBox/HBox/Step" to="." method="_on_Step_button_down"]
 [connection signal="button_down" from="VBox/HBox/NextButton" to="." method="_on_NextButton_button_down"]
-[connection signal="popup_hide" from="c/Info" to="." method="_on_Info_popup_hide"]
 [connection signal="timeout" from="TickTimer" to="." method="_on_Tick_Timer_timeout"]

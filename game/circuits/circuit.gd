@@ -5,5 +5,3 @@ extends Control
 export(Array, Array, int) var vin
 
 export(Array, Array, int) var vout
-
-export(String, MULTILINE) var info = "" 
