@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://parts/grid/GridInput.tscn" type="PackedScene" id=1]
 [ext_resource path="res://parts/grid/GridGate.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://parts/grid/Wire.tscn" type="PackedScene" id=5]
 [ext_resource path="res://circuits/circuit.gd" type="Script" id=6]
 [ext_resource path="res://parts/grid/GridLabel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://panels/Info.tscn" type="PackedScene" id=8]
 
 [node name="DFF" type="Control"]
 anchor_right = 1.0
@@ -22,7 +23,6 @@ __meta__ = {
 }
 vin = [ [ 0, 0 ], [ 1, 1 ], [ 1, 0 ], [ 0, 0 ], [ 0, 1 ], [ 0, 0 ], [ 1, 0 ] ]
 vout = [ [ 2, 2 ], [ 2, 2 ], [ 0, 1 ], [ 1, 0 ] ]
-info = "D Flip Flop"
 
 [node name="w1" parent="." instance=ExtResource( 5 )]
 position = Vector2( 128, 104 )
@@ -206,3 +206,12 @@ margin_top = 64.0
 margin_right = 288.0
 margin_bottom = 140.0
 text = "S"
+
+[node name="c" type="CanvasLayer" parent="."]
+
+[node name="Info" parent="c" instance=ExtResource( 8 )]
+modulate = Color( 1, 1, 1, 0.94902 )
+note = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value."
+hint = "Simply add a NOT gate to the input of an SR flip flop."
+nt = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value."
+ht = "Simply add a NOT gate to the input of an SR flip flop."

@@ -207,6 +207,7 @@ position = Vector2( 256, 544 )
 [node name="c" type="CanvasLayer" parent="."]
 
 [node name="Info" parent="c" instance=ExtResource( 7 )]
+modulate = Color( 1, 1, 1, 0.94902 )
 note = "A full adder sums together inputs:  A, B, and Carry In to give two outputs: Sum and Carry Out."
 hint = "We have 3 bits to add together producing numbers in a range 0 to 3.
 

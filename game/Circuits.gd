@@ -67,6 +67,7 @@ func init_circuit():
 func show_info():
 	var info = circuit.get_node("c/Info")
 	info.popup_centered()
+	info.play_anim()
 	if !info.is_connected("popup_hide", self, "_on_Info_popup_hide"):
 		info.connect("popup_hide", self, "_on_Info_popup_hide")
 	$VBox/HBox/InfoButton.disabled = true

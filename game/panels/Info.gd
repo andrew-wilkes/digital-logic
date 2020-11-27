@@ -8,10 +8,8 @@ export(String, MULTILINE) var hint = "A @ B C * D" setget set_hint_text, get_hin
 export var nt: String
 export var ht: String
 
-func _ready():
-	show_notes()
+func play_anim():
 	$Anim.play("FadeIn")
-
 
 
 func get_note_text():
