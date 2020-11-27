@@ -124,12 +124,6 @@ func get_state_color(_state):
 			return COLOR_UNDEFINED
 
 
-func format_text(txt):
-	txt = txt.replace("@", "[code]%s[/code]" % char(197))
-	txt = txt.replace("*", "[code]%s[/code]" % char(215))
-	return "[_]" + txt
-
-
 func decode_inputs(inputs):
 	var x = 0
 	for i in range(inputs.size() - 1, -1, -1):

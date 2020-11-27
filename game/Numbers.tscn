@@ -1,11 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Numbers.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/m_font_regular_small.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/fonts/title_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/greater-than.png" type="Texture" id=4]
 [ext_resource path="res://buttons/Buttons.tscn" type="PackedScene" id=5]
-[ext_resource path="res://center.gd" type="Script" id=6]
 [ext_resource path="res://assets/plus.png" type="Texture" id=7]
 [ext_resource path="res://assets/less-than.png" type="Texture" id=8]
 [ext_resource path="res://assets/minus.png" type="Texture" id=9]
@@ -18,7 +17,7 @@
 [ext_resource path="res://assets/level1.png" type="Texture" id=16]
 [ext_resource path="res://assets/level2.png" type="Texture" id=17]
 [ext_resource path="res://assets/info2.png" type="Texture" id=18]
-[ext_resource path="res://parts/grid/Info.tscn" type="PackedScene" id=19]
+[ext_resource path="res://panels/Info.tscn" type="PackedScene" id=19]
 
 [node name="Numbers" type="HBoxContainer"]
 anchor_right = 1.0
@@ -163,7 +162,6 @@ rect_min_size = Vector2( 1040, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 3
 custom_constants/separation = 20
-script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

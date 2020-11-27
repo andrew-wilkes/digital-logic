@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Part",
-"class": "Gate",
-"language": "GDScript",
-"path": "res://parts/Gate.gd"
-}, {
 "base": "Control",
 "class": "GridGate",
 "language": "GDScript",
@@ -33,31 +28,12 @@ _global_script_classes=[ {
 "class": "Overline",
 "language": "GDScript",
 "path": "res://assets/fonts/over_line.gd"
-}, {
-"base": "Node2D",
-"class": "Part",
-"language": "GDScript",
-"path": "res://parts/Part.gd"
-}, {
-"base": "Area2D",
-"class": "Pin",
-"language": "GDScript",
-"path": "res://parts/misc/Pin.gd"
-}, {
-"base": "Line2D",
-"class": "Wire",
-"language": "GDScript",
-"path": "res://parts/misc/Wire.gd"
 } ]
 _global_script_class_icons={
-"Gate": "",
 "GridGate": "",
 "GridInput": "",
 "Grid_Output": "",
-"Overline": "",
-"Part": "",
-"Pin": "",
-"Wire": ""
+"Overline": ""
 }
 
 [application]
@@ -72,7 +48,6 @@ config/icon="res://assets/circuits.png"
 
 g="*res://g.gd"
 tt="*res://tt.gd"
-u="*res://utility.gd"
 
 [debug]
 

@@ -45,7 +45,7 @@ func _ready():
 	values = find_node("Values")
 	alert = find_node("Alert")
 	set_mode()
-	$c/Info/VBox/M/Notes.text = notes
+	#$c/Info/VBox/M/Notes.text = notes
 
 
 func get_data(txt: String):

@@ -61,7 +61,7 @@ func init_circuit():
 	correct_count = 0
 	last_vals = []
 	scan_circuit()
-	$c/Info/VBox/M/Notes.text = circuit.info
+	$c/Info.set_text(circuit.info)
 	show_info()
 	$Anim.play("InfoPopup")
 
@@ -69,6 +69,7 @@ func init_circuit():
 func show_info():
 	$c/Info.popup_centered()
 	$VBox/HBox/InfoButton.disabled = true
+	# $Text.bbcode_text = g.format_text(txt)
 
 func gate_changed(gate):
 	if driven: # Re-evaluate from the changed gate

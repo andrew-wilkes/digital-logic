@@ -3,7 +3,7 @@ extends Control
 
 class_name GridGate
 
-const DEBUG = true
+const DEBUG = false
 
 signal changed
 
