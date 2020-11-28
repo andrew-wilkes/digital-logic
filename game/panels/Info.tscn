@@ -25,7 +25,7 @@ tracks/0/keys = {
 }
 
 [node name="Info" type="PopupPanel"]
-modulate = Color( 1, 1, 1, 0.85098 )
+modulate = Color( 1, 1, 1, 0.94902 )
 margin_left = 496.0
 margin_top = 553.0
 margin_right = 1440.0
@@ -52,19 +52,19 @@ margin_bottom = 726.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource( 1 )
-custom_constants/margin_right = 20
-custom_constants/margin_top = 10
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 10
+custom_constants/margin_right = 40
+custom_constants/margin_top = 20
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Notes" type="RichTextLabel" parent="VBox/M"]
-margin_left = 20.0
-margin_top = 10.0
-margin_right = 924.0
-margin_bottom = 716.0
+margin_left = 40.0
+margin_top = 20.0
+margin_right = 904.0
+margin_bottom = 706.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/mono_font = ExtResource( 6 )
@@ -76,10 +76,10 @@ text = "A Å B C × Dxxx"
 
 [node name="Hint" type="RichTextLabel" parent="VBox/M"]
 visible = false
-margin_left = 20.0
-margin_top = 10.0
-margin_right = 924.0
-margin_bottom = 716.0
+margin_left = 40.0
+margin_top = 20.0
+margin_right = 904.0
+margin_bottom = 706.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/mono_font = ExtResource( 6 )

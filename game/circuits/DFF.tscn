@@ -215,3 +215,13 @@ note = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the
 hint = "Simply add a NOT gate to the input of an SR flip flop."
 nt = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value."
 ht = "Simply add a NOT gate to the input of an SR flip flop."
+
+[node name="Notes" parent="c/Info/VBox/M" index="0"]
+bbcode_text = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value."
+text = "We can set R = S since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value."
+
+[node name="Hint" parent="c/Info/VBox/M" index="1"]
+bbcode_text = "Simply add a NOT gate to the input of an SR flip flop."
+text = "Simply add a NOT gate to the input of an SR flip flop."
+
+[editable path="c/Info"]

@@ -143,3 +143,13 @@ note = "A multiplexer is used to select one of it's inputs to pass to the output
 hint = "[i]Y = [u]SEL[/u] * A + SEL * B[/i]"
 nt = "A multiplexer is used to select one of it's inputs to pass to the output like a switch."
 ht = "[i]Y = [u]SEL[/u] * A + SEL * B[/i]"
+
+[node name="Notes" parent="c/Info/VBox/M" index="0"]
+bbcode_text = "A multiplexer is used to select one of it's inputs to pass to the output like a switch."
+text = "A multiplexer is used to select one of it's inputs to pass to the output like a switch."
+
+[node name="Hint" parent="c/Info/VBox/M" index="1"]
+bbcode_text = "[i]Y = [u]SEL[/u] [code]×[/code] A + SEL [code]×[/code] B[/i]"
+text = "Y = SEL × A + SEL × B"
+
+[editable path="c/Info"]

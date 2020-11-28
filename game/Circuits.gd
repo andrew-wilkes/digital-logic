@@ -11,6 +11,7 @@ var driven = false
 var last_vals = []
 var circuit
 var circuit_index = 0
+var animate = true
 
 class GridWire:
 	var start_ob
@@ -23,13 +24,6 @@ class GridWire:
 func _ready():
 	set_circuit(circuit_index)
 	init_circuit()
-
-
-func set_circuit(n):
-	for c in $VBox/Circuit.get_children():
-		c.visible = false
-	circuit = $VBox/Circuit.get_child(n)
-	circuit.visible = true
 
 
 enum { PREV, NEXT, STEP, UNSTABLE } # Events
@@ -56,6 +50,14 @@ func sm(event):
 			$c/Alert.show()
 
 
+func set_circuit(n):
+	for c in $VBox/Circuit.get_children():
+		c.visible = false
+	circuit = $VBox/Circuit.get_child(n)
+	circuit.visible = true
+	animate = true
+
+
 func init_circuit():
 	pattern_index = 0
 	correct_count = 0
@@ -66,8 +68,11 @@ func init_circuit():
 
 func show_info():
 	var info = circuit.get_node("c/Info")
-	info.popup_centered()
-	info.play_anim()
+	info.rect_position = rect_position + $VBox.rect_position + $VBox/Circuit.rect_position
+	info.rect_size = $VBox/Circuit.rect_size
+	info.popup()
+	if animate:
+		info.play_anim()
 	if !info.is_connected("popup_hide", self, "_on_Info_popup_hide"):
 		info.connect("popup_hide", self, "_on_Info_popup_hide")
 	$VBox/HBox/InfoButton.disabled = true
@@ -163,7 +168,6 @@ func set_wire_state(w, v):
 
 
 func set_outputs(gws):
-	print("Evaluating")
 	var unstable = false
 	if len(gws) < 1:
 		return
@@ -400,8 +404,15 @@ func _on_Info_popup_hide():
 	# Need to delay one frame tick to avoid actioning the click on the info
 	# button that opens the panel again
 	call_deferred("enable_info_button")
-	$Anim.play("ActionButton")
+	if animate:
+		$Anim.play("ActionButton")
+		animate = false
 
 
 func enable_info_button():
 	$VBox/HBox/InfoButton.disabled = false
+
+
+func _on_Circuits_tree_exiting():
+	# Reset effect of animation
+	$Anim.stop()
