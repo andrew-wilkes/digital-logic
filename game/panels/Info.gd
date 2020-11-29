@@ -2,14 +2,20 @@ tool
 
 extends PopupPanel
 
+export(String, MULTILINE) var howText = "How" setget set_how_text, get_how_text
 export(String, MULTILINE) var note = "A @ B C * D" setget set_note_text, get_note_text
 export(String, MULTILINE) var hint = "A @ B C * D" setget set_hint_text, get_hint_text
 
+export var howt: String
 export var nt: String
 export var ht: String
 
 func play_anim():
 	$Anim.play("FadeIn")
+
+
+func get_how_text():
+	return howt
 
 
 func get_note_text():
@@ -48,6 +54,12 @@ func show_hint():
 	$VBox/M/How.visible = false
 	$VBox/M/Notes.visible = false
 	$VBox/M/Hint.visible = true
+
+
+func set_how_text(txt):
+	if Engine.editor_hint:
+		howt = txt
+		$VBox/M/How.bbcode_text = format_text(txt)
 
 
 func set_note_text(txt):

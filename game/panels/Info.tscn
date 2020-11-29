@@ -25,6 +25,7 @@ tracks/0/keys = {
 }
 
 [node name="Info" type="PopupPanel"]
+visible = true
 modulate = Color( 1, 1, 1, 0.94902 )
 margin_left = 496.0
 margin_top = 553.0
@@ -35,7 +36,21 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+howText = "INSTRUCTIONS
+
+Change the gates by tapping on them to make the circuit work.
+
+Cycle through the combinations of input logic states by tapping the O button.
+
+When all output states are green, the circuit is correctly formed."
 note = "A @ B C * Dxxx"
+howt = "INSTRUCTIONS
+
+Change the gates by tapping on them to make the circuit work.
+
+Cycle through the combinations of input logic states by tapping the O button.
+
+When all output states are green, the circuit is correctly formed."
 nt = "A @ B C * Dxxx"
 ht = "A @ B C * D"
 

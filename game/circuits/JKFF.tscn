@@ -212,6 +212,7 @@ margin_bottom = 40.0
 [node name="c" type="CanvasLayer" parent="."]
 
 [node name="Info" parent="c" instance=ExtResource( 7 )]
+howText = ""
 note = "The JK flip-flop is similar to the SR flip-flop but has no invalid input states."
 hint = "Use NAND gates to make a SR flip-flop and the inputs are gated by 3-input NAND gates.
 
@@ -225,20 +226,24 @@ ht = "Use NAND gates to make a SR flip-flop and the inputs are gated by 3-input 
 
 [i][u]R[/u] = CK * K * Q[/i]"
 
+[node name="How" parent="c/Info/VBox/M" index="0"]
+bbcode_text = "How"
+text = "How"
+
 [node name="Notes" parent="c/Info/VBox/M" index="1"]
 bbcode_text = "The JK flip-flop is similar to the SR flip-flop but has no invalid input states."
 text = "The JK flip-flop is similar to the SR flip-flop but has no invalid input states."
 
 [node name="Hint" parent="c/Info/VBox/M" index="2"]
-bbcode_text = "Use NAND gates to make an SR flip-flop and the inputs are gated by AND/NAND gates.
+bbcode_text = "Use NAND gates to make a SR flip-flop and the inputs are gated by 3-input NAND gates.
 
-[i]Q = CK [code]×[/code] J [code]×[/code] /Q[/i]
+[i][u]S[/u] = CK [code]×[/code] J [code]×[/code] /Q[/i]
 
-[i]/Q = CK [code]×[/code] K [code]×[/code] Q[/i]"
-text = "Use NAND gates to make an SR flip-flop and the inputs are gated by AND/NAND gates.
+[i][u]R[/u] = CK [code]×[/code] K [code]×[/code] Q[/i]"
+text = "Use NAND gates to make a SR flip-flop and the inputs are gated by 3-input NAND gates.
 
-Q = CK × J × /Q
+[i][u]S[/u] = CK [code]×[/code] J [code]×[/code] /Q[/i]
 
-/Q = CK × K × Q"
+[i][u]R[/u] = CK [code]×[/code] K [code]×[/code] Q[/i]"
 
 [editable path="c/Info"]

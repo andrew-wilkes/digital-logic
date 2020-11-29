@@ -208,6 +208,7 @@ position = Vector2( 256, 544 )
 [node name="c" type="CanvasLayer" parent="."]
 
 [node name="Info" parent="c" instance=ExtResource( 7 )]
+howText = ""
 note = "A full adder sums together inputs:  A, B, and Carry In to give two outputs: Sum and Carry Out."
 hint = "We have 3 bits to add together producing numbers in a range 0 to 3.
 
@@ -227,6 +228,10 @@ To get the sum we can use exclusive OR: [i]A @ B @ CI[/i]
 The carry out is high if at least two of the inputs are high, so:
 [i]CO = A*B + A*CI + B*CI[/i]"
 
+[node name="How" parent="c/Info/VBox/M" index="0"]
+bbcode_text = "How"
+text = "How"
+
 [node name="Notes" parent="c/Info/VBox/M" index="1"]
 bbcode_text = "A full adder sums together inputs:  A, B, and Carry In to give two outputs: Sum and Carry Out."
 text = "A full adder sums together inputs:  A, B, and Carry In to give two outputs: Sum and Carry Out."
@@ -244,9 +249,9 @@ text = "We have 3 bits to add together producing numbers in a range 0 to 3.
 
 In binary: 00 to 11 with the least significant bit the sum, and the most significant bit the carry out.
 
-To get the sum we can use exclusive OR: A Å B Å CI
+To get the sum we can use exclusive OR: [i]A [code]Å[/code] B [code]Å[/code] CI[/i]
 
 The carry out is high if at least two of the inputs are high, so:
-CO = A×B + A×CI + B×CI"
+[i]CO = A[code]×[/code]B + A[code]×[/code]CI + B[code]×[/code]CI[/i]"
 
 [editable path="c/Info"]

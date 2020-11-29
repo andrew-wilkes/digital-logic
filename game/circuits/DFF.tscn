@@ -171,25 +171,22 @@ margin_bottom = 40.0
 [node name="c" type="CanvasLayer" parent="."]
 
 [node name="Info" parent="c" instance=ExtResource( 8 )]
+howText = ""
 note = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value."
 hint = "Simply add a NOT gate to the input of an SR flip flop."
 nt = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value."
 ht = "Simply add a NOT gate to the input of an SR flip flop."
 
+[node name="How" parent="c/Info/VBox/M" index="0"]
+bbcode_text = "How"
+text = "How"
+
 [node name="Notes" parent="c/Info/VBox/M" index="1"]
-bbcode_text = "With an SR Flip Flop We can set [i]R = /S[/i] since R and S should never be high at the same time.
-
-Also, we may enable capturing of the data value (D) with a clock input (CK)
-
-This forms a building block of a memory circuit called a D Latch."
-text = "With an SR Flip Flop We can set R = /S since R and S should never be high at the same time.
-
-Also, we may enable capturing of the data value (D) with a clock input (CK)
-
-This forms a building block of a memory circuit called a D Latch."
+bbcode_text = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value."
+text = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value."
 
 [node name="Hint" parent="c/Info/VBox/M" index="2"]
-bbcode_text = "Use NAND gates."
-text = "Use NAND gates."
+bbcode_text = "Simply add a NOT gate to the input of an SR flip flop."
+text = "Simply add a NOT gate to the input of an SR flip flop."
 
 [editable path="c/Info"]
