@@ -17,6 +17,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+title = "2-1 Multiplexer"
 vin = [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 1, 0, 1 ], [ 0, 1, 1 ], [ 0, 1, 0 ], [ 0, 0, 0 ], [ 1, 0, 0 ] ]
 vout = [ [ 0 ], [ 1 ], [ 0 ], [ 1 ], [ 0 ], [ 0 ], [ 1 ] ]
 
@@ -138,18 +139,17 @@ position = Vector2( 256, 280 )
 [node name="c" type="CanvasLayer" parent="."]
 
 [node name="Info" parent="c" instance=ExtResource( 7 )]
-modulate = Color( 1, 1, 1, 0.94902 )
 note = "A multiplexer is used to select one of it's inputs to pass to the output like a switch."
 hint = "[i]Y = [u]SEL[/u] * A + SEL * B[/i]"
 nt = "A multiplexer is used to select one of it's inputs to pass to the output like a switch."
 ht = "[i]Y = [u]SEL[/u] * A + SEL * B[/i]"
 
-[node name="Notes" parent="c/Info/VBox/M" index="0"]
+[node name="Notes" parent="c/Info/VBox/M" index="1"]
 bbcode_text = "A multiplexer is used to select one of it's inputs to pass to the output like a switch."
 text = "A multiplexer is used to select one of it's inputs to pass to the output like a switch."
 
-[node name="Hint" parent="c/Info/VBox/M" index="1"]
-bbcode_text = "[i]Y = [u]SEL[/u] [code]×[/code] A + SEL [code]×[/code] B[/i]"
-text = "Y = SEL × A + SEL × B"
+[node name="Hint" parent="c/Info/VBox/M" index="2"]
+bbcode_text = "[i]Y = /SEL [code]×[/code] A + SEL [code]×[/code] B[/i]"
+text = "Y = /SEL × A + SEL × B"
 
 [editable path="c/Info"]

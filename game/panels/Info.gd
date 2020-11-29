@@ -21,15 +21,31 @@ func get_hint_text():
 
 
 func _on_OKButton_button_down():
-	hide()
+	if how:
+		show_notes()
+		how = false
+	else:
+		hide()
+
+
+var how = false
+func show_how():
+	$VBox/HBox/Solution.disabled = true
+	$VBox/M/How.visible = true
+	$VBox/M/Notes.visible = false
+	$VBox/M/Hint.visible = false
+	how = true
 
 
 func show_notes():
+	$VBox/HBox/Solution.disabled = false
+	$VBox/M/How.visible = false
 	$VBox/M/Notes.visible = true
 	$VBox/M/Hint.visible = false
 
 
 func show_hint():
+	$VBox/M/How.visible = false
 	$VBox/M/Notes.visible = false
 	$VBox/M/Hint.visible = true
 
@@ -60,5 +76,4 @@ func _on_Solution_button_down():
 
 
 func _on_Info_popup_hide():
-	$VBox/HBox/Solution.disabled = false
 	show_notes()

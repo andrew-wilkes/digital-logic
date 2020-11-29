@@ -12,6 +12,7 @@ var last_vals = []
 var circuit
 var circuit_index = 0
 var animate = true
+var show_how = true
 
 class GridWire:
 	var start_ob
@@ -56,6 +57,7 @@ func set_circuit(n):
 	circuit = $VBox/Circuit.get_child(n)
 	circuit.visible = true
 	animate = true
+	$VBox/Details/Title.text = circuit.title
 
 
 func init_circuit():
@@ -63,13 +65,20 @@ func init_circuit():
 	correct_count = 0
 	last_vals = []
 	scan_circuit()
-	show_info()
+	# When first going to this scene in mobile
+	# the position setting is off unless we wait
+	call_deferred("show_info")
 
 
 func show_info():
 	var info = circuit.get_node("c/Info")
 	info.rect_position = rect_position + $VBox.rect_position + $VBox/Circuit.rect_position
 	info.rect_size = $VBox/Circuit.rect_size
+	if show_how:
+		info.show_how()
+		show_how = false
+	else:
+		info.show_notes()
 	info.popup()
 	if animate:
 		info.play_anim()
@@ -404,15 +413,8 @@ func _on_Info_popup_hide():
 	# Need to delay one frame tick to avoid actioning the click on the info
 	# button that opens the panel again
 	call_deferred("enable_info_button")
-	if animate:
-		$Anim.play("ActionButton")
-		animate = false
+	animate = false
 
 
 func enable_info_button():
 	$VBox/HBox/InfoButton.disabled = false
-
-
-func _on_Circuits_tree_exiting():
-	# Reset effect of animation
-	$Anim.stop()

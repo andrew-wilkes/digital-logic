@@ -18,9 +18,9 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
-title = "SR  NOR Latch"
-vin = [ [ 0, 0 ], [ 1, 0 ], [ 0, 0 ], [ 0, 1 ] ]
-vout = [ [ 2, 2 ], [ 0, 1 ], [ 1, 0 ] ]
+title = "SR  NAND Latch"
+vin = [ [ 1, 1 ], [ 1, 0 ], [ 1, 1 ], [ 0, 1 ] ]
+vout = [ [ 2, 2 ], [ 0, 1 ], [ 1, 0 ], [ 2, 2 ] ]
 
 [node name="w1" parent="." instance=ExtResource( 4 )]
 points = PoolVector2Array( 304, 88, 496, 88 )
@@ -52,14 +52,14 @@ margin_left = 512.0
 margin_top = 128.0
 margin_right = 472.0
 margin_bottom = 128.0
-id = 3
+id = 1
 
 [node name="GridGate4" parent="Gates" instance=ExtResource( 3 )]
 margin_left = 512.0
 margin_top = 384.0
 margin_right = 472.0
 margin_bottom = 384.0
-id = 3
+id = 1
 
 [node name="In" type="Control" parent="."]
 margin_right = 40.0
@@ -73,16 +73,16 @@ margin_left = 304.0
 margin_top = 88.0
 margin_right = 304.0
 margin_bottom = 88.0
-txt = "R"
-text = "R"
+txt = "/S"
+text = "/S"
 
 [node name="GridInput2" parent="In" instance=ExtResource( 6 )]
 margin_left = 304.0
 margin_top = 424.0
 margin_right = 304.0
 margin_bottom = 424.0
-txt = "S"
-text = "S"
+txt = "/R"
+text = "/R"
 
 [node name="Out" type="Control" parent="."]
 margin_right = 40.0
@@ -129,19 +129,19 @@ nt = "An SR flip-flop remembers the state as long as both R and S are low. Pulsi
 ht = "Use two NOR gates."
 
 [node name="Notes" parent="c/Info/VBox/M" index="1"]
-bbcode_text = "The SR (set-reset) latch remembers the state as long as both R (reset) and S (set) are low.
+bbcode_text = "The SR (set-reset) latch may be made using NAND gates.
 
-Pulsing R high resets the state (Q low), and pulsing S high sets the state (Q high).
+Pulsing R low resets the state (Q low), and pulsing S low sets the state (Q high).
 
-The state of S = R = 1 is not allowed because it would mean Q = 0 and /Q = 0"
-text = "The SR (set-reset) latch remembers the state as long as both R (reset) and S (set) are low.
+The state of /S = /R = 0 is not allowed because it would mean Q = 1 and /Q = 1"
+text = "The SR (set-reset) latch may be made using NAND gates.
 
-Pulsing R high resets the state (Q low), and pulsing S high sets the state (Q high).
+Pulsing R low resets the state (Q low), and pulsing S low sets the state (Q high).
 
-The state of S = R = 1 is not allowed because it would mean Q = 0 and /Q = 0"
+The state of /S = /R = 0 is not allowed because it would mean Q = 1 and /Q = 1"
 
 [node name="Hint" parent="c/Info/VBox/M" index="2"]
-bbcode_text = "Use two NOR gates."
-text = "Use two NOR gates."
+bbcode_text = "Use two NAND gates."
+text = "Use two NAND gates."
 
 [editable path="c/Info"]

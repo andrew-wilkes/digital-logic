@@ -20,6 +20,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+title = "Full Adder"
 vin = [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 0, 0, 1 ], [ 1, 1, 0 ], [ 1, 0, 1 ], [ 0, 1, 1 ], [ 1, 1, 1 ] ]
 vout = [ [ 0, 0 ], [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ], [ 1, 1 ] ]
 
@@ -226,11 +227,11 @@ To get the sum we can use exclusive OR: [i]A @ B @ CI[/i]
 The carry out is high if at least two of the inputs are high, so:
 [i]CO = A*B + A*CI + B*CI[/i]"
 
-[node name="Notes" parent="c/Info/VBox/M" index="0"]
+[node name="Notes" parent="c/Info/VBox/M" index="1"]
 bbcode_text = "A full adder sums together inputs:  A, B, and Carry In to give two outputs: Sum and Carry Out."
 text = "A full adder sums together inputs:  A, B, and Carry In to give two outputs: Sum and Carry Out."
 
-[node name="Hint" parent="c/Info/VBox/M" index="1"]
+[node name="Hint" parent="c/Info/VBox/M" index="2"]
 bbcode_text = "We have 3 bits to add together producing numbers in a range 0 to 3.
 
 In binary: 00 to 11 with the least significant bit the sum, and the most significant bit the carry out.

@@ -60,7 +60,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="How" type="RichTextLabel" parent="VBox/M"]
+margin_left = 40.0
+margin_top = 20.0
+margin_right = 904.0
+margin_bottom = 706.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/mono_font = ExtResource( 6 )
+custom_fonts/italics_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "INSTRUCTIONS
+
+Change the gates by tapping on them to make the circuit work.
+
+Cycle through the combinations of input logic states by tapping the O button.
+
+When all output states are green, the circuit is correctly formed."
+text = "INSTRUCTIONS
+
+Change the gates by tapping on them to make the circuit work.
+
+Cycle through the combinations of input logic states by tapping the O button.
+
+When all output states are green, the circuit is correctly formed."
+
 [node name="Notes" type="RichTextLabel" parent="VBox/M"]
+visible = false
 margin_left = 40.0
 margin_top = 20.0
 margin_right = 904.0

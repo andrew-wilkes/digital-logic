@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://circuits/circuit.gd" type="Script" id=1]
 [ext_resource path="res://panels/Info.tscn" type="PackedScene" id=2]
@@ -7,8 +7,9 @@
 [ext_resource path="res://parts/grid/GridOutput.tscn" type="PackedScene" id=5]
 [ext_resource path="res://parts/grid/GridInput.tscn" type="PackedScene" id=6]
 [ext_resource path="res://parts/grid/Con.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/fonts/mono-font.tres" type="DynamicFont" id=8]
 
-[node name="SR" type="Control"]
+[node name="GatedSR" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 8.0
@@ -18,26 +19,42 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
-title = "SR  NOR Latch"
-vin = [ [ 0, 0 ], [ 1, 0 ], [ 0, 0 ], [ 0, 1 ] ]
-vout = [ [ 2, 2 ], [ 0, 1 ], [ 1, 0 ] ]
+title = "Clocked SR Flip-flop"
+vin = [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 1, 0, 1 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 0, 1, 1 ], [ 0, 1, 0 ] ]
+vout = [ [ 2, 2 ], [ 2, 2 ], [ 2, 2 ], [ 0, 1 ], [ 2, 2 ], [ 1, 0 ], [ 0, 1 ] ]
 
 [node name="w1" parent="." instance=ExtResource( 4 )]
-points = PoolVector2Array( 304, 88, 496, 88 )
+points = PoolVector2Array( 304, 48, 488, 48 )
 
 [node name="w4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 0 )
 points = PoolVector2Array( 704, 128, 704, 288, 416, 288, 416, 344, 480, 344 )
 
 [node name="w12" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 0 )
 points = PoolVector2Array( 768, 384, 768, 224, 416, 224, 416, 168, 504, 168 )
 
 [node name="w5" parent="." instance=ExtResource( 4 )]
-points = PoolVector2Array( 304, 424, 488, 424 )
+points = PoolVector2Array( 304, 464, 480, 464 )
+
+[node name="w10" parent="." instance=ExtResource( 4 )]
+points = PoolVector2Array( 384, 256, 384, 384, 488, 384 )
+
+[node name="w9" parent="." instance=ExtResource( 4 )]
+points = PoolVector2Array( 296, 256, 384, 256, 384, 128, 472, 128 )
+
+[node name="w7" parent="." instance=ExtResource( 4 )]
+points = PoolVector2Array( 544, 88, 736, 88 )
+
+[node name="w8" parent="." instance=ExtResource( 4 )]
+points = PoolVector2Array( 536, 424, 728, 424 )
 
 [node name="w3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 0 )
 points = PoolVector2Array( 568, 128, 864, 128 )
 
 [node name="w6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 0 )
 points = PoolVector2Array( 560, 384, 864, 384 )
 
 [node name="Gates" type="Control" parent="."]
@@ -48,18 +65,32 @@ __meta__ = {
 }
 
 [node name="GridGate3" parent="Gates" instance=ExtResource( 3 )]
-margin_left = 512.0
+margin_left = 768.0
 margin_top = 128.0
-margin_right = 472.0
+margin_right = 728.0
 margin_bottom = 128.0
-id = 3
+id = 1
+
+[node name="GridGate5" parent="Gates" instance=ExtResource( 3 )]
+margin_left = 512.0
+margin_top = 424.0
+margin_right = 472.0
+margin_bottom = 424.0
+id = 1
+
+[node name="GridGate6" parent="Gates" instance=ExtResource( 3 )]
+margin_left = 512.0
+margin_top = 88.0
+margin_right = 472.0
+margin_bottom = 88.0
+id = 1
 
 [node name="GridGate4" parent="Gates" instance=ExtResource( 3 )]
-margin_left = 512.0
+margin_left = 768.0
 margin_top = 384.0
-margin_right = 472.0
+margin_right = 728.0
 margin_bottom = 384.0
-id = 3
+id = 1
 
 [node name="In" type="Control" parent="."]
 margin_right = 40.0
@@ -70,19 +101,27 @@ __meta__ = {
 
 [node name="GridInput" parent="In" instance=ExtResource( 6 )]
 margin_left = 304.0
-margin_top = 88.0
+margin_top = 48.0
 margin_right = 304.0
-margin_bottom = 88.0
-txt = "R"
-text = "R"
+margin_bottom = 48.0
+txt = "S"
+text = "S"
 
 [node name="GridInput2" parent="In" instance=ExtResource( 6 )]
 margin_left = 304.0
-margin_top = 424.0
+margin_top = 464.0
 margin_right = 304.0
-margin_bottom = 424.0
-txt = "S"
-text = "S"
+margin_bottom = 464.0
+txt = "R"
+text = "R"
+
+[node name="GridInput3" parent="In" instance=ExtResource( 6 )]
+margin_left = 304.0
+margin_top = 256.0
+margin_right = 304.0
+margin_bottom = 256.0
+txt = "CK"
+text = "CK"
 
 [node name="Out" type="Control" parent="."]
 margin_right = 40.0
@@ -92,17 +131,17 @@ __meta__ = {
 }
 
 [node name="GridOutput" parent="Out" instance=ExtResource( 5 )]
-margin_left = 848.0
+margin_left = 1104.0
 margin_top = 128.0
-margin_right = 848.0
+margin_right = 1104.0
 margin_bottom = 128.0
 txt = "Q"
 text = "Q"
 
 [node name="GridOutput2" parent="Out" instance=ExtResource( 5 )]
-margin_left = 848.0
+margin_left = 1104.0
 margin_top = 384.0
-margin_right = 848.0
+margin_right = 1104.0
 margin_bottom = 384.0
 txt = "/Q"
 text = "/Q"
@@ -115,10 +154,13 @@ __meta__ = {
 }
 
 [node name="c1" parent="Con" instance=ExtResource( 7 )]
-position = Vector2( 704, 128 )
+position = Vector2( 960, 128 )
+
+[node name="c3" parent="Con" instance=ExtResource( 7 )]
+position = Vector2( 384, 256 )
 
 [node name="c2" parent="Con" instance=ExtResource( 7 )]
-position = Vector2( 768, 384 )
+position = Vector2( 1024, 384 )
 
 [node name="c" type="CanvasLayer" parent="."]
 
@@ -129,19 +171,34 @@ nt = "An SR flip-flop remembers the state as long as both R and S are low. Pulsi
 ht = "Use two NOR gates."
 
 [node name="Notes" parent="c/Info/VBox/M" index="1"]
-bbcode_text = "The SR (set-reset) latch remembers the state as long as both R (reset) and S (set) are low.
-
-Pulsing R high resets the state (Q low), and pulsing S high sets the state (Q high).
-
-The state of S = R = 1 is not allowed because it would mean Q = 0 and /Q = 0"
-text = "The SR (set-reset) latch remembers the state as long as both R (reset) and S (set) are low.
-
-Pulsing R high resets the state (Q low), and pulsing S high sets the state (Q high).
-
-The state of S = R = 1 is not allowed because it would mean Q = 0 and /Q = 0"
+bbcode_text = "We may add gates to the inputs of a  SR (set-reset) latch to allow for a clock (CK) input to enable or disable the inputs."
+text = "We may add gates to the inputs of a  SR (set-reset) latch to allow for a clock (CK) input to enable or disable the inputs."
 
 [node name="Hint" parent="c/Info/VBox/M" index="2"]
-bbcode_text = "Use two NOR gates."
-text = "Use two NOR gates."
+bbcode_text = "Use NAND gates."
+text = "Use NAND gates."
+
+[node name="Labels" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="Labels"]
+margin_left = 608.0
+margin_top = 24.0
+margin_right = 666.0
+margin_bottom = 83.0
+custom_fonts/font = ExtResource( 8 )
+text = "/S"
+
+[node name="Label2" type="Label" parent="Labels"]
+margin_left = 608.0
+margin_top = 360.0
+margin_right = 666.0
+margin_bottom = 419.0
+custom_fonts/font = ExtResource( 8 )
+text = "/R"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [editable path="c/Info"]

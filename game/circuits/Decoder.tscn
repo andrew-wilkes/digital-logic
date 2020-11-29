@@ -18,6 +18,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+title = "2-4 Decoder"
 vin = [ [ 0, 0 ], [ 1, 0 ], [ 0, 1 ], [ 1, 1 ] ]
 vout = [ [ 1, 0, 0, 0 ], [ 0, 1, 0, 0 ], [ 0, 0, 1, 0 ], [ 0, 0, 0, 1 ] ]
 
@@ -199,7 +200,6 @@ position = Vector2( 644, 360 )
 [node name="c" type="CanvasLayer" parent="."]
 
 [node name="Info" parent="c" instance=ExtResource( 7 )]
-modulate = Color( 1, 1, 1, 0.94902 )
 note = "This is an example of a decoder. It takes a 2-bit binary input and decodes it to one of four possible outputs."
 hint = "To decode the inputs, we can combine AND gates and NOT gates.
 

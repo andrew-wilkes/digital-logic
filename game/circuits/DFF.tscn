@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://parts/grid/GridInput.tscn" type="PackedScene" id=1]
 [ext_resource path="res://parts/grid/GridGate.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://parts/grid/Con.tscn" type="PackedScene" id=4]
 [ext_resource path="res://parts/grid/Wire.tscn" type="PackedScene" id=5]
 [ext_resource path="res://circuits/circuit.gd" type="Script" id=6]
-[ext_resource path="res://parts/grid/GridLabel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://panels/Info.tscn" type="PackedScene" id=8]
 
 [node name="DFF" type="Control"]
@@ -21,20 +20,17 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 1080.0 ]
 }
+title = "D Latch"
 vin = [ [ 0, 0 ], [ 1, 1 ], [ 1, 0 ], [ 0, 0 ], [ 0, 1 ], [ 0, 0 ], [ 1, 0 ] ]
 vout = [ [ 2, 2 ], [ 2, 2 ], [ 0, 1 ], [ 1, 0 ] ]
 
 [node name="w1" parent="." instance=ExtResource( 5 )]
 position = Vector2( 128, 104 )
-points = PoolVector2Array( 288, 88, 496, 88 )
+points = PoolVector2Array( 224, 88, 496, 88 )
 
 [node name="w2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 128, 104 )
 points = PoolVector2Array( -32, 48, 216, 48 )
-
-[node name="w10" parent="." instance=ExtResource( 5 )]
-position = Vector2( 128, 104 )
-points = PoolVector2Array( 64, 48, 64, 152, -64, 152, -64, 464, 80, 464 )
 
 [node name="w4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 128, 104 )
@@ -46,19 +42,19 @@ points = PoolVector2Array( 704, 384, 704, 224, 416, 224, 416, 168, 504, 168 )
 
 [node name="w5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 120, 104 )
-points = PoolVector2Array( 296, 424, 488, 424 )
+points = PoolVector2Array( 208, 424, 488, 424 )
 
 [node name="w8" parent="." instance=ExtResource( 5 )]
-position = Vector2( 120, 104 )
-points = PoolVector2Array( 104, 248, 168, 248, 168, 128, 216, 128 )
+position = Vector2( 56, 104 )
+points = PoolVector2Array( 48, 128, 120, 128, 216, 128 )
 
 [node name="w7" parent="." instance=ExtResource( 5 )]
-position = Vector2( 120, 104 )
-points = PoolVector2Array( 144, 464, 232, 464 )
+position = Vector2( 56, 104 )
+points = PoolVector2Array( 416, 88, 416, 280, 168, 280, 168, 392, 240, 392 )
 
 [node name="w9" parent="." instance=ExtResource( 5 )]
-position = Vector2( 120, 104 )
-points = PoolVector2Array( 168, 248, 168, 384, 216, 384 )
+position = Vector2( 56, 96 )
+points = PoolVector2Array( 120, 136, 120, 472, 240, 472 )
 
 [node name="w3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 128, 104 )
@@ -83,9 +79,9 @@ margin_bottom = 232.0
 id = 1
 
 [node name="GridGate5" parent="Gates" instance=ExtResource( 2 )]
-margin_left = 384.0
+margin_left = 320.0
 margin_top = 192.0
-margin_right = 344.0
+margin_right = 280.0
 margin_bottom = 192.0
 id = 1
 
@@ -97,18 +93,11 @@ margin_bottom = 488.0
 id = 1
 
 [node name="GridGate6" parent="Gates" instance=ExtResource( 2 )]
-margin_left = 384.0
+margin_left = 320.0
 margin_top = 528.0
-margin_right = 344.0
+margin_right = 280.0
 margin_bottom = 528.0
 id = 1
-
-[node name="GridGate7" parent="Gates" instance=ExtResource( 2 )]
-margin_left = 208.0
-margin_top = 568.0
-margin_right = 168.0
-margin_bottom = 568.0
-id = 5
 
 [node name="In" type="Control" parent="."]
 margin_right = 40.0
@@ -126,10 +115,10 @@ txt = "D"
 text = "D"
 
 [node name="GridInput2" parent="In" instance=ExtResource( 1 )]
-margin_left = 232.0
-margin_top = 352.0
-margin_right = 232.0
-margin_bottom = 352.0
+margin_left = 104.0
+margin_top = 232.0
+margin_right = 104.0
+margin_bottom = 232.0
 txt = "CK"
 text = "CK"
 
@@ -170,58 +159,37 @@ position = Vector2( 768, 232 )
 position = Vector2( 832, 488 )
 
 [node name="c3" parent="Con" instance=ExtResource( 4 )]
-position = Vector2( 288, 352 )
+position = Vector2( 176, 232 )
 
 [node name="c4" parent="Con" instance=ExtResource( 4 )]
-position = Vector2( 192, 152 )
+position = Vector2( 472, 192 )
 
 [node name="Labels" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="Label" parent="Labels" instance=ExtResource( 7 )]
-margin_left = 488.0
-margin_top = 104.0
-margin_right = 560.0
-margin_bottom = 180.0
-text = "/S"
-
-[node name="Label2" parent="Labels" instance=ExtResource( 7 )]
-margin_left = 504.0
-margin_top = 544.0
-margin_right = 536.0
-margin_bottom = 620.0
-text = "/R"
-
-[node name="Label3" parent="Labels" instance=ExtResource( 7 )]
-margin_left = 280.0
-margin_top = 576.0
-margin_right = 280.0
-margin_bottom = 652.0
-text = "R"
-
-[node name="Label4" parent="Labels" instance=ExtResource( 7 )]
-margin_left = 288.0
-margin_top = 64.0
-margin_right = 288.0
-margin_bottom = 140.0
-text = "S"
-
 [node name="c" type="CanvasLayer" parent="."]
 
 [node name="Info" parent="c" instance=ExtResource( 8 )]
-modulate = Color( 1, 1, 1, 0.94902 )
 note = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value."
 hint = "Simply add a NOT gate to the input of an SR flip flop."
 nt = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value."
 ht = "Simply add a NOT gate to the input of an SR flip flop."
 
-[node name="Notes" parent="c/Info/VBox/M" index="0"]
-bbcode_text = "We can set [i]R = [u]S[/u][/i] since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value."
-text = "We can set R = S since R and S should never be high at the same time. So we replace S and R with a data input (D) and set the E input low when we want to remember the input value."
+[node name="Notes" parent="c/Info/VBox/M" index="1"]
+bbcode_text = "With an SR Flip Flop We can set [i]R = /S[/i] since R and S should never be high at the same time.
 
-[node name="Hint" parent="c/Info/VBox/M" index="1"]
-bbcode_text = "Simply add a NOT gate to the input of an SR flip flop."
-text = "Simply add a NOT gate to the input of an SR flip flop."
+Also, we may enable capturing of the data value (D) with a clock input (CK)
+
+This forms a building block of a memory circuit called a D Latch."
+text = "With an SR Flip Flop We can set R = /S since R and S should never be high at the same time.
+
+Also, we may enable capturing of the data value (D) with a clock input (CK)
+
+This forms a building block of a memory circuit called a D Latch."
+
+[node name="Hint" parent="c/Info/VBox/M" index="2"]
+bbcode_text = "Use NAND gates."
+text = "Use NAND gates."
 
 [editable path="c/Info"]
