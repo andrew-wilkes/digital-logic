@@ -219,6 +219,7 @@ hint = "Use NAND gates to make a SR flip-flop and the inputs are gated by 3-inpu
 [i][u]S[/u] = CK * J * /Q[/i]
 
 [i][u]R[/u] = CK * K * Q[/i]"
+howt = ""
 nt = "The JK flip-flop is similar to the SR flip-flop but has no invalid input states."
 ht = "Use NAND gates to make a SR flip-flop and the inputs are gated by 3-input NAND gates.
 
@@ -242,8 +243,8 @@ bbcode_text = "Use NAND gates to make a SR flip-flop and the inputs are gated by
 [i][u]R[/u] = CK [code]×[/code] K [code]×[/code] Q[/i]"
 text = "Use NAND gates to make a SR flip-flop and the inputs are gated by 3-input NAND gates.
 
-[i][u]S[/u] = CK [code]×[/code] J [code]×[/code] /Q[/i]
+S = CK × J × /Q
 
-[i][u]R[/u] = CK [code]×[/code] K [code]×[/code] Q[/i]"
+R = CK × K × Q"
 
 [editable path="c/Info"]

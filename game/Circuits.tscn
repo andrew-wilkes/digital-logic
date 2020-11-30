@@ -97,10 +97,10 @@ margin_bottom = 266.0
 
 [node name="SR2" parent="VBox/Circuit" instance=ExtResource( 2 )]
 visible = false
-margin_left = -83.9052
-margin_top = 251.716
-margin_right = -43.9052
-margin_bottom = 259.716
+margin_left = -62.9289
+margin_top = 259.47
+margin_right = -22.9289
+margin_bottom = 267.47
 
 [node name="GatedSR" parent="VBox/Circuit" instance=ExtResource( 7 )]
 visible = false
@@ -111,38 +111,41 @@ margin_bottom = 235.743
 
 [node name="DFF" parent="VBox/Circuit" instance=ExtResource( 18 )]
 visible = false
-margin_left = 1.90601
-margin_top = 149.203
-margin_right = 41.906
-margin_bottom = 157.203
+margin_left = -4.4436
+margin_top = 125.392
+margin_right = 35.5564
+margin_bottom = 133.392
 
 [node name="JKFF" parent="VBox/Circuit" instance=ExtResource( 19 )]
 visible = false
-margin_right = 40.0
+margin_left = 11.1118
+margin_top = 125.405
+margin_right = 51.1118
+margin_bottom = 133.405
 
 [node name="Multiplexer" parent="VBox/Circuit" instance=ExtResource( 13 )]
 visible = false
-margin_left = 4.76953
-margin_top = 213.647
-margin_right = 0.769531
-margin_bottom = 213.647
+margin_left = 1.59473
+margin_top = 189.836
+margin_right = 41.5947
+margin_bottom = 189.836
 
 [node name="Decoder" parent="VBox/Circuit" instance=ExtResource( 4 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -13.4151
-margin_top = 91.4568
+margin_top = 102.569
 margin_right = 1042.58
-margin_bottom = 891.457
+margin_bottom = 902.569
 rect_min_size = Vector2( 0, 800 )
 
 [node name="Adder" parent="VBox/Circuit" instance=ExtResource( 14 )]
 visible = false
-margin_left = -25.3082
-margin_top = -16.2161
-margin_right = 14.6918
-margin_bottom = -8.21594
+margin_left = -17.3712
+margin_top = -8.27921
+margin_right = 22.6288
+margin_bottom = -0.279053
 
 [node name="sp4" type="Control" parent="VBox"]
 margin_top = 1378.0
