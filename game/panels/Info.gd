@@ -35,12 +35,12 @@ func _on_OKButton_button_down():
 
 
 var how = false
-func show_how():
+func show_how(show_notes = true):
 	$VBox/HBox/Solution.disabled = true
 	$VBox/M/How.visible = true
 	$VBox/M/Notes.visible = false
 	$VBox/M/Hint.visible = false
-	how = true
+	how = show_notes
 
 
 func show_notes():

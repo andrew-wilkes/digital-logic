@@ -18,9 +18,9 @@ var max_num: int
 var mode = 0
 var level = 0
 var dec = "Base 10 value"
+var animate = true
 export(String, MULTILINE) var n1 # Number data
 export(String, MULTILINE) var n2
-export(String, MULTILINE) var notes = "Instructions"
 var mode_text = [
 	"Play with the buttons",
 	"Match the number",
@@ -45,7 +45,6 @@ func _ready():
 	values = find_node("Values")
 	alert = find_node("Alert")
 	set_mode()
-	#$c/Info/VBox/M/Notes.text = notes
 
 
 func get_data(txt: String):
@@ -85,6 +84,8 @@ func play_sm(event):
 					set_number(number + 1)
 				MINUS:
 					set_number(number - 1)
+				RESET:
+					set_number(0)
 
 
 func challenge_sm(event):
@@ -143,6 +144,8 @@ func challenge_sm(event):
 
 func set_mode():
 	desc.text = mode_text[mode]
+	animate = true
+	show_info()
 	# Set the label text
 	for i in 3:
 		labels.get_child(i).text = label_text[op_maps[mode][i]]
@@ -401,5 +404,15 @@ func enable_info_button():
 
 
 func show_info():
+	match mode:
+		PLAY:
+			$c/Info.show_how(false)
+		TRAIN:
+			$c/Info.show_notes()
+		CHALLENGE:
+			$c/Info.show_hint()
+	if animate:
+		$c/Info.play_anim()
+		animate = false
 	$c/Info.popup_centered()
 	$VBox/Control2/Info.disabled = true
