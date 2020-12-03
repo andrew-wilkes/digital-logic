@@ -59,19 +59,25 @@ func show_hint():
 func set_how_text(txt):
 	if Engine.editor_hint:
 		howt = txt
-		$VBox/M/How.bbcode_text = format_text(txt)
+		set_text(txt, "VBox/M/How")
 
 
 func set_note_text(txt):
 	if Engine.editor_hint:
 		nt = txt
-		$VBox/M/Notes.bbcode_text = format_text(txt)
+		set_text(txt, "VBox/M/Notes")
 
 
 func set_hint_text(txt):
 	if Engine.editor_hint:
 		ht = txt
-		$VBox/M/Hint.bbcode_text = format_text(txt)
+		set_text(txt, "VBox/M/Hint")
+
+
+func set_text(txt, path):
+	var rtl = get_node_or_null(path)
+	if rtl != null:
+			rtl.bbcode_text = format_text(txt)
 
 
 func format_text(txt):
