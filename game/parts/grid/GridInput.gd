@@ -3,9 +3,7 @@ extends Control
 
 class_name GridInput
 
-export var txt = "A0" setget set_text, get_text
-
-export var text: String
+export var text = "A0" setget set_text, get_text
 
 func _ready():
 	$Label.text = text
@@ -14,8 +12,7 @@ func _ready():
 func set_text(t):
 	if Engine.editor_hint and has_node("Label"):
 		$Label.text = t
-		text = t
-		property_list_changed_notify()
+	text = t
 
 
 func get_text():

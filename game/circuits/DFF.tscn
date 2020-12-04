@@ -111,7 +111,6 @@ margin_left = 104.0
 margin_top = 152.0
 margin_right = 104.0
 margin_bottom = 152.0
-txt = "D"
 text = "D"
 
 [node name="GridInput2" parent="In" instance=ExtResource( 1 )]
@@ -119,7 +118,6 @@ margin_left = 104.0
 margin_top = 232.0
 margin_right = 104.0
 margin_bottom = 232.0
-txt = "CK"
 text = "CK"
 
 [node name="Out" type="Control" parent="."]
@@ -130,19 +128,17 @@ __meta__ = {
 }
 
 [node name="GridOutput" parent="Out" instance=ExtResource( 3 )]
-margin_left = 912.0
+margin_left = 896.0
 margin_top = 232.0
-margin_right = 912.0
+margin_right = 896.0
 margin_bottom = 232.0
-txt = "Q"
 text = "Q"
 
 [node name="GridOutput2" parent="Out" instance=ExtResource( 3 )]
-margin_left = 912.0
+margin_left = 896.0
 margin_top = 488.0
-margin_right = 912.0
+margin_right = 896.0
 margin_bottom = 488.0
-txt = "/Q"
 text = "/Q"
 
 [node name="Con" type="Control" parent="."]

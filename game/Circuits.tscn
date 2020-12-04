@@ -103,24 +103,23 @@ margin_right = -22.9289
 margin_bottom = 267.47
 
 [node name="GatedSR" parent="VBox/Circuit" instance=ExtResource( 7 )]
-visible = false
-margin_left = -194.78
+margin_left = -186.78
 margin_top = 227.743
-margin_right = -154.78
+margin_right = -146.78
 margin_bottom = 235.743
 
 [node name="DFF" parent="VBox/Circuit" instance=ExtResource( 18 )]
 visible = false
-margin_left = -4.4436
+margin_left = 5.5564
 margin_top = 125.392
-margin_right = 35.5564
+margin_right = 45.5564
 margin_bottom = 133.392
 
 [node name="JKFF" parent="VBox/Circuit" instance=ExtResource( 19 )]
 visible = false
-margin_left = 11.1118
+margin_left = -3.8882
 margin_top = 125.405
-margin_right = 51.1118
+margin_right = 36.1118
 margin_bottom = 133.405
 
 [node name="Multiplexer" parent="VBox/Circuit" instance=ExtResource( 13 )]

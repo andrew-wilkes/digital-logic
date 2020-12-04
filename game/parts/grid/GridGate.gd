@@ -37,7 +37,6 @@ func tapped():
 func set_gate(_id):
 	set_visibility(_id)
 	id = _id
-	property_list_changed_notify()
 
 
 func set_to_obscured():

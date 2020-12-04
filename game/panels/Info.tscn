@@ -113,7 +113,7 @@ custom_fonts/italics_font = ExtResource( 5 )
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "A [code]Å[/code] B C [code]×[/code] Dxxx"
-text = "A [code]Å[/code] B C [code]×[/code] Dxxx"
+text = "A Å B C × Dxxx"
 
 [node name="Hint" type="RichTextLabel" parent="VBox/M"]
 visible = false
@@ -128,7 +128,7 @@ custom_fonts/italics_font = ExtResource( 5 )
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "A [code]Å[/code] B C [code]×[/code] D"
-text = "A [code]Å[/code] B C [code]×[/code] D"
+text = "A Å B C × D"
 
 [node name="HBox" type="HBoxContainer" parent="VBox"]
 margin_top = 730.0

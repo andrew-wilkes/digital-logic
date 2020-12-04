@@ -104,7 +104,6 @@ margin_left = 304.0
 margin_top = 48.0
 margin_right = 304.0
 margin_bottom = 48.0
-txt = "S"
 text = "S"
 
 [node name="GridInput2" parent="In" instance=ExtResource( 6 )]
@@ -112,7 +111,6 @@ margin_left = 304.0
 margin_top = 464.0
 margin_right = 304.0
 margin_bottom = 464.0
-txt = "R"
 text = "R"
 
 [node name="GridInput3" parent="In" instance=ExtResource( 6 )]
@@ -120,7 +118,6 @@ margin_left = 304.0
 margin_top = 256.0
 margin_right = 304.0
 margin_bottom = 256.0
-txt = "CK"
 text = "CK"
 
 [node name="Out" type="Control" parent="."]
@@ -131,19 +128,17 @@ __meta__ = {
 }
 
 [node name="GridOutput" parent="Out" instance=ExtResource( 5 )]
-margin_left = 1104.0
+margin_left = 1088.0
 margin_top = 128.0
-margin_right = 1104.0
+margin_right = 1088.0
 margin_bottom = 128.0
-txt = "Q"
 text = "Q"
 
 [node name="GridOutput2" parent="Out" instance=ExtResource( 5 )]
-margin_left = 1104.0
+margin_left = 1088.0
 margin_top = 384.0
-margin_right = 1104.0
+margin_right = 1088.0
 margin_bottom = 384.0
-txt = "/Q"
 text = "/Q"
 
 [node name="Con" type="Control" parent="."]
@@ -184,17 +179,17 @@ margin_bottom = 40.0
 
 [node name="Label" type="Label" parent="Labels"]
 margin_left = 608.0
-margin_top = 24.0
-margin_right = 666.0
-margin_bottom = 83.0
+margin_top = 16.0
+margin_right = 686.0
+margin_bottom = 92.0
 custom_fonts/font = ExtResource( 8 )
 text = "/S"
 
 [node name="Label2" type="Label" parent="Labels"]
 margin_left = 608.0
-margin_top = 360.0
-margin_right = 666.0
-margin_bottom = 419.0
+margin_top = 352.0
+margin_right = 686.0
+margin_bottom = 428.0
 custom_fonts/font = ExtResource( 8 )
 text = "/R"
 __meta__ = {

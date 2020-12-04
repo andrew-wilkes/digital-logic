@@ -571,7 +571,7 @@ Increment, decrement, shift bits, and use the complement (invert) button."
 
 [node name="Hint" parent="c/Info/VBox/M" index="2"]
 bbcode_text = "Match the binary number to the given hex number."
-text = ""
+text = "Match the binary number to the given hex number."
 
 [node name="Solution" parent="c/Info/VBox/HBox" index="0"]
 visible = false

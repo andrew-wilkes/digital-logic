@@ -19,21 +19,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://parts/grid/GridInput.gd"
 }, {
-"base": "Control",
+"base": "GridInput",
 "class": "Grid_Output",
 "language": "GDScript",
 "path": "res://parts/grid/GridOutput.gd"
-}, {
-"base": "RichTextEffect",
-"class": "Overline",
-"language": "GDScript",
-"path": "res://assets/fonts/over_line.gd"
 } ]
 _global_script_class_icons={
 "GridGate": "",
 "GridInput": "",
-"Grid_Output": "",
-"Overline": ""
+"Grid_Output": ""
 }
 
 [application]
