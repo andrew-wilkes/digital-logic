@@ -517,21 +517,10 @@ The precision may be increased from 4 bits to 16 bits.
 The number may overflow or underflow.
 
 Negative numbers have the left-most bit set."
-note = "A @ B C * D"
-howt = "Each digit of a binary number is either 0 or 1
+note = "Match the binary number to the given decimal number in the least amount of steps.
 
-Groups of 4 binary digits may represent 0 to 15 in decimal.
-
-And we may represent each group with a hexadecimal value 0 to F
-
-Here you can increment, decrement, shift and invert the digits.
-
-The precision may be increased from 4 bits to 16 bits.
-
-The number may overflow or underflow.
-
-Negative numbers have the left-most bit set."
-nt = "A @ B C * D"
+Increment, decrement, shift bits, and use the complement (invert) button."
+hint = "Match the binary number to the given hex number."
 
 [node name="How" parent="c/Info/VBox/M" index="0"]
 bbcode_text = "Each digit of a binary number is either 0 or 1

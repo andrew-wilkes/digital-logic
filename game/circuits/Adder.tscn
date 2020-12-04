@@ -138,7 +138,6 @@ margin_left = 176.0
 margin_top = 88.0
 margin_right = 176.0
 margin_bottom = 88.0
-txt = "A"
 text = "A"
 
 [node name="GridInput2" parent="In" instance=ExtResource( 1 )]
@@ -146,7 +145,6 @@ margin_left = 176.0
 margin_top = 168.0
 margin_right = 176.0
 margin_bottom = 168.0
-txt = "B"
 text = "B"
 
 [node name="GridInput3" parent="In" instance=ExtResource( 1 )]
@@ -154,7 +152,6 @@ margin_left = 176.0
 margin_top = 360.0
 margin_right = 176.0
 margin_bottom = 360.0
-txt = "CI"
 text = "CI"
 
 [node name="Out" type="Control" parent="."]
@@ -169,7 +166,6 @@ margin_left = 896.0
 margin_top = 320.0
 margin_right = 896.0
 margin_bottom = 320.0
-txt = "S"
 text = "S"
 
 [node name="GridOutput2" parent="Out" instance=ExtResource( 3 )]
@@ -177,7 +173,6 @@ margin_left = 896.0
 margin_top = 856.0
 margin_right = 896.0
 margin_bottom = 856.0
-txt = "CO"
 text = "CO"
 
 [node name="Con" type="Control" parent="."]
@@ -208,19 +203,9 @@ position = Vector2( 256, 544 )
 [node name="c" type="CanvasLayer" parent="."]
 
 [node name="Info" parent="c" instance=ExtResource( 7 )]
-howText = ""
+howText = "How"
 note = "A full adder sums together inputs:  A, B, and Carry In to give two outputs: Sum and Carry Out."
 hint = "We have 3 bits to add together producing numbers in a range 0 to 3.
-
-In binary: 00 to 11 with the least significant bit the sum, and the most significant bit the carry out.
-
-To get the sum we can use exclusive OR: [i]A @ B @ CI[/i]
-
-The carry out is high if at least two of the inputs are high, so:
-[i]CO = A*B + A*CI + B*CI[/i]"
-howt = ""
-nt = "A full adder sums together inputs:  A, B, and Carry In to give two outputs: Sum and Carry Out."
-ht = "We have 3 bits to add together producing numbers in a range 0 to 3.
 
 In binary: 00 to 11 with the least significant bit the sum, and the most significant bit the carry out.
 

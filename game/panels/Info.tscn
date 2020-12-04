@@ -43,15 +43,6 @@ Cycle through the combinations of input logic states by tapping the O button.
 
 When all output states are green, the circuit is correctly formed."
 note = "A @ B C * Dxxx"
-howt = "INSTRUCTIONS
-
-Change the gates by tapping on them to make the circuit work.
-
-Cycle through the combinations of input logic states by tapping the O button.
-
-When all output states are green, the circuit is correctly formed."
-nt = "A @ B C * Dxxx"
-ht = "A @ B C * D"
 
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_right = 944.0

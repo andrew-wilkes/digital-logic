@@ -73,7 +73,6 @@ margin_left = 304.0
 margin_top = 88.0
 margin_right = 304.0
 margin_bottom = 88.0
-txt = "/S"
 text = "/S"
 
 [node name="GridInput2" parent="In" instance=ExtResource( 6 )]
@@ -81,7 +80,6 @@ margin_left = 304.0
 margin_top = 424.0
 margin_right = 304.0
 margin_bottom = 424.0
-txt = "/R"
 text = "/R"
 
 [node name="Out" type="Control" parent="."]
@@ -96,7 +94,6 @@ margin_left = 848.0
 margin_top = 128.0
 margin_right = 848.0
 margin_bottom = 128.0
-txt = "Q"
 text = "Q"
 
 [node name="GridOutput2" parent="Out" instance=ExtResource( 5 )]
@@ -104,7 +101,6 @@ margin_left = 848.0
 margin_top = 384.0
 margin_right = 848.0
 margin_bottom = 384.0
-txt = "/Q"
 text = "/Q"
 
 [node name="Con" type="Control" parent="."]
@@ -125,8 +121,6 @@ position = Vector2( 768, 384 )
 [node name="Info" parent="c" instance=ExtResource( 2 )]
 note = "An SR flip-flop remembers the state as long as both R and S are low. Pulsing R high resets the state (Q low), and pulsing S high sets the state (Q high)."
 hint = "Use two NOR gates."
-nt = "An SR flip-flop remembers the state as long as both R and S are low. Pulsing R high resets the state (Q low), and pulsing S high sets the state (Q high)."
-ht = "Use two NOR gates."
 
 [node name="Notes" parent="c/Info/VBox/M" index="1"]
 bbcode_text = "The SR (set-reset) latch may be made using NAND gates.

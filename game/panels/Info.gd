@@ -6,24 +6,20 @@ export(String, MULTILINE) var howText = "How" setget set_how_text, get_how_text
 export(String, MULTILINE) var note = "A @ B C * D" setget set_note_text, get_note_text
 export(String, MULTILINE) var hint = "A @ B C * D" setget set_hint_text, get_hint_text
 
-export var howt: String
-export var nt: String
-export var ht: String
-
 func play_anim():
 	$Anim.play("FadeIn")
 
 
 func get_how_text():
-	return howt
+	return howText
 
 
 func get_note_text():
-	return nt
+	return note
 
 
 func get_hint_text():
-	return ht
+	return hint
 
 
 func _on_OKButton_button_down():
@@ -57,20 +53,20 @@ func show_hint():
 
 
 func set_how_text(txt):
+	howText = txt
 	if Engine.editor_hint:
-		howt = txt
 		set_text(txt, "VBox/M/How")
 
 
 func set_note_text(txt):
+	note = txt
 	if Engine.editor_hint:
-		nt = txt
 		set_text(txt, "VBox/M/Notes")
 
 
 func set_hint_text(txt):
+	hint = txt
 	if Engine.editor_hint:
-		ht = txt
 		set_text(txt, "VBox/M/Hint")
 
 
