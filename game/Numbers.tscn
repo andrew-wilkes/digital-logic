@@ -501,6 +501,7 @@ one_shot = true
 [node name="c" type="CanvasLayer" parent="."]
 
 [node name="Info" parent="c" instance=ExtResource( 19 )]
+visible = true
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 555.997
 margin_bottom = 1370.0
@@ -564,6 +565,9 @@ text = "Match the binary number to the given hex number."
 
 [node name="Solution" parent="c/Info/VBox/HBox" index="0"]
 visible = false
+
+[node name="OKButton" parent="c/Info/VBox/HBox" index="1"]
+margin_left = 0.0
 [connection signal="button_down" from="VBox/Control/Up" to="." method="_on_Up_button_down"]
 [connection signal="button_down" from="VBox/Control/ShiftLeft" to="." method="_on_ShiftLeft_button_down"]
 [connection signal="button_down" from="VBox/Control/Down" to="." method="_on_Down_button_down"]

@@ -130,7 +130,6 @@ margin_left = 152.0
 margin_top = 360.0
 margin_right = 152.0
 margin_bottom = 360.0
-txt = "A1"
 text = "A1"
 
 [node name="Out" type="Control" parent="."]
@@ -145,7 +144,6 @@ margin_left = 896.0
 margin_top = 128.0
 margin_right = 896.0
 margin_bottom = 128.0
-txt = "Y0"
 text = "Y0"
 
 [node name="GridOutput2" parent="Out" instance=ExtResource( 3 )]
@@ -153,7 +151,6 @@ margin_left = 896.0
 margin_top = 320.0
 margin_right = 896.0
 margin_bottom = 320.0
-txt = "Y1"
 text = "Y1"
 
 [node name="GridOutput3" parent="Out" instance=ExtResource( 3 )]
@@ -161,7 +158,6 @@ margin_left = 896.0
 margin_top = 512.0
 margin_right = 896.0
 margin_bottom = 512.0
-txt = "Y2"
 text = "Y2"
 
 [node name="GridOutput4" parent="Out" instance=ExtResource( 3 )]
@@ -169,7 +165,6 @@ margin_left = 896.0
 margin_top = 704.0
 margin_right = 896.0
 margin_bottom = 704.0
-txt = "Y3"
 text = "Y3"
 
 [node name="Con" type="Control" parent="."]
@@ -204,16 +199,12 @@ note = "This is an example of a decoder. It takes a 2-bit binary input and decod
 hint = "To decode the inputs, we can combine AND gates and NOT gates.
 
 For example: [i]Y2 = /A0*A1[/i]"
-nt = "This is an example of a decoder. It takes a 2-bit binary input and decodes it to one of four possible outputs."
-ht = "To decode the inputs, we can combine AND gates and NOT gates.
 
-For example: [i]Y2 = /A0*A1[/i]"
-
-[node name="Notes" parent="c/Info/VBox/M" index="0"]
+[node name="Notes" parent="c/Info/VBox/M" index="1"]
 bbcode_text = "This is an example of a decoder. It takes a 2-bit binary input and decodes it to one of four possible outputs."
 text = "This is an example of a decoder. It takes a 2-bit binary input and decodes it to one of four possible outputs."
 
-[node name="Hint" parent="c/Info/VBox/M" index="1"]
+[node name="Hint" parent="c/Info/VBox/M" index="2"]
 bbcode_text = "To decode the inputs, we can combine AND gates and NOT gates.
 
 For example: [i]Y2 = /A0[code]×[/code]A1[/i]"

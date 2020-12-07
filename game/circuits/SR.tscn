@@ -121,8 +121,6 @@ position = Vector2( 768, 384 )
 [node name="Info" parent="c" instance=ExtResource( 2 )]
 note = "An SR flip-flop remembers the state as long as both R and S are low. Pulsing R high resets the state (Q low), and pulsing S high sets the state (Q high)."
 hint = "Use two NOR gates."
-nt = "An SR flip-flop remembers the state as long as both R and S are low. Pulsing R high resets the state (Q low), and pulsing S high sets the state (Q high)."
-ht = "Use two NOR gates."
 
 [node name="Notes" parent="c/Info/VBox/M" index="1"]
 bbcode_text = "The SR (set-reset) latch remembers the state as long as both R (reset) and S (set) are low.

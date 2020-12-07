@@ -404,15 +404,19 @@ func enable_info_button():
 
 
 func show_info():
+	var info = $c/Info
+	info.rect_position = $VBox.rect_position + $VBox/Alert.rect_position
+	info.rect_size.x = $VBox/Control2.rect_size.x
+	info.rect_size.y = $VBox/Control2.rect_position.y - info.rect_position.y - 40
 	match mode:
 		PLAY:
-			$c/Info.show_how(false)
+			info.show_how(false)
 		TRAIN:
-			$c/Info.show_notes()
+			info.show_notes()
 		CHALLENGE:
-			$c/Info.show_hint()
+			info.show_hint()
 	if animate:
-		$c/Info.play_anim()
+		info.play_anim()
 		animate = false
-	$c/Info.popup_centered()
+	info.popup()
 	$VBox/Control2/Info.disabled = true
