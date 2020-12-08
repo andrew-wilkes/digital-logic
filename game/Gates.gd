@@ -16,6 +16,7 @@ enum { CROSS, TICK, Q }
 const NUM_GATES = 6
 
 func _ready():
+	g.set_column_size($VBox)
 	$VBox/HBox/OneButton.hide()
 	$VBox/HBox/ZeroButton.hide()
 
@@ -29,8 +30,8 @@ func sm(event):
 					$VBox/HBox/ZeroButton.show()
 					$VBox/HBox/Start.hide()
 					$VBox/HBox/Stop.show()
-					$VBox/Score/Accuracy.text = ""
-					$VBox/Score/Speed.text = ""
+					$VBox/M2/Score/Accuracy.text = ""
+					$VBox/M2/Score/Speed.text = ""
 					count = 0.0
 					time = 0.0
 					rounds = 0
@@ -116,10 +117,10 @@ func get_output(v):
 
 func update_score():
 	var accuracy = int(100 * count / (idx + rounds * NUM_GATES))
-	$VBox/Score/Accuracy.text = "%d%% correct" % accuracy
+	$VBox/M2/Score/Accuracy.text = "%d%% correct" % accuracy
 	if count > 0:
 		var speed = time / count # How many correct / time
-		$VBox/Score/Speed.text = "%dms" % speed
+		$VBox/M2/Score/Speed.text = "%dms" % speed
 
 
 func _on_ZeroButton_button_down():

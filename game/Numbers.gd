@@ -37,6 +37,7 @@ enum { PLAYING, CORRECT, NEXT, DONE } # States
 enum { PLUS, MINUS, LEFT, RIGHT, INVERT, ATIMEOUT, MODE, LEVEL, RESET, SAVE } # Events
 
 func _ready():
+	g.set_column_size($VBox)
 	dec = ""
 	state = PLAYING
 	mode = PLAY
@@ -145,7 +146,7 @@ func challenge_sm(event):
 func set_mode():
 	desc.text = mode_text[mode]
 	animate = true
-	show_info()
+	call_deferred("show_info")
 	# Set the label text
 	for i in 3:
 		labels.get_child(i).text = label_text[op_maps[mode][i]]
@@ -405,9 +406,9 @@ func enable_info_button():
 
 func show_info():
 	var info = $c/Info
-	info.rect_position = $VBox.rect_position + $VBox/Alert.rect_position
+	info.rect_position = $VBox.rect_position + $VBox/M3.rect_position
 	info.rect_size.x = $VBox/Control2.rect_size.x
-	info.rect_size.y = $VBox/Control2.rect_position.y - $VBox/Alert.rect_position.y - 20
+	info.rect_size.y = $VBox/Control2.rect_position.y - $VBox/M3.rect_position.y - 20
 	match mode:
 		PLAY:
 			info.show_how(false)

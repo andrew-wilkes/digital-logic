@@ -23,6 +23,7 @@ class GridWire:
 
 
 func _ready():
+	g.set_column_size($VBox)
 	set_circuit(circuit_index)
 	init_circuit()
 
@@ -57,7 +58,7 @@ func set_circuit(n):
 	circuit = $VBox/Circuit.get_child(n)
 	circuit.visible = true
 	animate = true
-	$VBox/Details/Title.text = circuit.title
+	$VBox/M2/Details/Title.text = circuit.title
 
 
 func init_circuit():

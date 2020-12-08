@@ -46,6 +46,11 @@ func _ready():
 	check_dir(dir, SRC_FILE_PATH)
 
 
+func set_column_size(vbox: VBoxContainer):
+	var screen_size = OS.get_screen_size()
+	vbox.rect_min_size.x = min(screen_size.x, screen_size.y)
+
+
 func check_dir(dir, path):
 	path = path.rstrip("/")
 	if !dir.dir_exists(path):

@@ -150,13 +150,13 @@ n2 = "2		100	3
 256		0001 0000 0000 1001"
 
 [node name="Sp" type="Control" parent="."]
-margin_right = 436.0
+margin_right = 419.0
 margin_bottom = 1920.0
 size_flags_horizontal = 3
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 440.0
-margin_right = 1480.0
+margin_left = 423.0
+margin_right = 1497.0
 margin_bottom = 1920.0
 rect_min_size = Vector2( 1040, 0 )
 size_flags_horizontal = 4
@@ -167,17 +167,24 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="VBox"]
-margin_right = 1040.0
+margin_right = 1074.0
 margin_bottom = 121.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Numbers"
 align = 1
 
-[node name="Desc" type="Label" parent="VBox"]
+[node name="M" type="MarginContainer" parent="VBox"]
 margin_top = 141.0
-margin_right = 1040.0
+margin_right = 1074.0
 margin_bottom = 219.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="Desc" type="Label" parent="VBox/M"]
+margin_left = 20.0
+margin_right = 1054.0
+margin_bottom = 78.0
 custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color = Color( 0.54902, 0.54902, 0.54902, 1 )
 text = "Training (match the number)"
@@ -185,23 +192,30 @@ autowrap = true
 
 [node name="Gap" type="Control" parent="VBox"]
 margin_top = 239.0
-margin_right = 1040.0
+margin_right = 1074.0
 margin_bottom = 259.0
 rect_min_size = Vector2( 0, 20 )
 
-[node name="OP" type="HBoxContainer" parent="VBox"]
+[node name="M2" type="MarginContainer" parent="VBox"]
 margin_top = 279.0
-margin_right = 1040.0
+margin_right = 1074.0
 margin_bottom = 515.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="OP" type="HBoxContainer" parent="VBox/M2"]
+margin_left = 20.0
+margin_right = 1054.0
+margin_bottom = 236.0
 custom_constants/separation = 20
 
-[node name="Labels" type="VBoxContainer" parent="VBox/OP"]
+[node name="Labels" type="VBoxContainer" parent="VBox/M2/OP"]
 margin_right = 273.0
 margin_bottom = 236.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Num" type="Label" parent="VBox/OP/Labels"]
+[node name="Num" type="Label" parent="VBox/M2/OP/Labels"]
 margin_right = 273.0
 margin_bottom = 76.0
 size_flags_horizontal = 0
@@ -211,7 +225,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="V1" type="Label" parent="VBox/OP/Labels"]
+[node name="V1" type="Label" parent="VBox/M2/OP/Labels"]
 margin_top = 80.0
 margin_right = 273.0
 margin_bottom = 156.0
@@ -222,7 +236,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="V2" type="Label" parent="VBox/OP/Labels"]
+[node name="V2" type="Label" parent="VBox/M2/OP/Labels"]
 margin_top = 160.0
 margin_right = 273.0
 margin_bottom = 236.0
@@ -233,31 +247,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Values" type="VBoxContainer" parent="VBox/OP"]
+[node name="Values" type="VBoxContainer" parent="VBox/M2/OP"]
 margin_left = 293.0
-margin_right = 1040.0
+margin_right = 1034.0
 margin_bottom = 236.0
 size_flags_horizontal = 3
 
-[node name="Num" type="Label" parent="VBox/OP/Values"]
+[node name="Num" type="Label" parent="VBox/M2/OP/Values"]
 modulate = Color( 1, 1, 0, 1 )
-margin_right = 747.0
+margin_right = 741.0
 margin_bottom = 76.0
 custom_fonts/font = ExtResource( 11 )
 text = "34"
 align = 1
 
-[node name="V1" type="Label" parent="VBox/OP/Values"]
+[node name="V1" type="Label" parent="VBox/M2/OP/Values"]
 margin_top = 80.0
-margin_right = 747.0
+margin_right = 741.0
 margin_bottom = 156.0
 custom_fonts/font = ExtResource( 11 )
 text = "0000 0000 0000 0000"
 align = 1
 
-[node name="V2" type="Label" parent="VBox/OP/Values"]
+[node name="V2" type="Label" parent="VBox/M2/OP/Values"]
 margin_top = 160.0
-margin_right = 747.0
+margin_right = 741.0
 margin_bottom = 236.0
 custom_fonts/font = ExtResource( 11 )
 text = "34 (-23)"
@@ -265,13 +279,20 @@ align = 1
 
 [node name="Gap2" type="Control" parent="VBox"]
 margin_top = 535.0
-margin_right = 1040.0
+margin_right = 1074.0
 margin_bottom = 535.0
 
-[node name="Alert" type="Label" parent="VBox"]
+[node name="M3" type="MarginContainer" parent="VBox"]
 margin_top = 555.0
-margin_right = 1040.0
+margin_right = 1074.0
 margin_bottom = 614.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="Alert" type="Label" parent="VBox/M3"]
+margin_left = 20.0
+margin_right = 1054.0
+margin_bottom = 59.0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
 align = 1
@@ -282,14 +303,14 @@ __meta__ = {
 
 [node name="Gap3" type="Control" parent="VBox"]
 margin_top = 634.0
-margin_right = 1040.0
+margin_right = 1074.0
 margin_bottom = 654.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Control" type="GridContainer" parent="VBox"]
-margin_left = 170.0
+margin_left = 187.0
 margin_top = 674.0
-margin_right = 870.0
+margin_right = 887.0
 margin_bottom = 1374.0
 size_flags_horizontal = 4
 custom_constants/vseparation = 50
@@ -367,13 +388,13 @@ texture_normal = ExtResource( 10 )
 
 [node name="Sp" type="Control" parent="VBox"]
 margin_top = 1394.0
-margin_right = 1040.0
+margin_right = 1074.0
 margin_bottom = 1407.0
 size_flags_vertical = 3
 
 [node name="Control2" type="HBoxContainer" parent="VBox"]
 margin_top = 1427.0
-margin_right = 1040.0
+margin_right = 1074.0
 margin_bottom = 1627.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -381,40 +402,40 @@ __meta__ = {
 }
 
 [node name="Sp" type="Control" parent="VBox/Control2"]
-margin_right = 41.0
+margin_right = 48.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="Info" type="TextureButton" parent="VBox/Control2"]
-margin_left = 45.0
-margin_right = 245.0
+margin_left = 52.0
+margin_right = 252.0
 margin_bottom = 200.0
 texture_normal = ExtResource( 18 )
 
 [node name="Sp5" type="Control" parent="VBox/Control2"]
-margin_left = 249.0
-margin_right = 291.0
+margin_left = 256.0
+margin_right = 304.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="Mode" type="TextureButton" parent="VBox/Control2"]
-margin_left = 295.0
-margin_right = 495.0
+margin_left = 308.0
+margin_right = 508.0
 margin_bottom = 200.0
 hint_tooltip = "Bit shift left"
 texture_normal = ExtResource( 12 )
 
 [node name="Sp2" type="Control" parent="VBox/Control2"]
-margin_left = 499.0
-margin_right = 540.0
+margin_left = 512.0
+margin_right = 561.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="L1" type="TextureButton" parent="VBox/Control2" groups=[
 "level buttons",
 ]]
-margin_left = 544.0
-margin_right = 744.0
+margin_left = 565.0
+margin_right = 765.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 44, 0 )
 hint_tooltip = "Increment"
@@ -449,28 +470,28 @@ hint_tooltip = "Increment"
 texture_normal = ExtResource( 14 )
 
 [node name="Sp4" type="Control" parent="VBox/Control2"]
-margin_left = 748.0
-margin_right = 790.0
+margin_left = 769.0
+margin_right = 817.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="Reset" type="TextureButton" parent="VBox/Control2"]
-margin_left = 794.0
-margin_right = 994.0
+margin_left = 821.0
+margin_right = 1021.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 44, 0 )
 hint_tooltip = "Increment"
 texture_normal = ExtResource( 15 )
 
 [node name="Sp7" type="Control" parent="VBox/Control2"]
-margin_left = 998.0
-margin_right = 1040.0
+margin_left = 1025.0
+margin_right = 1074.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="Sp2" type="Control" parent="VBox"]
 margin_top = 1647.0
-margin_right = 1040.0
+margin_right = 1074.0
 margin_bottom = 1660.0
 size_flags_vertical = 3
 
@@ -479,18 +500,18 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 1680.0
-margin_right = 1040.0
+margin_right = 1074.0
 margin_bottom = 1880.0
 page_id = 1
 
 [node name="Sp3" type="Control" parent="VBox"]
 margin_top = 1900.0
-margin_right = 1040.0
+margin_right = 1074.0
 margin_bottom = 1920.0
 rect_min_size = Vector2( 0, 20 )
 
-[node name="Sp3" type="Control" parent="."]
-margin_left = 1484.0
+[node name="Sp4" type="Control" parent="."]
+margin_left = 1501.0
 margin_right = 1920.0
 margin_bottom = 1920.0
 size_flags_horizontal = 3
