@@ -407,7 +407,7 @@ func show_info():
 	var info = $c/Info
 	info.rect_position = $VBox.rect_position + $VBox/Alert.rect_position
 	info.rect_size.x = $VBox/Control2.rect_size.x
-	info.rect_size.y = $VBox/Control2.rect_position.y - info.rect_position.y - 40
+	info.rect_size.y = $VBox/Control2.rect_position.y - $VBox/Alert.rect_position.y - 20
 	match mode:
 		PLAY:
 			info.show_how(false)

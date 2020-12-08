@@ -100,7 +100,6 @@ margin_bottom = 468.0
 size_flags_vertical = 3
 
 [node name="Label4" type="Label" parent="VBox"]
-modulate = Color( 1, 1, 1, 0 )
 margin_top = 488.0
 margin_right = 1040.0
 margin_bottom = 679.0
@@ -113,7 +112,6 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBox"]
-modulate = Color( 1, 1, 1, 0 )
 margin_top = 699.0
 margin_right = 1040.0
 margin_bottom = 890.0
@@ -126,7 +124,6 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="VBox"]
-modulate = Color( 1, 1, 1, 0 )
 margin_top = 910.0
 margin_right = 1040.0
 margin_bottom = 1101.0
@@ -139,7 +136,6 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="VBox"]
-modulate = Color( 1, 1, 1, 0 )
 margin_top = 1121.0
 margin_right = 1040.0
 margin_bottom = 1312.0

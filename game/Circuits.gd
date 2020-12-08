@@ -203,16 +203,18 @@ func check_outputs(n):
 	# Get index of output state from input pattern
 	var i = 0
 	var x = 1
+	# set i to the input value
 	for b in circuit.vin[n]:
 		i += b * x
 		x *= 2
+	# scan the outputs and reset 'passed' if any output state does not match required vout value
 	for j in outputs.size():
 		var val = circuit.vout[i][j]
 		if val == 2: # Use remembered last value
 			val = 0 if last_vals[j] == null else last_vals[j]
 		else:
 			last_vals[j] = val
-		var v = outputs[j].state == val
+		var v = outputs[j].state == bool(val)
 		if !v:
 			passed = false
 		outputs[j].set_result(v)
@@ -367,6 +369,7 @@ func get_gates():
 	return gates
 
 
+# Check if a node has been accidentally moved or not
 func check_zero_pos(node):
 	if node is Control:
 		if node.rect_position.length() > 0.1:
