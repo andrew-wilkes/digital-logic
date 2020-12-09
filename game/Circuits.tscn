@@ -114,63 +114,56 @@ __meta__ = {
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 4600.0
 margin_top = 500.0
-margin_right = 5680.0
+margin_right = 1080.0
 margin_bottom = 500.0
 
 [node name="SR2" parent="VBox/Circuit/c" instance=ExtResource( 2 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 4600.0
 margin_top = 500.0
-margin_right = 5680.0
+margin_right = 1080.0
 margin_bottom = 500.0
 
 [node name="GatedSR" parent="VBox/Circuit/c" instance=ExtResource( 7 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 4600.0
 margin_top = 500.0
-margin_right = 5680.0
+margin_right = 1080.0
 margin_bottom = 500.0
 
 [node name="DFF" parent="VBox/Circuit/c" instance=ExtResource( 18 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 4600.0
 margin_top = 500.0
-margin_right = 5680.0
+margin_right = 1080.0
 margin_bottom = 500.0
 
 [node name="JKFF" parent="VBox/Circuit/c" instance=ExtResource( 19 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 4600.0
 margin_top = 500.0
-margin_right = 5680.0
+margin_right = 1080.0
 margin_bottom = 500.0
 
 [node name="Multiplexer" parent="VBox/Circuit/c" instance=ExtResource( 13 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 4600.0
 margin_top = 500.0
-margin_right = 5680.0
+margin_right = 1080.0
 margin_bottom = 500.0
 
 [node name="Decoder" parent="VBox/Circuit/c" instance=ExtResource( 4 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 4600.0
 margin_top = 500.0
-margin_right = 5680.0
+margin_right = 1080.0
 margin_bottom = 500.0
 rect_min_size = Vector2( 1080, 0 )
 
@@ -178,9 +171,8 @@ rect_min_size = Vector2( 1080, 0 )
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 4600.0
 margin_top = 500.0
-margin_right = 5680.0
+margin_right = 1080.0
 margin_bottom = 500.0
 
 [node name="sp4" type="Control" parent="VBox"]
