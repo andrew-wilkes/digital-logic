@@ -16,28 +16,35 @@ rect_min_size = Vector2( 1080, 0 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true,
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 1080.0 ]
 }
 title = "SR  NOR Latch"
 vin = [ [ 0, 0 ], [ 1, 0 ], [ 0, 0 ], [ 0, 1 ] ]
 vout = [ [ 2, 2 ], [ 0, 1 ], [ 1, 0 ] ]
 
 [node name="w1" parent="." instance=ExtResource( 4 )]
+position = Vector2( -48, -256 )
 points = PoolVector2Array( 304, 88, 496, 88 )
 
 [node name="w4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -48, -256 )
 points = PoolVector2Array( 704, 128, 704, 288, 416, 288, 416, 344, 480, 344 )
 
 [node name="w12" parent="." instance=ExtResource( 4 )]
+position = Vector2( -48, -256 )
 points = PoolVector2Array( 768, 384, 768, 224, 416, 224, 416, 168, 504, 168 )
 
 [node name="w5" parent="." instance=ExtResource( 4 )]
+position = Vector2( -48, -256 )
 points = PoolVector2Array( 304, 424, 488, 424 )
 
 [node name="w3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -48, -256 )
 points = PoolVector2Array( 568, 128, 864, 128 )
 
 [node name="w6" parent="." instance=ExtResource( 4 )]
+position = Vector2( -48, -256 )
 points = PoolVector2Array( 560, 384, 864, 384 )
 
 [node name="Gates" type="Control" parent="."]
@@ -48,17 +55,17 @@ __meta__ = {
 }
 
 [node name="GridGate3" parent="Gates" instance=ExtResource( 3 )]
-margin_left = 512.0
-margin_top = 128.0
-margin_right = 472.0
-margin_bottom = 128.0
+margin_left = 464.0
+margin_top = -128.0
+margin_right = 424.0
+margin_bottom = -128.0
 id = 3
 
 [node name="GridGate4" parent="Gates" instance=ExtResource( 3 )]
-margin_left = 512.0
-margin_top = 384.0
-margin_right = 472.0
-margin_bottom = 384.0
+margin_left = 464.0
+margin_top = 128.0
+margin_right = 424.0
+margin_bottom = 128.0
 id = 3
 
 [node name="In" type="Control" parent="."]
@@ -69,17 +76,17 @@ __meta__ = {
 }
 
 [node name="GridInput" parent="In" instance=ExtResource( 6 )]
-margin_left = 304.0
-margin_top = 88.0
-margin_right = 304.0
-margin_bottom = 88.0
+margin_left = 256.0
+margin_top = -168.0
+margin_right = 256.0
+margin_bottom = -168.0
 text = "R"
 
 [node name="GridInput2" parent="In" instance=ExtResource( 6 )]
-margin_left = 304.0
-margin_top = 424.0
-margin_right = 304.0
-margin_bottom = 424.0
+margin_left = 256.0
+margin_top = 168.0
+margin_right = 256.0
+margin_bottom = 168.0
 text = "S"
 
 [node name="Out" type="Control" parent="."]
@@ -90,17 +97,17 @@ __meta__ = {
 }
 
 [node name="GridOutput" parent="Out" instance=ExtResource( 5 )]
-margin_left = 848.0
-margin_top = 128.0
-margin_right = 848.0
-margin_bottom = 128.0
+margin_left = 800.0
+margin_top = -128.0
+margin_right = 800.0
+margin_bottom = -128.0
 text = "Q"
 
 [node name="GridOutput2" parent="Out" instance=ExtResource( 5 )]
-margin_left = 848.0
-margin_top = 384.0
-margin_right = 848.0
-margin_bottom = 384.0
+margin_left = 800.0
+margin_top = 128.0
+margin_right = 800.0
+margin_bottom = 128.0
 text = "/Q"
 
 [node name="Con" type="Control" parent="."]
@@ -111,10 +118,10 @@ __meta__ = {
 }
 
 [node name="c1" parent="Con" instance=ExtResource( 7 )]
-position = Vector2( 704, 128 )
+position = Vector2( 656, -128 )
 
 [node name="c2" parent="Con" instance=ExtResource( 7 )]
-position = Vector2( 768, 384 )
+position = Vector2( 720, 128 )
 
 [node name="c" type="CanvasLayer" parent="."]
 

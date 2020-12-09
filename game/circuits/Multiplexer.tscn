@@ -15,134 +15,142 @@ margin_bottom = 8.0
 rect_min_size = Vector2( 1080, 0 )
 script = ExtResource( 6 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true,
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 1080.0 ]
 }
 title = "2-1 Multiplexer"
 vin = [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 1, 0, 1 ], [ 0, 1, 1 ], [ 0, 1, 0 ], [ 0, 0, 0 ], [ 1, 0, 0 ] ]
 vout = [ [ 0 ], [ 1 ], [ 0 ], [ 1 ], [ 0 ], [ 0 ], [ 1 ] ]
 
 [node name="w1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 16, -232 )
 points = PoolVector2Array( 168, 88, 472, 88 )
 
 [node name="w4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 16, -232 )
 points = PoolVector2Array( 368, 168, 480, 168 )
 
 [node name="w11" parent="." instance=ExtResource( 5 )]
+position = Vector2( 16, -232 )
 points = PoolVector2Array( 560, 128, 640, 128, 640, 192, 736, 192 )
 
 [node name="w12" parent="." instance=ExtResource( 5 )]
+position = Vector2( 16, -232 )
 points = PoolVector2Array( 544, 320, 640, 320, 640, 272, 728, 272 )
 
 [node name="w9" parent="." instance=ExtResource( 5 )]
+position = Vector2( 16, -232 )
 points = PoolVector2Array( 256, 280, 256, 168, 344, 168 )
 
 [node name="w5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 16, -232 )
 points = PoolVector2Array( 168, 360, 464, 360 )
 
 [node name="w3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 16, -232 )
 points = PoolVector2Array( 816, 232, 928, 232 )
 
 [node name="w2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 16, -232 )
 points = PoolVector2Array( 168, 488, 256, 488, 256, 280, 464, 280 )
 
 [node name="Gates" type="Control" parent="."]
+margin_top = -232.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = -192.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridGate" parent="Gates" instance=ExtResource( 2 )]
-margin_left = 336.0
+margin_left = 352.0
 margin_top = 168.0
-margin_right = 296.0
+margin_right = 312.0
 margin_bottom = 168.0
 id = 5
 
 [node name="GridGate3" parent="Gates" instance=ExtResource( 2 )]
-margin_left = 512.0
+margin_left = 528.0
 margin_top = 128.0
-margin_right = 472.0
+margin_right = 488.0
 margin_bottom = 128.0
 id = 0
 
 [node name="GridGate4" parent="Gates" instance=ExtResource( 2 )]
-margin_left = 512.0
+margin_left = 528.0
 margin_top = 320.0
-margin_right = 472.0
+margin_right = 488.0
 margin_bottom = 320.0
 id = 0
 
 [node name="GridGate5" parent="Gates" instance=ExtResource( 2 )]
-margin_left = 760.0
+margin_left = 776.0
 margin_top = 232.0
-margin_right = 720.0
+margin_right = 736.0
 margin_bottom = 232.0
 id = 2
 
 [node name="In" type="Control" parent="."]
+margin_top = -232.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = -192.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridInput" parent="In" instance=ExtResource( 1 )]
-margin_left = 176.0
+margin_left = 192.0
 margin_top = 88.0
-margin_right = 176.0
+margin_right = 192.0
 margin_bottom = 88.0
-txt = "A"
 text = "A"
 
 [node name="GridInput2" parent="In" instance=ExtResource( 1 )]
-margin_left = 176.0
+margin_left = 192.0
 margin_top = 360.0
-margin_right = 176.0
+margin_right = 192.0
 margin_bottom = 360.0
-txt = "B"
 text = "B"
 
 [node name="GridInput3" parent="In" instance=ExtResource( 1 )]
-margin_left = 176.0
+margin_left = 192.0
 margin_top = 488.0
-margin_right = 176.0
+margin_right = 192.0
 margin_bottom = 488.0
-txt = "SEL"
 text = "SEL"
 
 [node name="Out" type="Control" parent="."]
+margin_top = -232.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = -192.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridOutput" parent="Out" instance=ExtResource( 3 )]
-margin_left = 920.0
+margin_left = 936.0
 margin_top = 232.0
-margin_right = 920.0
+margin_right = 936.0
 margin_bottom = 232.0
-txt = "Y"
 text = "Y"
 
 [node name="Con" type="Control" parent="."]
+margin_top = -232.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = -192.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="c1" parent="Con" instance=ExtResource( 4 )]
-position = Vector2( 256, 280 )
+position = Vector2( 272, 280 )
 
 [node name="c" type="CanvasLayer" parent="."]
 
 [node name="Info" parent="c" instance=ExtResource( 7 )]
 note = "A multiplexer is used to select one of it's inputs to pass to the output like a switch."
 hint = "[i]Y = [u]SEL[/u] * A + SEL * B[/i]"
-nt = "A multiplexer is used to select one of it's inputs to pass to the output like a switch."
-ht = "[i]Y = [u]SEL[/u] * A + SEL * B[/i]"
 
 [node name="Notes" parent="c/Info/VBox/M" index="1"]
 bbcode_text = "A multiplexer is used to select one of it's inputs to pass to the output like a switch."

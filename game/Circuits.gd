@@ -35,12 +35,12 @@ func sm(event):
 		PREV:
 			circuit_index -= 1
 			if circuit_index < 0:
-				circuit_index = $VBox/Circuit.get_child_count() - 1
+				circuit_index = $VBox/Circuit/c.get_child_count() - 1
 			set_circuit(circuit_index)
 			init_circuit()
 		NEXT:
 			circuit_index += 1
-			if circuit_index >= $VBox/Circuit.get_child_count():
+			if circuit_index >= $VBox/Circuit/c.get_child_count():
 				circuit_index = 0
 			set_circuit(circuit_index)
 			init_circuit()
@@ -53,9 +53,9 @@ func sm(event):
 
 
 func set_circuit(n):
-	for c in $VBox/Circuit.get_children():
+	for c in $VBox/Circuit/c.get_children():
 		c.visible = false
-	circuit = $VBox/Circuit.get_child(n)
+	circuit = $VBox/Circuit/c.get_child(n)
 	circuit.visible = true
 	animate = true
 	$VBox/M2/Details/Title.text = circuit.title
@@ -370,14 +370,17 @@ func get_gates():
 	return gates
 
 
-# Check if a node has been accidentally moved or not
+# Check if a node has been accidentally moved, reposition nodes
 func check_zero_pos(node):
-	if node is Control:
-		if node.rect_position.length() > 0.1:
-			breakpoint;
-	else:
-		if node.position.length() > 0.1:
-			breakpoint;
+	var pos = node.rect_position if node is Control else node.position
+	if pos.length() > 0.1:
+		if node is Control:
+			node.rect_position -= pos
+		for child in node.get_children():
+			if child is Control:
+				child.rect_position += pos
+			else:
+				child.position += pos
 	return node
 
 

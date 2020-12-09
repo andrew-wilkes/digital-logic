@@ -72,21 +72,21 @@ __meta__ = {
 }
 
 [node name="Spacer1" type="Control" parent="."]
-margin_right = 436.0
+margin_right = 416.0
 margin_bottom = 1920.0
 size_flags_horizontal = 3
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 440.0
-margin_right = 1480.0
+margin_left = 420.0
+margin_right = 1500.0
 margin_bottom = 1920.0
-rect_min_size = Vector2( 1040, 0 )
+rect_min_size = Vector2( 1080, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 3
 custom_constants/separation = 20
 
 [node name="Title" type="Label" parent="VBox"]
-margin_right = 1040.0
+margin_right = 1080.0
 margin_bottom = 121.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -95,13 +95,13 @@ align = 1
 
 [node name="Spacer" type="Control" parent="VBox"]
 margin_top = 141.0
-margin_right = 1040.0
+margin_right = 1080.0
 margin_bottom = 468.0
 size_flags_vertical = 3
 
 [node name="Label4" type="Label" parent="VBox"]
 margin_top = 488.0
-margin_right = 1040.0
+margin_right = 1080.0
 margin_bottom = 679.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.909804, 0.0588235, 0.0392157, 1 )
@@ -113,7 +113,7 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="VBox"]
 margin_top = 699.0
-margin_right = 1040.0
+margin_right = 1080.0
 margin_bottom = 890.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.960784, 1, 0.278431, 1 )
@@ -125,7 +125,7 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="VBox"]
 margin_top = 910.0
-margin_right = 1040.0
+margin_right = 1080.0
 margin_bottom = 1101.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.364706, 1, 0.313726, 1 )
@@ -137,7 +137,7 @@ __meta__ = {
 
 [node name="Label3" type="Label" parent="VBox"]
 margin_top = 1121.0
-margin_right = 1040.0
+margin_right = 1080.0
 margin_bottom = 1312.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.317647, 0.870588, 0.996078, 1 )
@@ -149,7 +149,7 @@ __meta__ = {
 
 [node name="Spacer2" type="Control" parent="VBox"]
 margin_top = 1332.0
-margin_right = 1040.0
+margin_right = 1080.0
 margin_bottom = 1660.0
 size_flags_vertical = 3
 
@@ -158,17 +158,17 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 1680.0
-margin_right = 1040.0
+margin_right = 1080.0
 margin_bottom = 1880.0
 
 [node name="Spacer3" type="Control" parent="VBox"]
 margin_top = 1900.0
-margin_right = 1040.0
+margin_right = 1080.0
 margin_bottom = 1920.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Spacer2" type="Control" parent="."]
-margin_left = 1484.0
+margin_left = 1504.0
 margin_right = 1920.0
 margin_bottom = 1920.0
 size_flags_horizontal = 3

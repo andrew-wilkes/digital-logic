@@ -14,6 +14,7 @@ enum { AND, NAND, OR, NOR, XOR, NOT }
 enum { CROSS, TICK, Q }
 
 const NUM_GATES = 6
+const MAX_TIME = 24 * 3600 * 1000
 
 func _ready():
 	g.set_column_size($VBox)
@@ -113,6 +114,14 @@ func get_output(v):
 			return v[0] ^ v[1]
 		NOT:
 			return !v[0]
+
+
+func test_score():
+	count = 1
+	idx = 1
+	rounds = 0
+	time = MAX_TIME
+	update_score()
 
 
 func update_score():

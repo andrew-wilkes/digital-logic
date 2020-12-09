@@ -11,59 +11,73 @@
 [node name="Decoder" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -16.0
-margin_right = -856.0
-margin_bottom = 0.00012207
+margin_right = 8360.0
+margin_bottom = -1920.0
+rect_min_size = Vector2( 10280, 0 )
 script = ExtResource( 6 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true,
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 1080.0 ]
 }
 title = "2-4 Decoder"
 vin = [ [ 0, 0 ], [ 1, 0 ], [ 0, 1 ], [ 1, 1 ] ]
 vout = [ [ 1, 0, 0, 0 ], [ 0, 1, 0, 0 ], [ 0, 0, 1, 0 ], [ 0, 0, 0, 1 ] ]
 
 [node name="w1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -416 )
 points = PoolVector2Array( 484, 88, 752, 88 )
 
 [node name="w6" parent="." instance=ExtResource( 5 )]
-position = Vector2( -4, 0 )
+position = Vector2( -4, -416 )
 points = PoolVector2Array( 168, 88, 432, 88 )
 
 [node name="w11" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -416 )
 points = PoolVector2Array( 816, 128, 912, 128 )
 
 [node name="w12" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -416 )
 points = PoolVector2Array( 816, 320, 904, 320 )
 
 [node name="w13" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -416 )
 points = PoolVector2Array( 816, 512, 904, 512 )
 
 [node name="w14" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -416 )
 points = PoolVector2Array( 816, 704, 904, 704 )
 
 [node name="w7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -416 )
 points = PoolVector2Array( 160, 360, 428, 360 )
 
 [node name="w8" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -416 )
 points = PoolVector2Array( 256, 360, 256, 552, 744, 552 )
 
 [node name="w9" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -416 )
 points = PoolVector2Array( 256, 552, 256, 744, 744, 744 )
 
 [node name="w10" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -416 )
 points = PoolVector2Array( 320, 280, 320, 664, 744, 664 )
 
 [node name="w5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -416 )
 points = PoolVector2Array( 645, 360, 744, 360 )
 
 [node name="w3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -416 )
 points = PoolVector2Array( 568, 88, 568, 472, 752, 472 )
 
 [node name="w2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -416 )
 points = PoolVector2Array( 320, 88, 320, 280, 752, 280 )
 
 [node name="w4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 4, 0 )
+position = Vector2( 4, -416 )
 points = PoolVector2Array( 480, 360, 640, 360, 640, 168, 744, 168 )
 
 [node name="Gates" type="Control" parent="."]
@@ -72,44 +86,44 @@ margin_bottom = 40.0
 
 [node name="GridGate" parent="Gates" instance=ExtResource( 2 )]
 margin_left = 428.0
-margin_top = 88.0
+margin_top = -328.0
 margin_right = 388.0
-margin_bottom = 88.0
+margin_bottom = -328.0
 id = 5
 
 [node name="GridGate2" parent="Gates" instance=ExtResource( 2 )]
 margin_left = 428.0
-margin_top = 360.0
+margin_top = -56.0
 margin_right = 388.0
-margin_bottom = 360.0
+margin_bottom = -56.0
 id = 5
 
 [node name="GridGate3" parent="Gates" instance=ExtResource( 2 )]
 margin_left = 768.0
-margin_top = 128.0
+margin_top = -288.0
 margin_right = 728.0
-margin_bottom = 128.0
+margin_bottom = -288.0
 id = 0
 
 [node name="GridGate4" parent="Gates" instance=ExtResource( 2 )]
 margin_left = 768.0
-margin_top = 320.0
+margin_top = -96.0
 margin_right = 728.0
-margin_bottom = 320.0
+margin_bottom = -96.0
 id = 0
 
 [node name="GridGate5" parent="Gates" instance=ExtResource( 2 )]
 margin_left = 768.0
-margin_top = 512.0
+margin_top = 96.0
 margin_right = 728.0
-margin_bottom = 512.0
+margin_bottom = 96.0
 id = 0
 
 [node name="GridGate6" parent="Gates" instance=ExtResource( 2 )]
 margin_left = 768.0
-margin_top = 704.0
+margin_top = 288.0
 margin_right = 728.0
-margin_bottom = 704.0
+margin_bottom = 288.0
 id = 0
 
 [node name="In" type="Control" parent="."]
@@ -121,15 +135,15 @@ __meta__ = {
 
 [node name="GridInput" parent="In" instance=ExtResource( 1 )]
 margin_left = 152.0
-margin_top = 88.0
+margin_top = -328.0
 margin_right = 152.0
-margin_bottom = 88.0
+margin_bottom = -328.0
 
 [node name="GridInput2" parent="In" instance=ExtResource( 1 )]
 margin_left = 152.0
-margin_top = 360.0
+margin_top = -56.0
 margin_right = 152.0
-margin_bottom = 360.0
+margin_bottom = -56.0
 text = "A1"
 
 [node name="Out" type="Control" parent="."]
@@ -141,30 +155,30 @@ __meta__ = {
 
 [node name="GridOutput" parent="Out" instance=ExtResource( 3 )]
 margin_left = 896.0
-margin_top = 128.0
+margin_top = -288.0
 margin_right = 896.0
-margin_bottom = 128.0
+margin_bottom = -288.0
 text = "Y0"
 
 [node name="GridOutput2" parent="Out" instance=ExtResource( 3 )]
 margin_left = 896.0
-margin_top = 320.0
+margin_top = -96.0
 margin_right = 896.0
-margin_bottom = 320.0
+margin_bottom = -96.0
 text = "Y1"
 
 [node name="GridOutput3" parent="Out" instance=ExtResource( 3 )]
 margin_left = 896.0
-margin_top = 512.0
+margin_top = 96.0
 margin_right = 896.0
-margin_bottom = 512.0
+margin_bottom = 96.0
 text = "Y2"
 
 [node name="GridOutput4" parent="Out" instance=ExtResource( 3 )]
 margin_left = 896.0
-margin_top = 704.0
+margin_top = 288.0
 margin_right = 896.0
-margin_bottom = 704.0
+margin_bottom = 288.0
 text = "Y3"
 
 [node name="Con" type="Control" parent="."]
@@ -175,22 +189,22 @@ __meta__ = {
 }
 
 [node name="c1" parent="Con" instance=ExtResource( 4 )]
-position = Vector2( 568, 88 )
+position = Vector2( 568, -328 )
 
 [node name="c3" parent="Con" instance=ExtResource( 4 )]
-position = Vector2( 256, 360 )
+position = Vector2( 256, -56 )
 
 [node name="c5" parent="Con" instance=ExtResource( 4 )]
-position = Vector2( 256, 552 )
+position = Vector2( 256, 136 )
 
 [node name="c4" parent="Con" instance=ExtResource( 4 )]
-position = Vector2( 320, 88 )
+position = Vector2( 320, -328 )
 
 [node name="c6" parent="Con" instance=ExtResource( 4 )]
-position = Vector2( 320, 280 )
+position = Vector2( 320, -136 )
 
 [node name="c2" parent="Con" instance=ExtResource( 4 )]
-position = Vector2( 644, 360 )
+position = Vector2( 644, -56 )
 
 [node name="c" type="CanvasLayer" parent="."]
 

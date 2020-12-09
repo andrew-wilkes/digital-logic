@@ -17,153 +17,162 @@ rect_min_size = Vector2( 1080, 0 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true,
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 1080.0 ]
 }
 title = "Clocked SR Flip-flop"
 vin = [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 1, 0, 1 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 0, 1, 1 ], [ 0, 1, 0 ] ]
 vout = [ [ 2, 2 ], [ 2, 2 ], [ 2, 2 ], [ 0, 1 ], [ 2, 2 ], [ 1, 0 ], [ 0, 1 ] ]
 
 [node name="w1" parent="." instance=ExtResource( 4 )]
+position = Vector2( -168, -256 )
 points = PoolVector2Array( 304, 48, 488, 48 )
 
 [node name="w4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 256, 0 )
+position = Vector2( 88, -256 )
 points = PoolVector2Array( 704, 128, 704, 288, 416, 288, 416, 344, 480, 344 )
 
 [node name="w12" parent="." instance=ExtResource( 4 )]
-position = Vector2( 256, 0 )
+position = Vector2( 88, -256 )
 points = PoolVector2Array( 768, 384, 768, 224, 416, 224, 416, 168, 504, 168 )
 
 [node name="w5" parent="." instance=ExtResource( 4 )]
+position = Vector2( -168, -256 )
 points = PoolVector2Array( 304, 464, 480, 464 )
 
 [node name="w10" parent="." instance=ExtResource( 4 )]
+position = Vector2( -168, -256 )
 points = PoolVector2Array( 384, 256, 384, 384, 488, 384 )
 
 [node name="w9" parent="." instance=ExtResource( 4 )]
+position = Vector2( -168, -256 )
 points = PoolVector2Array( 296, 256, 384, 256, 384, 128, 472, 128 )
 
 [node name="w7" parent="." instance=ExtResource( 4 )]
+position = Vector2( -168, -256 )
 points = PoolVector2Array( 544, 88, 736, 88 )
 
 [node name="w8" parent="." instance=ExtResource( 4 )]
+position = Vector2( -168, -256 )
 points = PoolVector2Array( 536, 424, 728, 424 )
 
 [node name="w3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 256, 0 )
+position = Vector2( 88, -256 )
 points = PoolVector2Array( 568, 128, 864, 128 )
 
 [node name="w6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 256, 0 )
+position = Vector2( 88, -256 )
 points = PoolVector2Array( 560, 384, 864, 384 )
 
 [node name="Gates" type="Control" parent="."]
+margin_top = -256.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = -216.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridGate3" parent="Gates" instance=ExtResource( 3 )]
-margin_left = 768.0
+margin_left = 600.0
 margin_top = 128.0
-margin_right = 728.0
+margin_right = 560.0
 margin_bottom = 128.0
 id = 1
 
 [node name="GridGate5" parent="Gates" instance=ExtResource( 3 )]
-margin_left = 512.0
+margin_left = 344.0
 margin_top = 424.0
-margin_right = 472.0
+margin_right = 304.0
 margin_bottom = 424.0
 id = 1
 
 [node name="GridGate6" parent="Gates" instance=ExtResource( 3 )]
-margin_left = 512.0
+margin_left = 344.0
 margin_top = 88.0
-margin_right = 472.0
+margin_right = 304.0
 margin_bottom = 88.0
 id = 1
 
 [node name="GridGate4" parent="Gates" instance=ExtResource( 3 )]
-margin_left = 768.0
+margin_left = 600.0
 margin_top = 384.0
-margin_right = 728.0
+margin_right = 560.0
 margin_bottom = 384.0
 id = 1
 
 [node name="In" type="Control" parent="."]
+margin_top = -256.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = -216.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridInput" parent="In" instance=ExtResource( 6 )]
-margin_left = 304.0
+margin_left = 136.0
 margin_top = 48.0
-margin_right = 304.0
+margin_right = 136.0
 margin_bottom = 48.0
 text = "S"
 
 [node name="GridInput2" parent="In" instance=ExtResource( 6 )]
-margin_left = 304.0
+margin_left = 136.0
 margin_top = 464.0
-margin_right = 304.0
+margin_right = 136.0
 margin_bottom = 464.0
 text = "R"
 
 [node name="GridInput3" parent="In" instance=ExtResource( 6 )]
-margin_left = 304.0
+margin_left = 136.0
 margin_top = 256.0
-margin_right = 304.0
+margin_right = 136.0
 margin_bottom = 256.0
 text = "CK"
 
 [node name="Out" type="Control" parent="."]
+margin_top = -256.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = -216.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridOutput" parent="Out" instance=ExtResource( 5 )]
-margin_left = 1088.0
+margin_left = 920.0
 margin_top = 128.0
-margin_right = 1088.0
+margin_right = 920.0
 margin_bottom = 128.0
 text = "Q"
 
 [node name="GridOutput2" parent="Out" instance=ExtResource( 5 )]
-margin_left = 1088.0
+margin_left = 920.0
 margin_top = 384.0
-margin_right = 1088.0
+margin_right = 920.0
 margin_bottom = 384.0
 text = "/Q"
 
 [node name="Con" type="Control" parent="."]
+margin_top = -256.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = -216.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="c1" parent="Con" instance=ExtResource( 7 )]
-position = Vector2( 960, 128 )
+position = Vector2( 792, 128 )
 
 [node name="c3" parent="Con" instance=ExtResource( 7 )]
-position = Vector2( 384, 256 )
+position = Vector2( 216, 256 )
 
 [node name="c2" parent="Con" instance=ExtResource( 7 )]
-position = Vector2( 1024, 384 )
+position = Vector2( 856, 384 )
 
 [node name="c" type="CanvasLayer" parent="."]
 
 [node name="Info" parent="c" instance=ExtResource( 2 )]
 note = "An SR flip-flop remembers the state as long as both R and S are low. Pulsing R high resets the state (Q low), and pulsing S high sets the state (Q high)."
 hint = "Use two NOR gates."
-nt = "An SR flip-flop remembers the state as long as both R and S are low. Pulsing R high resets the state (Q low), and pulsing S high sets the state (Q high)."
-ht = "Use two NOR gates."
 
 [node name="Notes" parent="c/Info/VBox/M" index="1"]
 bbcode_text = "We may add gates to the inputs of a  SR (set-reset) latch to allow for a clock (CK) input to enable or disable the inputs."
@@ -174,21 +183,28 @@ bbcode_text = "Use NAND gates."
 text = "Use NAND gates."
 
 [node name="Labels" type="Control" parent="."]
+margin_top = -256.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = -216.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Labels"]
-margin_left = 608.0
+margin_left = 440.0
 margin_top = 16.0
-margin_right = 686.0
+margin_right = 518.0
 margin_bottom = 92.0
 custom_fonts/font = ExtResource( 8 )
 text = "/S"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label2" type="Label" parent="Labels"]
-margin_left = 608.0
+margin_left = 440.0
 margin_top = 352.0
-margin_right = 686.0
+margin_right = 518.0
 margin_bottom = 428.0
 custom_fonts/font = ExtResource( 8 )
 text = "/R"
