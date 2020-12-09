@@ -53,35 +53,44 @@ rect_min_size = Vector2( 0, 464 )
 color = Color( 0.172549, 0.172549, 0.172549, 1 )
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 952.0 ]
 }
 
 [node name="x" type="CenterContainer" parent="."]
+margin_top = 1.0
 margin_right = 1080.0
-margin_bottom = 462.0
+margin_bottom = 463.0
+size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AND" type="TextureRect" parent="x"]
+[node name="g" type="Control" parent="x"]
+margin_left = 540.0
+margin_top = 231.0
+margin_right = 540.0
+margin_bottom = 231.0
+
+[node name="AND" type="TextureRect" parent="x/g"]
 visible = false
-margin_left = 439.0
-margin_top = 130.0
-margin_right = 640.0
-margin_bottom = 331.0
+margin_left = -284.0
+margin_top = -104.0
+margin_right = -83.0
+margin_bottom = 97.0
 texture = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OUT2" type="Line2D" parent="x/AND"]
+[node name="OUT2" type="Line2D" parent="x/g/AND"]
 show_behind_parent = true
 position = Vector2( 240, 99 )
 points = PoolVector2Array( -100, 0, 100, 0 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="OUT" type="TextureRect" parent="x/AND/OUT2"]
+[node name="OUT" type="TextureRect" parent="x/g/AND/OUT2"]
 margin_left = 100.0
 margin_top = -30.0
 margin_right = 164.0
@@ -91,14 +100,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IN4" type="Line2D" parent="x/AND"]
+[node name="IN4" type="Line2D" parent="x/g/AND"]
 show_behind_parent = true
 position = Vector2( 33, -65 )
 points = PoolVector2Array( -100, 100, 1, 100 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="IN" type="TextureRect" parent="x/AND/IN4"]
+[node name="IN" type="TextureRect" parent="x/g/AND/IN4"]
 margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
@@ -108,14 +117,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IN5" type="Line2D" parent="x/AND"]
+[node name="IN5" type="Line2D" parent="x/g/AND"]
 show_behind_parent = true
 position = Vector2( 33, 63 )
 points = PoolVector2Array( -100, 100, 1, 100 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="IN" type="TextureRect" parent="x/AND/IN5"]
+[node name="IN" type="TextureRect" parent="x/g/AND/IN5"]
 margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
@@ -125,25 +134,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NAND" type="TextureRect" parent="x"]
+[node name="NAND" type="TextureRect" parent="x/g"]
 visible = false
-margin_left = 423.0
-margin_top = 130.0
-margin_right = 657.0
-margin_bottom = 332.0
+margin_left = -284.0
+margin_top = -104.0
+margin_right = -50.0
+margin_bottom = 98.0
 texture = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OUT2" type="Line2D" parent="x/NAND"]
+[node name="OUT2" type="Line2D" parent="x/g/NAND"]
 show_behind_parent = true
 position = Vector2( 240, 99 )
 points = PoolVector2Array( -100, 0, 100, 0 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="OUT" type="TextureRect" parent="x/NAND/OUT2"]
+[node name="OUT" type="TextureRect" parent="x/g/NAND/OUT2"]
 margin_left = 100.0
 margin_top = -30.0
 margin_right = 164.0
@@ -153,14 +162,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IN4" type="Line2D" parent="x/NAND"]
+[node name="IN4" type="Line2D" parent="x/g/NAND"]
 show_behind_parent = true
 position = Vector2( 33, -65 )
 points = PoolVector2Array( -100, 100, 1, 100 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="IN" type="TextureRect" parent="x/NAND/IN4"]
+[node name="IN" type="TextureRect" parent="x/g/NAND/IN4"]
 margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
@@ -170,14 +179,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IN5" type="Line2D" parent="x/NAND"]
+[node name="IN5" type="Line2D" parent="x/g/NAND"]
 show_behind_parent = true
 position = Vector2( 33, 63 )
 points = PoolVector2Array( -100, 100, 1, 100 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="IN" type="TextureRect" parent="x/NAND/IN5"]
+[node name="IN" type="TextureRect" parent="x/g/NAND/IN5"]
 margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
@@ -187,25 +196,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OR" type="TextureRect" parent="x"]
+[node name="OR" type="TextureRect" parent="x/g"]
 visible = false
-margin_left = 422.0
-margin_top = 130.0
-margin_right = 657.0
-margin_bottom = 331.0
+margin_left = -284.0
+margin_top = -104.0
+margin_right = -49.0
+margin_bottom = 97.0
 texture = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OUT2" type="Line2D" parent="x/OR"]
+[node name="OUT2" type="Line2D" parent="x/g/OR"]
 show_behind_parent = true
 position = Vector2( 240, 101 )
 points = PoolVector2Array( -100, 0, 100, 0 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="OUT" type="TextureRect" parent="x/OR/OUT2"]
+[node name="OUT" type="TextureRect" parent="x/g/OR/OUT2"]
 margin_left = 100.0
 margin_top = -30.0
 margin_right = 164.0
@@ -215,14 +224,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IN4" type="Line2D" parent="x/OR"]
+[node name="IN4" type="Line2D" parent="x/g/OR"]
 show_behind_parent = true
 position = Vector2( 33, -63 )
 points = PoolVector2Array( -100, 100, 1, 100 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="IN" type="TextureRect" parent="x/OR/IN4"]
+[node name="IN" type="TextureRect" parent="x/g/OR/IN4"]
 margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
@@ -232,14 +241,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IN6" type="Line2D" parent="x/OR"]
+[node name="IN6" type="Line2D" parent="x/g/OR"]
 show_behind_parent = true
 position = Vector2( 33, 65 )
 points = PoolVector2Array( -100, 100, 1, 100 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="IN" type="TextureRect" parent="x/OR/IN6"]
+[node name="IN" type="TextureRect" parent="x/g/OR/IN6"]
 margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
@@ -249,25 +258,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NOR" type="TextureRect" parent="x"]
+[node name="NOR" type="TextureRect" parent="x/g"]
 visible = false
-margin_left = 406.0
-margin_top = 130.0
-margin_right = 674.0
-margin_bottom = 331.0
+margin_left = -284.0
+margin_top = -104.0
+margin_right = -16.0
+margin_bottom = 97.0
 texture = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OUT2" type="Line2D" parent="x/NOR"]
+[node name="OUT2" type="Line2D" parent="x/g/NOR"]
 show_behind_parent = true
 position = Vector2( 240, 100 )
 points = PoolVector2Array( -100, 0, 100, 0 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="OUT" type="TextureRect" parent="x/NOR/OUT2"]
+[node name="OUT" type="TextureRect" parent="x/g/NOR/OUT2"]
 margin_left = 100.0
 margin_top = -30.0
 margin_right = 164.0
@@ -277,14 +286,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IN4" type="Line2D" parent="x/NOR"]
+[node name="IN4" type="Line2D" parent="x/g/NOR"]
 show_behind_parent = true
 position = Vector2( 33, -64 )
 points = PoolVector2Array( -100, 100, 1, 100 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="IN" type="TextureRect" parent="x/NOR/IN4"]
+[node name="IN" type="TextureRect" parent="x/g/NOR/IN4"]
 margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
@@ -294,14 +303,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IN5" type="Line2D" parent="x/NOR"]
+[node name="IN5" type="Line2D" parent="x/g/NOR"]
 show_behind_parent = true
 position = Vector2( 33, 64 )
 points = PoolVector2Array( -100, 100, 1, 100 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="IN" type="TextureRect" parent="x/NOR/IN5"]
+[node name="IN" type="TextureRect" parent="x/g/NOR/IN5"]
 margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
@@ -311,24 +320,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="XOR" type="TextureRect" parent="x"]
-margin_left = 415.0
-margin_top = 129.0
-margin_right = 665.0
-margin_bottom = 332.0
+[node name="XOR" type="TextureRect" parent="x/g"]
+margin_left = -284.0
+margin_top = -104.0
+margin_right = -34.0
+margin_bottom = 99.0
 texture = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OUT" type="Line2D" parent="x/XOR"]
+[node name="OUT" type="Line2D" parent="x/g/XOR"]
 show_behind_parent = true
 position = Vector2( 240, 101 )
 points = PoolVector2Array( -100, 0, 100, 0 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="OUT" type="TextureRect" parent="x/XOR/OUT"]
+[node name="OUT" type="TextureRect" parent="x/g/XOR/OUT"]
 margin_left = 100.0
 margin_top = -30.0
 margin_right = 164.0
@@ -338,14 +347,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IN2" type="Line2D" parent="x/XOR"]
+[node name="IN2" type="Line2D" parent="x/g/XOR"]
 show_behind_parent = true
 position = Vector2( 33, -64 )
 points = PoolVector2Array( -100, 100, 1, 100 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="IN" type="TextureRect" parent="x/XOR/IN2"]
+[node name="IN" type="TextureRect" parent="x/g/XOR/IN2"]
 margin_left = -152.0
 margin_top = 69.0
 margin_right = -88.0
@@ -355,14 +364,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IN3" type="Line2D" parent="x/XOR"]
+[node name="IN3" type="Line2D" parent="x/g/XOR"]
 show_behind_parent = true
 position = Vector2( 33, 64 )
 points = PoolVector2Array( -100, 100, 1, 100 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="IN" type="TextureRect" parent="x/XOR/IN3"]
+[node name="IN" type="TextureRect" parent="x/g/XOR/IN3"]
 margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
@@ -372,25 +381,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NOT" type="TextureRect" parent="x"]
+[node name="NOT" type="TextureRect" parent="x/g"]
 visible = false
-margin_left = 422.0
-margin_top = 129.0
-margin_right = 657.0
-margin_bottom = 333.0
+margin_left = -284.0
+margin_top = -104.0
+margin_right = -49.0
+margin_bottom = 100.0
 texture = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OUT2" type="Line2D" parent="x/NOT"]
+[node name="OUT2" type="Line2D" parent="x/g/NOT"]
 show_behind_parent = true
 position = Vector2( 240, 102 )
 points = PoolVector2Array( -100, 0, 100, 0 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="OUT" type="TextureRect" parent="x/NOT/OUT2"]
+[node name="OUT" type="TextureRect" parent="x/g/NOT/OUT2"]
 margin_left = 100.0
 margin_top = -30.0
 margin_right = 164.0
@@ -400,14 +409,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IN4" type="Line2D" parent="x/NOT"]
+[node name="IN4" type="Line2D" parent="x/g/NOT"]
 show_behind_parent = true
 position = Vector2( 33, 0 )
 points = PoolVector2Array( -100, 100, 1, 100 )
 width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 
-[node name="IN" type="TextureRect" parent="x/NOT/IN4"]
+[node name="IN" type="TextureRect" parent="x/g/NOT/IN4"]
 margin_left = -152.0
 margin_top = 68.0
 margin_right = -88.0
@@ -427,9 +436,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="x/C"]
-margin_left = -96.0
+margin_left = -246.0
 margin_top = 145.0
-margin_right = 213.0
+margin_right = 63.0
 margin_bottom = 223.0
 custom_fonts/font = ExtResource( 2 )
 text = "XOR Gate"
@@ -438,8 +447,8 @@ __meta__ = {
 }
 
 [node name="Result" type="Control" parent="x/C"]
-margin_left = 64.0
-margin_right = 104.0
+margin_left = -86.0
+margin_right = -46.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
