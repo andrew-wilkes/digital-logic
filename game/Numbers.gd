@@ -37,7 +37,6 @@ enum { PLAYING, CORRECT, NEXT, DONE } # States
 enum { PLUS, MINUS, LEFT, RIGHT, INVERT, ATIMEOUT, MODE, LEVEL, RESET, SAVE } # Events
 
 func _ready():
-	g.set_column_size($VBox)
 	dec = ""
 	state = PLAYING
 	mode = PLAY

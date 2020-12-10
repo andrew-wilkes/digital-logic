@@ -30,13 +30,12 @@ __meta__ = {
 }
 
 [node name="Sp1" type="Control" parent="."]
-margin_right = 416.0
 margin_bottom = 1920.0
 size_flags_horizontal = 3
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 420.0
-margin_right = 1500.0
+margin_left = 4.0
+margin_right = 1084.0
 margin_bottom = 1920.0
 rect_min_size = Vector2( 1080, 0 )
 mouse_filter = 2
@@ -264,8 +263,8 @@ margin_bottom = 1919.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Sp2" type="Control" parent="."]
-margin_left = 1504.0
-margin_right = 1920.0
+margin_left = 1088.0
+margin_right = 1088.0
 margin_bottom = 1920.0
 size_flags_horizontal = 3
 

@@ -17,7 +17,6 @@ const NUM_GATES = 6
 const MAX_TIME = 24 * 3600 * 1000
 
 func _ready():
-	g.set_column_size($VBox)
 	$VBox/HBox/OneButton.hide()
 	$VBox/HBox/ZeroButton.hide()
 

@@ -25,13 +25,12 @@ __meta__ = {
 }
 
 [node name="Sp1" type="Control" parent="."]
-margin_right = 30.0
 margin_bottom = 1090.0
 size_flags_horizontal = 3
 
 [node name="Home" type="TextureButton" parent="."]
-margin_left = 34.0
-margin_right = 234.0
+margin_left = 4.0
+margin_right = 204.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 64, 64 )
 hint_tooltip = "Main menu"
@@ -41,14 +40,14 @@ texture_normal = ExtResource( 5 )
 texture_disabled = ExtResource( 2 )
 
 [node name="Sp2" type="Control" parent="."]
-margin_left = 238.0
-margin_right = 268.0
+margin_left = 208.0
+margin_right = 208.0
 margin_bottom = 1090.0
 size_flags_horizontal = 3
 
 [node name="Numbers" type="TextureButton" parent="."]
-margin_left = 272.0
-margin_right = 472.0
+margin_left = 212.0
+margin_right = 412.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 64, 64 )
 hint_tooltip = "Numbers"
@@ -58,14 +57,14 @@ texture_normal = ExtResource( 8 )
 texture_disabled = ExtResource( 12 )
 
 [node name="Sp3" type="Control" parent="."]
-margin_left = 476.0
-margin_right = 506.0
+margin_left = 416.0
+margin_right = 416.0
 margin_bottom = 1090.0
 size_flags_horizontal = 3
 
 [node name="Gates" type="TextureButton" parent="."]
-margin_left = 510.0
-margin_right = 710.0
+margin_left = 420.0
+margin_right = 620.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 64, 64 )
 hint_tooltip = "Gates"
@@ -75,14 +74,14 @@ texture_normal = ExtResource( 7 )
 texture_disabled = ExtResource( 16 )
 
 [node name="Sp4" type="Control" parent="."]
-margin_left = 714.0
-margin_right = 744.0
+margin_left = 624.0
+margin_right = 624.0
 margin_bottom = 1090.0
 size_flags_horizontal = 3
 
 [node name="Circuits" type="TextureButton" parent="."]
-margin_left = 748.0
-margin_right = 948.0
+margin_left = 628.0
+margin_right = 828.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 64, 64 )
 hint_tooltip = "Circuits"
@@ -95,8 +94,8 @@ __meta__ = {
 }
 
 [node name="Sp5" type="Control" parent="."]
-margin_left = 952.0
-margin_right = 982.0
+margin_left = 832.0
+margin_right = 832.0
 margin_bottom = 1090.0
 size_flags_horizontal = 3
 [connection signal="button_down" from="Home" to="." method="_on_Home_button_down"]

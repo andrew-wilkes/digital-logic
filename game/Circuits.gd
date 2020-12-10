@@ -23,7 +23,6 @@ class GridWire:
 
 
 func _ready():
-	g.set_column_size($VBox)
 	set_circuit(circuit_index)
 	init_circuit()
 
