@@ -20,23 +20,19 @@
 [ext_resource path="res://circuits/DFF.tscn" type="PackedScene" id=18]
 [ext_resource path="res://circuits/JKFF.tscn" type="PackedScene" id=19]
 
-[node name="Circuits" type="HBoxContainer"]
+[node name="Circuits" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+custom_constants/margin_bottom = 40
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sp1" type="Control" parent="."]
-margin_bottom = 1920.0
-size_flags_horizontal = 3
-
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 4.0
-margin_right = 1084.0
-margin_bottom = 1920.0
+margin_right = 1080.0
+margin_bottom = 1880.0
 rect_min_size = Vector2( 1080, 0 )
 mouse_filter = 2
 custom_constants/separation = 20
@@ -105,6 +101,8 @@ color = Color( 0.121569, 0.121569, 0.121569, 1 )
 margin_right = 1080.0
 margin_bottom = 989.0
 rect_min_size = Vector2( 0, 1000 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -180,64 +178,74 @@ margin_right = 1080.0
 margin_bottom = 1402.0
 size_flags_vertical = 3
 
-[node name="HBox" type="HBoxContainer" parent="VBox"]
+[node name="M3" type="MarginContainer" parent="VBox"]
 margin_top = 1422.0
 margin_right = 1080.0
 margin_bottom = 1622.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="sp5" type="Control" parent="VBox/HBox"]
-margin_right = 49.0
+[node name="HBox" type="HBoxContainer" parent="VBox/M3"]
+margin_left = 20.0
+margin_right = 1060.0
+margin_bottom = 200.0
+
+[node name="sp5" type="Control" parent="VBox/M3/HBox"]
+margin_right = 41.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
-[node name="InfoButton" type="TextureButton" parent="VBox/HBox"]
-margin_left = 53.0
-margin_right = 253.0
+[node name="InfoButton" type="TextureButton" parent="VBox/M3/HBox"]
+margin_left = 45.0
+margin_right = 245.0
 margin_bottom = 200.0
 texture_normal = ExtResource( 16 )
 
-[node name="sp" type="Control" parent="VBox/HBox"]
-margin_left = 257.0
-margin_right = 307.0
+[node name="sp" type="Control" parent="VBox/M3/HBox"]
+margin_left = 249.0
+margin_right = 291.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
-[node name="PreviousButton" type="TextureButton" parent="VBox/HBox"]
-margin_left = 311.0
-margin_right = 511.0
+[node name="PreviousButton" type="TextureButton" parent="VBox/M3/HBox"]
+margin_left = 295.0
+margin_right = 495.0
 margin_bottom = 200.0
 texture_normal = ExtResource( 6 )
 
-[node name="sp2" type="Control" parent="VBox/HBox"]
-margin_left = 515.0
-margin_right = 564.0
+[node name="sp2" type="Control" parent="VBox/M3/HBox"]
+margin_left = 499.0
+margin_right = 540.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
-[node name="Step" type="TextureButton" parent="VBox/HBox"]
-margin_left = 568.0
-margin_right = 768.0
+[node name="Step" type="TextureButton" parent="VBox/M3/HBox"]
+margin_left = 544.0
+margin_right = 744.0
 margin_bottom = 200.0
 texture_normal = ExtResource( 9 )
 
-[node name="sp3" type="Control" parent="VBox/HBox"]
-margin_left = 772.0
-margin_right = 822.0
+[node name="sp3" type="Control" parent="VBox/M3/HBox"]
+margin_left = 748.0
+margin_right = 790.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NextButton" type="TextureButton" parent="VBox/HBox"]
-margin_left = 826.0
-margin_right = 1026.0
+[node name="NextButton" type="TextureButton" parent="VBox/M3/HBox"]
+margin_left = 794.0
+margin_right = 994.0
 margin_bottom = 200.0
 texture_normal = ExtResource( 5 )
 
-[node name="sp4" type="Control" parent="VBox/HBox"]
-margin_left = 1030.0
-margin_right = 1080.0
+[node name="sp4" type="Control" parent="VBox/M3/HBox"]
+margin_left = 998.0
+margin_right = 1040.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
@@ -247,26 +255,24 @@ margin_right = 1080.0
 margin_bottom = 1659.0
 size_flags_vertical = 3
 
-[node name="Buttons" parent="VBox" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 0.0
+[node name="M4" type="MarginContainer" parent="VBox"]
 margin_top = 1679.0
 margin_right = 1080.0
 margin_bottom = 1879.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" parent="VBox/M4" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 0.0
+margin_right = 1060.0
+margin_bottom = 200.0
 page_id = 3
-
-[node name="Sp2" type="Control" parent="VBox"]
-margin_top = 1899.0
-margin_right = 1080.0
-margin_bottom = 1919.0
-rect_min_size = Vector2( 0, 20 )
-
-[node name="Sp2" type="Control" parent="."]
-margin_left = 1088.0
-margin_right = 1088.0
-margin_bottom = 1920.0
-size_flags_horizontal = 3
 
 [node name="c" type="CanvasLayer" parent="."]
 
@@ -284,8 +290,8 @@ region_rect = Rect2( 233, 1, 189, 199 )
 
 [node name="TickTimer" type="Timer" parent="."]
 one_shot = true
-[connection signal="button_down" from="VBox/HBox/InfoButton" to="." method="_on_InfoButton_button_down"]
-[connection signal="button_down" from="VBox/HBox/PreviousButton" to="." method="_on_PreviousButton_button_down"]
-[connection signal="button_down" from="VBox/HBox/Step" to="." method="_on_Step_button_down"]
-[connection signal="button_down" from="VBox/HBox/NextButton" to="." method="_on_NextButton_button_down"]
+[connection signal="button_down" from="VBox/M3/HBox/InfoButton" to="." method="_on_InfoButton_button_down"]
+[connection signal="button_down" from="VBox/M3/HBox/PreviousButton" to="." method="_on_PreviousButton_button_down"]
+[connection signal="button_down" from="VBox/M3/HBox/Step" to="." method="_on_Step_button_down"]
+[connection signal="button_down" from="VBox/M3/HBox/NextButton" to="." method="_on_NextButton_button_down"]
 [connection signal="timeout" from="TickTimer" to="." method="_on_Tick_Timer_timeout"]

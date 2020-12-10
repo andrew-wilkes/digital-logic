@@ -11,24 +11,19 @@
 [ext_resource path="res://assets/play-dot.png" type="Texture" id=9]
 [ext_resource path="res://Gates.gd" type="Script" id=11]
 
-[node name="Gates" type="HBoxContainer"]
+[node name="Gates" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+custom_constants/margin_bottom = 40
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sp1" type="Control" parent="."]
-margin_right = 416.0
-margin_bottom = 1920.0
-size_flags_horizontal = 3
-
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 420.0
-margin_right = 1500.0
-margin_bottom = 1920.0
+margin_right = 1080.0
+margin_bottom = 1880.0
 rect_min_size = Vector2( 1080, 0 )
 mouse_filter = 2
 custom_constants/separation = 20
@@ -171,26 +166,21 @@ margin_right = 1080.0
 margin_bottom = 1659.0
 size_flags_vertical = 3
 
-[node name="Buttons" parent="VBox" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 0.0
+[node name="M3" type="MarginContainer" parent="VBox"]
 margin_top = 1679.0
 margin_right = 1080.0
 margin_bottom = 1879.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="Buttons" parent="VBox/M3" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 0.0
+margin_right = 1060.0
+margin_bottom = 200.0
 page_id = 2
-
-[node name="Sp2" type="Control" parent="VBox"]
-margin_top = 1899.0
-margin_right = 1080.0
-margin_bottom = 1919.0
-rect_min_size = Vector2( 0, 20 )
-
-[node name="Sp2" type="Control" parent="."]
-margin_left = 1504.0
-margin_right = 1920.0
-margin_bottom = 1920.0
-size_flags_horizontal = 3
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

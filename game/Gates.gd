@@ -19,6 +19,12 @@ const MAX_TIME = 24 * 3600 * 1000
 func _ready():
 	$VBox/HBox/OneButton.hide()
 	$VBox/HBox/ZeroButton.hide()
+	call_deferred("set_c_size")
+
+
+# Make the center node match it's parent's size
+func set_c_size():
+	$VBox/Gate/x.rect_size = $VBox/Gate.rect_size
 
 
 func sm(event):

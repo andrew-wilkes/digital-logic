@@ -23,8 +23,14 @@ class GridWire:
 
 
 func _ready():
+	
 	set_circuit(circuit_index)
 	init_circuit()
+	call_deferred("set_c_size")
+
+
+func set_c_size():
+	$VBox/Circuit/c.rect_size = $VBox/Circuit.rect_size
 
 
 enum { PREV, NEXT, STEP, UNSTABLE } # Events
@@ -84,7 +90,7 @@ func show_info():
 		info.play_anim()
 	if !info.is_connected("popup_hide", self, "_on_Info_popup_hide"):
 		info.connect("popup_hide", self, "_on_Info_popup_hide")
-	$VBox/HBox/InfoButton.disabled = true
+	$VBox/M3/HBox/InfoButton.disabled = true
 
 
 func gate_changed(gate):
@@ -423,4 +429,4 @@ func _on_Info_popup_hide():
 
 
 func enable_info_button():
-	$VBox/HBox/InfoButton.disabled = false
+	$VBox/M3/HBox/InfoButton.disabled = false
