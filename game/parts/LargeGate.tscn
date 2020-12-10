@@ -53,8 +53,7 @@ rect_min_size = Vector2( 0, 464 )
 color = Color( 0.172549, 0.172549, 0.172549, 1 )
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_use_anchors_": false,
-"_edit_vertical_guides_": [ 952.0 ]
+"_edit_use_anchors_": false
 }
 
 [node name="x" type="CenterContainer" parent="."]

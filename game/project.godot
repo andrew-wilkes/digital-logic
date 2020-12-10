@@ -41,7 +41,6 @@ config/icon="res://assets/circuits.png"
 [autoload]
 
 g="*res://g.gd"
-tt="*res://tt.gd"
 
 [debug]
 

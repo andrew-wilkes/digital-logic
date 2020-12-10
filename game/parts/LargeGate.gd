@@ -9,7 +9,6 @@ var names = [
 	"XOR",
 	"NOT"
 ]
-var colors = [Color.blue, Color.red, Color.white]
 
 func _ready():
 	if get_parent().name == "root":
@@ -22,7 +21,7 @@ func _ready():
 func reset():
 	set_gate(4) # XOR gate
 	for i in 3:
-		$x/g.get_child(gate).get_child(i).modulate = Color.white
+		$x/g.get_child(gate).get_child(i).modulate = g.get_state_color(2)
 
 
 func set_gate(idx: int):
@@ -40,16 +39,12 @@ func set_inputs():
 	else:
 		vals = [randi() % 2, randi() % 2]
 	for i in vals.size():
-		$x/g.get_child(gate).get_child(i + 1).modulate = color_from_val(vals[i])
+		$x/g.get_child(gate).get_child(i + 1).modulate = g.get_state_color(vals[i])
 	return vals
 
 
 func set_output(v):
-	$x/g.get_child(gate).get_child(0).modulate = color_from_val(v)
-
-
-func color_from_val(v):
-	return colors[v]
+	$x/g.get_child(gate).get_child(0).modulate = g.get_state_color(v)
 
 
 func set_result(r: int):
