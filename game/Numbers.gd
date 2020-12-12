@@ -11,6 +11,7 @@ var labels
 var values
 var desc
 var idx = 0
+var last_idx = 0
 var warning = false
 var alert
 var state
@@ -26,6 +27,12 @@ var mode_text = [
 	"Match the number",
 	"Match binary to hex"
 ]
+enum { INC, RAND }
+var step_mode = INC
+
+# Reset button mode
+enum { BACK, START, RND }
+var reset_mode = RND
 
 # Number (target), hex, bin, base10 (number entered), not used
 enum { NUM, HEX, BIN, DEC, NULL, THEX, STEP }
@@ -91,7 +98,18 @@ func play_sm(event):
 func challenge_sm(event):
 	match event:
 		RESET:
-			idx = 0
+			match reset_mode:
+				BACK:
+					idx = last_idx
+					if step_mode == INC:
+						reset_mode = START
+				START:
+					idx = 0
+					reset_mode = RND
+				RND:
+					step_mode = RAND
+					reset_mode = BACK
+					idx = randi() % numbers.size()
 			set_nums(numbers[idx])
 			set_number(number)
 			state = PLAYING
@@ -128,18 +146,26 @@ func challenge_sm(event):
 					warning = false
 					alert_correct()
 		NEXT:
-			idx += 1
-			if idx == numbers.size():
-				alert.text = "Completed!"
-				state = DONE
-				disable_control_buttons()
+			last_idx = idx
+			reset_mode = BACK
+			if step_mode == INC:
+				idx += 1
+				if idx == numbers.size():
+					alert.text = "Completed!"
+					state = DONE
+					reset_mode = START
+					disable_control_buttons()
+					return
 			else:
-				alert.text = ""
-				set_nums(numbers[idx])
-				state = PLAYING
+				idx = randi() % numbers.size()
+			alert.text = ""
+			set_nums(numbers[idx])
+			state = PLAYING
 
 
 func set_mode():
+	step_mode = INC
+	reset_mode = START
 	desc.text = mode_text[mode]
 	animate = true
 	call_deferred("show_info")
