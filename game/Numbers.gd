@@ -93,7 +93,6 @@ func challenge_sm(event):
 	match event:
 		RESET:
 			idx = 0
-			step = 0
 			set_nums(numbers[idx])
 			set_number(number)
 			state = PLAYING
@@ -101,24 +100,24 @@ func challenge_sm(event):
 		PLAYING:
 			match event:
 				INVERT:
-					step += 1
+					step -= 1
 					set_number(~number)
 					check_number()
 				LEFT:
-					step += 1
+					step -= 1
 					set_number(number << 1)
 					check_number()
 				RIGHT:
-					step += 1
+					step -= 1
 					set_number(number >> 1)
 					check_number()
 				PLUS:
-					step += 1
+					step -= 1
 					# Change the number and check for overflows
 					change_number(1)
 					check_number()
 				MINUS:
-					step += 1
+					step -= 1
 					change_number(-1)
 					check_number()
 				ATIMEOUT:
@@ -131,7 +130,6 @@ func challenge_sm(event):
 					alert_correct()
 		NEXT:
 			idx += 1
-			step = 0
 			if idx == numbers.size():
 				alert.text = "Completed!"
 				state = DONE
@@ -161,9 +159,13 @@ func set_mode():
 
 
 # Set the target, start value, and deduce BIN/HEX and number of digits
+# Data format: Dec_Number\tStart_Hex_Number\tTarget number of steps\t# Optional comment
+# Data format: Dec_Number\t\tBinary_Number\tTarget number of steps\t# Optional comment
+# Hex numbers: 0 - ffff
+# Binary numbers (treated as int after removing spaces): 0 - 1111 1111 1111 1111
 func set_nums(nums):
-	var data = nums.split("\t")
-	target = int(data[0])
+	var data = nums.split("\t") # Tab separator
+	target = int(data[0]) # Target decimal number
 	var v = data[1]
 	if v == "":
 		# Start based off a binary number
@@ -172,18 +174,20 @@ func set_nums(nums):
 			op_maps[mode][1] = BIN
 		var b = data[2].replace(" ", "")
 		number = bin2dec(int(b))
+		target_step = int(data[3])
+		step = target_step
 		set_level(int((len(b) - 1) / 4.0))
 		disable_shift_buttons(false)
-		target_step = int(data[3])
 	else:
 		# Start based off a hex number
 		num_type = HEX
 		if mode == TRAIN:
 			op_maps[mode][1] = HEX
 		number = ("0x" + v).hex_to_int()
+		target_step = int(data[2])
+		step = target_step
 		set_level(len(v) - 1)
 		disable_shift_buttons()
-		target_step = int(data[2])
 
 
 func set_number(n):
@@ -214,9 +218,9 @@ func set_number(n):
 			NULL:
 				v = ""
 			STEP:
-				if step > target_step * 2:
+				if step < -target_step / 2.0:
 					node.modulate = Color.red
-				elif step > target_step:
+				elif step < 0:
 					node.modulate = Color.orange
 				else:
 					node.modulate = Color.green

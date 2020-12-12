@@ -31,7 +31,21 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-n1 = "0		10	1
+n1 = "10	7	3 # Hex Increment
+15	9	6
+3		0	3	# Binary Increment
+8		100	4 # Observe signed overflow
+15		1001	6
+-3	2	5	# Hex decrement with underflow
+2	d	5	# Hex overflow
+-3		11	6	# Bin dec
+-2		1010	7 # Bin inc
+8		1	3	# Shift left
+1		1010	3	# Shift right
+8		1010	4 # shift R-L
+7		0	2	# Comp SR
+14		0	# Comp SR SL	
+0		10	1
 1		0	1
 -1		0	1
 -2		0	1
