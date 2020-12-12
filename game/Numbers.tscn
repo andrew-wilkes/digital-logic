@@ -31,7 +31,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-n1 = "10	7	3 # Hex Increment
+n1 = "10	0	10 # Hex Increment
 15	9	6
 3		0	3	# Binary Increment
 8		100	4 # Observe signed overflow
@@ -45,126 +45,38 @@ n1 = "10	7	3 # Hex Increment
 8		1010	4 # shift R-L
 7		0	2	# Comp SR
 14		0	# Comp SR SL	
-0		10	1
-1		0	1
--1		0	1
--2		0	1
-0		1	1
-3		10	2
-1		100	2
-4		1000	2
-1	3
-2	4
-3	5
-4	3
-5	4
-6	5
-7	8
-8	9
-9	8
-10	9
-11	8
-12	a
-13	c
-14	b
-15	d
-0		1
-1		0
-2		01
-3		01
-4		010
-5		001
-6		010
-7		010
-8		0100
-9		1000
-10		1000
-11		1010
-12		1010
-13		1010
-14		1100
-15		1100
-16		0000 1100
-15	0c
-16	0c
-17	0c
-18	0c
-32	1c
-64	3d
-128	7f
-255	fa
--1		0003
--2		0002
--3		1100
--4		1000
-256	00ff
-256		0000 0000 1111 1100
-65535	fffc
-65535		0000 0000 0000 0000
--1		0000 0000 0000 0000
-10		0000 0000 0000 0000
-256		0000 0000 0000 0000
-256		0001 0000 0000 1001"
-n2 = "2		100	3
-56		0	3
-1024		0	3
--2		0	3
-0		1
-3		10
-1		100
-4		1000
-1	3
-2	4
-3	5
-4	3
-5	4
-6	5
-7	8
-8	9
-9	8
-10	9
-11	8
-12	a
-13	c
-14	b
-15	d
-0		1
-1		0
-2		01
-3		01
-4		010
-5		001
-6		010
-7		010
-8		0100
-9		1000
-10		1000
-11		1010
-12		1010
-13		1010
-14		1100
-15		1100
-16		0000 1100
-15	0c
-16	0c
-17	0c
-18	0c
-32	1c
-64	3d
-128	7f
-255	fa
--1		0003
--2		0002
--3		1100
--4		1000
-256	00ff
-256		0000 0000 1111 1100
-65535	fffc
-65535		0000 0000 0000 0000
--1		0000 0000 0000 0000
-10		0000 0000 0000 0000
-256		0000 0000 0000 0000
-256		0001 0000 0000 1001"
+16		0000 1100	4
+256	00ff	1
+256		0000 0000 1111 1100	4
+65535	fffc	3
+65535		0000 0000 0000 0000	1
+-1		0000 0000 0000 0000	1
+10		0000 0000 0000 0000	6
+255		0000 0000 0000 0000	8
+256		0001 0000 0000 1001	4"
+n2 = "10	0	10 # Hex Increment
+15	9	6
+3		0	3	# Binary Increment
+8		100	4 # Observe signed overflow
+15		1001	6
+-3	2	5	# Hex decrement with underflow
+2	d	5	# Hex overflow
+-3		11	6	# Bin dec
+-2		1010	7 # Bin inc
+8		1	3	# Shift left
+1		1010	3	# Shift right
+8		1010	4 # shift R-L
+7		0	2	# Comp SR
+14		0	# Comp SR SL	
+16		0000 1100	4
+256	00ff	1
+256		0000 0000 1111 1100	4
+65535	fffc	3
+65535		0000 0000 0000 0000	1
+-1		0000 0000 0000 0000	1
+10		0000 0000 0000 0000	6
+255		0000 0000 0000 0000	8
+256		0001 0000 0000 1001	4"
 
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_left = 20.0
@@ -318,7 +230,6 @@ margin_left = 250.0
 margin_right = 450.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 44, 0 )
-hint_tooltip = "Increment"
 texture_normal = ExtResource( 7 )
 
 [node name="Sp2" type="Control" parent="VBox/Control"]
@@ -333,7 +244,6 @@ margin_bottom = 200.0
 margin_top = 250.0
 margin_right = 200.0
 margin_bottom = 450.0
-hint_tooltip = "Bit shift left"
 texture_normal = ExtResource( 8 )
 
 [node name="Down" type="TextureButton" parent="VBox/Control" groups=[
@@ -344,7 +254,6 @@ margin_top = 250.0
 margin_right = 450.0
 margin_bottom = 450.0
 rect_min_size = Vector2( 44, 0 )
-hint_tooltip = "Decrement"
 texture_normal = ExtResource( 9 )
 
 [node name="ShiftRight" type="TextureButton" parent="VBox/Control" groups=[
@@ -356,7 +265,6 @@ margin_top = 250.0
 margin_right = 700.0
 margin_bottom = 450.0
 rect_pivot_offset = Vector2( 100, 100 )
-hint_tooltip = "Bit shift right"
 texture_normal = ExtResource( 4 )
 
 [node name="Sp3" type="Control" parent="VBox/Control"]
@@ -373,7 +281,6 @@ margin_top = 500.0
 margin_right = 450.0
 margin_bottom = 700.0
 rect_min_size = Vector2( 44, 0 )
-hint_tooltip = "Invert"
 texture_normal = ExtResource( 10 )
 
 [node name="Sp" type="Control" parent="VBox"]
@@ -411,7 +318,6 @@ size_flags_horizontal = 3
 margin_left = 295.0
 margin_right = 495.0
 margin_bottom = 200.0
-hint_tooltip = "Bit shift left"
 texture_normal = ExtResource( 12 )
 
 [node name="Sp2" type="Control" parent="VBox/Control2"]
@@ -427,7 +333,6 @@ margin_left = 544.0
 margin_right = 744.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 44, 0 )
-hint_tooltip = "Increment"
 texture_normal = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -441,7 +346,6 @@ margin_left = 583.0
 margin_right = 783.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 44, 0 )
-hint_tooltip = "Increment"
 texture_normal = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -455,7 +359,6 @@ margin_left = 787.0
 margin_right = 987.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 44, 0 )
-hint_tooltip = "Increment"
 texture_normal = ExtResource( 14 )
 
 [node name="Sp4" type="Control" parent="VBox/Control2"]
@@ -469,7 +372,6 @@ margin_left = 794.0
 margin_right = 994.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 44, 0 )
-hint_tooltip = "Increment"
 texture_normal = ExtResource( 15 )
 
 [node name="Sp7" type="Control" parent="VBox/Control2"]

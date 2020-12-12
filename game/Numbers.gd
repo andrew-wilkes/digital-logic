@@ -89,7 +89,6 @@ func play_sm(event):
 
 
 func challenge_sm(event):
-	print(event, " ", state)
 	match event:
 		RESET:
 			idx = 0
