@@ -40,7 +40,7 @@ var op_maps = [[3, 1, 2], [0, 1, 6], [5, 2, 6]]
 var label_text = ["Number:", "Hex:", "Binary:", "Base10:", "", "Hex:", "Steps:"]
 
 enum { PLAY, TRAIN, CHALLENGE } # Modes
-enum { PLAYING, CORRECT, NEXT, DONE } # States
+enum { PLAYING, CORRECT, DONE } # States
 enum { PLUS, MINUS, LEFT, RIGHT, INVERT, ATIMEOUT, MODE, LEVEL, RESET, SAVE } # Events
 
 func _ready():
@@ -102,11 +102,15 @@ func challenge_sm(event):
 				BACK:
 					idx = last_idx
 					if step_mode == INC:
-						reset_mode = START
+						if idx > 0:
+							reset_mode = START
+						else:
+							reset_mode = RND
 				START:
 					idx = 0
 					reset_mode = RND
 				RND:
+					show_alert("Random mode")
 					step_mode = RAND
 					reset_mode = BACK
 					idx = randi() % numbers.size()
@@ -143,24 +147,29 @@ func challenge_sm(event):
 		CORRECT:
 			match event:
 				ATIMEOUT:
-					warning = false
-					alert_correct()
-		NEXT:
-			last_idx = idx
-			reset_mode = BACK
-			if step_mode == INC:
-				idx += 1
-				if idx == numbers.size():
-					alert.text = "Completed!"
-					state = DONE
-					reset_mode = START
-					disable_control_buttons()
-					return
-			else:
-				idx = randi() % numbers.size()
-			alert.text = ""
-			set_nums(numbers[idx])
-			state = PLAYING
+					if warning:
+						warning = false
+						alert_correct()
+					else:
+						next_number()
+
+
+func next_number():
+	last_idx = idx
+	reset_mode = BACK
+	if step_mode == INC:
+		idx += 1
+		if idx == numbers.size():
+			alert.text = "Completed!"
+			state = DONE
+			reset_mode = START
+			disable_control_buttons()
+			return
+	else:
+		idx = randi() % numbers.size()
+	alert.text = ""
+	set_nums(numbers[idx])
+	state = PLAYING
 
 
 func set_mode():
@@ -288,10 +297,13 @@ func check_number():
 
 
 func alert_correct():
-		alert.modulate = Color.green
-		alert.text = "Correct!"
-		state = NEXT
-		$AlertTimer.start()
+	show_alert("Correct!", Color.green)
+
+
+func show_alert(txt, col = Color.yellow):
+	alert.modulate = col
+	alert.text = txt
+	$AlertTimer.start()
 
 
 func dec2bin(decimal_value: int) -> String:
