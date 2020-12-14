@@ -1,23 +1,20 @@
 extends Control
 
-var target: int
-var number: int
-var step: int
-var target_step: int
+var state
 var numbers
 var num_digits = 1 # Number of bits
 var num_type
+var num_level = 0
+var step: int
+var target_step: int
 var labels
 var values
 var desc
-var idx = 0
-var last_idx = 0
 var warning = false
 var alert
-var state
 var max_num: int
-var mode = 0
-var level = 0
+var target: int
+var number: int
 var dec = "Base 10 value"
 var animate = true
 export(String, MULTILINE) var n1 # Number data
@@ -30,8 +27,8 @@ var mode_text = [
 enum { INC, RAND }
 var step_mode = INC
 
-# Reset button mode
-enum { BACK, START, RND }
+# Reset button g.num_mode
+enum { BACK, START, RND, INIT }
 var reset_mode = RND
 
 # Number (target), hex, bin, base10 (number entered), not used
@@ -46,7 +43,6 @@ enum { PLUS, MINUS, LEFT, RIGHT, INVERT, ATIMEOUT, MODE, LEVEL, RESET, SAVE } # 
 func _ready():
 	dec = ""
 	state = PLAYING
-	mode = PLAY
 	desc = find_node("Desc")
 	labels = find_node("Labels")
 	values = find_node("Values")
@@ -61,18 +57,13 @@ func get_data(txt: String):
 func sm(event):
 	match event:
 		MODE:
-			mode += 1
-			mode %= 3
+			g.num_mode += 1
+			g.num_mode %= 3
 			set_mode()
 		LEVEL:
-			level += 1
-			level %= 4
-			if level < 3:
-				set_level(level)
-			else:
-				set_level(4 - level)
+			set_level(num_level + 1)
 	alert.text = ""
-	if mode == PLAY:
+	if g.num_mode == PLAY:
 		play_sm(event)
 	else:
 		challenge_sm(event)
@@ -106,22 +97,28 @@ func challenge_sm(event):
 	match event:
 		RESET:
 			match reset_mode:
+				INIT:
+					# May accidentally change scene so we may avoid resetting idx
+					if g.num_idx > 0:
+						reset_mode = BACK
+					else:
+						reset_mode = START
 				BACK:
-					idx = last_idx
+					g.num_idx = g.num_last_idx
 					if step_mode == INC:
-						if idx > 0:
+						if g.num_idx > 0:
 							reset_mode = START
 						else:
 							reset_mode = RND
 				START:
-					idx = 0
+					g.num_idx = 0
 					reset_mode = RND
 				RND:
 					show_alert("Random mode")
 					step_mode = RAND
 					reset_mode = BACK
-					idx = randi() % numbers.size()
-			set_nums(numbers[idx])
+					g.num_idx = randi() % numbers.size()
+			set_nums(numbers[g.num_idx])
 			set_number(number)
 			state = PLAYING
 	match state:
@@ -162,11 +159,11 @@ func challenge_sm(event):
 
 
 func next_number():
-	last_idx = idx
+	g.num_last_idx = g.num_idx
 	reset_mode = BACK
 	if step_mode == INC:
-		idx += 1
-		if idx == numbers.size():
+		g.num_idx += 1
+		if g.num_idx == numbers.size():
 			alert.text = "Completed!"
 			state = DONE
 			reset_mode = START
@@ -174,28 +171,28 @@ func next_number():
 			disable_level_and_info_buttons()
 			return
 	else:
-		idx = randi() % numbers.size()
+		g.num_idx = randi() % numbers.size()
 	alert.text = ""
-	set_nums(numbers[idx])
+	set_nums(numbers[g.num_idx])
 	state = PLAYING
 
 
 func set_mode():
 	step_mode = INC
-	reset_mode = START
-	desc.text = mode_text[mode]
+	reset_mode = INIT
+	desc.text = mode_text[g.num_mode]
 	animate = true
 	call_deferred("show_info")
 	# Set the label text
 	for i in 3:
-		labels.get_child(i).text = label_text[op_maps[mode][i]]
-	match mode:
+		labels.get_child(i).text = label_text[op_maps[g.num_mode][i]]
+	match g.num_mode:
 		PLAY:
 			set_nums("8		1000	0")
 		TRAIN:
 			numbers = get_data(n1)
 			challenge_sm(RESET)
-			#idx = numbers.size() - 1 # Test DONE state
+			#g.num_idx = numbers.size() - 1 # Test DONE state
 		CHALLENGE:
 			numbers = get_data(n2)
 			challenge_sm(RESET)
@@ -213,8 +210,8 @@ func set_nums(nums):
 	if v == "":
 		# Start based off a binary number
 		num_type = BIN # Used when checking for overflow
-		if mode == TRAIN:
-			op_maps[mode][1] = BIN
+		if g.num_mode == TRAIN:
+			op_maps[g.num_mode][1] = BIN
 		var b = data[2].replace(" ", "")
 		number = bin2dec(int(b))
 		target_step = int(data[3])
@@ -224,13 +221,13 @@ func set_nums(nums):
 	else:
 		# Start based off a hex number
 		num_type = HEX
-		if mode == TRAIN:
-			op_maps[mode][1] = HEX
+		if g.num_mode == TRAIN:
+			op_maps[g.num_mode][1] = HEX
 		number = ("0x" + v).hex_to_int()
 		target_step = int(data[2])
 		step = target_step
 		set_level(int(len(v) / 2.0))
-		disable_shift_buttons(mode == TRAIN)
+		disable_shift_buttons(g.num_mode == TRAIN)
 
 
 func set_number(n):
@@ -242,7 +239,7 @@ func set_number(n):
 	var v = "Number"
 	for i in 3:
 		var node = values.get_child(i)
-		match op_maps[mode][i]:
+		match op_maps[g.num_mode][i]:
 			NUM:
 				v = String(target)
 			BIN:
@@ -281,6 +278,9 @@ func set_hex(i, n):
 
 
 func set_level(n: int):
+	if n > 2:
+		n = 0
+	num_level = n
 	var lbs = get_tree().get_nodes_in_group("level buttons")
 	for i in 3:
 		lbs[i].visible = i == n
@@ -467,7 +467,7 @@ func show_info():
 	info.rect_position.x = 0
 	info.rect_size.x = rect_size.x
 	info.rect_size.y = $VBox/Sp2.rect_position.y - info.rect_position.y
-	match mode:
+	match g.num_mode:
 		PLAY:
 			info.show_how(false)
 		TRAIN:

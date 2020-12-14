@@ -11,6 +11,11 @@ const UNSTABLE_THRESHOLD = 4
 
 var debug_id = 0
 
+# Numbers scene state
+var num_idx = 0
+var num_last_idx = 0
+var num_mode = 0
+
 func get_debug_id():
 	debug_id += 1
 	return debug_id
