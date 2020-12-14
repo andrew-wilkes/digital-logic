@@ -65,8 +65,6 @@ func sm(event):
 			mode %= 3
 			set_mode()
 		LEVEL:
-			if state == DONE:
-				return
 			level += 1
 			level %= 4
 			if level < 3:
@@ -102,6 +100,7 @@ func challenge_sm(event):
 	if state == DONE:
 		if event == RESET:
 			disable_control_buttons(false)
+			disable_level_and_info_buttons(false)
 		else:
 			return
 	match event:
@@ -172,6 +171,7 @@ func next_number():
 			state = DONE
 			reset_mode = START
 			disable_control_buttons()
+			disable_level_and_info_buttons()
 			return
 	else:
 		idx = randi() % numbers.size()
@@ -195,7 +195,7 @@ func set_mode():
 		TRAIN:
 			numbers = get_data(n1)
 			challenge_sm(RESET)
-			# idx = numbers.size() - 1 # Test DONE state
+			#idx = numbers.size() - 1 # Test DONE state
 		CHALLENGE:
 			numbers = get_data(n2)
 			challenge_sm(RESET)
@@ -366,6 +366,12 @@ func disable_shift_buttons(disabled = true):
 		disable_button(node, disabled)
 
 
+func disable_level_and_info_buttons(disabled = true):
+	for node in get_tree().get_nodes_in_group("level buttons"):
+		disable_button(node, disabled)
+	disable_button($VBox/Control2/Info, disabled)
+
+
 func disable_button(node, disabled):
 	node.disabled = disabled
 	if disabled:
@@ -456,8 +462,6 @@ func enable_info_button():
 
 
 func show_info():
-	if state == DONE:
-		return
 	var info = $c/Info
 	info.rect_position = $VBox.rect_position + $VBox/Alert.rect_position
 	info.rect_position.x = 0
