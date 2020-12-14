@@ -65,12 +65,15 @@ func sm(event):
 			mode %= 3
 			set_mode()
 		LEVEL:
+			if state == DONE:
+				return
 			level += 1
 			level %= 4
 			if level < 3:
 				set_level(level)
 			else:
 				set_level(4 - level)
+	alert.text = ""
 	if mode == PLAY:
 		play_sm(event)
 	else:
@@ -96,6 +99,11 @@ func play_sm(event):
 
 
 func challenge_sm(event):
+	if state == DONE:
+		if event == RESET:
+			disable_control_buttons(false)
+		else:
+			return
 	match event:
 		RESET:
 			match reset_mode:
@@ -187,6 +195,7 @@ func set_mode():
 		TRAIN:
 			numbers = get_data(n1)
 			challenge_sm(RESET)
+			# idx = numbers.size() - 1 # Test DONE state
 		CHALLENGE:
 			numbers = get_data(n2)
 			challenge_sm(RESET)
@@ -220,8 +229,8 @@ func set_nums(nums):
 		number = ("0x" + v).hex_to_int()
 		target_step = int(data[2])
 		step = target_step
-		set_level(len(v) - 1)
-		disable_shift_buttons()
+		set_level(int(len(v) / 2.0))
+		disable_shift_buttons(mode != TRAIN)
 
 
 func set_number(n):
@@ -237,11 +246,13 @@ func set_number(n):
 			NUM:
 				v = String(target)
 			BIN:
+				if i == 2:
+					node.modulate = Color.white
 				labels.get_child(i).text = label_text[BIN]
 				v = dec2bin(n)
 			HEX:
 				v = set_hex(i, n)
-			THEX:
+			THEX: # Hex number in place of the decimal number i = 0
 				v = set_hex(i, target)
 			DEC:
 				if num_digits > 1 and n >= int(max_num / 2.0):
@@ -445,6 +456,8 @@ func enable_info_button():
 
 
 func show_info():
+	if state == DONE:
+		return
 	var info = $c/Info
 	info.rect_position = $VBox.rect_position + $VBox/Alert.rect_position
 	info.rect_position.x = 0
