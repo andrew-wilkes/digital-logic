@@ -230,7 +230,7 @@ func set_nums(nums):
 		target_step = int(data[2])
 		step = target_step
 		set_level(int(len(v) / 2.0))
-		disable_shift_buttons(mode != TRAIN)
+		disable_shift_buttons(mode == TRAIN)
 
 
 func set_number(n):
