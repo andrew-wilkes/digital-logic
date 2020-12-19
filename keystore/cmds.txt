@@ -1,0 +1,6 @@
+keytool -v -genkey -v -keystore keystore/name -alias DigitalLogic -keyalg RSA -validity 10000
+
+keytool -importkeystore -srckeystore keystore/upload-keystore -destkeystore keystore/upload-keystore -deststoretype pkcs12
+
+kanazawa101
+

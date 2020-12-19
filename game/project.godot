@@ -36,7 +36,8 @@ config/name="Digital Logic"
 run/main_scene="res://Main.tscn"
 boot_splash/image="res://assets/splash.png"
 boot_splash/fullsize=false
-config/icon="res://assets/circuits.png"
+config/icon="res://icons/icon-256.png"
+config/windows_native_icon="res://icons/icon.ico"
 
 [autoload]
 
@@ -50,7 +51,6 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=1080
 window/size/height=1920
-window/size/resizable=false
 window/size/test_width=608
 window/size/test_height=1080
 window/energy_saving/keep_screen_on=false

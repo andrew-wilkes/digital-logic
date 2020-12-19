@@ -613,9 +613,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="-575.50742"
-     inkscape:cy="815.73784"
+     inkscape:zoom="4"
+     inkscape:cx="-838.66802"
+     inkscape:cy="1657.6433"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -663,7 +663,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -710,8 +710,7 @@
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="Button"
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <rect
        style="fill:url(#linearGradient1549);fill-opacity:1;stroke:#32afef;stroke-width:2.34;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1541"
@@ -7347,5 +7346,68 @@
          id="tspan1891"
          x="-632.92224"
          y="369.40005">Export as 534x964</tspan></text>
+    <rect
+       style="display:inline;fill:#32afef;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3149-4-62-3"
+       width="60"
+       height="60"
+       x="-840.37805"
+       y="1680.0448"
+       ry="5.00003"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/icon/icon-16.png"
+       inkscape:export-xdpi="25.6"
+       inkscape:export-ydpi="25.6" />
+    <g
+       inkscape:export-ydpi="25.6"
+       inkscape:export-xdpi="25.6"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/icon/icon-16.png"
+       transform="matrix(0.4709343,0,0,0.45783773,-486.97401,1447.0357)"
+       id="g941-9-4-7-7"
+       style="stroke:#000000;stroke-width:4.30719;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:4.30719;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m -730.00002,522.51964 v 60 l 60,-30 z"
+         id="path1639-4-2-6-5-5"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccc"
+         inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/symbols.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:4.30719;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path1384-9-4-2-2-9-3"
+         cy="552.44513"
+         cx="-664.98615"
+         r="5"
+         inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/symbols.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
+    <g
+       inkscape:export-ydpi="25.6"
+       inkscape:export-xdpi="25.6"
+       inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/icon/icon-16.png"
+       transform="matrix(-0.4709343,0,0,0.45783773,-1133.026,1467.0357)"
+       id="g941-9-4-7-7-9"
+       style="display:inline;stroke:#000000;stroke-width:4.30719;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:4.30719;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m -730.00002,522.51964 v 60 l 60,-30 z"
+         id="path1639-4-2-6-5-5-1"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccc"
+         inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/symbols.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:4.30719;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path1384-9-4-2-2-9-3-2"
+         cy="552.44513"
+         cx="-664.98615"
+         r="5"
+         inkscape:export-filename="/home/andrew/dev/godot/git/andrew-wilkes/digital-logic/game/assets/symbols.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
   </g>
 </svg>
