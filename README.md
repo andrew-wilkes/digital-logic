@@ -6,4 +6,4 @@ It includes an Auto-router!
 
 After this I started again from scratch since we learn and have new ideas. But maybe you will enjoy checking out this code?
 
-[Game Code](digital-logic/tree/master/game)
+[Game Code](game)
