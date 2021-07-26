@@ -13,3 +13,5 @@ data_*/
 godotia-hs.txt
 out/
 *.apk
+
+*.idsig

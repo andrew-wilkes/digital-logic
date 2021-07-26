@@ -181,6 +181,7 @@ size_flags_horizontal = 3
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
 [connection signal="button_down" from="VBox/HBox/OneButton" to="." method="_on_OneButton_button_down"]
 [connection signal="button_down" from="VBox/HBox/Start" to="." method="_on_Start_button_down"]
 [connection signal="button_down" from="VBox/HBox/Stop" to="." method="_on_Stop_button_down"]

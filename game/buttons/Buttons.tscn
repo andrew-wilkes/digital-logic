@@ -99,6 +99,7 @@ margin_left = 952.0
 margin_right = 982.0
 margin_bottom = 1090.0
 size_flags_horizontal = 3
+
 [connection signal="button_down" from="Home" to="." method="_on_Home_button_down"]
 [connection signal="button_down" from="Numbers" to="." method="_on_Numbers_button_down"]
 [connection signal="button_down" from="Gates" to="." method="_on_Gates_button_down"]

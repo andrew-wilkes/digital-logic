@@ -299,6 +299,7 @@ one_shot = true
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/ActionButton = SubResource( 1 )
 anims/InfoPopup = SubResource( 2 )
+
 [connection signal="button_down" from="VBox/HBox/InfoButton" to="." method="_on_InfoButton_button_down"]
 [connection signal="button_down" from="VBox/HBox/PreviousButton" to="." method="_on_PreviousButton_button_down"]
 [connection signal="button_down" from="VBox/HBox/Step" to="." method="_on_Step_button_down"]
